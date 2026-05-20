@@ -60,6 +60,20 @@ http://127.0.0.1:8765/
 - GitHub Pages setup instructions in `docs/github-pages.md`
 - Obsidian sync contract in `docs/obsidian-sync.md`
 - Seven-role operating workflow in `docs/agent-workflows.md`
+- Practical operating manual in `docs/manual.md`
+
+## Manual
+
+Read the operating manual before using X_Lab as a real team workspace:
+
+```text
+docs/manual.md
+```
+
+Current application boundary:
+
+- Usable: manual team dashboard, daily review, role/task state board, Obsidian memory process
+- Not yet automatic: autonomous task execution, automatic brief generation, automatic Obsidian writes
 
 ## Data Model
 
