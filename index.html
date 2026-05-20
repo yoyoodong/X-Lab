@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>X_Lab Agent Team Dashboard</title>
+  <style>
+    :root{
+      --bg:#020202;
+      --fg:#f2efe8;
+      --muted:rgba(242,239,232,.62);
+      --weak:rgba(242,239,232,.28);
+      --line:rgba(242,239,232,.12);
+      --pill:rgba(255,255,255,.10);
+      --pill-hover:rgba(255,255,255,.16);
+      --ease:cubic-bezier(.16,1,.3,1);
+      --yellow:#f5cf3d;
+      --green:#4ee78e;
+      --purple:#c47bff;
+      --blue:#5f91ff;
+      --orange:#ff7b2e;
+      --teal:#3cc8bd;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;min-height:100%;background:var(--bg)}
+    body{color:var(--fg);font-family:"Helvetica Neue",Helvetica,Arial,"PingFang SC","Microsoft YaHei",sans-serif;font-weight:300;letter-spacing:-.03em;overflow:hidden}
+    button,a{color:inherit;font:inherit;background:none;border:0;text-decoration:none;cursor:pointer}
+    .noise{position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.08;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E")}
+    .bg{position:fixed;inset:-10%;z-index:0;overflow:hidden;pointer-events:none;background:#020202;transition:filter .32s var(--ease),transform .32s var(--ease)}
+    .blur{position:absolute;border-radius:50%;filter:blur(80px);opacity:.50;animation:drift 14s ease-in-out infinite alternate;will-change:transform}
+    .blur.a{width:680px;height:680px;left:-180px;top:80px;background:rgba(206,97,188,.45)}
+    .blur.b{width:720px;height:720px;left:180px;top:40px;background:rgba(220,220,190,.32);animation-delay:-4s}
+    .blur.c{width:720px;height:720px;right:-180px;bottom:-120px;background:rgba(170,190,220,.42);animation-delay:-2s}
+    .blur.d{width:520px;height:520px;right:20%;top:26%;background:rgba(90,110,180,.18);animation-delay:-6s}
+    @keyframes drift{to{transform:translate3d(30px,-22px,0) scale(1.06)}}
+    .app{position:relative;z-index:2;min-height:100vh;padding:28px 20px 20px;display:flex;flex-direction:column;transition:filter .32s var(--ease),transform .32s var(--ease),opacity .32s var(--ease)}
+    body.members-open .app,body.members-open .bg{filter:blur(24px);transform:scale(1.012);opacity:.82}
+    .topbar{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;position:relative;z-index:12}
+    .nav-pills{display:flex;gap:10px;flex-wrap:wrap}
+    .pill{padding:12px 18px;border-radius:999px;background:var(--pill);font-size:16px;font-weight:520;letter-spacing:-.02em;transition:.22s var(--ease);box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
+    .pill:hover,.pill.active{background:var(--pill-hover);transform:translateY(-1px)}
+    .hero{flex:1;display:grid;place-items:center;position:relative;padding:20px 0 50px}
+    .hero-center{width:min(980px,90vw);text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;position:relative;z-index:3}
+    .line{font-size:clamp(44px,8vw,106px);line-height:.88;font-weight:280;text-transform:uppercase;white-space:nowrap;transition:transform .8s var(--ease),opacity .8s var(--ease);text-shadow:0 0 26px rgba(255,255,255,.06)}
+    .line.motion{animation:floatText 3.4s ease-in-out infinite alternate}
+    .line.motion:nth-child(2){animation-delay:-.6s}.line.motion:nth-child(3){animation-delay:-1.2s}.line.motion:nth-child(4){animation-delay:-1.8s}.line.motion:nth-child(5){animation-delay:-2.4s}.line.motion:nth-child(6){animation-delay:-3s}
+    @keyframes floatText{to{transform:translateY(-6px)}}
+    .cta-row{margin-top:18px;display:flex;justify-content:center;gap:min(8vw,120px);flex-wrap:wrap}
+    .cta{position:relative;font-size:clamp(38px,5vw,72px);line-height:1;font-weight:280;text-transform:uppercase;letter-spacing:-.05em}
+    .cta:after{content:"";position:absolute;left:0;right:0;bottom:-8px;height:1px;background:var(--fg);transform:scaleX(0);transform-origin:right;transition:transform .28s var(--ease)}
+    .cta:hover:after{transform:scaleX(1);transform-origin:left}
+    .live-dot{display:inline-block;width:12px;height:12px;margin-left:10px;border-radius:50%;background:var(--yellow);box-shadow:0 0 16px var(--yellow);vertical-align:top}
+    .member-cluster{position:relative;width:330px;z-index:15}
+    .stack-trigger{position:relative;width:100%;height:138px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.24),rgba(255,255,255,.12));box-shadow:0 20px 70px rgba(0,0,0,.26),inset 0 1px 0 rgba(255,255,255,.24);overflow:visible;transition:.25s var(--ease)}
+    .stack-trigger:hover{transform:translateY(-2px)}
+    .stack-shadow{position:absolute;left:0;right:0;height:14px;border-radius:12px 12px 0 0;background:rgba(255,255,255,.10);z-index:-1}
+    .stack-shadow.s1{top:-8px;transform:scale(.985)}.stack-shadow.s2{top:-16px;transform:scale(.97)}.stack-shadow.s3{top:-24px;transform:scale(.955)}
+    .trigger-inner{position:relative;display:grid;grid-template-columns:84px 1fr auto;gap:16px;align-items:center;padding:16px;height:100%}
+    .trigger-thumb{width:74px;height:74px;border-radius:8px;background:#0a0a0a;display:grid;place-items:center;overflow:hidden}
+    .trigger-copy b{display:block;font-size:18px;font-weight:620;letter-spacing:-.02em}
+    .trigger-copy span{display:block;margin-top:6px;color:rgba(255,255,255,.66);line-height:1.32;font-size:14px}
+    .trigger-more{font-size:16px;font-weight:680;white-space:nowrap}
+    .overlay{position:fixed;inset:0;z-index:40;opacity:0;pointer-events:none;transition:.3s var(--ease);background:rgba(0,0,0,.10)}
+    .overlay.open{opacity:1;pointer-events:auto}
+    .member-panel{position:absolute;top:24px;right:24px;width:min(390px,calc(100vw - 28px));display:flex;flex-direction:column;gap:18px;transform:translateY(10px) scale(.98);opacity:0;transition:.3s var(--ease)}
+    .overlay.open .member-panel{transform:translateY(0) scale(1);opacity:1}
+    .member-list{display:flex;flex-direction:column;gap:18px}
+    .member-item{width:100%;min-height:118px;border-radius:13px;background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.08));border:1px solid rgba(255,255,255,.09);box-shadow:0 14px 50px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.08);padding:14px;display:grid;grid-template-columns:84px 1fr 22px;gap:18px;align-items:center;transition:.22s var(--ease);text-align:left}
+    .member-item:hover{transform:translateX(-4px);border-color:rgba(255,255,255,.28);background:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,.10))}
+    .member-item.selected{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),0 18px 60px rgba(0,0,0,.28)}
+    .member-item .thumb{width:74px;height:74px;border-radius:8px;background:rgba(255,255,255,.08);display:grid;place-items:center;overflow:hidden}
+    .member-item .title{font-size:18px;line-height:1.05;font-weight:520}
+    .member-item .role{margin-top:4px;color:rgba(255,255,255,.70);font-size:14px;line-height:1.3}
+    .member-item .meta{margin-top:10px;color:rgba(255,255,255,.42);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+    .member-item .arrow{color:rgba(255,255,255,.68);font-size:22px;align-self:end;justify-self:end}
+    .member-toggle{align-self:flex-end;margin-top:8px;padding:16px 24px;border-radius:999px;background:rgba(255,255,255,.11);font-size:16px;transition:.2s var(--ease)}
+    .member-toggle:hover{background:rgba(255,255,255,.17)}
+    .modal{position:fixed;inset:0;z-index:70;display:none;place-items:center;background:rgba(0,0,0,.42);backdrop-filter:blur(20px);padding:18px}
+    .modal.open{display:grid}
+    .modal-inner{width:min(1240px,100%);max-height:92vh;overflow:auto;border-radius:18px;background:rgba(10,10,10,.96);border:1px solid rgba(255,255,255,.12);box-shadow:0 30px 120px rgba(0,0,0,.55);padding:24px}
+    .modal-head{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-bottom:20px}
+    .modal-title{font-size:42px;font-weight:280;text-transform:uppercase;letter-spacing:-.06em}
+    .close-btn{padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.10)}
+    .modal-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+    .modal-card{min-height:180px;border-radius:14px;padding:16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;justify-content:space-between}
+    .modal-card.light{background:#f3efe8;color:#080808}
+    .modal-card.wide{grid-column:span 2}
+    .mk{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+    .modal-card.light .mk{color:rgba(0,0,0,.45)}
+    .modal-card h3{margin:10px 0 0;font-size:24px;line-height:1.06;font-weight:320}
+    .modal-card p{margin:12px 0 0;color:rgba(255,255,255,.58);line-height:1.46;font-size:14px}
+    .modal-card.light p{color:rgba(0,0,0,.58)}
+    .status-row{display:grid;grid-template-columns:1.1fr .65fr .65fr .9fr;gap:10px;align-items:center;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.10);font-size:14px}
+    .status-row:last-child{border-bottom:0}
+    .status-row b{font-weight:520}
+    .progress{height:6px;background:rgba(255,255,255,.15);border-radius:999px;overflow:hidden}
+    .progress span{display:block;height:100%;width:var(--p);background:var(--accent);border-radius:inherit}
+    .actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+    .actions button{padding:9px 11px;border-radius:999px;background:rgba(255,255,255,.10);font-size:12px;color:rgba(255,255,255,.72)}
+    .modal-card.light .actions button{background:rgba(0,0,0,.08);color:rgba(0,0,0,.72)}
+    .member-detail-layout{display:grid;grid-template-columns:minmax(0,1.45fr) 400px;gap:28px}
+    .detail-main{border-radius:18px;border:1px solid rgba(255,255,255,.14);background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.025));box-shadow:inset 0 1px rgba(255,255,255,.08);padding:30px}
+    .detail-hero{display:grid;grid-template-columns:260px minmax(0,1fr);gap:34px;align-items:center;padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,.12)}
+    .detail-figure{width:260px;height:250px;display:grid;place-items:center;overflow:hidden;border-radius:16px;background:rgba(255,255,255,.06)}
+    .avatar-svg,.avatar-img{width:100%;height:100%;display:block}
+    .avatar-img{object-fit:cover;object-position:50% 18%;filter:saturate(1.05) contrast(1.02)}
+    .thumb .avatar-svg,.trigger-thumb .avatar-svg,.thumb .avatar-img,.trigger-thumb .avatar-img{width:100%;height:100%}
+    .detail-figure .avatar-svg{width:250px;height:250px}
+    .detail-figure .avatar-img{width:100%;height:100%;object-position:50% 14%}
+    .detail-copy .active{display:inline-flex;align-items:center;gap:10px;color:var(--accent);font-size:12px;text-transform:uppercase;letter-spacing:.14em;font-weight:650}
+    .detail-copy .active:before{content:"";width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)}
+    .detail-name{margin-top:18px;font-size:42px;font-weight:280;letter-spacing:-.055em}
+    .detail-status{margin-top:10px;font-size:18px;color:rgba(255,255,255,.72)}
+    .detail-desc{margin-top:24px;max-width:430px;color:rgba(255,255,255,.58);font-size:16px;line-height:1.65}
+    .detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:22px}
+    .info-card{min-height:142px;border-radius:14px;padding:22px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.11);box-shadow:inset 0 1px rgba(255,255,255,.05);display:grid;grid-template-columns:44px 1fr;gap:16px}
+    .info-icon{font-size:26px;color:var(--accent);line-height:1}
+    .info-k{font-size:11px;text-transform:uppercase;letter-spacing:.13em;color:rgba(255,255,255,.45)}
+    .info-title{margin-top:8px;font-size:20px;font-weight:340;letter-spacing:-.035em}
+    .info-body{margin-top:14px;color:rgba(255,255,255,.58);font-size:14px;line-height:1.5}
+    .bar{margin-top:14px;width:100%;height:6px;border-radius:999px;background:rgba(255,255,255,.14);overflow:hidden}
+    .bar span{display:block;width:var(--p);height:100%;border-radius:inherit;background:var(--accent)}
+    .detail-side{display:flex;flex-direction:column;gap:12px}
+    .detail-side .member-item{min-height:106px;border-radius:13px;grid-template-columns:80px 1fr 20px;gap:16px;padding:13px}
+    .detail-side .member-item .thumb{width:70px;height:70px}
+    .detail-side .member-item .role{font-size:14px}
+    .detail-side .member-item .meta{display:none}
+    .footer-meta{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);color:rgba(255,255,255,.34);font-size:12px;letter-spacing:.12em;text-transform:uppercase;text-align:center;z-index:5}
+    @media(max-width:1080px){body{overflow:auto}.modal-inner{max-height:96vh}.member-detail-layout{grid-template-columns:1fr}.detail-side{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:980px){.app{min-height:100vh}.hero{padding-top:40px}.member-cluster{width:300px}.modal-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.modal-card.wide{grid-column:span 1}.status-row{grid-template-columns:1fr}.detail-hero{grid-template-columns:1fr}.detail-grid{grid-template-columns:1fr}}
+    @media(max-width:720px){.app{padding:18px 14px 14px}.topbar{display:block}.member-cluster{width:100%;margin-top:22px}.hero{padding:60px 0 80px}.line{font-size:44px;white-space:normal}.cta{font-size:34px}.modal-grid{grid-template-columns:1fr}.footer-meta{position:static;transform:none;margin-top:14px}.member-panel{right:14px;top:14px}.member-list{gap:14px}.detail-main{padding:18px}.detail-figure{width:100%;height:210px}.detail-grid{gap:10px}.detail-side{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="bg"><div class="blur a"></div><div class="blur b"></div><div class="blur c"></div><div class="blur d"></div></div><div class="noise"></div>
+  <main class="app">
+    <header class="topbar">
+      <nav class="nav-pills">
+        <button class="pill active" data-panel="overview">Overview</button>
+        <button class="pill" data-panel="members">Members</button>
+        <button class="pill" data-panel="projects">Projects</button>
+        <button class="pill" data-panel="memory">Memory</button>
+        <button class="pill" data-panel="brief">Brief</button>
+      </nav>
+      <div class="member-cluster"><button class="stack-trigger" id="openMembers" aria-label="Open member cards"><span class="stack-shadow s1"></span><span class="stack-shadow s2"></span><span class="stack-shadow s3"></span><div class="trigger-inner"><div class="trigger-thumb" id="triggerAvatar"></div><div class="trigger-copy"><b>Members</b><span>7 original roles inside X LAB</span></div><div class="trigger-more">+ 6 more</div></div></button></div>
+    </header>
+    <section class="hero">
+      <div class="hero-center"><div class="line motion" id="line1">X LAB</div><div class="line motion" id="line2">AGENT SYSTEM</div><div class="line motion" id="line3">& TEAM DIRECTION</div><div class="line motion" id="line4"><span id="numA">07</span> MEMBERS</div><div class="line motion" id="line5"><span id="numB">21</span> LIVE TASKS</div><div class="line motion" id="line6">→ DAILY BRIEF → MEMORY</div><div class="cta-row"><button class="cta" data-panel="members">→MEMBERS</button><button class="cta" data-panel="projects">→PROJECTS<span class="live-dot"></span></button></div></div>
+      <div class="footer-meta">X LAB INTERNAL INTERFACE · MOTION TYPE · MEMBER STACK</div>
+    </section>
+  </main>
+  <div class="overlay" id="memberOverlay"><div class="member-panel"><div class="member-list" id="memberList"></div><button class="member-toggle" id="closeMembers">Show less</button></div></div>
+  <div class="modal" id="modal"><div class="modal-inner"><div class="modal-head"><div class="modal-title" id="modalTitle">Overview</div><button class="close-btn" id="closeModal">Close</button></div><div id="modalContent"><div class="modal-grid" id="modalGrid"></div></div></div></div>
+  <script>
+    const members=[
+      {name:'The Director',cn:'虾老大',role:'Strategic Lead',desc:'Shapes the vision and alignment across projects. Ensures clarity, coherence, and forward momentum.',status:'Reviewing structure',progress:86,done:'2/3',color:'var(--yellow)',task:'Reviewing structure',taskDetail:'Auditing project frameworks and decision flows.',with:'The Architect / The Designer',withDetail:'Mapping · Refining',issue:'Scope drift in Project Atlas',issueDetail:'Need alignment on decision boundaries.',plan:'Align structure with key stakeholders',planDetail:'Sync session scheduled for tomorrow.'},
+      {name:'The Scout',cn:'侦察虾',role:'Signal Hunter',desc:'Scans the outside world for useful references, signals, and weak trends that can shape better decisions.',status:'Collected 3 references',progress:74,done:'2/4',color:'var(--green)',task:'Collecting references',taskDetail:'Scanning interface patterns and agent workflow examples.',with:'The Designer',withDetail:'Reference · Visual signals',issue:'Too many loose references',issueDetail:'Need stronger filtering criteria.',plan:'Summarize useful inspiration',planDetail:'Prepare a signal board for review.'},
+      {name:'The Critic',cn:'挑刺虾',role:'Risk Challenger',desc:'Challenges assumptions, exposes weak logic, and keeps the team from becoming self-satisfied.',status:'Flagged complexity risk',progress:58,done:'1/3',color:'var(--purple)',task:'Reviewing complexity risk',taskDetail:'Checking if page modules are useful or only decorative.',with:'The Director / The Architect',withDetail:'Challenge · Correction',issue:'Some modules are too complex',issueDetail:'Need reduce repeated fields.',plan:'Output challenge list',planDetail:'Prioritize risks by impact.'},
+      {name:'The Explorer',cn:'探索虾',role:'New Direction Explorer',desc:'Connects strange ideas, playful interactions, and unexpected references into possible new directions.',status:'Testing new directions',progress:66,done:'2/5',color:'var(--orange)',task:'Testing new directions',taskDetail:'Exploring card interactions and playful detail transitions.',with:'The Broadcaster',withDetail:'Ideas · Story hooks',issue:'Fun vs clarity balance',issueDetail:'Interactions should not harm readability.',plan:'Propose interactive ideas',planDetail:'Deliver 3 lightweight interaction concepts.'},
+      {name:'The Architect',cn:'产品虾',role:'Product Architect',desc:'Turns scattered ideas into systems, page structures, fields, and usable workflows.',status:'Mapping structure',progress:72,done:'3/5',color:'var(--blue)',task:'Mapping structure',taskDetail:'Structuring Overview, Members, Projects, Memory, and Brief.',with:'The Director / The Critic',withDetail:'Framework · Review',issue:'Data relationship not unified',issueDetail:'Need define member-project-task links.',plan:'Refine page framework',planDetail:'Create field map and jump logic.'},
+      {name:'The Designer',cn:'设计虾',role:'Visual Designer',desc:'Crafts interface feel, component polish, visual hierarchy, and character presentation.',status:'Refining visual system',progress:63,done:'2/4',color:'#86a5ff',task:'Refining visual system',taskDetail:'Polishing cards, detail panels, and character crops.',with:'The Scout',withDetail:'References · Interface craft',issue:'Character crop still rough',issueDetail:'Need cleaner icon extraction.',plan:'Improve UI components',planDetail:'Refine cards and detail modules.'},
+      {name:'The Broadcaster',cn:'运营虾',role:'Communication Lead',desc:'Shapes updates, daily briefs, content structure, and outward-facing team language.',status:'Shaping communication',progress:49,done:'1/4',color:'var(--teal)',task:'Shaping communication',taskDetail:'Creating daily brief language and output template.',with:'The Explorer',withDetail:'Narrative · Content ideas',issue:'Daily brief lacks structure',issueDetail:'Need repeatable output format.',plan:'Build output template',planDetail:'Create reusable brief card format.'}
+    ];
+
+    const roleImages=[
+      'assets/roles/director.png',
+      'assets/roles/scout.png',
+      'assets/roles/critic.png',
+      'assets/roles/explorer.png',
+      'assets/roles/architect.png',
+      'assets/roles/designer.png',
+      'assets/roles/broadcaster.png'
+    ];
+
+    function avatar(i){
+      if(roleImages[i])return `<img class="avatar-img" src="${roleImages[i]}" alt="${members[i].cn} ${members[i].name}" loading="lazy">`;
+      return `<svg class="avatar-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><g stroke="#050505" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="62" cy="30" r="12" fill="#f6d6bd"/><path d="M52 22c10-12 25-5 24 8" fill="#e45d30"/><path d="M41 52c14-11 35-11 48 0v32H41z" fill="#2f73d8"/><circle cx="55" cy="61" r="5" fill="#f0c34d"/><circle cx="72" cy="61" r="5" fill="#f0c34d"/><path d="M40 82c18 12 36 12 53 0v31H40z" fill="#16965f"/><circle cx="50" cy="96" r="3" fill="#111"/><circle cx="63" cy="101" r="3" fill="#111"/><circle cx="78" cy="96" r="3" fill="#111"/><path d="M36 58c-8-4-12-12-8-23M88 56h18"/><circle cx="100" cy="79" r="21" fill="none"/></g></svg>`;
+    }
+
+    const projects=[
+      {name:'X LAB Interface',stage:'MVP / Visual Baseline',owner:'The Director + The Designer',progress:68,tasks:'7 active',issue:'二级页内容需要补齐',next:'完善 Overview 与 Members'},
+      {name:'MagicFrame',stage:'Content System',owner:'The Architect + The Broadcaster',progress:54,tasks:'6 active',issue:'卖点内容池结构待确认',next:'整理情感/趣味双主题'},
+      {name:'Memory Vault',stage:'Building',owner:'The Broadcaster + The Architect',progress:46,tasks:'4 active',issue:'Bot 之间共享记忆路径未完全定义',next:'建立任务日志与决策记录'}
+    ];
+    const daily=['补齐 Overview 总览页：成员状态、项目/任务、遗留问题、每日要事、未来计划。','补齐 Members 个人页：角色信息、当前任务、协作成员、遗留问题、下一步。','所有按钮建立真实跳转：导航、成员卡、快捷动作、项目卡、记忆入口。'];
+    const future=['深化项目页：项目详情、任务时间线、关联成员、产出记录。','深化记忆页：决策记录、踩坑手册、提示词库、项目知识库。','深化简报页：今日产出、风险提醒、明日计划、可复制日报。'];
+
+    function memberButton(m,i,selected=false){
+      return `<button class="member-item ${selected?'selected':''}" style="--accent:${m.color}" onclick="openMember(${i})"><div class="thumb">${avatar(i)}</div><div><div class="title">${m.name}</div><div class="role">${m.cn}<br>${m.role}</div><div class="meta">${m.progress}% · DONE ${m.done} · ${m.status}</div></div><div class="arrow">↗</div></button>`
+    }
+    document.getElementById('triggerAvatar').innerHTML=avatar(0);
+    document.getElementById('memberList').innerHTML=members.map((m,i)=>memberButton(m,i,false)).join('');
+    const overlay=document.getElementById('memberOverlay');
+    document.getElementById('openMembers').onclick=()=>{overlay.classList.add('open');document.body.classList.add('members-open')};
+    document.getElementById('closeMembers').onclick=()=>{overlay.classList.remove('open');document.body.classList.remove('members-open')};
+    overlay.onclick=e=>{if(e.target===overlay){overlay.classList.remove('open');document.body.classList.remove('members-open')}};
+
+    const modal=document.getElementById('modal'),modalTitle=document.getElementById('modalTitle'),modalContent=document.getElementById('modalContent');
+    function card(k,h,p,light=false,extra=''){return `<article class="modal-card ${light?'light':''}"><div><div class="mk">${k}</div><h3>${h}</h3><p>${p}</p>${extra}</div></article>`}
+    function setGrid(html){modalContent.innerHTML=`<div class="modal-grid" id="modalGrid">${html}</div>`}
+    function openPanel(key){modalTitle.textContent=key; if(key==='overview') renderOverview(); if(key==='members') renderMembers(); if(key==='projects') renderProjects(); if(key==='memory') renderMemory(); if(key==='brief') renderBrief(); modal.classList.add('open')}
+    function renderOverview(){setGrid(`
+      ${card('Global Status','7 agents · 21 live tasks · 68%','全局工作状态：成员体系稳定，核心任务进入二级页深化阶段。',true)}
+      <article class="modal-card wide"><div><div class="mk">Member Status</div>${members.map(m=>`<div class="status-row"><b>${m.name}</b><span>${m.status}</span><div class="progress" style="--p:${m.progress}%;--accent:${m.color}"><span></span></div><span>${m.done}</span></div>`).join('')}</div></article>
+      ${card('Daily Focus','今日要事',daily.join('<br>'))}
+      ${card('Open Issues','遗留问题','1. 二级页信息密度控制。<br>2. 7 个角色 PNG 已全部替换完成。<br>3. 项目/任务/成员的数据关系需要统一。',true)}
+      ${card('Project / Task','项目与任务情况','X LAB Interface：7 active tasks。<br>MagicFrame：6 active tasks。<br>Memory Vault：4 active tasks。')}
+      ${card('Future Plan','未来计划',future.join('<br>'),true)}
+    `)}
+    function renderMembers(){setGrid(members.map((m,i)=>card(m.cn,m.name,`${m.status}<br>${m.taskDetail}<br><br>协作成员：${m.with}<br>遗留问题：${m.issue}<br>下一步：${m.plan}`,i%2===1,`<div class="actions"><button onclick="openMember(${i})">Open Detail</button><button onclick="openPanel('brief')">Brief</button><button onclick="openPanel('memory')">Memory</button></div>`)).join(''))}
+    function renderProjects(){setGrid(projects.map((p,i)=>card(p.stage,p.name,`负责人：${p.owner}<br>进度：${p.progress}%<br>任务：${p.tasks}<br>遗留问题：${p.issue}<br>下一步：${p.next}`,i%2===1,`<div class="actions"><button onclick="openPanel('members')">Members</button><button onclick="openPanel('memory')">Docs</button></div>`)).join(''))}
+    function renderMemory(){setGrid([['Mission Logs','任务记录','保存每个成员的当前任务、进度、协作对象、阻塞点与产出。'],['Decision Records','决策记录','保存虾老大拍板事项、原因、影响范围和后续动作。'],['Lessons Learned','踩坑手册','保存挑刺虾发现的问题、修正建议和避免重复犯错的方法。'],['Prompt Library','提示词库','保存页面、角色、视觉、运营内容相关的可复用提示词。'],['Project Knowledge','项目知识','保存 MagicFrame、X LAB、Memory Vault 等项目背景和资料。'],['Daily Brief Archive','每日简报归档','保存每天要事、结论、风险和未来计划。']].map((x,i)=>card(x[0],x[1],x[2],i%2===0)).join(''))}
+    function renderBrief(){setGrid(`${card('Today','今日要事',daily.join('<br>'),true)}${card('Findings','今日结论','当前视觉基线已确认：黑底、中央动态大字、左上胶囊导航、右上成员卡展开。<br>下一阶段应重点补齐二级页内容，而不是再更换整体风格。')}${card('Risks','风险提醒','1. 二级页不能只是卡片展示，要能看任务、协作和遗留问题。<br>2. 成员详情必须能回到全局项目和记忆库。',true)}${card('Tomorrow','明日计划',future.join('<br>'))}`)}
+    function openMember(i){
+      const m=members[i];
+      modalTitle.textContent='Member Detail';
+      modalContent.innerHTML=`
+        <div class="member-detail-layout">
+          <section class="detail-main" style="--accent:${m.color}">
+            <div class="detail-hero">
+              <div class="detail-figure">${avatar(i)}</div>
+              <div class="detail-copy">
+                <div class="active">Active</div>
+                <div class="detail-name">${m.name}</div>
+                <div class="detail-status">${m.status}</div>
+                <div class="detail-desc">${m.desc}</div>
+              </div>
+            </div>
+            <div class="detail-grid">
+              <article class="info-card"><div class="info-icon">♙</div><div><div class="info-k">Role</div><div class="info-title">${m.role}</div><div class="info-body">Sets direction and aligns the team to the mission.</div></div></article>
+              <article class="info-card"><div class="info-icon">▤</div><div><div class="info-k">Current Task</div><div class="info-title">${m.task}</div><div class="info-body">${m.taskDetail}</div></div></article>
+              <article class="info-card"><div class="info-icon">○</div><div><div class="info-k">Progress</div><div class="info-title">${m.progress}%</div><div class="bar" style="--p:${m.progress}%"><span></span></div><div class="info-body">● On track · Done ${m.done}</div></div></article>
+              <article class="info-card"><div class="info-icon">♧</div><div><div class="info-k">Collaborating With</div><div class="info-title">${m.with}</div><div class="info-body">${m.withDetail}</div></div></article>
+              <article class="info-card"><div class="info-icon">△</div><div><div class="info-k">Open Issue</div><div class="info-title">${m.issue}</div><div class="info-body">${m.issueDetail}</div></div></article>
+              <article class="info-card"><div class="info-icon">↗</div><div><div class="info-k">Next Move</div><div class="info-title">${m.plan}</div><div class="info-body">${m.planDetail}</div></div></article>
+            </div>
+          </section>
+          <aside class="detail-side">${members.map((item,idx)=>memberButton(item,idx,idx===i)).join('')}</aside>
+        </div>
+      `;
+      modal.classList.add('open');
+      overlay.classList.remove('open');
+      document.body.classList.remove('members-open');
+    }
+    document.querySelectorAll('[data-panel]').forEach(btn=>btn.onclick=()=>openPanel(btn.dataset.panel));
+    document.getElementById('closeModal').onclick=()=>modal.classList.remove('open');
+    modal.onclick=e=>{if(e.target===modal)modal.classList.remove('open')};
+    const typeSets=[['X LAB','AGENT SYSTEM','& TEAM DIRECTION','07 MEMBERS','21 LIVE TASKS','→ DAILY BRIEF → MEMORY'],['X LAB','PROJECT FLOW','& CREW STATUS','07 MEMBERS','14 OPEN TASKS','→ PROJECTS → ARCHIVE'],['X LAB','CONTENT OPS','& VISUAL CONTROL','03 NEW NOTES','12 ACTIVE FILES','→ INFORMATION → MEMBERS']];
+    let setIndex=0;const lineEls=['line1','line2','line3','line4','line5','line6'].map(id=>document.getElementById(id));
+    function switchTypeSet(){setIndex=(setIndex+1)%typeSets.length;const set=typeSets[setIndex];lineEls.forEach((el,idx)=>{el.style.opacity='0';el.style.transform=`translateY(${8+idx}px)`});setTimeout(()=>{lineEls.forEach((el,idx)=>{el.textContent=set[idx];el.style.opacity='1';el.style.transform='translateY(0)'})},320)}
+    setInterval(switchTypeSet,4800);
+    function animateNumber(el,from,to,suffix='',duration=1400){const start=performance.now();function frame(now){const t=Math.min((now-start)/duration,1);const e=1-Math.pow(1-t,3);const v=Math.round(from+(to-from)*e);el.textContent=String(v).padStart(2,'0')+suffix;if(t<1)requestAnimationFrame(frame)}requestAnimationFrame(frame)}
+    animateNumber(document.getElementById('numA'),0,7);animateNumber(document.getElementById('numB'),0,21);
+  </script>
+</body>
+</html>
