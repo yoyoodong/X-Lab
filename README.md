@@ -4,17 +4,22 @@ X_Lab is a static dashboard for the X LAB agent team. It presents the team struc
 
 ## Current Status
 
-This is a static MVP. It is usable as a visual workspace, demo page, and manual team status board.
+This is a structured static MVP. It is usable as a visual workspace, demo page, and manual team status board.
 
-It is not yet a fully automated agent team system. The role data, task status, project state, memory entries, and brief content are currently embedded in `index.html`.
+It is not yet a fully automated agent team system. The current state is loaded from `data.json`; role execution, Obsidian writes, and daily brief generation are still manual or future automation work.
 
 ## Project Structure
 
 ```text
 X_Lab/
 ├── index.html
+├── data.json
 ├── README.md
 ├── .gitignore
+├── docs/
+│   ├── agent-workflows.md
+│   ├── github-pages.md
+│   └── obsidian-sync.md
 └── assets/
     └── roles/
         ├── architect.png
@@ -28,7 +33,7 @@ X_Lab/
 
 ## How To Run
 
-Open `index.html` directly in a browser, or serve the folder with any static file server.
+Serve the folder with any static file server. The page reads `data.json`, so direct `file://` opening may be blocked by browser security rules.
 
 Example:
 
@@ -51,15 +56,28 @@ http://127.0.0.1:8765/
 - Memory section
 - Daily brief section
 - Seven role images loaded from local assets
+- Structured dashboard state loaded from `data.json`
+- GitHub Pages setup instructions in `docs/github-pages.md`
+- Obsidian sync contract in `docs/obsidian-sync.md`
+- Seven-role operating workflow in `docs/agent-workflows.md`
 
-## Data Model Direction
+## Data Model
 
-Recommended next step:
+Current structured data lives in:
 
-1. Move embedded member/project/brief data out of `index.html`.
-2. Add a structured `data.json`.
-3. Keep Obsidian as the long-term memory and knowledge base.
-4. Use GitHub for version control, release history, and collaboration.
+```text
+data.json
+```
+
+It currently contains:
+
+- summary
+- members
+- projects
+- daily focus
+- future plan
+- memory sections
+- hero type sets
 
 Suggested responsibility split:
 
@@ -67,10 +85,27 @@ Suggested responsibility split:
 - X_Lab dashboard: visual workspace and status display
 - GitHub: source control, publishing, issues, pull requests
 
+## GitHub Pages
+
+This repository is ready for GitHub Pages branch deployment.
+
+Enable Pages with:
+
+```text
+Settings -> Pages -> Build and deployment -> Source: Deploy from a branch
+Branch: main
+Folder: / (root)
+```
+
+Expected URL:
+
+```text
+https://yoyoodong.github.io/X-Lab/
+```
+
 ## Next Milestones
 
-- Extract page data into `data.json`
-- Add deploy target, such as GitHub Pages or Netlify
-- Add a workflow for writing daily brief and memory records back to Obsidian
-- Add automation around project/task status updates
-
+- Split `data.json` into dedicated files if the state grows
+- Add a local script to generate daily brief Markdown
+- Add a local script to write task and decision records into Obsidian
+- Add issue/task integration if GitHub becomes the operational task source

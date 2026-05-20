@@ -152,44 +152,20 @@
   <div class="overlay" id="memberOverlay"><div class="member-panel"><div class="member-list" id="memberList"></div><button class="member-toggle" id="closeMembers">Show less</button></div></div>
   <div class="modal" id="modal"><div class="modal-inner"><div class="modal-head"><div class="modal-title" id="modalTitle">Overview</div><button class="close-btn" id="closeModal">Close</button></div><div id="modalContent"><div class="modal-grid" id="modalGrid"></div></div></div></div>
   <script>
-    const members=[
-      {name:'The Director',cn:'虾老大',role:'Strategic Lead',desc:'Shapes the vision and alignment across projects. Ensures clarity, coherence, and forward momentum.',status:'Reviewing structure',progress:86,done:'2/3',color:'var(--yellow)',task:'Reviewing structure',taskDetail:'Auditing project frameworks and decision flows.',with:'The Architect / The Designer',withDetail:'Mapping · Refining',issue:'Scope drift in Project Atlas',issueDetail:'Need alignment on decision boundaries.',plan:'Align structure with key stakeholders',planDetail:'Sync session scheduled for tomorrow.'},
-      {name:'The Scout',cn:'侦察虾',role:'Signal Hunter',desc:'Scans the outside world for useful references, signals, and weak trends that can shape better decisions.',status:'Collected 3 references',progress:74,done:'2/4',color:'var(--green)',task:'Collecting references',taskDetail:'Scanning interface patterns and agent workflow examples.',with:'The Designer',withDetail:'Reference · Visual signals',issue:'Too many loose references',issueDetail:'Need stronger filtering criteria.',plan:'Summarize useful inspiration',planDetail:'Prepare a signal board for review.'},
-      {name:'The Critic',cn:'挑刺虾',role:'Risk Challenger',desc:'Challenges assumptions, exposes weak logic, and keeps the team from becoming self-satisfied.',status:'Flagged complexity risk',progress:58,done:'1/3',color:'var(--purple)',task:'Reviewing complexity risk',taskDetail:'Checking if page modules are useful or only decorative.',with:'The Director / The Architect',withDetail:'Challenge · Correction',issue:'Some modules are too complex',issueDetail:'Need reduce repeated fields.',plan:'Output challenge list',planDetail:'Prioritize risks by impact.'},
-      {name:'The Explorer',cn:'探索虾',role:'New Direction Explorer',desc:'Connects strange ideas, playful interactions, and unexpected references into possible new directions.',status:'Testing new directions',progress:66,done:'2/5',color:'var(--orange)',task:'Testing new directions',taskDetail:'Exploring card interactions and playful detail transitions.',with:'The Broadcaster',withDetail:'Ideas · Story hooks',issue:'Fun vs clarity balance',issueDetail:'Interactions should not harm readability.',plan:'Propose interactive ideas',planDetail:'Deliver 3 lightweight interaction concepts.'},
-      {name:'The Architect',cn:'产品虾',role:'Product Architect',desc:'Turns scattered ideas into systems, page structures, fields, and usable workflows.',status:'Mapping structure',progress:72,done:'3/5',color:'var(--blue)',task:'Mapping structure',taskDetail:'Structuring Overview, Members, Projects, Memory, and Brief.',with:'The Director / The Critic',withDetail:'Framework · Review',issue:'Data relationship not unified',issueDetail:'Need define member-project-task links.',plan:'Refine page framework',planDetail:'Create field map and jump logic.'},
-      {name:'The Designer',cn:'设计虾',role:'Visual Designer',desc:'Crafts interface feel, component polish, visual hierarchy, and character presentation.',status:'Refining visual system',progress:63,done:'2/4',color:'#86a5ff',task:'Refining visual system',taskDetail:'Polishing cards, detail panels, and character crops.',with:'The Scout',withDetail:'References · Interface craft',issue:'Character crop still rough',issueDetail:'Need cleaner icon extraction.',plan:'Improve UI components',planDetail:'Refine cards and detail modules.'},
-      {name:'The Broadcaster',cn:'运营虾',role:'Communication Lead',desc:'Shapes updates, daily briefs, content structure, and outward-facing team language.',status:'Shaping communication',progress:49,done:'1/4',color:'var(--teal)',task:'Shaping communication',taskDetail:'Creating daily brief language and output template.',with:'The Explorer',withDetail:'Narrative · Content ideas',issue:'Daily brief lacks structure',issueDetail:'Need repeatable output format.',plan:'Build output template',planDetail:'Create reusable brief card format.'}
-    ];
-
-    const roleImages=[
-      'assets/roles/director.png',
-      'assets/roles/scout.png',
-      'assets/roles/critic.png',
-      'assets/roles/explorer.png',
-      'assets/roles/architect.png',
-      'assets/roles/designer.png',
-      'assets/roles/broadcaster.png'
-    ];
+    let appData;
+    let members=[];
+    let projects=[];
+    let daily=[];
+    let future=[];
 
     function avatar(i){
-      if(roleImages[i])return `<img class="avatar-img" src="${roleImages[i]}" alt="${members[i].cn} ${members[i].name}" loading="lazy">`;
+      if(members[i]?.image)return `<img class="avatar-img" src="${members[i].image}" alt="${members[i].cn} ${members[i].name}" loading="lazy">`;
       return `<svg class="avatar-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><g stroke="#050505" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="62" cy="30" r="12" fill="#f6d6bd"/><path d="M52 22c10-12 25-5 24 8" fill="#e45d30"/><path d="M41 52c14-11 35-11 48 0v32H41z" fill="#2f73d8"/><circle cx="55" cy="61" r="5" fill="#f0c34d"/><circle cx="72" cy="61" r="5" fill="#f0c34d"/><path d="M40 82c18 12 36 12 53 0v31H40z" fill="#16965f"/><circle cx="50" cy="96" r="3" fill="#111"/><circle cx="63" cy="101" r="3" fill="#111"/><circle cx="78" cy="96" r="3" fill="#111"/><path d="M36 58c-8-4-12-12-8-23M88 56h18"/><circle cx="100" cy="79" r="21" fill="none"/></g></svg>`;
     }
-
-    const projects=[
-      {name:'X LAB Interface',stage:'MVP / Visual Baseline',owner:'The Director + The Designer',progress:68,tasks:'7 active',issue:'二级页内容需要补齐',next:'完善 Overview 与 Members'},
-      {name:'MagicFrame',stage:'Content System',owner:'The Architect + The Broadcaster',progress:54,tasks:'6 active',issue:'卖点内容池结构待确认',next:'整理情感/趣味双主题'},
-      {name:'Memory Vault',stage:'Building',owner:'The Broadcaster + The Architect',progress:46,tasks:'4 active',issue:'Bot 之间共享记忆路径未完全定义',next:'建立任务日志与决策记录'}
-    ];
-    const daily=['补齐 Overview 总览页：成员状态、项目/任务、遗留问题、每日要事、未来计划。','补齐 Members 个人页：角色信息、当前任务、协作成员、遗留问题、下一步。','所有按钮建立真实跳转：导航、成员卡、快捷动作、项目卡、记忆入口。'];
-    const future=['深化项目页：项目详情、任务时间线、关联成员、产出记录。','深化记忆页：决策记录、踩坑手册、提示词库、项目知识库。','深化简报页：今日产出、风险提醒、明日计划、可复制日报。'];
 
     function memberButton(m,i,selected=false){
       return `<button class="member-item ${selected?'selected':''}" style="--accent:${m.color}" onclick="openMember(${i})"><div class="thumb">${avatar(i)}</div><div><div class="title">${m.name}</div><div class="role">${m.cn}<br>${m.role}</div><div class="meta">${m.progress}% · DONE ${m.done} · ${m.status}</div></div><div class="arrow">↗</div></button>`
     }
-    document.getElementById('triggerAvatar').innerHTML=avatar(0);
-    document.getElementById('memberList').innerHTML=members.map((m,i)=>memberButton(m,i,false)).join('');
     const overlay=document.getElementById('memberOverlay');
     document.getElementById('openMembers').onclick=()=>{overlay.classList.add('open');document.body.classList.add('members-open')};
     document.getElementById('closeMembers').onclick=()=>{overlay.classList.remove('open');document.body.classList.remove('members-open')};
@@ -200,7 +176,7 @@
     function setGrid(html){modalContent.innerHTML=`<div class="modal-grid" id="modalGrid">${html}</div>`}
     function openPanel(key){modalTitle.textContent=key; if(key==='overview') renderOverview(); if(key==='members') renderMembers(); if(key==='projects') renderProjects(); if(key==='memory') renderMemory(); if(key==='brief') renderBrief(); modal.classList.add('open')}
     function renderOverview(){setGrid(`
-      ${card('Global Status','7 agents · 21 live tasks · 68%','全局工作状态：成员体系稳定，核心任务进入二级页深化阶段。',true)}
+      ${card('Global Status',`${appData.summary.agents} agents · ${appData.summary.liveTasks} live tasks · ${appData.summary.completion}%`,`全局工作状态：${appData.summary.status}`,true)}
       <article class="modal-card wide"><div><div class="mk">Member Status</div>${members.map(m=>`<div class="status-row"><b>${m.name}</b><span>${m.status}</span><div class="progress" style="--p:${m.progress}%;--accent:${m.color}"><span></span></div><span>${m.done}</span></div>`).join('')}</div></article>
       ${card('Daily Focus','今日要事',daily.join('<br>'))}
       ${card('Open Issues','遗留问题','1. 二级页信息密度控制。<br>2. 7 个角色 PNG 已全部替换完成。<br>3. 项目/任务/成员的数据关系需要统一。',true)}
@@ -209,7 +185,7 @@
     `)}
     function renderMembers(){setGrid(members.map((m,i)=>card(m.cn,m.name,`${m.status}<br>${m.taskDetail}<br><br>协作成员：${m.with}<br>遗留问题：${m.issue}<br>下一步：${m.plan}`,i%2===1,`<div class="actions"><button onclick="openMember(${i})">Open Detail</button><button onclick="openPanel('brief')">Brief</button><button onclick="openPanel('memory')">Memory</button></div>`)).join(''))}
     function renderProjects(){setGrid(projects.map((p,i)=>card(p.stage,p.name,`负责人：${p.owner}<br>进度：${p.progress}%<br>任务：${p.tasks}<br>遗留问题：${p.issue}<br>下一步：${p.next}`,i%2===1,`<div class="actions"><button onclick="openPanel('members')">Members</button><button onclick="openPanel('memory')">Docs</button></div>`)).join(''))}
-    function renderMemory(){setGrid([['Mission Logs','任务记录','保存每个成员的当前任务、进度、协作对象、阻塞点与产出。'],['Decision Records','决策记录','保存虾老大拍板事项、原因、影响范围和后续动作。'],['Lessons Learned','踩坑手册','保存挑刺虾发现的问题、修正建议和避免重复犯错的方法。'],['Prompt Library','提示词库','保存页面、角色、视觉、运营内容相关的可复用提示词。'],['Project Knowledge','项目知识','保存 MagicFrame、X LAB、Memory Vault 等项目背景和资料。'],['Daily Brief Archive','每日简报归档','保存每天要事、结论、风险和未来计划。']].map((x,i)=>card(x[0],x[1],x[2],i%2===0)).join(''))}
+    function renderMemory(){setGrid(appData.memory.map((x,i)=>card(x[0],x[1],x[2],i%2===0)).join(''))}
     function renderBrief(){setGrid(`${card('Today','今日要事',daily.join('<br>'),true)}${card('Findings','今日结论','当前视觉基线已确认：黑底、中央动态大字、左上胶囊导航、右上成员卡展开。<br>下一阶段应重点补齐二级页内容，而不是再更换整体风格。')}${card('Risks','风险提醒','1. 二级页不能只是卡片展示，要能看任务、协作和遗留问题。<br>2. 成员详情必须能回到全局项目和记忆库。',true)}${card('Tomorrow','明日计划',future.join('<br>'))}`)}
     function openMember(i){
       const m=members[i];
@@ -245,12 +221,40 @@
     document.querySelectorAll('[data-panel]').forEach(btn=>btn.onclick=()=>openPanel(btn.dataset.panel));
     document.getElementById('closeModal').onclick=()=>modal.classList.remove('open');
     modal.onclick=e=>{if(e.target===modal)modal.classList.remove('open')};
-    const typeSets=[['X LAB','AGENT SYSTEM','& TEAM DIRECTION','07 MEMBERS','21 LIVE TASKS','→ DAILY BRIEF → MEMORY'],['X LAB','PROJECT FLOW','& CREW STATUS','07 MEMBERS','14 OPEN TASKS','→ PROJECTS → ARCHIVE'],['X LAB','CONTENT OPS','& VISUAL CONTROL','03 NEW NOTES','12 ACTIVE FILES','→ INFORMATION → MEMBERS']];
+    function showDataError(err){
+      console.error(err);
+      document.getElementById('line1').textContent='X LAB';
+      document.getElementById('line2').textContent='DATA';
+      document.getElementById('line3').textContent='LOAD FAILED';
+      document.getElementById('line4').textContent='RUN VIA';
+      document.getElementById('line5').textContent='STATIC SERVER';
+      document.getElementById('line6').textContent='SEE README';
+    }
+
+    async function init(){
+      try{
+        const res=await fetch('data.json',{cache:'no-store'});
+        if(!res.ok)throw new Error(`data.json HTTP ${res.status}`);
+        appData=await res.json();
+        members=appData.members;
+        projects=appData.projects;
+        daily=appData.daily;
+        future=appData.future;
+        document.getElementById('triggerAvatar').innerHTML=avatar(0);
+        document.getElementById('memberList').innerHTML=members.map((m,i)=>memberButton(m,i,false)).join('');
+        animateNumber(document.getElementById('numA'),0,appData.summary.agents);
+        animateNumber(document.getElementById('numB'),0,appData.summary.liveTasks);
+      }catch(err){
+        showDataError(err);
+      }
+    }
+
+    const typeSets=[];
     let setIndex=0;const lineEls=['line1','line2','line3','line4','line5','line6'].map(id=>document.getElementById(id));
-    function switchTypeSet(){setIndex=(setIndex+1)%typeSets.length;const set=typeSets[setIndex];lineEls.forEach((el,idx)=>{el.style.opacity='0';el.style.transform=`translateY(${8+idx}px)`});setTimeout(()=>{lineEls.forEach((el,idx)=>{el.textContent=set[idx];el.style.opacity='1';el.style.transform='translateY(0)'})},320)}
+    function switchTypeSet(){const sets=appData?.typeSets||typeSets;if(!sets.length)return;setIndex=(setIndex+1)%sets.length;const set=sets[setIndex];lineEls.forEach((el,idx)=>{el.style.opacity='0';el.style.transform=`translateY(${8+idx}px)`});setTimeout(()=>{lineEls.forEach((el,idx)=>{el.textContent=set[idx];el.style.opacity='1';el.style.transform='translateY(0)'})},320)}
     setInterval(switchTypeSet,4800);
     function animateNumber(el,from,to,suffix='',duration=1400){const start=performance.now();function frame(now){const t=Math.min((now-start)/duration,1);const e=1-Math.pow(1-t,3);const v=Math.round(from+(to-from)*e);el.textContent=String(v).padStart(2,'0')+suffix;if(t<1)requestAnimationFrame(frame)}requestAnimationFrame(frame)}
-    animateNumber(document.getElementById('numA'),0,7);animateNumber(document.getElementById('numB'),0,21);
+    init();
   </script>
 </body>
 </html>
