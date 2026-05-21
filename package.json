@@ -1,0 +1,10 @@
+{
+  "name": "x-lab",
+  "version": "0.2.0",
+  "private": true,
+  "description": "X_Lab agent team dashboard with Feishu task intake.",
+  "scripts": {
+    "validate:data": "node scripts/validate-data.js",
+    "sync:feishu": "node scripts/sync-feishu-tasks.js"
+  }
+}

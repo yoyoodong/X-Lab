@@ -180,6 +180,7 @@
       <article class="modal-card wide"><div><div class="mk">Member Status</div>${members.map(m=>`<div class="status-row"><b>${m.name}</b><span>${m.status}</span><div class="progress" style="--p:${m.progress}%;--accent:${m.color}"><span></span></div><span>${m.done}</span></div>`).join('')}</div></article>
       ${card('Daily Focus','今日要事',daily.join('<br>'))}
       ${card('Open Issues','遗留问题','1. 二级页信息密度控制。<br>2. 7 个角色 PNG 已全部替换完成。<br>3. 项目/任务/成员的数据关系需要统一。',true)}
+      ${card('Feishu Intake','飞书任务入口',`当前同步任务：${appData.summary.feishuTasks||0} 个。<br>${(appData.tasks||[]).slice(0,3).map(t=>`${t.title}${t.url?` · ${t.url}`:''}`).join('<br>')||'当前没有未完成任务。'}`)}
       ${card('Project / Task','项目与任务情况','X LAB Interface：7 active tasks。<br>MagicFrame：6 active tasks。<br>Memory Vault：4 active tasks。')}
       ${card('Future Plan','未来计划',future.join('<br>'),true)}
     `)}

@@ -89,18 +89,27 @@ X_Lab/
 
 ### 4.1 每天开工前
 
-1. 打开线上页面或本地页面。
-2. 看 `Overview`：
+1. 先同步飞书任务：
+
+```bash
+cd "/Users/dongdong/Documents/New project/X_Lab"
+npm run sync:feishu
+npm run validate:data
+```
+
+2. 打开线上页面或本地页面。
+3. 看 `Overview`：
    - 当前全局状态
    - 成员进度
    - 今日要事
+   - 飞书任务入口
    - 遗留问题
-3. 看 `Projects`：
+4. 看 `Projects`：
    - 当前项目
    - 负责人
    - 进度
    - 下一步
-4. 决定今天优先推进哪一项。
+5. 决定今天优先推进哪一项。
 
 ### 4.2 分配任务
 
@@ -217,6 +226,31 @@ Obsidian vault：
 - 下一步谁处理
 ```
 
+### 4.5 飞书任务入口
+
+飞书负责收任务，X_Lab 负责展示。
+
+同步命令：
+
+```bash
+npm run sync:feishu
+```
+
+同步结果会写入：
+
+```text
+data/tasks.json
+data.json
+```
+
+如果同步结果是 0 个任务，表示当前飞书里没有“分配给我”的未完成任务。
+
+完整说明见：
+
+```text
+docs/feishu-task-intake.md
+```
+
 ## 5. 7 个虾的真实工作流
 
 完整规则见：
@@ -317,4 +351,3 @@ https://yoyoodong.github.io/X-Lab/
 可应用于人工运营的虾团队 Lab。
 尚未达到自动化 agent team 系统。
 ```
-

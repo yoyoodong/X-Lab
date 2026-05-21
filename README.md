@@ -18,6 +18,7 @@ X_Lab/
 ├── .gitignore
 ├── docs/
 │   ├── agent-workflows.md
+│   ├── feishu-task-intake.md
 │   ├── github-pages.md
 │   └── obsidian-sync.md
 └── assets/
@@ -61,6 +62,7 @@ http://127.0.0.1:8765/
 - Obsidian sync contract in `docs/obsidian-sync.md`
 - Seven-role operating workflow in `docs/agent-workflows.md`
 - Practical operating manual in `docs/manual.md`
+- Feishu task intake guide in `docs/feishu-task-intake.md`
 
 ## Manual
 
@@ -74,6 +76,21 @@ Current application boundary:
 
 - Usable: manual team dashboard, daily review, role/task state board, Obsidian memory process
 - Not yet automatic: autonomous task execution, automatic brief generation, automatic Obsidian writes
+
+## Feishu Task Intake
+
+Sync incomplete tasks assigned to the current Feishu user:
+
+```bash
+npm run sync:feishu
+npm run validate:data
+```
+
+See:
+
+```text
+docs/feishu-task-intake.md
+```
 
 ## Data Model
 

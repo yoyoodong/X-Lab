@@ -3,7 +3,8 @@
     "agents": 7,
     "liveTasks": 21,
     "completion": 68,
-    "status": "成员体系稳定，核心任务进入真实数据与记忆写入阶段。"
+    "status": "飞书任务入口已接通，当前没有同步到未完成任务。",
+    "feishuTasks": 0
   },
   "members": [
     {
@@ -170,6 +171,7 @@
     }
   ],
   "daily": [
+    "飞书任务入口：已接通，当前没有未完成任务。",
     "补齐 Overview 总览页：成员状态、项目/任务、遗留问题、每日要事、未来计划。",
     "补齐 Members 个人页：角色信息、当前任务、协作成员、遗留问题、下一步。",
     "所有按钮建立真实跳转：导航、成员卡、快捷动作、项目卡、记忆入口。"
@@ -180,16 +182,62 @@
     "深化简报页：今日产出、风险提醒、明日计划、可复制日报。"
   ],
   "memory": [
-    ["Mission Logs", "任务记录", "保存每个成员的当前任务、进度、协作对象、阻塞点与产出。"],
-    ["Decision Records", "决策记录", "保存虾老大拍板事项、原因、影响范围和后续动作。"],
-    ["Lessons Learned", "踩坑手册", "保存挑刺虾发现的问题、修正建议和避免重复犯错的方法。"],
-    ["Prompt Library", "提示词库", "保存页面、角色、视觉、运营内容相关的可复用提示词。"],
-    ["Project Knowledge", "项目知识", "保存 MagicFrame、X LAB、Memory Vault 等项目背景和资料。"],
-    ["Daily Brief Archive", "每日简报归档", "保存每天要事、结论、风险和未来计划。"]
+    [
+      "Mission Logs",
+      "任务记录",
+      "保存每个成员的当前任务、进度、协作对象、阻塞点与产出。"
+    ],
+    [
+      "Decision Records",
+      "决策记录",
+      "保存虾老大拍板事项、原因、影响范围和后续动作。"
+    ],
+    [
+      "Lessons Learned",
+      "踩坑手册",
+      "保存挑刺虾发现的问题、修正建议和避免重复犯错的方法。"
+    ],
+    [
+      "Prompt Library",
+      "提示词库",
+      "保存页面、角色、视觉、运营内容相关的可复用提示词。"
+    ],
+    [
+      "Project Knowledge",
+      "项目知识",
+      "保存 MagicFrame、X LAB、Memory Vault 等项目背景和资料。"
+    ],
+    [
+      "Daily Brief Archive",
+      "每日简报归档",
+      "保存每天要事、结论、风险和未来计划。"
+    ]
   ],
   "typeSets": [
-    ["X LAB", "AGENT SYSTEM", "& TEAM DIRECTION", "07 MEMBERS", "21 LIVE TASKS", "→ DAILY BRIEF → MEMORY"],
-    ["X LAB", "PROJECT FLOW", "& CREW STATUS", "07 MEMBERS", "14 OPEN TASKS", "→ PROJECTS → ARCHIVE"],
-    ["X LAB", "CONTENT OPS", "& VISUAL CONTROL", "03 NEW NOTES", "12 ACTIVE FILES", "→ INFORMATION → MEMBERS"]
-  ]
+    [
+      "X LAB",
+      "AGENT SYSTEM",
+      "& TEAM DIRECTION",
+      "07 MEMBERS",
+      "21 LIVE TASKS",
+      "→ DAILY BRIEF → MEMORY"
+    ],
+    [
+      "X LAB",
+      "PROJECT FLOW",
+      "& CREW STATUS",
+      "07 MEMBERS",
+      "14 OPEN TASKS",
+      "→ PROJECTS → ARCHIVE"
+    ],
+    [
+      "X LAB",
+      "CONTENT OPS",
+      "& VISUAL CONTROL",
+      "03 NEW NOTES",
+      "12 ACTIVE FILES",
+      "→ INFORMATION → MEMBERS"
+    ]
+  ],
+  "tasks": []
 }
