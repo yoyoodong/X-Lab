@@ -120,6 +120,12 @@ To write the latest AI output back to the related Feishu task without re-running
 npm run writeback:feishu
 ```
 
+To keep watching Feishu tasks and run the AI team automatically:
+
+```bash
+npm run watch:feishu
+```
+
 ## Data Model
 
 Current structured data lives in:

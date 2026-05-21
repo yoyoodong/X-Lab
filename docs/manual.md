@@ -327,6 +327,22 @@ npm run writeback:feishu
 X_LAB_FEISHU_COMPLETE=false npm run writeback:feishu
 ```
 
+### 4.9 自动监听飞书任务
+
+如果你想在飞书新建任务后，让虾团队自动开始处理：
+
+```bash
+npm run watch:feishu
+```
+
+这个命令要一直开着。它会每隔一段时间检查飞书有没有新任务。
+
+如果只想测试一次：
+
+```bash
+npm run watch:feishu:once
+```
+
 ## 5. 7 个虾的真实工作流
 
 完整规则见：
