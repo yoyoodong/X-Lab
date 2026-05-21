@@ -6,4 +6,5 @@ build/
 .netlify/
 .env
 .env.*
+!.env.example
 *.log

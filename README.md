@@ -18,6 +18,7 @@ X_Lab/
 ├── .gitignore
 ├── docs/
 │   ├── agent-workflows.md
+│   ├── ai-director.md
 │   ├── feishu-task-intake.md
 │   ├── github-pages.md
 │   └── obsidian-sync.md
@@ -63,6 +64,7 @@ http://127.0.0.1:8765/
 - Seven-role operating workflow in `docs/agent-workflows.md`
 - Practical operating manual in `docs/manual.md`
 - Feishu task intake guide in `docs/feishu-task-intake.md`
+- AI director guide in `docs/ai-director.md`
 
 ## Manual
 
@@ -90,6 +92,26 @@ See:
 
 ```text
 docs/feishu-task-intake.md
+```
+
+## AI Director
+
+Run the minimum viable AI agent team:
+
+```bash
+npm run director
+```
+
+This requires:
+
+```bash
+export DEEPSEEK_API_KEY="your_key"
+```
+
+See:
+
+```text
+docs/ai-director.md
 ```
 
 ## Data Model

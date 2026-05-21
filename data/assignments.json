@@ -3,7 +3,7 @@
     "taskId": "62071945-ef87-41b9-8420-2249e86a82c6",
     "taskTitle": "测试 X_Lab 飞书任务入口：生成今日虾团队简报",
     "source": "feishu",
-    "status": "produced",
+    "status": "ai_produced",
     "workflow": [
       {
         "role": "The Director",
@@ -35,7 +35,34 @@
       "outputs/architect/2026-05-21-task-62071945-structure.md",
       "outputs/critic/2026-05-21-task-62071945-review.md",
       "outputs/broadcaster/2026-05-21-task-62071945-brief.md",
-      "/Users/dongdong/Documents/obsidian/虾团队记忆/02_任务记录/2026-05-21_测试-X_Lab-飞书任务入口：生成今日虾团队简报_虾团队产出汇总.md"
+      "/Users/dongdong/Documents/obsidian/虾团队记忆/02_任务记录/2026-05-21_测试-X_Lab-飞书任务入口：生成今日虾团队简报_虾团队产出汇总.md",
+      "outputs/ai/director/2026-05-21-task-62071945-director-decision.md",
+      "outputs/ai/architect/2026-05-21-task-62071945-architect-plan.md",
+      "outputs/ai/critic/2026-05-21-task-62071945-critic-review.md",
+      "outputs/ai/broadcaster/2026-05-21-task-62071945-broadcaster-brief.md",
+      "/Users/dongdong/Documents/obsidian/虾团队记忆/02_任务记录/2026-05-21_测试-X_Lab-飞书任务入口：生成今日虾团队简报_AI虾老大调度汇总.md"
+    ],
+    "aiOutputs": [
+      {
+        "role": "虾老大",
+        "english": "The Director",
+        "output": "outputs/ai/director/2026-05-21-task-62071945-director-decision.md"
+      },
+      {
+        "role": "产品虾",
+        "english": "The Architect",
+        "output": "outputs/ai/architect/2026-05-21-task-62071945-architect-plan.md"
+      },
+      {
+        "role": "挑刺虾",
+        "english": "The Critic",
+        "output": "outputs/ai/critic/2026-05-21-task-62071945-critic-review.md"
+      },
+      {
+        "role": "运营虾",
+        "english": "The Broadcaster",
+        "output": "outputs/ai/broadcaster/2026-05-21-task-62071945-broadcaster-brief.md"
+      }
     ]
   }
 ]

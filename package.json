@@ -6,6 +6,7 @@
   "scripts": {
     "validate:data": "node scripts/validate-data.js",
     "sync:feishu": "node scripts/sync-feishu-tasks.js",
-    "run:team": "node scripts/run-agent-team.js"
+    "run:team": "node scripts/run-agent-team.js",
+    "director": "node scripts/run-director.js"
   }
 }

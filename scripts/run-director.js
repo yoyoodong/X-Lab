@@ -1,0 +1,266 @@
+const fs = require('node:fs');
+const path = require('node:path');
+const { generateText } = require('./ai-client');
+
+const OBSIDIAN_ROOT = '/Users/dongdong/Documents/obsidian/虾团队记忆';
+const TEAM_TABLE_PATH = path.join(OBSIDIAN_ROOT, '00_团队总则/角色分工总表.md');
+const OBSIDIAN_TASK_DIR = path.join(OBSIDIAN_ROOT, '02_任务记录');
+const TASKS_PATH = 'data/tasks.json';
+const ASSIGNMENTS_PATH = 'data/assignments.json';
+
+const ROLE_SEQUENCE = [
+  {
+    id: 'director',
+    role: '虾老大',
+    english: 'The Director',
+    card: '01_角色卡/董虾捏_虾老大.md',
+    outputFolder: 'outputs/ai/director',
+    outputName: 'director-decision'
+  },
+  {
+    id: 'product',
+    role: '产品虾',
+    english: 'The Architect',
+    card: '01_角色卡/产品虾.md',
+    outputFolder: 'outputs/ai/architect',
+    outputName: 'architect-plan'
+  },
+  {
+    id: 'critic',
+    role: '挑刺虾',
+    english: 'The Critic',
+    card: '01_角色卡/挑刺虾.md',
+    outputFolder: 'outputs/ai/critic',
+    outputName: 'critic-review'
+  },
+  {
+    id: 'content',
+    role: '运营虾',
+    english: 'The Broadcaster',
+    card: '01_角色卡/运营虾.md',
+    outputFolder: 'outputs/ai/broadcaster',
+    outputName: 'broadcaster-brief'
+  }
+];
+
+function readText(filePath) {
+  return fs.readFileSync(filePath, 'utf8');
+}
+
+function readJson(filePath) {
+  return JSON.parse(readText(filePath));
+}
+
+function writeJson(filePath, value) {
+  fs.writeFileSync(filePath, `${JSON.stringify(value, null, 2)}\n`);
+}
+
+function ensureDir(dirPath) {
+  fs.mkdirSync(dirPath, { recursive: true });
+}
+
+function today() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+function shortId(taskId) {
+  return String(taskId).slice(0, 8);
+}
+
+function safeName(value) {
+  return value
+    .replace(/[\\/:*?"<>|]/g, '-')
+    .replace(/\s+/g, '-')
+    .slice(0, 80);
+}
+
+function selectTask(tasks) {
+  return tasks.find((task) => task.status === 'produced')
+    || tasks.find((task) => task.status === 'assigned')
+    || tasks.find((task) => task.status === 'todo')
+    || tasks[0];
+}
+
+function buildRoleInput({ task, role, teamTable, roleCard, previousOutputs }) {
+  return `你正在参与 X_Lab 虾团队任务。
+
+## 当前日期
+
+${today()}
+
+所有标题、生成时间、记录日期都必须使用这个日期。不要使用其他日期。
+
+## 飞书任务
+
+标题：${task.title}
+链接：${task.url || '无'}
+当前状态：${task.status}
+
+## 团队分工总表
+
+${teamTable}
+
+## 你的角色卡
+
+${roleCard}
+
+## 前面角色已经产出的内容
+
+${previousOutputs.length ? previousOutputs.map((item) => `### ${item.role}\n\n${item.content}`).join('\n\n') : '暂无。你是本轮第一个角色。'}
+
+## 本次要求
+
+请你以「${role.role} / ${role.english}」身份独立思考并输出 Markdown。
+
+硬性规则：
+
+- 只能使用本提示中提供的信息。
+- 不要编造今日情报、项目进度、外部新闻、其他虾的产出。
+- 如果资料里没有，就明确写“当前资料未提供”。
+- 如果需要更多资料，就写“需要补充的资料”，不要假装已经知道。
+- 这是测试任务，重点是验证飞书任务入口和 AI 调度链路。
+
+必须包含：
+
+1. 你对任务的理解
+2. 你负责的判断或方案
+3. 你交付的具体内容
+4. 风险或注意事项
+5. 下一步应该交给谁
+
+不要泛泛而谈。输出要能直接保存成项目文件。`;
+}
+
+async function runRole({ task, role, teamTable, previousOutputs }) {
+  const roleCard = readText(path.join(OBSIDIAN_ROOT, role.card));
+  const input = buildRoleInput({ task, role, teamTable, roleCard, previousOutputs });
+  const content = await generateText({
+    instructions: '你是 X_Lab 虾团队中的一个专业角色。严格遵守角色卡和团队分工，用中文输出 Markdown。',
+    input
+  });
+
+  ensureDir(role.outputFolder);
+  const filePath = path.join(role.outputFolder, `${today()}-task-${shortId(task.id)}-${role.outputName}.md`);
+  fs.writeFileSync(filePath, content);
+
+  return {
+    id: role.id,
+    role: role.role,
+    english: role.english,
+    output: filePath,
+    content
+  };
+}
+
+function writeObsidianSummary(task, outputs) {
+  ensureDir(OBSIDIAN_TASK_DIR);
+  const outputList = outputs
+    .map((item) => `### ${item.role} / ${item.english}
+
+产出文件：
+
+\`\`\`text
+${item.output}
+\`\`\`
+
+摘要：
+
+${item.content.slice(0, 800)}`)
+    .join('\n\n');
+
+  const filePath = path.join(
+    OBSIDIAN_TASK_DIR,
+    `${today()}_${safeName(task.title)}_AI虾老大调度汇总.md`
+  );
+
+  const body = `# ${today()} ${task.title} - AI虾老大调度汇总
+
+## 任务来源
+
+飞书任务：
+
+\`\`\`text
+${task.title}
+\`\`\`
+
+任务链接：
+
+\`\`\`text
+${task.url || '无'}
+\`\`\`
+
+## 说明
+
+本记录由 \`npm run director\` 生成。虾老大读取飞书任务、团队分工总表和角色卡后，依次调度各角色完成产出。
+
+## 角色产出
+
+${outputList}
+
+## Memory Tags
+
+- #x-lab
+- #ai-director
+- #agent-team-output
+- #feishu-task-intake
+`;
+
+  fs.writeFileSync(filePath, body);
+  return filePath;
+}
+
+async function main() {
+  const tasks = readJson(TASKS_PATH);
+  const assignments = fs.existsSync(ASSIGNMENTS_PATH) ? readJson(ASSIGNMENTS_PATH) : [];
+  const task = selectTask(tasks);
+
+  if (!task) {
+    console.log('No task found. Run npm run sync:feishu first.');
+    return;
+  }
+
+  const teamTable = readText(TEAM_TABLE_PATH);
+  const outputs = [];
+
+  for (const role of ROLE_SEQUENCE) {
+    console.log(`Running ${role.role}...`);
+    const result = await runRole({ task, role, teamTable, previousOutputs: outputs });
+    outputs.push(result);
+  }
+
+  const obsidianRecord = writeObsidianSummary(task, outputs);
+
+  for (const item of tasks) {
+    if (item.id === task.id) {
+      item.status = 'ai_produced';
+    }
+  }
+
+  const assignment = assignments.find((item) => item.taskId === task.id);
+  if (assignment) {
+    assignment.status = 'ai_produced';
+    assignment.aiOutputs = outputs.map((item) => ({
+      role: item.role,
+      english: item.english,
+      output: item.output
+    }));
+    assignment.outputs = [
+      ...new Set([
+        ...(assignment.outputs || []),
+        ...outputs.map((item) => item.output),
+        obsidianRecord
+      ])
+    ];
+  }
+
+  writeJson(TASKS_PATH, tasks);
+  writeJson(ASSIGNMENTS_PATH, assignments);
+
+  console.log(`Generated ${outputs.length} AI role output(s).`);
+  console.log(`Wrote Obsidian record: ${obsidianRecord}`);
+}
+
+main().catch((error) => {
+  console.error(error.message);
+  process.exit(1);
+});

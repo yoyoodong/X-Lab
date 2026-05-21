@@ -276,6 +276,33 @@ outputs/broadcaster/
 /Users/dongdong/Documents/obsidian/虾团队记忆/02_任务记录
 ```
 
+### 4.7 让虾老大做 AI 调度
+
+如果已经配置 DeepSeek API key，可以执行：
+
+```bash
+npm run director
+```
+
+这一步和 `npm run run:team` 的区别：
+
+```text
+npm run run:team = 按模板生成产出
+npm run director = 读取角色卡后调用 AI 生成产出
+```
+
+使用前需要：
+
+```bash
+export DEEPSEEK_API_KEY="你的 key"
+```
+
+完整说明见：
+
+```text
+docs/ai-director.md
+```
+
 ## 5. 7 个虾的真实工作流
 
 完整规则见：
