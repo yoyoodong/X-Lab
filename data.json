@@ -3,7 +3,7 @@
     "agents": 7,
     "liveTasks": 21,
     "completion": 68,
-    "status": "已从飞书同步 1 个未完成任务，等待虾团队分配处理。",
+    "status": "虾团队已完成 AI 产出，并已回写飞书任务评论/状态。",
     "feishuTasks": 1
   },
   "members": [
@@ -244,7 +244,7 @@
       "id": "62071945-ef87-41b9-8420-2249e86a82c6",
       "source": "feishu",
       "title": "测试 X_Lab 飞书任务入口：生成今日虾团队简报",
-      "status": "assigned",
+      "status": "feishu_completed",
       "due": "",
       "url": "https://applink.feishu.cn/client/todo/detail?guid=62071945-ef87-41b9-8420-2249e86a82c6",
       "owner": "me"

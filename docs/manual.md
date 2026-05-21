@@ -303,6 +303,30 @@ export DEEPSEEK_API_KEY="你的 key"
 docs/ai-director.md
 ```
 
+### 4.8 回写飞书任务评论和状态
+
+AI 产出完成后，系统会把结果写回飞书任务。
+
+如果只想重新回写一次，不重新调用 AI，可以执行：
+
+```bash
+npm run writeback:feishu
+```
+
+这一步会做三件事：
+
+```text
+1. 给飞书任务添加一条虾团队产出评论
+2. 把飞书任务标记为完成
+3. 把本地状态更新为 feishu_completed
+```
+
+如果你只想添加评论，不想把任务设为完成：
+
+```bash
+X_LAB_FEISHU_COMPLETE=false npm run writeback:feishu
+```
+
 ## 5. 7 个虾的真实工作流
 
 完整规则见：

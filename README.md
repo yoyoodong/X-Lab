@@ -114,6 +114,12 @@ See:
 docs/ai-director.md
 ```
 
+To write the latest AI output back to the related Feishu task without re-running AI:
+
+```bash
+npm run writeback:feishu
+```
+
 ## Data Model
 
 Current structured data lives in:

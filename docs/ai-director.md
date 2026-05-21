@@ -18,6 +18,8 @@ npm run director
 4. 让虾老大、产品虾、挑刺虾、运营虾依次调用 AI 思考。
 5. 每个角色生成自己的 Markdown 产出。
 6. 写一份汇总记录到 Obsidian。
+7. 自动把产出摘要回写到飞书任务评论。
+8. 自动把飞书任务标记为完成。
 
 ## 为什么第一版只跑 4 个虾
 
@@ -84,3 +86,23 @@ Generated 4 AI role output(s).
 ```
 
 并且每个角色都有一个独立 Markdown 文件。
+
+## 只回写飞书，不重新跑 AI
+
+如果 AI 产出已经生成，只想重新写一次飞书任务评论/状态：
+
+```bash
+npm run writeback:feishu
+```
+
+这个命令会读取最近一次 AI 产出，然后：
+
+1. 给飞书任务添加评论。
+2. 把飞书任务标记为完成。
+3. 把本地 `data/tasks.json`、`data/assignments.json`、`data.json` 状态更新为 `feishu_completed`。
+
+如果只想写评论，不想自动完成任务，可以这样执行：
+
+```bash
+X_LAB_FEISHU_COMPLETE=false npm run writeback:feishu
+```

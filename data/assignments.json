@@ -3,7 +3,7 @@
     "taskId": "62071945-ef87-41b9-8420-2249e86a82c6",
     "taskTitle": "测试 X_Lab 飞书任务入口：生成今日虾团队简报",
     "source": "feishu",
-    "status": "ai_produced",
+    "status": "feishu_completed",
     "workflow": [
       {
         "role": "The Director",
@@ -63,6 +63,11 @@
         "english": "The Broadcaster",
         "output": "outputs/ai/broadcaster/2026-05-21-task-62071945-broadcaster-brief.md"
       }
-    ]
+    ],
+    "feishuWriteback": {
+      "commented": true,
+      "completed": true,
+      "completedAt": "2026-05-21T07:40:10.123Z"
+    }
   }
 ]

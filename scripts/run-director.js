@@ -1,10 +1,12 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { generateText } = require('./ai-client');
+const { writeBackFeishuTask } = require('./feishu-writeback');
 
 const OBSIDIAN_ROOT = '/Users/dongdong/Documents/obsidian/虾团队记忆';
 const TEAM_TABLE_PATH = path.join(OBSIDIAN_ROOT, '00_团队总则/角色分工总表.md');
 const OBSIDIAN_TASK_DIR = path.join(OBSIDIAN_ROOT, '02_任务记录');
+const DATA_PATH = 'data.json';
 const TASKS_PATH = 'data/tasks.json';
 const ASSIGNMENTS_PATH = 'data/assignments.json';
 
@@ -78,7 +80,8 @@ function selectTask(tasks) {
   return tasks.find((task) => task.status === 'produced')
     || tasks.find((task) => task.status === 'assigned')
     || tasks.find((task) => task.status === 'todo')
-    || tasks[0];
+    || tasks.find((task) => task.status === 'ai_produced')
+    || tasks.find((task) => task.status === 'feishu_commented');
 }
 
 function buildRoleInput({ task, role, teamTable, roleCard, previousOutputs }) {
@@ -210,6 +213,7 @@ ${outputList}
 }
 
 async function main() {
+  const data = fs.existsSync(DATA_PATH) ? readJson(DATA_PATH) : null;
   const tasks = readJson(TASKS_PATH);
   const assignments = fs.existsSync(ASSIGNMENTS_PATH) ? readJson(ASSIGNMENTS_PATH) : [];
   const task = selectTask(tasks);
@@ -229,16 +233,44 @@ async function main() {
   }
 
   const obsidianRecord = writeObsidianSummary(task, outputs);
+  let feishuWriteback = null;
+  let finalStatus = 'ai_produced';
+
+  try {
+    console.log('Writing back to Feishu task...');
+    feishuWriteback = writeBackFeishuTask({ task, outputs, obsidianRecord });
+    finalStatus = feishuWriteback.completed ? 'feishu_completed' : 'feishu_commented';
+  } catch (error) {
+    feishuWriteback = {
+      commented: false,
+      completed: false,
+      error: error.message,
+      failedAt: new Date().toISOString()
+    };
+    console.error(`Feishu writeback failed: ${error.message}`);
+  }
 
   for (const item of tasks) {
     if (item.id === task.id) {
-      item.status = 'ai_produced';
+      item.status = finalStatus;
     }
+  }
+
+  if (data?.tasks) {
+    for (const item of data.tasks) {
+      if (item.id === task.id) {
+        item.status = finalStatus;
+      }
+    }
+    data.summary.status = feishuWriteback?.commented
+      ? '虾团队已完成 AI 产出，并已回写飞书任务评论/状态。'
+      : '虾团队已完成 AI 产出，但飞书回写失败，请查看 data/assignments.json。';
   }
 
   const assignment = assignments.find((item) => item.taskId === task.id);
   if (assignment) {
-    assignment.status = 'ai_produced';
+    assignment.status = finalStatus;
+    assignment.feishuWriteback = feishuWriteback;
     assignment.aiOutputs = outputs.map((item) => ({
       role: item.role,
       english: item.english,
@@ -255,9 +287,15 @@ async function main() {
 
   writeJson(TASKS_PATH, tasks);
   writeJson(ASSIGNMENTS_PATH, assignments);
+  if (data) {
+    writeJson(DATA_PATH, data);
+  }
 
   console.log(`Generated ${outputs.length} AI role output(s).`);
   console.log(`Wrote Obsidian record: ${obsidianRecord}`);
+  if (feishuWriteback?.commented) {
+    console.log(`Wrote Feishu comment. Task status: ${finalStatus}`);
+  }
 }
 
 main().catch((error) => {
