@@ -1,0 +1,36 @@
+[
+  {
+    "taskId": "62071945-ef87-41b9-8420-2249e86a82c6",
+    "taskTitle": "测试 X_Lab 飞书任务入口：生成今日虾团队简报",
+    "source": "feishu",
+    "status": "assigned",
+    "workflow": [
+      {
+        "role": "The Director",
+        "cn": "虾老大",
+        "responsibility": "确认测试目标：验证飞书任务能进入 X_Lab，并触发 Brief 与 Obsidian 记录。"
+      },
+      {
+        "role": "The Architect",
+        "cn": "产品虾",
+        "responsibility": "确认数据链路：飞书任务 -> data/tasks.json -> data.json -> X_Lab Overview。"
+      },
+      {
+        "role": "The Critic",
+        "cn": "挑刺虾",
+        "responsibility": "检查风险：当前只读同步成功，但还没有自动回写飞书状态，也没有自动分配给真实机器人。"
+      },
+      {
+        "role": "The Broadcaster",
+        "cn": "运营虾",
+        "responsibility": "生成今日测试简报，并写入 Obsidian 任务记录。"
+      }
+    ],
+    "outputs": [
+      "data/tasks.json",
+      "data.json",
+      "data/assignments.json",
+      "Obsidian/02_任务记录/2026-05-21_X_Lab_飞书任务入口测试.md"
+    ]
+  }
+]
