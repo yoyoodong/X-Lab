@@ -251,6 +251,31 @@ data.json
 docs/feishu-task-intake.md
 ```
 
+### 4.6 让虾团队真正产出
+
+同步飞书任务后，执行：
+
+```bash
+npm run run:team
+```
+
+它会生成：
+
+```text
+outputs/director/
+outputs/architect/
+outputs/critic/
+outputs/broadcaster/
+```
+
+每个文件就是对应角色交出的作业。
+
+同时会写一份汇总记录到 Obsidian：
+
+```text
+/Users/dongdong/Documents/obsidian/虾团队记忆/02_任务记录
+```
+
 ## 5. 7 个虾的真实工作流
 
 完整规则见：

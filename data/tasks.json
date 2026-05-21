@@ -1,9 +1,9 @@
 [
   {
     "id": "62071945-ef87-41b9-8420-2249e86a82c6",
-        "source": "feishu",
-        "title": "测试 X_Lab 飞书任务入口：生成今日虾团队简报",
-        "status": "assigned",
+    "source": "feishu",
+    "title": "测试 X_Lab 飞书任务入口：生成今日虾团队简报",
+    "status": "produced",
     "due": "",
     "url": "https://applink.feishu.cn/client/todo/detail?guid=62071945-ef87-41b9-8420-2249e86a82c6",
     "owner": "me",

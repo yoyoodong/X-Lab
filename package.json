@@ -5,6 +5,7 @@
   "description": "X_Lab agent team dashboard with Feishu task intake.",
   "scripts": {
     "validate:data": "node scripts/validate-data.js",
-    "sync:feishu": "node scripts/sync-feishu-tasks.js"
+    "sync:feishu": "node scripts/sync-feishu-tasks.js",
+    "run:team": "node scripts/run-agent-team.js"
   }
 }
