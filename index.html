@@ -207,7 +207,11 @@
     function outputSummary(){
       const item=latestAssignment();
       if(!item)return '当前还没有产出文件。';
-      return (item.aiOutputs||[]).map(output=>`${output.role}：${output.output}`).join('<br>')||'当前还没有 AI 角色产出。';
+      const aiOutputs=(item.aiOutputs||[]).map(output=>`${output.role}：${output.output}`);
+      if(item.feishuWiki?.wikiUrl||item.feishuWiki?.docUrl){
+        aiOutputs.push(`飞书知识库：${item.feishuWiki.wikiUrl||item.feishuWiki.docUrl}`);
+      }
+      return aiOutputs.join('<br>')||'当前还没有 AI 角色产出。';
     }
     function renderOverview(){setGrid(`
       ${card('Global Status',`${appData.summary.agents} agents · ${appData.summary.liveTasks} live tasks · ${appData.summary.completion}%`,`全局工作状态：${appData.summary.status}`,true)}

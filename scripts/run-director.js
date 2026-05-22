@@ -2,6 +2,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { generateText } = require('./ai-client');
 const { writeBackFeishuTask } = require('./feishu-writeback');
+const { publishToFeishuWiki } = require('./feishu-wiki-publish');
 
 const OBSIDIAN_ROOT = '/Users/dongdong/Documents/obsidian/虾团队记忆';
 const TEAM_TABLE_PATH = path.join(OBSIDIAN_ROOT, '00_团队总则/角色分工总表.md');
@@ -297,12 +298,24 @@ async function main() {
   }
 
   const obsidianRecord = writeObsidianSummary(task, outputs);
+  let feishuWiki = null;
+  try {
+    console.log('Publishing to Feishu Wiki...');
+    feishuWiki = publishToFeishuWiki({ task, outputs, obsidianRecord });
+  } catch (error) {
+    feishuWiki = {
+      error: error.message,
+      failedAt: new Date().toISOString()
+    };
+    console.error(`Feishu Wiki publish failed: ${error.message}`);
+  }
+
   let feishuWriteback = null;
   let finalStatus = 'ai_produced';
 
   try {
     console.log('Writing back to Feishu task...');
-    feishuWriteback = writeBackFeishuTask({ task, outputs, obsidianRecord });
+    feishuWriteback = writeBackFeishuTask({ task, outputs, obsidianRecord, feishuWiki });
     finalStatus = feishuWriteback.completed ? 'feishu_completed' : 'feishu_commented';
   } catch (error) {
     feishuWriteback = {
@@ -357,6 +370,7 @@ async function main() {
   };
   assignment.handoff = inferHandoff(task, outputs);
   assignment.progress = buildProgress(outputs, finalStatus);
+  assignment.feishuWiki = feishuWiki;
   assignment.feishuWriteback = feishuWriteback;
   assignment.aiOutputs = outputs.map((item) => ({
     role: item.role,
@@ -367,9 +381,10 @@ async function main() {
     ...new Set([
       ...(assignment.outputs || []),
       ...outputs.map((item) => item.output),
-      obsidianRecord
+      obsidianRecord,
+      feishuWiki?.wikiUrl || feishuWiki?.docUrl
     ])
-  ];
+  ].filter(Boolean);
 
   writeJson(TASKS_PATH, tasks);
   writeJson(ASSIGNMENTS_PATH, assignments);
@@ -379,6 +394,9 @@ async function main() {
 
   console.log(`Generated ${outputs.length} AI role output(s).`);
   console.log(`Wrote Obsidian record: ${obsidianRecord}`);
+  if (feishuWiki?.wikiUrl || feishuWiki?.docUrl) {
+    console.log(`Published Feishu Wiki document: ${feishuWiki.wikiUrl || feishuWiki.docUrl}`);
+  }
   if (feishuWriteback?.commented) {
     console.log(`Wrote Feishu comment. Task status: ${finalStatus}`);
   }

@@ -144,7 +144,8 @@
       "outputs/ai/architect/2026-05-22-task-84834c1c-architect-plan.md",
       "outputs/ai/critic/2026-05-22-task-84834c1c-critic-review.md",
       "outputs/ai/broadcaster/2026-05-22-task-84834c1c-broadcaster-brief.md",
-      "/Users/dongdong/Documents/obsidian/虾团队记忆/02_任务记录/2026-05-22_【选题转交】新闻虾发现“AI-会勒索人类”，请运营虾评估选题价值并产出内容角度_AI虾老大调度汇总.md"
+      "/Users/dongdong/Documents/obsidian/虾团队记忆/02_任务记录/2026-05-22_【选题转交】新闻虾发现“AI-会勒索人类”，请运营虾评估选题价值并产出内容角度_AI虾老大调度汇总.md",
+      "https://my.feishu.cn/docx/TdRCdYN57ofkErxt0Gfc2Iycn8c"
     ],
     "aiOutputs": [
       {
@@ -214,6 +215,17 @@
         "status": "已完成",
         "output": "outputs/ai/broadcaster/2026-05-22-task-84834c1c-broadcaster-brief.md"
       }
-    ]
+    ],
+    "feishuWiki": {
+      "title": "2026-05-23 【选题转交】新闻虾发现“AI 会勒索人类”，请运营虾评估选题价值并产出内容角度",
+      "wikiSpaceId": "7634432301040159694",
+      "wikiSpaceName": "虾调研",
+      "objType": "docx",
+      "objToken": "TdRCdYN57ofkErxt0Gfc2Iycn8c",
+      "docUrl": "https://my.feishu.cn/docx/TdRCdYN57ofkErxt0Gfc2Iycn8c",
+      "wikiToken": "XtD3w8OnqiiqtSk1ORxclkoYnSe",
+      "wikiUrl": "https://my.feishu.cn/docx/TdRCdYN57ofkErxt0Gfc2Iycn8c",
+      "publishedAt": "2026-05-22T23:57:28.574Z"
+    }
   }
 ]

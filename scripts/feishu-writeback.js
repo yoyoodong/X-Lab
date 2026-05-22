@@ -22,7 +22,7 @@ function limitText(value, maxLength) {
   return value.length > maxLength ? `${value.slice(0, maxLength)}...` : value;
 }
 
-function buildFeishuComment({ task, outputs, obsidianRecord }) {
+function buildFeishuComment({ task, outputs, obsidianRecord, feishuWiki }) {
   const lines = [
     'X_Lab 虾团队已完成本轮 AI 协作产出。',
     '',
@@ -37,6 +37,10 @@ function buildFeishuComment({ task, outputs, obsidianRecord }) {
 
   lines.push('');
   lines.push(`Obsidian 汇总：${obsidianRecord}`);
+
+  if (feishuWiki?.wikiUrl || feishuWiki?.docUrl) {
+    lines.push(`飞书知识库文档：${feishuWiki.wikiUrl || feishuWiki.docUrl}`);
+  }
 
   const broadcaster = outputs.find((item) => item.id === 'content') || outputs[outputs.length - 1];
   if (broadcaster?.content) {
@@ -79,12 +83,12 @@ function completeTask(taskId) {
   ]);
 }
 
-function writeBackFeishuTask({ task, outputs, obsidianRecord }) {
+function writeBackFeishuTask({ task, outputs, obsidianRecord, feishuWiki }) {
   if (!task?.id) {
     throw new Error('Missing Feishu task id.');
   }
 
-  const content = buildFeishuComment({ task, outputs, obsidianRecord });
+  const content = buildFeishuComment({ task, outputs, obsidianRecord, feishuWiki });
   const commentResult = commentOnTask(task.id, content);
 
   const shouldComplete = process.env.X_LAB_FEISHU_COMPLETE !== 'false';
