@@ -343,6 +343,18 @@ npm run watch:feishu
 npm run watch:feishu:once
 ```
 
+在 X_Lab 页面里看任务协作进度时，点顶部的 `Tasks`。
+
+`Tasks` 面板会显示：
+
+```text
+任务池
+转交流
+工作进展
+产出文件
+最终状态
+```
+
 ## 5. 7 个虾的真实工作流
 
 完整规则见：

@@ -126,6 +126,8 @@ To keep watching Feishu tasks and run the AI team automatically:
 npm run watch:feishu
 ```
 
+Use the `Tasks` panel in `index.html` to review the generic task pool, handoff, role progress, outputs, and final status.
+
 ## Data Model
 
 Current structured data lives in:

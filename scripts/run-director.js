@@ -91,6 +91,63 @@ function selectTask(tasks) {
     || tasks.find((task) => task.status === 'feishu_commented');
 }
 
+function inferTaskType(title) {
+  if (/新闻|线索|选题|热点|趋势/.test(title)) {
+    return 'signal';
+  }
+
+  if (/设计|视觉|图片|海报|页面|UI/.test(title)) {
+    return 'design';
+  }
+
+  if (/研究|资料|调研|分析/.test(title)) {
+    return 'research';
+  }
+
+  if (/文案|推文|内容|运营|发布/.test(title)) {
+    return 'content';
+  }
+
+  return 'task';
+}
+
+function inferHandoff(task, outputs) {
+  const title = task.title || '';
+  const text = `${title}\n${outputs.map((item) => item.content.slice(0, 1000)).join('\n')}`;
+
+  if (/新闻虾|侦察虾|新闻|线索/.test(text) && /运营虾|内容|选题/.test(text)) {
+    return {
+      from: '新闻虾 / 侦察虾',
+      to: '运营虾',
+      reason: '发现信息信号后，交给运营虾评估传播价值并产出内容角度。'
+    };
+  }
+
+  if (/设计虾|视觉|图片|海报|页面/.test(text)) {
+    return {
+      from: '虾老大',
+      to: '设计虾',
+      reason: '任务需要视觉呈现或界面表达。'
+    };
+  }
+
+  return {
+    from: '虾老大',
+    to: '虾团队',
+    reason: '由虾老大判断任务性质后，分配给合适角色协作处理。'
+  };
+}
+
+function buildProgress(outputs, finalStatus) {
+  return outputs.map((item, index) => ({
+    role: item.role,
+    english: item.english,
+    step: index + 1,
+    status: finalStatus === 'feishu_completed' ? '已完成' : '已产出',
+    output: item.output
+  }));
+}
+
 function buildRoleInput({ task, role, teamTable, roleCard, previousOutputs }) {
   return `你正在参与 X_Lab 虾团队任务。
 
@@ -291,6 +348,15 @@ async function main() {
   }
 
   assignment.status = finalStatus;
+  assignment.intake = {
+    type: inferTaskType(task.title),
+    title: task.title,
+    source: task.source || 'feishu',
+    url: task.url || '',
+    receivedAt: task.raw?.created_at || new Date().toISOString()
+  };
+  assignment.handoff = inferHandoff(task, outputs);
+  assignment.progress = buildProgress(outputs, finalStatus);
   assignment.feishuWriteback = feishuWriteback;
   assignment.aiOutputs = outputs.map((item) => ({
     role: item.role,

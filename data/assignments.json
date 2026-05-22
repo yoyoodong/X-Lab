@@ -68,7 +68,49 @@
       "commented": true,
       "completed": true,
       "completedAt": "2026-05-21T07:40:10.123Z"
-    }
+    },
+    "intake": {
+      "type": "task",
+      "title": "测试 X_Lab 飞书任务入口：生成今日虾团队简报",
+      "source": "feishu",
+      "url": "",
+      "receivedAt": "2026-05-21T07:40:10.123Z"
+    },
+    "handoff": {
+      "from": "虾老大",
+      "to": "虾团队",
+      "reason": "由虾老大判断任务性质后，分配给合适角色协作处理。"
+    },
+    "progress": [
+      {
+        "role": "虾老大",
+        "english": "The Director",
+        "step": 1,
+        "status": "已完成",
+        "output": "outputs/ai/director/2026-05-21-task-62071945-director-decision.md"
+      },
+      {
+        "role": "产品虾",
+        "english": "The Architect",
+        "step": 2,
+        "status": "已完成",
+        "output": "outputs/ai/architect/2026-05-21-task-62071945-architect-plan.md"
+      },
+      {
+        "role": "挑刺虾",
+        "english": "The Critic",
+        "step": 3,
+        "status": "已完成",
+        "output": "outputs/ai/critic/2026-05-21-task-62071945-critic-review.md"
+      },
+      {
+        "role": "运营虾",
+        "english": "The Broadcaster",
+        "step": 4,
+        "status": "已完成",
+        "output": "outputs/ai/broadcaster/2026-05-21-task-62071945-broadcaster-brief.md"
+      }
+    ]
   },
   {
     "taskId": "84834c1c-be6d-493d-9a53-996d68bbed96",
@@ -130,6 +172,48 @@
       "commented": true,
       "completed": true,
       "completedAt": "2026-05-22T00:03:56.199Z"
-    }
+    },
+    "intake": {
+      "type": "signal",
+      "title": "【选题转交】新闻虾发现“AI 会勒索人类”，请运营虾评估选题价值并产出内容角度",
+      "source": "feishu",
+      "url": "",
+      "receivedAt": "2026-05-22T00:03:56.199Z"
+    },
+    "handoff": {
+      "from": "新闻虾 / 侦察虾",
+      "to": "运营虾",
+      "reason": "发现信息信号后，交给运营虾评估传播价值并产出内容角度。"
+    },
+    "progress": [
+      {
+        "role": "虾老大",
+        "english": "The Director",
+        "step": 1,
+        "status": "已完成",
+        "output": "outputs/ai/director/2026-05-22-task-84834c1c-director-decision.md"
+      },
+      {
+        "role": "产品虾",
+        "english": "The Architect",
+        "step": 2,
+        "status": "已完成",
+        "output": "outputs/ai/architect/2026-05-22-task-84834c1c-architect-plan.md"
+      },
+      {
+        "role": "挑刺虾",
+        "english": "The Critic",
+        "step": 3,
+        "status": "已完成",
+        "output": "outputs/ai/critic/2026-05-22-task-84834c1c-critic-review.md"
+      },
+      {
+        "role": "运营虾",
+        "english": "The Broadcaster",
+        "step": 4,
+        "status": "已完成",
+        "output": "outputs/ai/broadcaster/2026-05-22-task-84834c1c-broadcaster-brief.md"
+      }
+    ]
   }
 ]

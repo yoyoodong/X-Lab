@@ -138,6 +138,7 @@
       <nav class="nav-pills">
         <button class="pill active" data-panel="overview">Overview</button>
         <button class="pill" data-panel="members">Members</button>
+        <button class="pill" data-panel="tasks">Tasks</button>
         <button class="pill" data-panel="projects">Projects</button>
         <button class="pill" data-panel="memory">Memory</button>
         <button class="pill" data-panel="brief">Brief</button>
@@ -145,7 +146,7 @@
       <div class="member-cluster"><button class="stack-trigger" id="openMembers" aria-label="Open member cards"><span class="stack-shadow s1"></span><span class="stack-shadow s2"></span><span class="stack-shadow s3"></span><div class="trigger-inner"><div class="trigger-thumb" id="triggerAvatar"></div><div class="trigger-copy"><b>Members</b><span>7 original roles inside X LAB</span></div><div class="trigger-more">+ 6 more</div></div></button></div>
     </header>
     <section class="hero">
-      <div class="hero-center"><div class="line motion" id="line1">X LAB</div><div class="line motion" id="line2">AGENT SYSTEM</div><div class="line motion" id="line3">& TEAM DIRECTION</div><div class="line motion" id="line4"><span id="numA">07</span> MEMBERS</div><div class="line motion" id="line5"><span id="numB">21</span> LIVE TASKS</div><div class="line motion" id="line6">→ DAILY BRIEF → MEMORY</div><div class="cta-row"><button class="cta" data-panel="members">→MEMBERS</button><button class="cta" data-panel="projects">→PROJECTS<span class="live-dot"></span></button></div></div>
+      <div class="hero-center"><div class="line motion" id="line1">X LAB</div><div class="line motion" id="line2">AGENT SYSTEM</div><div class="line motion" id="line3">& TEAM DIRECTION</div><div class="line motion" id="line4"><span id="numA">07</span> MEMBERS</div><div class="line motion" id="line5"><span id="numB">21</span> LIVE TASKS</div><div class="line motion" id="line6">→ DAILY BRIEF → MEMORY</div><div class="cta-row"><button class="cta" data-panel="tasks">→TASKS</button><button class="cta" data-panel="members">→MEMBERS</button></div></div>
       <div class="footer-meta">X LAB INTERNAL INTERFACE · MOTION TYPE · MEMBER STACK</div>
     </section>
   </main>
@@ -175,8 +176,28 @@
     const modal=document.getElementById('modal'),modalTitle=document.getElementById('modalTitle'),modalContent=document.getElementById('modalContent');
     function card(k,h,p,light=false,extra=''){return `<article class="modal-card ${light?'light':''}"><div><div class="mk">${k}</div><h3>${h}</h3><p>${p}</p>${extra}</div></article>`}
     function setGrid(html){modalContent.innerHTML=`<div class="modal-grid" id="modalGrid">${html}</div>`}
-    function openPanel(key){modalTitle.textContent=key; if(key==='overview') renderOverview(); if(key==='members') renderMembers(); if(key==='projects') renderProjects(); if(key==='memory') renderMemory(); if(key==='brief') renderBrief(); modal.classList.add('open')}
+    function openPanel(key){modalTitle.textContent=key; if(key==='overview') renderOverview(); if(key==='members') renderMembers(); if(key==='tasks') renderTasks(); if(key==='projects') renderProjects(); if(key==='memory') renderMemory(); if(key==='brief') renderBrief(); modal.classList.add('open')}
     function latestAssignment(){return assignments[assignments.length-1]}
+    function humanType(type){
+      return {signal:'线索/选题',task:'通用任务',design:'设计任务',research:'研究任务',content:'内容任务'}[type]||'通用任务';
+    }
+    function statusLabel(status){
+      return {todo:'待处理',assigned:'已分配',produced:'已产出',ai_produced:'AI 已产出',feishu_commented:'已回写评论',feishu_completed:'已完成'}[status]||status;
+    }
+    function taskPoolSummary(){
+      if(!assignments.length)return '当前任务池还没有记录。';
+      return assignments.slice(-5).reverse().map(item=>`${humanType(item.intake?.type)} · ${statusLabel(item.status)}<br>${item.taskTitle}`).join('<br><br>');
+    }
+    function handoffSummary(item=latestAssignment()){
+      if(!item)return '当前还没有转交记录。';
+      const handoff=item.handoff||{from:'虾老大',to:'虾团队',reason:'根据任务性质分配。'};
+      return `${handoff.from} → ${handoff.to}<br>${handoff.reason}`;
+    }
+    function progressSummary(item=latestAssignment()){
+      if(!item)return '当前还没有角色进展。';
+      const progress=item.progress||[];
+      return progress.map(step=>`${step.step}. ${step.role}：${step.status}`).join('<br>')||'当前还没有角色进展。';
+    }
     function assignmentSummary(){
       const item=latestAssignment();
       if(!item)return '当前还没有虾团队协作记录。';
@@ -191,7 +212,8 @@
     function renderOverview(){setGrid(`
       ${card('Global Status',`${appData.summary.agents} agents · ${appData.summary.liveTasks} live tasks · ${appData.summary.completion}%`,`全局工作状态：${appData.summary.status}`,true)}
       <article class="modal-card wide"><div><div class="mk">Member Status</div>${members.map(m=>`<div class="status-row"><b>${m.name}</b><span>${m.status}</span><div class="progress" style="--p:${m.progress}%;--accent:${m.color}"><span></span></div><span>${m.done}</span></div>`).join('')}</div></article>
-      ${card('Collaboration Flow','最近一次协作流',assignmentSummary())}
+      ${card('Task Pool','任务池',taskPoolSummary())}
+      ${card('Handoff','最近转交流',handoffSummary(),true)}
       ${card('Outputs','角色产出文件',outputSummary(),true)}
       ${card('Daily Focus','今日要事',daily.join('<br>'))}
       ${card('Open Issues','遗留问题','1. 二级页信息密度控制。<br>2. 7 个角色 PNG 已全部替换完成。<br>3. 项目/任务/成员的数据关系需要统一。',true)}
@@ -200,6 +222,16 @@
       ${card('Future Plan','未来计划',future.join('<br>'),true)}
     `)}
     function renderMembers(){setGrid(members.map((m,i)=>card(m.cn,m.name,`${m.status}<br>${m.taskDetail}<br><br>协作成员：${m.with}<br>遗留问题：${m.issue}<br>下一步：${m.plan}`,i%2===1,`<div class="actions"><button onclick="openMember(${i})">Open Detail</button><button onclick="openPanel('brief')">Brief</button><button onclick="openPanel('memory')">Memory</button></div>`)).join(''))}
+    function renderTasks(){
+      const item=latestAssignment();
+      setGrid(`
+        ${card('Task Pool','任务池',taskPoolSummary(),true)}
+        ${card('Handoff','转交流',handoffSummary(item))}
+        ${card('Work Progress','工作进展',progressSummary(item),true)}
+        ${card('Outputs','产出文件',outputSummary())}
+        ${card('Status','状态',item?`当前任务：${item.taskTitle}<br>状态：${statusLabel(item.status)}<br>来源：${item.source}`:'当前没有任务。',true)}
+      `)
+    }
     function renderProjects(){setGrid(projects.map((p,i)=>card(p.stage,p.name,`负责人：${p.owner}<br>进度：${p.progress}%<br>任务：${p.tasks}<br>遗留问题：${p.issue}<br>下一步：${p.next}`,i%2===1,`<div class="actions"><button onclick="openPanel('members')">Members</button><button onclick="openPanel('memory')">Docs</button></div>`)).join(''))}
     function renderMemory(){setGrid(appData.memory.map((x,i)=>card(x[0],x[1],x[2],i%2===0)).join(''))}
     function renderBrief(){setGrid(`${card('Today','今日要事',daily.join('<br>'),true)}${card('Latest Collaboration','最近协作',assignmentSummary())}${card('Latest Outputs','最近产出',outputSummary(),true)}${card('Findings','今日结论','当前视觉基线已确认：黑底、中央动态大字、左上胶囊导航、右上成员卡展开。<br>下一阶段应重点补齐二级页内容，而不是再更换整体风格。')}${card('Risks','风险提醒','1. 二级页不能只是卡片展示，要能看任务、协作和遗留问题。<br>2. 成员详情必须能回到全局项目和记忆库。',true)}${card('Tomorrow','明日计划',future.join('<br>'))}`)}
