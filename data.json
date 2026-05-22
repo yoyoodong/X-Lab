@@ -3,8 +3,8 @@
     "agents": 7,
     "liveTasks": 21,
     "completion": 68,
-    "status": "飞书任务入口已接通，当前没有同步到未完成任务。",
-    "feishuTasks": 0
+    "status": "虾团队已完成 AI 产出，并已回写飞书任务评论/状态。",
+    "feishuTasks": 1
   },
   "members": [
     {
@@ -171,7 +171,7 @@
     }
   ],
   "daily": [
-    "飞书任务入口：已接通，当前没有未完成任务。",
+    "飞书任务入口：已同步 1 个未完成任务。",
     "补齐 Overview 总览页：成员状态、项目/任务、遗留问题、每日要事、未来计划。",
     "补齐 Members 个人页：角色信息、当前任务、协作成员、遗留问题、下一步。",
     "所有按钮建立真实跳转：导航、成员卡、快捷动作、项目卡、记忆入口。"
@@ -239,5 +239,15 @@
       "→ INFORMATION → MEMBERS"
     ]
   ],
-  "tasks": []
+  "tasks": [
+    {
+      "id": "84834c1c-be6d-493d-9a53-996d68bbed96",
+      "source": "feishu",
+      "title": "【选题转交】新闻虾发现“AI 会勒索人类”，请运营虾评估选题价值并产出内容角度",
+      "status": "feishu_completed",
+      "due": "",
+      "url": "https://applink.feishu.cn/client/todo/detail?guid=84834c1c-be6d-493d-9a53-996d68bbed96",
+      "owner": "me"
+    }
+  ]
 }

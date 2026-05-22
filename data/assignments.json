@@ -69,5 +69,67 @@
       "completed": true,
       "completedAt": "2026-05-21T07:40:10.123Z"
     }
+  },
+  {
+    "taskId": "84834c1c-be6d-493d-9a53-996d68bbed96",
+    "taskTitle": "【选题转交】新闻虾发现“AI 会勒索人类”，请运营虾评估选题价值并产出内容角度",
+    "source": "feishu",
+    "status": "feishu_completed",
+    "workflow": [
+      {
+        "role": "The Director",
+        "cn": "虾老大",
+        "responsibility": "确认新闻虾线索的任务性质，并将选题评估链路转交给运营虾。"
+      },
+      {
+        "role": "The Architect",
+        "cn": "产品虾",
+        "responsibility": "把选题拆成用户场景、产品化框架和可评估维度。"
+      },
+      {
+        "role": "The Critic",
+        "cn": "挑刺虾",
+        "responsibility": "审查选题事实基础、标题党风险和传播边界。"
+      },
+      {
+        "role": "The Broadcaster",
+        "cn": "运营虾",
+        "responsibility": "评估选题价值，并产出内容角度与渠道建议。"
+      }
+    ],
+    "outputs": [
+      "outputs/ai/director/2026-05-22-task-84834c1c-director-decision.md",
+      "outputs/ai/architect/2026-05-22-task-84834c1c-architect-plan.md",
+      "outputs/ai/critic/2026-05-22-task-84834c1c-critic-review.md",
+      "outputs/ai/broadcaster/2026-05-22-task-84834c1c-broadcaster-brief.md",
+      "/Users/dongdong/Documents/obsidian/虾团队记忆/02_任务记录/2026-05-22_【选题转交】新闻虾发现“AI-会勒索人类”，请运营虾评估选题价值并产出内容角度_AI虾老大调度汇总.md"
+    ],
+    "aiOutputs": [
+      {
+        "role": "虾老大",
+        "english": "The Director",
+        "output": "outputs/ai/director/2026-05-22-task-84834c1c-director-decision.md"
+      },
+      {
+        "role": "产品虾",
+        "english": "The Architect",
+        "output": "outputs/ai/architect/2026-05-22-task-84834c1c-architect-plan.md"
+      },
+      {
+        "role": "挑刺虾",
+        "english": "The Critic",
+        "output": "outputs/ai/critic/2026-05-22-task-84834c1c-critic-review.md"
+      },
+      {
+        "role": "运营虾",
+        "english": "The Broadcaster",
+        "output": "outputs/ai/broadcaster/2026-05-22-task-84834c1c-broadcaster-brief.md"
+      }
+    ],
+    "feishuWriteback": {
+      "commented": true,
+      "completed": true,
+      "completedAt": "2026-05-22T00:03:56.199Z"
+    }
   }
 ]

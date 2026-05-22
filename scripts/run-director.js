@@ -62,7 +62,14 @@ function ensureDir(dirPath) {
 }
 
 function today() {
-  return new Date().toISOString().slice(0, 10);
+  const formatter = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Asia/Shanghai',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit'
+  });
+
+  return formatter.format(new Date());
 }
 
 function shortId(taskId) {
@@ -267,23 +274,36 @@ async function main() {
       : '虾团队已完成 AI 产出，但飞书回写失败，请查看 data/assignments.json。';
   }
 
-  const assignment = assignments.find((item) => item.taskId === task.id);
-  if (assignment) {
-    assignment.status = finalStatus;
-    assignment.feishuWriteback = feishuWriteback;
-    assignment.aiOutputs = outputs.map((item) => ({
-      role: item.role,
-      english: item.english,
-      output: item.output
-    }));
-    assignment.outputs = [
-      ...new Set([
-        ...(assignment.outputs || []),
-        ...outputs.map((item) => item.output),
-        obsidianRecord
-      ])
-    ];
+  let assignment = assignments.find((item) => item.taskId === task.id);
+  if (!assignment) {
+    assignment = {
+      taskId: task.id,
+      taskTitle: task.title,
+      source: task.source || 'feishu',
+      workflow: ROLE_SEQUENCE.map((role) => ({
+        role: role.english,
+        cn: role.role,
+        responsibility: `${role.role} 参与本轮 AI 协作产出。`
+      })),
+      outputs: []
+    };
+    assignments.push(assignment);
   }
+
+  assignment.status = finalStatus;
+  assignment.feishuWriteback = feishuWriteback;
+  assignment.aiOutputs = outputs.map((item) => ({
+    role: item.role,
+    english: item.english,
+    output: item.output
+  }));
+  assignment.outputs = [
+    ...new Set([
+      ...(assignment.outputs || []),
+      ...outputs.map((item) => item.output),
+      obsidianRecord
+    ])
+  ];
 
   writeJson(TASKS_PATH, tasks);
   writeJson(ASSIGNMENTS_PATH, assignments);

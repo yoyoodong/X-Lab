@@ -157,6 +157,7 @@
     let projects=[];
     let daily=[];
     let future=[];
+    let assignments=[];
 
     function avatar(i){
       if(members[i]?.image)return `<img class="avatar-img" src="${members[i].image}" alt="${members[i].cn} ${members[i].name}" loading="lazy">`;
@@ -175,9 +176,23 @@
     function card(k,h,p,light=false,extra=''){return `<article class="modal-card ${light?'light':''}"><div><div class="mk">${k}</div><h3>${h}</h3><p>${p}</p>${extra}</div></article>`}
     function setGrid(html){modalContent.innerHTML=`<div class="modal-grid" id="modalGrid">${html}</div>`}
     function openPanel(key){modalTitle.textContent=key; if(key==='overview') renderOverview(); if(key==='members') renderMembers(); if(key==='projects') renderProjects(); if(key==='memory') renderMemory(); if(key==='brief') renderBrief(); modal.classList.add('open')}
+    function latestAssignment(){return assignments[assignments.length-1]}
+    function assignmentSummary(){
+      const item=latestAssignment();
+      if(!item)return '当前还没有虾团队协作记录。';
+      const flow=(item.workflow||[]).map(step=>`${step.cn}：${step.responsibility}`).join('<br>');
+      return `任务：${item.taskTitle}<br>状态：${item.status}<br><br>${flow}`;
+    }
+    function outputSummary(){
+      const item=latestAssignment();
+      if(!item)return '当前还没有产出文件。';
+      return (item.aiOutputs||[]).map(output=>`${output.role}：${output.output}`).join('<br>')||'当前还没有 AI 角色产出。';
+    }
     function renderOverview(){setGrid(`
       ${card('Global Status',`${appData.summary.agents} agents · ${appData.summary.liveTasks} live tasks · ${appData.summary.completion}%`,`全局工作状态：${appData.summary.status}`,true)}
       <article class="modal-card wide"><div><div class="mk">Member Status</div>${members.map(m=>`<div class="status-row"><b>${m.name}</b><span>${m.status}</span><div class="progress" style="--p:${m.progress}%;--accent:${m.color}"><span></span></div><span>${m.done}</span></div>`).join('')}</div></article>
+      ${card('Collaboration Flow','最近一次协作流',assignmentSummary())}
+      ${card('Outputs','角色产出文件',outputSummary(),true)}
       ${card('Daily Focus','今日要事',daily.join('<br>'))}
       ${card('Open Issues','遗留问题','1. 二级页信息密度控制。<br>2. 7 个角色 PNG 已全部替换完成。<br>3. 项目/任务/成员的数据关系需要统一。',true)}
       ${card('Feishu Intake','飞书任务入口',`当前同步任务：${appData.summary.feishuTasks||0} 个。<br>${(appData.tasks||[]).slice(0,3).map(t=>`${t.title}${t.url?` · ${t.url}`:''}`).join('<br>')||'当前没有未完成任务。'}`)}
@@ -187,7 +202,7 @@
     function renderMembers(){setGrid(members.map((m,i)=>card(m.cn,m.name,`${m.status}<br>${m.taskDetail}<br><br>协作成员：${m.with}<br>遗留问题：${m.issue}<br>下一步：${m.plan}`,i%2===1,`<div class="actions"><button onclick="openMember(${i})">Open Detail</button><button onclick="openPanel('brief')">Brief</button><button onclick="openPanel('memory')">Memory</button></div>`)).join(''))}
     function renderProjects(){setGrid(projects.map((p,i)=>card(p.stage,p.name,`负责人：${p.owner}<br>进度：${p.progress}%<br>任务：${p.tasks}<br>遗留问题：${p.issue}<br>下一步：${p.next}`,i%2===1,`<div class="actions"><button onclick="openPanel('members')">Members</button><button onclick="openPanel('memory')">Docs</button></div>`)).join(''))}
     function renderMemory(){setGrid(appData.memory.map((x,i)=>card(x[0],x[1],x[2],i%2===0)).join(''))}
-    function renderBrief(){setGrid(`${card('Today','今日要事',daily.join('<br>'),true)}${card('Findings','今日结论','当前视觉基线已确认：黑底、中央动态大字、左上胶囊导航、右上成员卡展开。<br>下一阶段应重点补齐二级页内容，而不是再更换整体风格。')}${card('Risks','风险提醒','1. 二级页不能只是卡片展示，要能看任务、协作和遗留问题。<br>2. 成员详情必须能回到全局项目和记忆库。',true)}${card('Tomorrow','明日计划',future.join('<br>'))}`)}
+    function renderBrief(){setGrid(`${card('Today','今日要事',daily.join('<br>'),true)}${card('Latest Collaboration','最近协作',assignmentSummary())}${card('Latest Outputs','最近产出',outputSummary(),true)}${card('Findings','今日结论','当前视觉基线已确认：黑底、中央动态大字、左上胶囊导航、右上成员卡展开。<br>下一阶段应重点补齐二级页内容，而不是再更换整体风格。')}${card('Risks','风险提醒','1. 二级页不能只是卡片展示，要能看任务、协作和遗留问题。<br>2. 成员详情必须能回到全局项目和记忆库。',true)}${card('Tomorrow','明日计划',future.join('<br>'))}`)}
     function openMember(i){
       const m=members[i];
       modalTitle.textContent='Member Detail';
@@ -237,6 +252,8 @@
         const res=await fetch('data.json',{cache:'no-store'});
         if(!res.ok)throw new Error(`data.json HTTP ${res.status}`);
         appData=await res.json();
+        const assignmentRes=await fetch('data/assignments.json',{cache:'no-store'});
+        assignments=assignmentRes.ok?await assignmentRes.json():[];
         members=appData.members;
         projects=appData.projects;
         daily=appData.daily;
