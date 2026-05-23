@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>X_Lab Agent Team Dashboard</title>
+  <title>X_Lab 虾团队工作台</title>
   <style>
     :root{
       --bg:#020202;
@@ -39,9 +39,9 @@
     .nav-pills{display:flex;gap:10px;flex-wrap:wrap}
     .pill{padding:12px 18px;border-radius:999px;background:var(--pill);font-size:16px;font-weight:520;letter-spacing:-.02em;transition:.22s var(--ease);box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
     .pill:hover,.pill.active{background:var(--pill-hover);transform:translateY(-1px)}
-    .hero{flex:1;display:grid;place-items:center;position:relative;padding:20px 0 50px}
-    .hero-center{width:min(980px,90vw);text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;position:relative;z-index:3}
-    .line{font-size:clamp(44px,8vw,106px);line-height:.88;font-weight:280;text-transform:uppercase;white-space:nowrap;transition:transform .8s var(--ease),opacity .8s var(--ease);text-shadow:0 0 26px rgba(255,255,255,.06)}
+    .hero{flex:1;display:grid;place-items:center;position:relative;padding:20px 0 34px}
+    .hero-center{width:min(1180px,92vw);text-align:left;display:flex;flex-direction:column;align-items:stretch;justify-content:center;gap:18px;position:relative;z-index:3}
+    .line{font-size:clamp(34px,6vw,84px);line-height:.92;font-weight:280;text-transform:uppercase;white-space:nowrap;transition:transform .8s var(--ease),opacity .8s var(--ease);text-shadow:0 0 26px rgba(255,255,255,.06)}
     .line.motion{animation:floatText 3.4s ease-in-out infinite alternate}
     .line.motion:nth-child(2){animation-delay:-.6s}.line.motion:nth-child(3){animation-delay:-1.2s}.line.motion:nth-child(4){animation-delay:-1.8s}.line.motion:nth-child(5){animation-delay:-2.4s}.line.motion:nth-child(6){animation-delay:-3s}
     @keyframes floatText{to{transform:translateY(-6px)}}
@@ -50,6 +50,19 @@
     .cta:after{content:"";position:absolute;left:0;right:0;bottom:-8px;height:1px;background:var(--fg);transform:scaleX(0);transform-origin:right;transition:transform .28s var(--ease)}
     .cta:hover:after{transform:scaleX(1);transform-origin:left}
     .live-dot{display:inline-block;width:12px;height:12px;margin-left:10px;border-radius:50%;background:var(--yellow);box-shadow:0 0 16px var(--yellow);vertical-align:top}
+    .home-grid{display:grid;grid-template-columns:1.1fr .9fr .9fr;gap:12px;margin-top:10px}
+    .home-card{min-height:164px;border-radius:12px;padding:18px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.10);box-shadow:inset 0 1px rgba(255,255,255,.07)}
+    .home-card.light{background:#f3efe8;color:#080808}
+    .home-k{font-size:12px;color:rgba(255,255,255,.48);letter-spacing:.08em}
+    .home-card.light .home-k{color:rgba(0,0,0,.48)}
+    .home-card h2{margin:8px 0 12px;font-size:24px;font-weight:360;letter-spacing:-.035em}
+    .home-card ul{margin:0;padding-left:18px;color:rgba(255,255,255,.72);line-height:1.55;font-size:14px}
+    .home-card.light ul{color:rgba(0,0,0,.72)}
+    .home-card p{margin:0;color:rgba(255,255,255,.72);line-height:1.55;font-size:14px}
+    .home-card.light p{color:rgba(0,0,0,.72)}
+    .quick-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+    .quick-row button{padding:9px 12px;border-radius:999px;background:rgba(255,255,255,.12);font-size:13px}
+    .home-card.light .quick-row button{background:rgba(0,0,0,.08)}
     .member-cluster{position:relative;width:330px;z-index:15}
     .stack-trigger{position:relative;width:100%;height:138px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.24),rgba(255,255,255,.12));box-shadow:0 20px 70px rgba(0,0,0,.26),inset 0 1px 0 rgba(255,255,255,.24);overflow:visible;transition:.25s var(--ease)}
     .stack-trigger:hover{transform:translateY(-2px)}
@@ -127,8 +140,8 @@
     .detail-side .member-item .meta{display:none}
     .footer-meta{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);color:rgba(255,255,255,.34);font-size:12px;letter-spacing:.12em;text-transform:uppercase;text-align:center;z-index:5}
     @media(max-width:1080px){body{overflow:auto}.modal-inner{max-height:96vh}.member-detail-layout{grid-template-columns:1fr}.detail-side{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}}
-    @media(max-width:980px){.app{min-height:100vh}.hero{padding-top:40px}.member-cluster{width:300px}.modal-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.modal-card.wide{grid-column:span 1}.status-row{grid-template-columns:1fr}.detail-hero{grid-template-columns:1fr}.detail-grid{grid-template-columns:1fr}}
-    @media(max-width:720px){.app{padding:18px 14px 14px}.topbar{display:block}.member-cluster{width:100%;margin-top:22px}.hero{padding:60px 0 80px}.line{font-size:44px;white-space:normal}.cta{font-size:34px}.modal-grid{grid-template-columns:1fr}.footer-meta{position:static;transform:none;margin-top:14px}.member-panel{right:14px;top:14px}.member-list{gap:14px}.detail-main{padding:18px}.detail-figure{width:100%;height:210px}.detail-grid{gap:10px}.detail-side{grid-template-columns:1fr}}
+    @media(max-width:980px){.app{min-height:100vh}.hero{padding-top:40px}.member-cluster{width:300px}.modal-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.modal-card.wide{grid-column:span 1}.status-row{grid-template-columns:1fr}.detail-hero{grid-template-columns:1fr}.detail-grid{grid-template-columns:1fr}.home-grid{grid-template-columns:1fr}}
+    @media(max-width:720px){.app{padding:18px 14px 14px}.topbar{display:block}.member-cluster{width:100%;margin-top:22px}.hero{padding:42px 0 60px}.line{font-size:40px;white-space:normal}.cta{font-size:34px}.modal-grid{grid-template-columns:1fr}.footer-meta{position:static;transform:none;margin-top:14px}.member-panel{right:14px;top:14px}.member-list{gap:14px}.detail-main{padding:18px}.detail-figure{width:100%;height:210px}.detail-grid{gap:10px}.detail-side{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -136,22 +149,22 @@
   <main class="app">
     <header class="topbar">
       <nav class="nav-pills">
-        <button class="pill active" data-panel="overview">Overview</button>
-        <button class="pill" data-panel="members">Members</button>
-        <button class="pill" data-panel="tasks">Tasks</button>
-        <button class="pill" data-panel="projects">Projects</button>
-        <button class="pill" data-panel="memory">Memory</button>
-        <button class="pill" data-panel="brief">Brief</button>
+        <button class="pill active" data-panel="overview">总览</button>
+        <button class="pill" data-panel="tasks">任务</button>
+        <button class="pill" data-panel="members">成员</button>
+        <button class="pill" data-panel="projects">项目</button>
+        <button class="pill" data-panel="memory">记忆</button>
+        <button class="pill" data-panel="brief">简报</button>
       </nav>
-      <div class="member-cluster"><button class="stack-trigger" id="openMembers" aria-label="Open member cards"><span class="stack-shadow s1"></span><span class="stack-shadow s2"></span><span class="stack-shadow s3"></span><div class="trigger-inner"><div class="trigger-thumb" id="triggerAvatar"></div><div class="trigger-copy"><b>Members</b><span>7 original roles inside X LAB</span></div><div class="trigger-more">+ 6 more</div></div></button></div>
+      <div class="member-cluster"><button class="stack-trigger" id="openMembers" aria-label="打开成员状态"><span class="stack-shadow s1"></span><span class="stack-shadow s2"></span><span class="stack-shadow s3"></span><div class="trigger-inner"><div class="trigger-thumb" id="triggerAvatar"></div><div class="trigger-copy"><b>虾团队</b><span>7 个角色的当前状态</span></div><div class="trigger-more">+ 6</div></div></button></div>
     </header>
     <section class="hero">
-      <div class="hero-center"><div class="line motion" id="line1">X LAB</div><div class="line motion" id="line2">AGENT SYSTEM</div><div class="line motion" id="line3">& TEAM DIRECTION</div><div class="line motion" id="line4"><span id="numA">07</span> MEMBERS</div><div class="line motion" id="line5"><span id="numB">21</span> LIVE TASKS</div><div class="line motion" id="line6">→ DAILY BRIEF → MEMORY</div><div class="cta-row"><button class="cta" data-panel="tasks">→TASKS</button><button class="cta" data-panel="members">→MEMBERS</button></div></div>
-      <div class="footer-meta">X LAB INTERNAL INTERFACE · MOTION TYPE · MEMBER STACK</div>
+      <div class="hero-center"><div class="line motion" id="line1">X_LAB</div><div class="line motion" id="line2">每日工作台</div><div class="line motion" id="line3">任务 · 状态 · 产出</div><div class="home-grid"><section class="home-card light"><div class="home-k">今日最重要</div><h2>今天先看这里</h2><ul id="homeFocus"></ul><div class="quick-row"><button data-panel="tasks">看任务</button><button data-panel="brief">看简报</button></div></section><section class="home-card"><div class="home-k">团队状态</div><h2>每个虾在忙什么</h2><p id="homeAgents">加载中...</p><div class="quick-row"><button data-panel="members">看成员</button></div></section><section class="home-card"><div class="home-k">待处理</div><h2>问题和下一步</h2><p id="homeIssues">加载中...</p><div class="quick-row"><button data-panel="tasks">处理事项</button></div></section></div></div>
+      <div class="footer-meta">X_Lab · 飞书任务 · 虾调研知识库</div>
     </section>
   </main>
-  <div class="overlay" id="memberOverlay"><div class="member-panel"><div class="member-list" id="memberList"></div><button class="member-toggle" id="closeMembers">Show less</button></div></div>
-  <div class="modal" id="modal"><div class="modal-inner"><div class="modal-head"><div class="modal-title" id="modalTitle">Overview</div><button class="close-btn" id="closeModal">Close</button></div><div id="modalContent"><div class="modal-grid" id="modalGrid"></div></div></div></div>
+  <div class="overlay" id="memberOverlay"><div class="member-panel"><div class="member-list" id="memberList"></div><button class="member-toggle" id="closeMembers">收起</button></div></div>
+  <div class="modal" id="modal"><div class="modal-inner"><div class="modal-head"><div class="modal-title" id="modalTitle">总览</div><button class="close-btn" id="closeModal">关闭</button></div><div id="modalContent"><div class="modal-grid" id="modalGrid"></div></div></div></div>
   <script>
     let appData;
     let members=[];
@@ -166,17 +179,18 @@
     }
 
     function memberButton(m,i,selected=false){
-      return `<button class="member-item ${selected?'selected':''}" style="--accent:${m.color}" onclick="openMember(${i})"><div class="thumb">${avatar(i)}</div><div><div class="title">${m.name}</div><div class="role">${m.cn}<br>${m.role}</div><div class="meta">${m.progress}% · DONE ${m.done} · ${m.status}</div></div><div class="arrow">↗</div></button>`
+      return `<button class="member-item ${selected?'selected':''}" style="--accent:${m.color}" onclick="openMember(${i})"><div class="thumb">${avatar(i)}</div><div><div class="title">${m.cn}</div><div class="role">${m.role}<br>${m.task}</div><div class="meta">${m.progress}% · ${m.done} · ${m.status}</div></div><div class="arrow">↗</div></button>`
     }
     const overlay=document.getElementById('memberOverlay');
     document.getElementById('openMembers').onclick=()=>{overlay.classList.add('open');document.body.classList.add('members-open')};
     document.getElementById('closeMembers').onclick=()=>{overlay.classList.remove('open');document.body.classList.remove('members-open')};
     overlay.onclick=e=>{if(e.target===overlay){overlay.classList.remove('open');document.body.classList.remove('members-open')}};
 
+    const panelNames={overview:'总览',members:'成员',tasks:'任务',projects:'项目',memory:'记忆',brief:'简报'};
     const modal=document.getElementById('modal'),modalTitle=document.getElementById('modalTitle'),modalContent=document.getElementById('modalContent');
     function card(k,h,p,light=false,extra=''){return `<article class="modal-card ${light?'light':''}"><div><div class="mk">${k}</div><h3>${h}</h3><p>${p}</p>${extra}</div></article>`}
     function setGrid(html){modalContent.innerHTML=`<div class="modal-grid" id="modalGrid">${html}</div>`}
-    function openPanel(key){modalTitle.textContent=key; if(key==='overview') renderOverview(); if(key==='members') renderMembers(); if(key==='tasks') renderTasks(); if(key==='projects') renderProjects(); if(key==='memory') renderMemory(); if(key==='brief') renderBrief(); modal.classList.add('open')}
+    function openPanel(key){modalTitle.textContent=panelNames[key]||key; if(key==='overview') renderOverview(); if(key==='members') renderMembers(); if(key==='tasks') renderTasks(); if(key==='projects') renderProjects(); if(key==='memory') renderMemory(); if(key==='brief') renderBrief(); modal.classList.add('open')}
     function latestAssignment(){return assignments[assignments.length-1]}
     function humanType(type){
       return {signal:'线索/选题',task:'通用任务',design:'设计任务',research:'研究任务',content:'内容任务'}[type]||'通用任务';
@@ -207,60 +221,70 @@
     function outputSummary(){
       const item=latestAssignment();
       if(!item)return '当前还没有产出文件。';
-      const aiOutputs=(item.aiOutputs||[]).map(output=>`${output.role}：${output.output}`);
+      const aiOutputs=(item.aiOutputs||[]).map(output=>{
+        const title=output.title||`${output.role}产出`;
+        const url=output.url||item.feishuWiki?.wikiUrl||item.feishuWiki?.docUrl;
+        return url?`${title}：<a href="${url}" target="_blank" rel="noopener">打开飞书文档</a>`:`${title}：${output.output}`;
+      });
       if(item.feishuWiki?.wikiUrl||item.feishuWiki?.docUrl){
-        aiOutputs.push(`飞书知识库：${item.feishuWiki.wikiUrl||item.feishuWiki.docUrl}`);
+        aiOutputs.push(`正式文档：<a href="${item.feishuWiki.wikiUrl||item.feishuWiki.docUrl}" target="_blank" rel="noopener">${item.feishuWiki.title||'打开虾调研文档'}</a>`);
       }
       return aiOutputs.join('<br>')||'当前还没有 AI 角色产出。';
     }
+    function issueSummary(){
+      const item=latestAssignment();
+      if(!item)return '当前没有待处理问题。';
+      return `${item.issue||'暂无明确问题。'}<br><br>下一步：${item.nextAction||'等待下一次任务。'}`;
+    }
+    function renderHome(){
+      document.getElementById('homeFocus').innerHTML=(daily||[]).slice(0,4).map(item=>`<li>${item}</li>`).join('');
+      document.getElementById('homeAgents').innerHTML=members.slice(0,4).map(m=>`${m.cn}：${m.status}`).join('<br>');
+      document.getElementById('homeIssues').innerHTML=issueSummary();
+    }
     function renderOverview(){setGrid(`
-      ${card('Global Status',`${appData.summary.agents} agents · ${appData.summary.liveTasks} live tasks · ${appData.summary.completion}%`,`全局工作状态：${appData.summary.status}`,true)}
-      <article class="modal-card wide"><div><div class="mk">Member Status</div>${members.map(m=>`<div class="status-row"><b>${m.name}</b><span>${m.status}</span><div class="progress" style="--p:${m.progress}%;--accent:${m.color}"><span></span></div><span>${m.done}</span></div>`).join('')}</div></article>
-      ${card('Task Pool','任务池',taskPoolSummary())}
-      ${card('Handoff','最近转交流',handoffSummary(),true)}
-      ${card('Outputs','角色产出文件',outputSummary(),true)}
-      ${card('Daily Focus','今日要事',daily.join('<br>'))}
-      ${card('Open Issues','遗留问题','1. 二级页信息密度控制。<br>2. 7 个角色 PNG 已全部替换完成。<br>3. 项目/任务/成员的数据关系需要统一。',true)}
-      ${card('Feishu Intake','飞书任务入口',`当前同步任务：${appData.summary.feishuTasks||0} 个。<br>${(appData.tasks||[]).slice(0,3).map(t=>`${t.title}${t.url?` · ${t.url}`:''}`).join('<br>')||'当前没有未完成任务。'}`)}
-      ${card('Project / Task','项目与任务情况','X LAB Interface：7 active tasks。<br>MagicFrame：6 active tasks。<br>Memory Vault：4 active tasks。')}
-      ${card('Future Plan','未来计划',future.join('<br>'),true)}
+      ${card('今日状态',`${appData.summary.agents} 个角色 · ${appData.summary.feishuTasks||0} 个飞书任务`,`${appData.summary.status}`,true)}
+      <article class="modal-card wide"><div><div class="mk">成员状态</div>${members.map(m=>`<div class="status-row"><b>${m.cn}</b><span>${m.status}</span><div class="progress" style="--p:${m.progress}%;--accent:${m.color}"><span></span></div><span>${m.done}</span></div>`).join('')}</div></article>
+      ${card('今日重点','最重要的几件事',daily.join('<br>'))}
+      ${card('待处理','问题和下一步',issueSummary(),true)}
+      ${card('最近任务','任务池',taskPoolSummary())}
+      ${card('最近产出','飞书文档',outputSummary(),true)}
     `)}
-    function renderMembers(){setGrid(members.map((m,i)=>card(m.cn,m.name,`${m.status}<br>${m.taskDetail}<br><br>协作成员：${m.with}<br>遗留问题：${m.issue}<br>下一步：${m.plan}`,i%2===1,`<div class="actions"><button onclick="openMember(${i})">Open Detail</button><button onclick="openPanel('brief')">Brief</button><button onclick="openPanel('memory')">Memory</button></div>`)).join(''))}
+    function renderMembers(){setGrid(members.map((m,i)=>card(m.role,m.cn,`状态：${m.status}<br>正在做：${m.taskDetail}<br><br>协作对象：${m.with}<br>问题：${m.issue}<br>下一步：${m.plan}`,i%2===1,`<div class="actions"><button onclick="openMember(${i})">查看详情</button><button onclick="openPanel('brief')">看简报</button><button onclick="openPanel('memory')">看记忆</button></div>`)).join(''))}
     function renderTasks(){
       const item=latestAssignment();
       setGrid(`
         ${card('Task Pool','任务池',taskPoolSummary(),true)}
-        ${card('Handoff','转交流',handoffSummary(item))}
-        ${card('Work Progress','工作进展',progressSummary(item),true)}
-        ${card('Outputs','产出文件',outputSummary())}
-        ${card('Status','状态',item?`当前任务：${item.taskTitle}<br>状态：${statusLabel(item.status)}<br>来源：${item.source}`:'当前没有任务。',true)}
+        ${card('转交流','谁交给谁',handoffSummary(item))}
+        ${card('工作进展','每个角色做到哪一步',progressSummary(item),true)}
+        ${card('产出文件','标题和飞书链接',outputSummary())}
+        ${card('状态','当前任务状态',item?`当前任务：${item.taskTitle}<br>状态：${statusLabel(item.status)}<br>来源：${item.source}<br><br>待处理：${item.issue||'暂无'}`:'当前没有任务。',true)}
       `)
     }
-    function renderProjects(){setGrid(projects.map((p,i)=>card(p.stage,p.name,`负责人：${p.owner}<br>进度：${p.progress}%<br>任务：${p.tasks}<br>遗留问题：${p.issue}<br>下一步：${p.next}`,i%2===1,`<div class="actions"><button onclick="openPanel('members')">Members</button><button onclick="openPanel('memory')">Docs</button></div>`)).join(''))}
+    function renderProjects(){setGrid(projects.map((p,i)=>card(p.stage,p.name,`负责人：${p.owner}<br>进度：${p.progress}%<br>任务：${p.tasks}<br>问题：${p.issue}<br>下一步：${p.next}`,i%2===1,`<div class="actions"><button onclick="openPanel('members')">看成员</button><button onclick="openPanel('memory')">看记忆</button></div>`)).join(''))}
     function renderMemory(){setGrid(appData.memory.map((x,i)=>card(x[0],x[1],x[2],i%2===0)).join(''))}
-    function renderBrief(){setGrid(`${card('Today','今日要事',daily.join('<br>'),true)}${card('Latest Collaboration','最近协作',assignmentSummary())}${card('Latest Outputs','最近产出',outputSummary(),true)}${card('Findings','今日结论','当前视觉基线已确认：黑底、中央动态大字、左上胶囊导航、右上成员卡展开。<br>下一阶段应重点补齐二级页内容，而不是再更换整体风格。')}${card('Risks','风险提醒','1. 二级页不能只是卡片展示，要能看任务、协作和遗留问题。<br>2. 成员详情必须能回到全局项目和记忆库。',true)}${card('Tomorrow','明日计划',future.join('<br>'))}`)}
+    function renderBrief(){setGrid(`${card('今日要事','今天最重要',daily.join('<br>'),true)}${card('最近协作','任务链路',assignmentSummary())}${card('最近产出','飞书链接',outputSummary(),true)}${card('待处理','问题和下一步',issueSummary())}${card('后续计划','下一阶段',future.join('<br>'),true)}`)}
     function openMember(i){
       const m=members[i];
-      modalTitle.textContent='Member Detail';
+      modalTitle.textContent='成员详情';
       modalContent.innerHTML=`
         <div class="member-detail-layout">
           <section class="detail-main" style="--accent:${m.color}">
             <div class="detail-hero">
               <div class="detail-figure">${avatar(i)}</div>
               <div class="detail-copy">
-                <div class="active">Active</div>
-                <div class="detail-name">${m.name}</div>
+                <div class="active">工作中</div>
+                <div class="detail-name">${m.cn}</div>
                 <div class="detail-status">${m.status}</div>
                 <div class="detail-desc">${m.desc}</div>
               </div>
             </div>
             <div class="detail-grid">
-              <article class="info-card"><div class="info-icon">♙</div><div><div class="info-k">Role</div><div class="info-title">${m.role}</div><div class="info-body">Sets direction and aligns the team to the mission.</div></div></article>
-              <article class="info-card"><div class="info-icon">▤</div><div><div class="info-k">Current Task</div><div class="info-title">${m.task}</div><div class="info-body">${m.taskDetail}</div></div></article>
-              <article class="info-card"><div class="info-icon">○</div><div><div class="info-k">Progress</div><div class="info-title">${m.progress}%</div><div class="bar" style="--p:${m.progress}%"><span></span></div><div class="info-body">● On track · Done ${m.done}</div></div></article>
-              <article class="info-card"><div class="info-icon">♧</div><div><div class="info-k">Collaborating With</div><div class="info-title">${m.with}</div><div class="info-body">${m.withDetail}</div></div></article>
-              <article class="info-card"><div class="info-icon">△</div><div><div class="info-k">Open Issue</div><div class="info-title">${m.issue}</div><div class="info-body">${m.issueDetail}</div></div></article>
-              <article class="info-card"><div class="info-icon">↗</div><div><div class="info-k">Next Move</div><div class="info-title">${m.plan}</div><div class="info-body">${m.planDetail}</div></div></article>
+              <article class="info-card"><div class="info-icon">♙</div><div><div class="info-k">角色</div><div class="info-title">${m.role}</div><div class="info-body">${m.desc}</div></div></article>
+              <article class="info-card"><div class="info-icon">▤</div><div><div class="info-k">正在做</div><div class="info-title">${m.task}</div><div class="info-body">${m.taskDetail}</div></div></article>
+              <article class="info-card"><div class="info-icon">○</div><div><div class="info-k">进度</div><div class="info-title">${m.progress}%</div><div class="bar" style="--p:${m.progress}%"><span></span></div><div class="info-body">${m.done}</div></div></article>
+              <article class="info-card"><div class="info-icon">♧</div><div><div class="info-k">协作对象</div><div class="info-title">${m.with}</div><div class="info-body">${m.withDetail}</div></div></article>
+              <article class="info-card"><div class="info-icon">△</div><div><div class="info-k">问题</div><div class="info-title">${m.issue}</div><div class="info-body">${m.issueDetail}</div></div></article>
+              <article class="info-card"><div class="info-icon">↗</div><div><div class="info-k">下一步</div><div class="info-title">${m.plan}</div><div class="info-body">${m.planDetail}</div></div></article>
             </div>
           </section>
           <aside class="detail-side">${members.map((item,idx)=>memberButton(item,idx,idx===i)).join('')}</aside>
@@ -276,11 +300,8 @@
     function showDataError(err){
       console.error(err);
       document.getElementById('line1').textContent='X LAB';
-      document.getElementById('line2').textContent='DATA';
-      document.getElementById('line3').textContent='LOAD FAILED';
-      document.getElementById('line4').textContent='RUN VIA';
-      document.getElementById('line5').textContent='STATIC SERVER';
-      document.getElementById('line6').textContent='SEE README';
+      document.getElementById('line2').textContent='数据加载失败';
+      document.getElementById('line3').textContent='请启动本地服务';
     }
 
     async function init(){
@@ -296,15 +317,14 @@
         future=appData.future;
         document.getElementById('triggerAvatar').innerHTML=avatar(0);
         document.getElementById('memberList').innerHTML=members.map((m,i)=>memberButton(m,i,false)).join('');
-        animateNumber(document.getElementById('numA'),0,appData.summary.agents);
-        animateNumber(document.getElementById('numB'),0,appData.summary.liveTasks);
+        renderHome();
       }catch(err){
         showDataError(err);
       }
     }
 
     const typeSets=[];
-    let setIndex=0;const lineEls=['line1','line2','line3','line4','line5','line6'].map(id=>document.getElementById(id));
+    let setIndex=0;const lineEls=['line1','line2','line3'].map(id=>document.getElementById(id)).filter(Boolean);
     function switchTypeSet(){const sets=appData?.typeSets||typeSets;if(!sets.length)return;setIndex=(setIndex+1)%sets.length;const set=sets[setIndex];lineEls.forEach((el,idx)=>{el.style.opacity='0';el.style.transform=`translateY(${8+idx}px)`});setTimeout(()=>{lineEls.forEach((el,idx)=>{el.textContent=set[idx];el.style.opacity='1';el.style.transform='translateY(0)'})},320)}
     setInterval(switchTypeSet,4800);
     function animateNumber(el,from,to,suffix='',duration=1400){const start=performance.now();function frame(now){const t=Math.min((now-start)/duration,1);const e=1-Math.pow(1-t,3);const v=Math.round(from+(to-from)*e);el.textContent=String(v).padStart(2,'0')+suffix;if(t<1)requestAnimationFrame(frame)}requestAnimationFrame(frame)}

@@ -8,12 +8,12 @@
       {
         "role": "The Director",
         "cn": "虾老大",
-        "responsibility": "确认测试目标：验证飞书任务能进入 X_Lab，并触发 Brief 与 Obsidian 记录。"
+        "responsibility": "确认测试目标：验证飞书任务能进入 X_Lab，并触发 简报 与 Obsidian 记录。"
       },
       {
         "role": "The Architect",
         "cn": "产品虾",
-        "responsibility": "确认数据链路：飞书任务 -> data/tasks.json -> data.json -> X_Lab Overview。"
+        "responsibility": "确认数据链路：飞书任务 -> data/tasks.json -> data.json -> X_Lab 总览。"
       },
       {
         "role": "The Critic",
@@ -46,22 +46,34 @@
       {
         "role": "虾老大",
         "english": "The Director",
-        "output": "outputs/ai/director/2026-05-21-task-62071945-director-decision.md"
+        "output": "outputs/ai/director/2026-05-21-task-62071945-director-decision.md",
+        "title": "虾老大：调度判断",
+        "url": "",
+        "wikiTitle": "测试 X_Lab 飞书任务入口：生成今日虾团队简报"
       },
       {
         "role": "产品虾",
         "english": "The Architect",
-        "output": "outputs/ai/architect/2026-05-21-task-62071945-architect-plan.md"
+        "output": "outputs/ai/architect/2026-05-21-task-62071945-architect-plan.md",
+        "title": "产品虾：结构方案",
+        "url": "",
+        "wikiTitle": "测试 X_Lab 飞书任务入口：生成今日虾团队简报"
       },
       {
         "role": "挑刺虾",
         "english": "The Critic",
-        "output": "outputs/ai/critic/2026-05-21-task-62071945-critic-review.md"
+        "output": "outputs/ai/critic/2026-05-21-task-62071945-critic-review.md",
+        "title": "挑刺虾：风险审查",
+        "url": "",
+        "wikiTitle": "测试 X_Lab 飞书任务入口：生成今日虾团队简报"
       },
       {
         "role": "运营虾",
         "english": "The Broadcaster",
-        "output": "outputs/ai/broadcaster/2026-05-21-task-62071945-broadcaster-brief.md"
+        "output": "outputs/ai/broadcaster/2026-05-21-task-62071945-broadcaster-brief.md",
+        "title": "运营虾：运营简报",
+        "url": "",
+        "wikiTitle": "测试 X_Lab 飞书任务入口：生成今日虾团队简报"
       }
     ],
     "feishuWriteback": {
@@ -110,7 +122,9 @@
         "status": "已完成",
         "output": "outputs/ai/broadcaster/2026-05-21-task-62071945-broadcaster-brief.md"
       }
-    ]
+    ],
+    "issue": "需要确认下一步负责人和最终交付物。",
+    "nextAction": "查看飞书知识库正式文档，决定是否继续发布或二次加工。"
   },
   {
     "taskId": "84834c1c-be6d-493d-9a53-996d68bbed96",
@@ -151,22 +165,34 @@
       {
         "role": "虾老大",
         "english": "The Director",
-        "output": "outputs/ai/director/2026-05-22-task-84834c1c-director-decision.md"
+        "output": "outputs/ai/director/2026-05-22-task-84834c1c-director-decision.md",
+        "title": "虾老大：调度判断",
+        "url": "https://my.feishu.cn/docx/TdRCdYN57ofkErxt0Gfc2Iycn8c",
+        "wikiTitle": "2026-05-23 【选题转交】新闻虾发现“AI 会勒索人类”，请运营虾评估选题价值并产出内容角度"
       },
       {
         "role": "产品虾",
         "english": "The Architect",
-        "output": "outputs/ai/architect/2026-05-22-task-84834c1c-architect-plan.md"
+        "output": "outputs/ai/architect/2026-05-22-task-84834c1c-architect-plan.md",
+        "title": "产品虾：结构方案",
+        "url": "https://my.feishu.cn/docx/TdRCdYN57ofkErxt0Gfc2Iycn8c",
+        "wikiTitle": "2026-05-23 【选题转交】新闻虾发现“AI 会勒索人类”，请运营虾评估选题价值并产出内容角度"
       },
       {
         "role": "挑刺虾",
         "english": "The Critic",
-        "output": "outputs/ai/critic/2026-05-22-task-84834c1c-critic-review.md"
+        "output": "outputs/ai/critic/2026-05-22-task-84834c1c-critic-review.md",
+        "title": "挑刺虾：风险审查",
+        "url": "https://my.feishu.cn/docx/TdRCdYN57ofkErxt0Gfc2Iycn8c",
+        "wikiTitle": "2026-05-23 【选题转交】新闻虾发现“AI 会勒索人类”，请运营虾评估选题价值并产出内容角度"
       },
       {
         "role": "运营虾",
         "english": "The Broadcaster",
-        "output": "outputs/ai/broadcaster/2026-05-22-task-84834c1c-broadcaster-brief.md"
+        "output": "outputs/ai/broadcaster/2026-05-22-task-84834c1c-broadcaster-brief.md",
+        "title": "运营虾：运营简报",
+        "url": "https://my.feishu.cn/docx/TdRCdYN57ofkErxt0Gfc2Iycn8c",
+        "wikiTitle": "2026-05-23 【选题转交】新闻虾发现“AI 会勒索人类”，请运营虾评估选题价值并产出内容角度"
       }
     ],
     "feishuWriteback": {
@@ -226,6 +252,8 @@
       "wikiToken": "XtD3w8OnqiiqtSk1ORxclkoYnSe",
       "wikiUrl": "https://my.feishu.cn/docx/TdRCdYN57ofkErxt0Gfc2Iycn8c",
       "publishedAt": "2026-05-22T23:57:28.574Z"
-    }
+    },
+    "issue": "需要确认原始来源、事实边界和可发布性。",
+    "nextAction": "查看飞书知识库正式文档，决定是否继续发布或二次加工。"
   }
 ]
