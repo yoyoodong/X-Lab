@@ -350,11 +350,23 @@
       const loop=taskLoopStages();
       return loop.map(item=>`<article class="loop-step"><b>${item.stage}</b><span>${item.owner} · ${item.status}</span><p>${item.detail}</p></article>`).join('');
     }
+    function roleTaskContext(member){
+      const contexts=workspace().roleTaskContext||{};
+      return contexts[member.name]||{
+        taskRole:member.role,
+        taskStatus:member.status,
+        responsibility:member.taskDetail,
+        currentWork:member.taskDetail,
+        blocker:member.issue,
+        next:member.plan,
+        output:'暂无当前任务产出。'
+      };
+    }
     function renderHome(){
       const ws=workspace();
       document.getElementById('workspaceProject').textContent=ws.currentProject||'当前项目';
       document.getElementById('workspaceGoal').textContent=ws.currentGoal||'加载中...';
-      document.getElementById('workspacePositioning').textContent=ws.positioning||appData.summary.status;
+      document.getElementById('workspacePositioning').textContent=appData.summary.status||'';
       document.getElementById('workspaceStatus').textContent=ws.taskLoop?.status||'运行中';
       document.getElementById('loopSteps').innerHTML=loopCards();
       document.getElementById('homeTaskTitle').textContent=ws.taskLoop?.title||'任务闭环';
@@ -390,6 +402,8 @@
     function renderBrief(){setGrid(`${card('当前项目',workspace().currentProject||'X LAB',workspace().currentGoal||'',true)}${card('任务闭环','从想法到输出物',taskLoopSummary())}${card('最近协作','任务链路',assignmentSummary(),true)}${card('最近产出','飞书链接',outputSummary())}${card('反馈','采用和改进',feedbackSummary(),true)}${card('后续计划','下一阶段',future.join('<br>'))}`)}
     function openMember(i){
       const m=members[i];
+      const ctx=roleTaskContext(m);
+      const task=currentActiveTask();
       modalTitle.textContent='成员详情';
       modalContent.innerHTML=`
         <div class="member-detail-layout">
@@ -399,17 +413,17 @@
               <div class="detail-copy">
                 <div class="active">工作中</div>
                 <div class="detail-name">${m.cn}</div>
-                <div class="detail-status">${m.status}</div>
-                <div class="detail-desc">${m.desc}</div>
+                <div class="detail-status">${ctx.taskRole} · ${ctx.taskStatus}</div>
+                <div class="detail-desc">当前任务：${task?.title||workspace().taskLoop?.title||'暂无'}<br>${ctx.responsibility}</div>
               </div>
             </div>
             <div class="detail-grid">
-              <article class="info-card"><div class="info-icon">♙</div><div><div class="info-k">角色</div><div class="info-title">${m.role}</div><div class="info-body">${m.desc}</div></div></article>
-              <article class="info-card"><div class="info-icon">▤</div><div><div class="info-k">正在做</div><div class="info-title">${m.task}</div><div class="info-body">${m.taskDetail}</div></div></article>
-              <article class="info-card"><div class="info-icon">○</div><div><div class="info-k">进度</div><div class="info-title">${m.progress}%</div><div class="bar" style="--p:${m.progress}%"><span></span></div><div class="info-body">${m.done}</div></div></article>
-              <article class="info-card"><div class="info-icon">♧</div><div><div class="info-k">协作对象</div><div class="info-title">${m.with}</div><div class="info-body">${m.withDetail}</div></div></article>
-              <article class="info-card"><div class="info-icon">△</div><div><div class="info-k">问题</div><div class="info-title">${m.issue}</div><div class="info-body">${m.issueDetail}</div></div></article>
-              <article class="info-card"><div class="info-icon">↗</div><div><div class="info-k">下一步</div><div class="info-title">${m.plan}</div><div class="info-body">${m.planDetail}</div></div></article>
+              <article class="info-card"><div class="info-icon">♙</div><div><div class="info-k">当前任务角色</div><div class="info-title">${ctx.taskRole}</div><div class="info-body">${ctx.responsibility}</div></div></article>
+              <article class="info-card"><div class="info-icon">▤</div><div><div class="info-k">正在做</div><div class="info-title">${ctx.taskStatus}</div><div class="info-body">${ctx.currentWork}</div></div></article>
+              <article class="info-card"><div class="info-icon">○</div><div><div class="info-k">任务进度</div><div class="info-title">${m.progress}%</div><div class="bar" style="--p:${m.progress}%"><span></span></div><div class="info-body">${m.done}</div></div></article>
+              <article class="info-card"><div class="info-icon">♧</div><div><div class="info-k">协作对象</div><div class="info-title">${(task?.agents||[m.with]).join(' / ')}</div><div class="info-body">${m.withDetail}</div></div></article>
+              <article class="info-card"><div class="info-icon">△</div><div><div class="info-k">卡点</div><div class="info-title">${ctx.blocker}</div><div class="info-body">${task?.issue||m.issueDetail}</div></div></article>
+              <article class="info-card"><div class="info-icon">↗</div><div><div class="info-k">下一步</div><div class="info-title">${ctx.next}</div><div class="info-body">产出：${ctx.output}</div></div></article>
             </div>
           </section>
           <aside class="detail-side">${members.map((item,idx)=>memberButton(item,idx,idx===i)).join('')}</aside>
