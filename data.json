@@ -3,13 +3,13 @@
     "agents": 7,
     "liveTasks": 21,
     "completion": 68,
-    "status": "虾团队已完成 AI 产出，并已回写飞书任务评论/状态。",
+    "status": "当前主任务：补齐「AI 会勒索人类」原始来源，并产出小红书图文笔记。",
     "feishuTasks": 1
   },
   "workspace": {
     "positioning": "X LAB 是你的 AI 项目作战室：把想法、角色、任务、记忆、反馈和输出物组织成一个可持续运转的 Agent Team。",
     "currentProject": "X LAB Agent Team",
-    "currentGoal": "把角色系统升级成真实项目闭环工作台。",
+    "currentGoal": "完成「AI 会勒索人类」新闻溯源，并输出小红书图文笔记。",
     "loop": [
       {
         "stage": "想法",
@@ -49,24 +49,23 @@
       }
     ],
     "taskLoop": {
-      "title": "把 X LAB 从角色展示页升级成项目闭环工作台",
-      "target": "打开首页就能看到当前项目、目标、任务阶段、参与 Agent、输出物和下一步。",
-      "leadAgent": "虾老大",
+      "title": "AI 会勒索人类新闻溯源 → 小红书图文笔记",
+      "target": "找到可靠原始来源，判断选题价值，并产出可发布的小红书图文笔记。",
+      "leadAgent": "侦察虾",
       "collaborators": [
-        "产品虾",
-        "设计虾",
+        "虾老大",
         "挑刺虾",
         "运营虾"
       ],
-      "status": "进行中",
-      "done": "已完成最小 Agent 运行时：状态、接力、事件、健康检查。",
-      "issue": "页面还需要把闭环机制放到主舞台，而不是只展示角色。",
-      "next": "首页增加任务闭环卡片、Memory 分类和 Feedback 入口。",
+      "status": "待补来源",
+      "done": "已跑通 AI 角色链路，运营虾已给出选题评估框架和小红书笔记结构模板。",
+      "issue": "缺少侦察虾溯源报告，不能基于假设直接发布。",
+      "next": "侦察虾补原始来源、发布时间、可信度和引用证据；确认后运营虾输出小红书图文笔记。",
       "outputs": [
-        "data/agent-state.json",
-        "data/handoffs.json",
-        "data/events.json",
-        "飞书知识库虾调研文档"
+        "侦察虾溯源报告",
+        "飞书文档：小红书图文笔记",
+        "飞书知识库：虾调研正式归档",
+        "Obsidian 任务记录"
       ]
     },
     "activeTasks": [
@@ -93,8 +92,8 @@
         "label": "任务 2",
         "title": "AI 会勒索人类新闻溯源",
         "source": "feishu",
-        "status": "待复核",
-        "goal": "找到原始新闻来源，并交给运营虾评估选题价值。",
+        "status": "进行中",
+        "goal": "找到原始新闻来源，判断是否适合跟进，并输出小红书图文笔记。",
         "owner": "侦察虾",
         "agents": [
           "虾老大",
@@ -102,9 +101,9 @@
           "挑刺虾",
           "运营虾"
         ],
-        "done": "已跑通 AI 角色链路、写入 Obsidian、发布飞书 Wiki、回写飞书评论。",
-        "issue": "缺少侦察虾溯源报告，运营虾不能基于假设做最终选题判断。",
-        "next": "侦察虾补原始来源、发布时间、可信度和可引用证据；虾老大再仲裁是否继续。"
+        "done": "已跑通 AI 角色链路，运营虾已输出选题判断矩阵和小红书内容框架。",
+        "issue": "缺少侦察虾溯源报告，不能确认事实边界和发布风险。",
+        "next": "侦察虾补原始来源、发布时间、可信度和可引用证据；确认后运营虾在飞书文档里生成正式小红书图文笔记。"
       }
     ],
     "memoryCategories": [
@@ -400,7 +399,7 @@
       "id": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
       "source": "feishu",
       "title": "【新闻虾转运营虾】请找到“AI 会勒索人类”新闻来源，并转给运营虾评估选题",
-      "status": "needs_review",
+      "status": "in_progress",
       "due": "",
       "url": "https://applink.feishu.cn/client/todo/detail?guid=e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
       "owner": "me"
