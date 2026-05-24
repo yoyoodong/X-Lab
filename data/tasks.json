@@ -1,17 +1,26 @@
 [
   {
-    "id": "84834c1c-be6d-493d-9a53-996d68bbed96",
-    "source": "feishu",
-    "title": "【选题转交】新闻虾发现“AI 会勒索人类”，请运营虾评估选题价值并产出内容角度",
-    "status": "feishu_completed",
+    "id": "xlab-upgrade-001",
+    "source": "project",
+    "title": "X LAB 升级",
+    "status": "in_progress",
     "due": "",
-    "url": "https://applink.feishu.cn/client/todo/detail?guid=84834c1c-be6d-493d-9a53-996d68bbed96",
+    "url": "",
+    "owner": "me"
+  },
+  {
+    "id": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
+    "source": "feishu",
+    "title": "【新闻虾转运营虾】请找到“AI 会勒索人类”新闻来源，并转给运营虾评估选题",
+    "status": "needs_review",
+    "due": "",
+    "url": "https://applink.feishu.cn/client/todo/detail?guid=e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
     "owner": "me",
     "raw": {
-      "created_at": "2026-05-22T07:55:32+08:00",
-      "guid": "84834c1c-be6d-493d-9a53-996d68bbed96",
-      "summary": "【选题转交】新闻虾发现“AI 会勒索人类”，请运营虾评估选题价值并产出内容角度",
-      "url": "https://applink.feishu.cn/client/todo/detail?guid=84834c1c-be6d-493d-9a53-996d68bbed96"
+      "created_at": "2026-05-22T08:57:36+08:00",
+      "guid": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
+      "summary": "【新闻虾转运营虾】请找到“AI 会勒索人类”新闻来源，并转给运营虾评估选题",
+      "url": "https://applink.feishu.cn/client/todo/detail?guid=e2dc03f9-da3d-41de-b6c3-ee284e5c7629"
     }
   }
 ]

@@ -52,6 +52,12 @@ function main() {
   const result = publishToFeishuWiki({ task, outputs, obsidianRecord });
 
   assignment.feishuWiki = result;
+  if (Array.isArray(assignment.aiOutputs)) {
+    for (const output of assignment.aiOutputs) {
+      output.url = result.wikiUrl || result.docUrl;
+      output.wikiTitle = result.title;
+    }
+  }
   assignment.outputs = [
     ...new Set([
       ...(assignment.outputs || []),

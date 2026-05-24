@@ -4,9 +4,9 @@ X_Lab is a static dashboard for the X LAB agent team. It presents the team struc
 
 ## Current Status
 
-This is a structured static MVP. It is usable as a visual workspace, demo page, and manual team status board.
+This is a structured static MVP with a minimum viable AI director runtime. It is usable as a visual workspace, demo page, manual team status board, and single-process agent-team prototype.
 
-It is not yet a fully automated agent team system. The current state is loaded from `data.json`; role execution, Obsidian writes, and daily brief generation are still manual or future automation work.
+It is not yet a fully automated multi-process agent team system. The current dashboard state is loaded from `data.json`; `npm run director` can run a single-process role sequence, write role outputs, record agent state/handoffs/events, write Obsidian summaries, and write back to Feishu.
 
 ## Project Structure
 
@@ -65,6 +65,7 @@ http://127.0.0.1:8765/
 - Practical operating manual in `docs/manual.md`
 - Feishu task intake guide in `docs/feishu-task-intake.md`
 - AI director guide in `docs/ai-director.md`
+- Minimum runtime files: `data/agent-state.json`, `data/handoffs.json`, `data/events.json`
 
 ## Manual
 
@@ -76,8 +77,8 @@ docs/manual.md
 
 Current application boundary:
 
-- Usable: manual team dashboard, daily review, role/task state board, Obsidian memory process
-- Not yet automatic: autonomous task execution, automatic brief generation, automatic Obsidian writes
+- Usable: manual team dashboard, daily review, role/task state board, Obsidian memory process, single-process AI director run
+- Not yet automatic: multi-terminal independent agents, dynamic worker queues, fully autonomous task execution
 
 ## Feishu Task Intake
 

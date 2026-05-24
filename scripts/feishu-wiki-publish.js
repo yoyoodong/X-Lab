@@ -37,9 +37,17 @@ function cleanTitle(value) {
     .slice(0, 80);
 }
 
+function pickFinalOutput(outputs) {
+  return outputs.find((item) => item.id === 'content')
+    || outputs.find((item) => item.role === '运营虾')
+    || outputs[outputs.length - 1];
+}
+
 function buildWikiMarkdown({ task, outputs, obsidianRecord }) {
-  const sections = outputs.map((item) => {
-    return `## ${item.role} / ${item.english}
+  const finalOutput = pickFinalOutput(outputs);
+  const supportingOutputs = outputs.filter((item) => item !== finalOutput);
+  const appendix = supportingOutputs.map((item) => {
+    return `### ${item.role} / ${item.english}
 
 产出文件：
 
@@ -53,18 +61,23 @@ ${item.content}
 
   return `# ${today()} ${task.title}
 
+## 最终产出
+
+${finalOutput?.content || '当前没有最终产出。'}
+
+---
+
 ## 任务信息
 
 - 来源：${task.source || 'feishu'}
-- 状态：${task.status}
 - 飞书任务：${task.url || '无'}
 - Obsidian 记录：${obsidianRecord || '无'}
 
-## 协作链路
+## 过程记录（附录）
 
-本页由 X_Lab 自动生成。虾老大读取飞书任务、角色分工总表和角色卡后，依次调度角色完成产出。
+以下内容用于复盘，不是正文交付物。
 
-${sections}
+${appendix || '无附录。'}
 `;
 }
 

@@ -63,6 +63,18 @@
     .quick-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
     .quick-row button{padding:9px 12px;border-radius:999px;background:rgba(255,255,255,.12);font-size:13px}
     .home-card.light .quick-row button{background:rgba(0,0,0,.08)}
+    .workbench{display:block;margin-top:14px}
+    .loop-board{border-radius:14px;padding:18px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.12);box-shadow:inset 0 1px rgba(255,255,255,.08)}
+    .loop-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:14px}
+    .loop-eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.48)}
+    .loop-title{margin-top:6px;font-size:26px;font-weight:330;letter-spacing:-.04em}
+    .loop-desc{margin-top:8px;color:rgba(255,255,255,.64);font-size:14px;line-height:1.48;max-width:760px}
+    .loop-status{padding:8px 11px;border-radius:999px;background:rgba(245,207,61,.18);color:#f8d84e;font-size:12px;white-space:nowrap}
+    .loop-steps{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+    .loop-step{min-height:116px;border-radius:10px;padding:12px;background:rgba(0,0,0,.20);border:1px solid rgba(255,255,255,.10)}
+    .loop-step b{display:block;font-size:16px;font-weight:520}
+    .loop-step span{display:block;margin-top:5px;color:rgba(255,255,255,.45);font-size:11px}
+    .loop-step p{margin:10px 0 0;color:rgba(255,255,255,.62);font-size:12px;line-height:1.42}
     .member-cluster{position:relative;width:330px;z-index:15}
     .stack-trigger{position:relative;width:100%;height:138px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.24),rgba(255,255,255,.12));box-shadow:0 20px 70px rgba(0,0,0,.26),inset 0 1px 0 rgba(255,255,255,.24);overflow:visible;transition:.25s var(--ease)}
     .stack-trigger:hover{transform:translateY(-2px)}
@@ -140,8 +152,9 @@
     .detail-side .member-item .meta{display:none}
     .footer-meta{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);color:rgba(255,255,255,.34);font-size:12px;letter-spacing:.12em;text-transform:uppercase;text-align:center;z-index:5}
     @media(max-width:1080px){body{overflow:auto}.modal-inner{max-height:96vh}.member-detail-layout{grid-template-columns:1fr}.detail-side{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:1180px){.loop-steps{grid-template-columns:repeat(3,minmax(0,1fr))}}
     @media(max-width:980px){.app{min-height:100vh}.hero{padding-top:40px}.member-cluster{width:300px}.modal-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.modal-card.wide{grid-column:span 1}.status-row{grid-template-columns:1fr}.detail-hero{grid-template-columns:1fr}.detail-grid{grid-template-columns:1fr}.home-grid{grid-template-columns:1fr}}
-    @media(max-width:720px){.app{padding:18px 14px 14px}.topbar{display:block}.member-cluster{width:100%;margin-top:22px}.hero{padding:42px 0 60px}.line{font-size:40px;white-space:normal}.cta{font-size:34px}.modal-grid{grid-template-columns:1fr}.footer-meta{position:static;transform:none;margin-top:14px}.member-panel{right:14px;top:14px}.member-list{gap:14px}.detail-main{padding:18px}.detail-figure{width:100%;height:210px}.detail-grid{gap:10px}.detail-side{grid-template-columns:1fr}}
+    @media(max-width:720px){.app{padding:18px 14px 14px}.topbar{display:block}.member-cluster{width:100%;margin-top:22px}.hero{padding:42px 0 60px}.line{font-size:40px;white-space:normal}.cta{font-size:34px}.modal-grid{grid-template-columns:1fr}.footer-meta{position:static;transform:none;margin-top:14px}.member-panel{right:14px;top:14px}.member-list{gap:14px}.detail-main{padding:18px}.detail-figure{width:100%;height:210px}.detail-grid{gap:10px}.detail-side{grid-template-columns:1fr}.loop-steps{grid-template-columns:1fr}.loop-head{display:block}.loop-status{display:inline-block;margin-top:12px}}
   </style>
 </head>
 <body>
@@ -159,7 +172,29 @@
       <div class="member-cluster"><button class="stack-trigger" id="openMembers" aria-label="打开成员状态"><span class="stack-shadow s1"></span><span class="stack-shadow s2"></span><span class="stack-shadow s3"></span><div class="trigger-inner"><div class="trigger-thumb" id="triggerAvatar"></div><div class="trigger-copy"><b>虾团队</b><span>7 个角色的当前状态</span></div><div class="trigger-more">+ 6</div></div></button></div>
     </header>
     <section class="hero">
-      <div class="hero-center"><div class="line motion" id="line1">X_LAB</div><div class="line motion" id="line2">每日工作台</div><div class="line motion" id="line3">任务 · 状态 · 产出</div><div class="home-grid"><section class="home-card light"><div class="home-k">今日最重要</div><h2>今天先看这里</h2><ul id="homeFocus"></ul><div class="quick-row"><button data-panel="tasks">看任务</button><button data-panel="brief">看简报</button></div></section><section class="home-card"><div class="home-k">团队状态</div><h2>每个虾在忙什么</h2><p id="homeAgents">加载中...</p><div class="quick-row"><button data-panel="members">看成员</button></div></section><section class="home-card"><div class="home-k">待处理</div><h2>问题和下一步</h2><p id="homeIssues">加载中...</p><div class="quick-row"><button data-panel="tasks">处理事项</button></div></section></div></div>
+      <div class="hero-center">
+        <div class="line motion" id="line1">X_LAB</div>
+        <div class="line motion" id="line2">AI 项目作战室</div>
+        <div class="line motion" id="line3">想法 · 角色 · 任务 · 记忆 · 反馈 · 输出物</div>
+        <div class="workbench">
+          <section class="loop-board">
+            <div class="loop-head">
+              <div>
+                <div class="loop-eyebrow" id="workspaceProject">当前项目</div>
+                <div class="loop-title" id="workspaceGoal">加载中...</div>
+                <div class="loop-desc" id="workspacePositioning">加载中...</div>
+              </div>
+              <div class="loop-status" id="workspaceStatus">运行中</div>
+            </div>
+            <div class="loop-steps" id="loopSteps"></div>
+          </section>
+        </div>
+        <div class="home-grid">
+          <section class="home-card light"><div class="home-k">任务闭环</div><h2 id="homeTaskTitle">今天先看这里</h2><p id="homeTaskLoop">加载中...</p><div class="quick-row"><button data-panel="tasks">看任务</button><button data-panel="brief">看简报</button></div></section>
+          <section class="home-card"><div class="home-k">Memory</div><h2>团队记忆分类</h2><p id="homeMemory">加载中...</p><div class="quick-row"><button data-panel="memory">看记忆</button></div></section>
+          <section class="home-card"><div class="home-k">Feedback</div><h2>真实反馈</h2><p id="homeFeedback">加载中...</p><div class="quick-row"><button data-panel="tasks">处理事项</button></div></section>
+        </div>
+      </div>
       <div class="footer-meta">X_Lab · 飞书任务 · 虾调研知识库</div>
     </section>
   </main>
@@ -196,9 +231,13 @@
       return {signal:'线索/选题',task:'通用任务',design:'设计任务',research:'研究任务',content:'内容任务'}[type]||'通用任务';
     }
     function statusLabel(status){
-      return {todo:'待处理',assigned:'已分配',produced:'已产出',ai_produced:'AI 已产出',feishu_commented:'已回写评论',feishu_completed:'已完成'}[status]||status;
+      return {todo:'待处理',assigned:'已分配',produced:'已产出',ai_produced:'AI 已产出',feishu_commented:'已回写评论',feishu_completed:'已完成',needs_review:'待复核'}[status]||status;
     }
     function taskPoolSummary(){
+      const active=workspace().activeTasks||[];
+      if(active.length){
+        return active.map(item=>`${item.label} · ${item.status}<br>${item.title}<br><span style="color:rgba(255,255,255,.48)">${item.next}</span>`).join('<br><br>');
+      }
       if(!assignments.length)return '当前任务池还没有记录。';
       return assignments.slice(-5).reverse().map(item=>`${humanType(item.intake?.type)} · ${statusLabel(item.status)}<br>${item.taskTitle}`).join('<br><br>');
     }
@@ -223,7 +262,7 @@
       if(!item)return '当前还没有产出文件。';
       const aiOutputs=(item.aiOutputs||[]).map(output=>{
         const title=output.title||`${output.role}产出`;
-        const url=output.url||item.feishuWiki?.wikiUrl||item.feishuWiki?.docUrl;
+        const url=item.feishuWiki?.wikiUrl||item.feishuWiki?.docUrl||output.url;
         return url?`${title}：<a href="${url}" target="_blank" rel="noopener">打开飞书文档</a>`:`${title}：${output.output}`;
       });
       if(item.feishuWiki?.wikiUrl||item.feishuWiki?.docUrl){
@@ -236,16 +275,48 @@
       if(!item)return '当前没有待处理问题。';
       return `${item.issue||'暂无明确问题。'}<br><br>下一步：${item.nextAction||'等待下一次任务。'}`;
     }
+    function workspace(){
+      return appData.workspace||{};
+    }
+    function taskLoopSummary(){
+      const loop=workspace().taskLoop;
+      if(!loop)return '当前还没有任务闭环。';
+      return `目标：${loop.target}<br><br>主负责：${loop.leadAgent}<br>协作：${(loop.collaborators||[]).join(' / ')}<br>状态：${loop.status}<br><br>已完成：${loop.done}<br>遗留问题：${loop.issue}<br>下一步：${loop.next}`;
+    }
+    function activeTaskCards(){
+      const active=workspace().activeTasks||[];
+      return active.map((item,i)=>card(item.label,item.title,`目标：${item.goal}<br><br>负责人：${item.owner}<br>协作：${(item.agents||[]).join(' / ')}<br>状态：${item.status}<br><br>已完成：${item.done}<br>问题：${item.issue}<br>下一步：${item.next}`,i%2===0)).join('');
+    }
+    function memoryCategorySummary(){
+      const items=workspace().memoryCategories||[];
+      return items.slice(0,4).map(item=>`${item.name}：${item.example}`).join('<br><br>')||'当前还没有 Memory 分类。';
+    }
+    function feedbackSummary(){
+      const items=workspace().feedback||[];
+      return items.map(item=>`${item.status} · ${item.question}`).join('<br>')||'当前还没有反馈记录。';
+    }
+    function loopCards(){
+      const loop=workspace().loop||[];
+      return loop.map(item=>`<article class="loop-step"><b>${item.stage}</b><span>${item.owner} · ${item.status}</span><p>${item.detail}</p></article>`).join('');
+    }
     function renderHome(){
-      document.getElementById('homeFocus').innerHTML=(daily||[]).slice(0,4).map(item=>`<li>${item}</li>`).join('');
-      document.getElementById('homeAgents').innerHTML=members.slice(0,4).map(m=>`${m.cn}：${m.status}`).join('<br>');
-      document.getElementById('homeIssues').innerHTML=issueSummary();
+      const ws=workspace();
+      document.getElementById('workspaceProject').textContent=ws.currentProject||'当前项目';
+      document.getElementById('workspaceGoal').textContent=ws.currentGoal||'加载中...';
+      document.getElementById('workspacePositioning').textContent=ws.positioning||appData.summary.status;
+      document.getElementById('workspaceStatus').textContent=ws.taskLoop?.status||'运行中';
+      document.getElementById('loopSteps').innerHTML=loopCards();
+      document.getElementById('homeTaskTitle').textContent=ws.taskLoop?.title||'任务闭环';
+      document.getElementById('homeTaskLoop').innerHTML=taskLoopSummary();
+      document.getElementById('homeMemory').innerHTML=memoryCategorySummary();
+      document.getElementById('homeFeedback').innerHTML=feedbackSummary();
     }
     function renderOverview(){setGrid(`
-      ${card('今日状态',`${appData.summary.agents} 个角色 · ${appData.summary.feishuTasks||0} 个飞书任务`,`${appData.summary.status}`,true)}
+      ${card('产品定位','AI 项目作战室',workspace().positioning||appData.summary.status,true)}
+      ${card('当前项目',workspace().currentProject||'X LAB',`当前目标：${workspace().currentGoal||'暂无'}<br><br>${taskLoopSummary()}`)}
       <article class="modal-card wide"><div><div class="mk">成员状态</div>${members.map(m=>`<div class="status-row"><b>${m.cn}</b><span>${m.status}</span><div class="progress" style="--p:${m.progress}%;--accent:${m.color}"><span></span></div><span>${m.done}</span></div>`).join('')}</div></article>
-      ${card('今日重点','最重要的几件事',daily.join('<br>'))}
-      ${card('待处理','问题和下一步',issueSummary(),true)}
+      ${card('闭环阶段','从想法到输出物',(workspace().loop||[]).map(item=>`${item.stage}：${item.status}`).join('<br>'),true)}
+      ${card('待处理','问题和下一步',issueSummary())}
       ${card('最近任务','任务池',taskPoolSummary())}
       ${card('最近产出','飞书文档',outputSummary(),true)}
     `)}
@@ -253,16 +324,19 @@
     function renderTasks(){
       const item=latestAssignment();
       setGrid(`
+        ${activeTaskCards()}
+        ${card('任务闭环卡片',workspace().taskLoop?.title||'当前任务',taskLoopSummary(),true)}
         ${card('Task Pool','任务池',taskPoolSummary(),true)}
         ${card('转交流','谁交给谁',handoffSummary(item))}
         ${card('工作进展','每个角色做到哪一步',progressSummary(item),true)}
         ${card('产出文件','标题和飞书链接',outputSummary())}
+        ${card('反馈检查','输出是否真的有用',feedbackSummary())}
         ${card('状态','当前任务状态',item?`当前任务：${item.taskTitle}<br>状态：${statusLabel(item.status)}<br>来源：${item.source}<br><br>待处理：${item.issue||'暂无'}`:'当前没有任务。',true)}
       `)
     }
     function renderProjects(){setGrid(projects.map((p,i)=>card(p.stage,p.name,`负责人：${p.owner}<br>进度：${p.progress}%<br>任务：${p.tasks}<br>问题：${p.issue}<br>下一步：${p.next}`,i%2===1,`<div class="actions"><button onclick="openPanel('members')">看成员</button><button onclick="openPanel('memory')">看记忆</button></div>`)).join(''))}
-    function renderMemory(){setGrid(appData.memory.map((x,i)=>card(x[0],x[1],x[2],i%2===0)).join(''))}
-    function renderBrief(){setGrid(`${card('今日要事','今天最重要',daily.join('<br>'),true)}${card('最近协作','任务链路',assignmentSummary())}${card('最近产出','飞书链接',outputSummary(),true)}${card('待处理','问题和下一步',issueSummary())}${card('后续计划','下一阶段',future.join('<br>'),true)}`)}
+    function renderMemory(){setGrid(`${(workspace().memoryCategories||[]).map((x,i)=>card(x.name,'记忆分类',x.example,i%2===0)).join('')}${appData.memory.map((x,i)=>card(x[0],x[1],x[2],i%2===1)).join('')}`)}
+    function renderBrief(){setGrid(`${card('当前项目',workspace().currentProject||'X LAB',workspace().currentGoal||'',true)}${card('任务闭环','从想法到输出物',taskLoopSummary())}${card('最近协作','任务链路',assignmentSummary(),true)}${card('最近产出','飞书链接',outputSummary())}${card('反馈','采用和改进',feedbackSummary(),true)}${card('后续计划','下一阶段',future.join('<br>'))}`)}
     function openMember(i){
       const m=members[i];
       modalTitle.textContent='成员详情';

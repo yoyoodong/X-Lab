@@ -3,6 +3,17 @@ const path = require('node:path');
 const { generateText } = require('./ai-client');
 const { writeBackFeishuTask } = require('./feishu-writeback');
 const { publishToFeishuWiki } = require('./feishu-wiki-publish');
+const {
+  createHandoff,
+  detectConflict,
+  detectOpenQuestions,
+  ensureAgents,
+  hasReviewBlockers,
+  markAgentIdle,
+  markAgentWorking,
+  recordEvent,
+  updateAgent
+} = require('./agent-runtime');
 
 const OBSIDIAN_ROOT = '/Users/dongdong/Documents/obsidian/虾团队记忆';
 const TEAM_TABLE_PATH = path.join(OBSIDIAN_ROOT, '00_团队总则/角色分工总表.md');
@@ -149,7 +160,31 @@ function buildProgress(outputs, finalStatus) {
   }));
 }
 
+function summarizeOutput(content) {
+  const normalized = content
+    .split('\n')
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .find((line) => !line.startsWith('#') && !line.startsWith('|'));
+
+  return normalized ? normalized.slice(0, 160) : '已生成角色产出。';
+}
+
 function buildRoleInput({ task, role, teamTable, roleCard, previousOutputs }) {
+  const finalOutputRule = role.id === 'content'
+    ? `
+## 运营虾特别要求
+
+你的输出必须优先像“最终交付物”，不是过程记录。请把可直接给用户看的内容放在最前面，例如：
+
+1. 最终结论
+2. 可直接使用的内容角度 / 简报 / 草稿 / 发布建议
+3. 风险边界
+4. 下一步动作
+
+过程说明可以简短放在后面。`
+    : '';
+
   return `你正在参与 X_Lab 虾团队任务。
 
 ## 当前日期
@@ -179,6 +214,7 @@ ${previousOutputs.length ? previousOutputs.map((item) => `### ${item.role}\n\n${
 ## 本次要求
 
 请你以「${role.role} / ${role.english}」身份独立思考并输出 Markdown。
+${finalOutputRule}
 
 硬性规则：
 
@@ -202,6 +238,13 @@ ${previousOutputs.length ? previousOutputs.map((item) => `### ${item.role}\n\n${
 async function runRole({ task, role, teamTable, previousOutputs }) {
   const roleCard = readText(path.join(OBSIDIAN_ROOT, role.card));
   const input = buildRoleInput({ task, role, teamTable, roleCard, previousOutputs });
+  markAgentWorking(role.id, task.id);
+  recordEvent('agent_started', {
+    taskId: task.id,
+    agentId: role.id,
+    role: role.role
+  });
+
   const content = await generateText({
     instructions: '你是 X_Lab 虾团队中的一个专业角色。严格遵守角色卡和团队分工，用中文输出 Markdown。',
     input
@@ -211,12 +254,29 @@ async function runRole({ task, role, teamTable, previousOutputs }) {
   const filePath = path.join(role.outputFolder, `${today()}-task-${shortId(task.id)}-${role.outputName}.md`);
   fs.writeFileSync(filePath, content);
 
+  const openQuestions = detectOpenQuestions(content);
+  updateAgent(role.id, {
+    status: openQuestions.length ? 'waiting_input' : 'handoff_ready',
+    currentTaskId: task.id,
+    lastOutput: filePath,
+    waitingFor: openQuestions.length ? openQuestions : null,
+    blockedReason: null
+  });
+  recordEvent('agent_output_created', {
+    taskId: task.id,
+    agentId: role.id,
+    role: role.role,
+    output: filePath,
+    openQuestions
+  });
+
   return {
     id: role.id,
     role: role.role,
     english: role.english,
     output: filePath,
-    content
+    content,
+    openQuestions
   };
 }
 
@@ -288,13 +348,54 @@ async function main() {
     return;
   }
 
+  ensureAgents(ROLE_SEQUENCE);
+  recordEvent('task_selected', {
+    taskId: task.id,
+    title: task.title,
+    status: task.status
+  });
+
   const teamTable = readText(TEAM_TABLE_PATH);
   const outputs = [];
+  const handoffs = [];
 
-  for (const role of ROLE_SEQUENCE) {
+  for (const [index, role] of ROLE_SEQUENCE.entries()) {
     console.log(`Running ${role.role}...`);
     const result = await runRole({ task, role, teamTable, previousOutputs: outputs });
     outputs.push(result);
+
+    const nextRole = ROLE_SEQUENCE[index + 1] || null;
+    const handoff = createHandoff({
+      task,
+      fromRole: role,
+      toRole: nextRole,
+      output: result.output,
+      summary: summarizeOutput(result.content),
+      openQuestions: result.openQuestions,
+      status: result.openQuestions.length ? 'waiting_input' : 'handoff_ready'
+    });
+    handoffs.push(handoff);
+  }
+
+  const conflict = detectConflict(outputs);
+  const reviewBlockers = [
+    ...outputs.flatMap((item) => {
+      return (item.openQuestions || []).map((question) => `${item.role}: ${question}`);
+    }),
+    ...(conflict ? [conflict.summary] : [])
+  ];
+  const needsReview = hasReviewBlockers({ conflict, outputs });
+
+  if (conflict) {
+    recordEvent('conflict_detected', {
+      taskId: task.id,
+      ...conflict
+    });
+    updateAgent('director', {
+      status: 'blocked',
+      currentTaskId: task.id,
+      blockedReason: conflict.summary
+    });
   }
 
   const obsidianRecord = writeObsidianSummary(task, outputs);
@@ -315,8 +416,15 @@ async function main() {
 
   try {
     console.log('Writing back to Feishu task...');
-    feishuWriteback = writeBackFeishuTask({ task, outputs, obsidianRecord, feishuWiki });
-    finalStatus = feishuWriteback.completed ? 'feishu_completed' : 'feishu_commented';
+    feishuWriteback = writeBackFeishuTask({
+      task,
+      outputs,
+      obsidianRecord,
+      feishuWiki,
+      shouldComplete: !needsReview,
+      reviewBlockers
+    });
+    finalStatus = feishuWriteback.completed ? 'feishu_completed' : (needsReview ? 'needs_review' : 'feishu_commented');
   } catch (error) {
     feishuWriteback = {
       commented: false,
@@ -325,6 +433,7 @@ async function main() {
       failedAt: new Date().toISOString()
     };
     console.error(`Feishu writeback failed: ${error.message}`);
+    finalStatus = needsReview ? 'needs_review' : finalStatus;
   }
 
   for (const item of tasks) {
@@ -369,6 +478,16 @@ async function main() {
     receivedAt: task.raw?.created_at || new Date().toISOString()
   };
   assignment.handoff = inferHandoff(task, outputs);
+  assignment.handoffs = handoffs;
+  assignment.conflict = conflict;
+  assignment.needsReview = needsReview;
+  assignment.reviewBlockers = reviewBlockers;
+  assignment.openQuestions = outputs.flatMap((item) => {
+    return (item.openQuestions || []).map((question) => ({
+      role: item.role,
+      question
+    }));
+  });
   assignment.progress = buildProgress(outputs, finalStatus);
   assignment.feishuWiki = feishuWiki;
   assignment.feishuWriteback = feishuWriteback;
@@ -399,6 +518,13 @@ async function main() {
   }
   if (feishuWriteback?.commented) {
     console.log(`Wrote Feishu comment. Task status: ${finalStatus}`);
+  }
+
+  for (const role of ROLE_SEQUENCE) {
+    const output = outputs.find((item) => item.id === role.id);
+    if (output && !output.openQuestions?.length && role.id !== 'director') {
+      markAgentIdle(role.id);
+    }
   }
 }
 

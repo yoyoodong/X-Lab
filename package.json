@@ -8,6 +8,7 @@
     "sync:feishu": "node scripts/sync-feishu-tasks.js",
     "run:team": "node scripts/run-agent-team.js",
     "director": "node scripts/run-director.js",
+    "check:agents": "node scripts/check-agent-runtime.js",
     "writeback:feishu": "node scripts/writeback-feishu-task.js",
     "publish:wiki": "node scripts/publish-latest-to-feishu-wiki.js",
     "watch:feishu": "node scripts/watch-feishu-tasks.js",

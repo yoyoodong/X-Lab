@@ -65,7 +65,7 @@ function getPendingTasks() {
       return false;
     }
 
-    return ['todo', 'assigned', 'produced', 'ai_produced', 'feishu_commented'].includes(task.status);
+    return ['todo', 'assigned', 'produced', 'ai_produced', 'feishu_commented', 'needs_review'].includes(task.status);
   });
 }
 

@@ -34,7 +34,41 @@ if (fs.existsSync('data/tasks.json')) {
   for (const task of tasks) {
     assert(task.id, 'task missing id');
     assert(task.title, `task ${task.id} missing title`);
-    assert(task.source === 'feishu', `task ${task.id} source must be feishu`);
+    assert(['feishu', 'project'].includes(task.source), `task ${task.id} source must be feishu or project`);
+  }
+}
+
+if (fs.existsSync('data/agent-state.json')) {
+  const state = readJson('data/agent-state.json');
+  assert(state.agents && typeof state.agents === 'object', 'data/agent-state.json missing agents object');
+  for (const [agentId, agent] of Object.entries(state.agents)) {
+    assert(agent.agentId === agentId, `agent ${agentId} agentId mismatch`);
+    assert(agent.role, `agent ${agentId} missing role`);
+    assert(agent.status, `agent ${agentId} missing status`);
+    assert('currentTaskId' in agent, `agent ${agentId} missing currentTaskId`);
+    assert('deadlineAt' in agent, `agent ${agentId} missing deadlineAt`);
+  }
+}
+
+if (fs.existsSync('data/handoffs.json')) {
+  const handoffs = readJson('data/handoffs.json');
+  assert(Array.isArray(handoffs), 'data/handoffs.json must be an array');
+  for (const handoff of handoffs) {
+    assert(handoff.id, 'handoff missing id');
+    assert(handoff.taskId, `handoff ${handoff.id} missing taskId`);
+    assert(handoff.from, `handoff ${handoff.id} missing from`);
+    assert(handoff.status, `handoff ${handoff.id} missing status`);
+    assert(handoff.artifact, `handoff ${handoff.id} missing artifact`);
+  }
+}
+
+if (fs.existsSync('data/events.json')) {
+  const events = readJson('data/events.json');
+  assert(Array.isArray(events), 'data/events.json must be an array');
+  for (const event of events) {
+    assert(event.id, 'event missing id');
+    assert(event.type, `event ${event.id} missing type`);
+    assert(event.createdAt, `event ${event.id} missing createdAt`);
   }
 }
 

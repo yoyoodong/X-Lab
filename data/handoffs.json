@@ -1,0 +1,66 @@
+[
+  {
+    "id": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629-director-product-1779623531520",
+    "taskId": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
+    "taskTitle": "【新闻虾转运营虾】请找到“AI 会勒索人类”新闻来源，并转给运营虾评估选题",
+    "from": "director",
+    "fromRole": "虾老大",
+    "to": "product",
+    "toRole": "产品虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/director/2026-05-24-task-e2dc03f9-director-decision.md",
+    "summary": "**生成时间：2026-05-24**",
+    "openQuestions": [
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-24T11:52:11.520Z"
+  },
+  {
+    "id": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629-product-critic-1779623598253",
+    "taskId": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
+    "taskTitle": "【新闻虾转运营虾】请找到“AI 会勒索人类”新闻来源，并转给运营虾评估选题",
+    "from": "product",
+    "fromRole": "产品虾",
+    "to": "critic",
+    "toRole": "挑刺虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/architect/2026-05-24-task-e2dc03f9-architect-plan.md",
+    "summary": "**生成时间：2026-05-24**",
+    "openQuestions": [
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-24T11:53:18.253Z"
+  },
+  {
+    "id": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629-critic-content-1779623692700",
+    "taskId": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
+    "taskTitle": "【新闻虾转运营虾】请找到“AI 会勒索人类”新闻来源，并转给运营虾评估选题",
+    "from": "critic",
+    "fromRole": "挑刺虾",
+    "to": "content",
+    "toRole": "运营虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/critic/2026-05-24-task-e2dc03f9-critic-review.md",
+    "summary": "**生成时间：2026-05-24**",
+    "openQuestions": [
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-24T11:54:52.700Z"
+  },
+  {
+    "id": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629-content-done-1779623767713",
+    "taskId": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
+    "taskTitle": "【新闻虾转运营虾】请找到“AI 会勒索人类”新闻来源，并转给运营虾评估选题",
+    "from": "content",
+    "fromRole": "运营虾",
+    "to": null,
+    "toRole": null,
+    "status": "waiting_input",
+    "artifact": "outputs/ai/broadcaster/2026-05-24-task-e2dc03f9-broadcaster-brief.md",
+    "summary": "**生成时间：2026-05-24**",
+    "openQuestions": [
+      "侦察虾的溯源报告"
+    ],
+    "createdAt": "2026-05-24T11:56:07.713Z"
+  }
+]

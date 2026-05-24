@@ -3,8 +3,154 @@
     "agents": 7,
     "liveTasks": 21,
     "completion": 68,
-    "status": "今日重点：确认任务优先级，查看每个虾的进展，并处理待补充来源或待发布内容。",
+    "status": "虾团队已完成 AI 产出，并已回写飞书任务评论/状态。",
     "feishuTasks": 1
+  },
+  "workspace": {
+    "positioning": "X LAB 是你的 AI 项目作战室：把想法、角色、任务、记忆、反馈和输出物组织成一个可持续运转的 Agent Team。",
+    "currentProject": "X LAB Agent Team",
+    "currentGoal": "把角色系统升级成真实项目闭环工作台。",
+    "loop": [
+      {
+        "stage": "想法",
+        "owner": "羊 / 虾老大",
+        "status": "已明确",
+        "detail": "Agent team 的重点不是分角色说话，而是围绕真实项目跑闭环。"
+      },
+      {
+        "stage": "任务",
+        "owner": "产品虾",
+        "status": "进行中",
+        "detail": "补任务闭环卡片，让每个任务都有目标、状态、产出、阻塞和下一步。"
+      },
+      {
+        "stage": "角色",
+        "owner": "七武士",
+        "status": "可用",
+        "detail": "右侧角色卡保留为快捷入口，显示谁在参与、谁卡住、谁有产出。"
+      },
+      {
+        "stage": "记忆",
+        "owner": "Obsidian",
+        "status": "待分类",
+        "detail": "从普通归档升级为项目事实、决策、偏好、基线、待办和踩坑。"
+      },
+      {
+        "stage": "反馈",
+        "owner": "羊 / 挑刺虾",
+        "status": "待建立",
+        "detail": "记录输出是否被采用、哪里太 AI、哪里不实用、是否可模板化。"
+      },
+      {
+        "stage": "输出物",
+        "owner": "运营虾",
+        "status": "已接入",
+        "detail": "正式产出进入飞书知识库，任务记录进入 Obsidian。"
+      }
+    ],
+    "taskLoop": {
+      "title": "把 X LAB 从角色展示页升级成项目闭环工作台",
+      "target": "打开首页就能看到当前项目、目标、任务阶段、参与 Agent、输出物和下一步。",
+      "leadAgent": "虾老大",
+      "collaborators": [
+        "产品虾",
+        "设计虾",
+        "挑刺虾",
+        "运营虾"
+      ],
+      "status": "进行中",
+      "done": "已完成最小 Agent 运行时：状态、接力、事件、健康检查。",
+      "issue": "页面还需要把闭环机制放到主舞台，而不是只展示角色。",
+      "next": "首页增加任务闭环卡片、Memory 分类和 Feedback 入口。",
+      "outputs": [
+        "data/agent-state.json",
+        "data/handoffs.json",
+        "data/events.json",
+        "飞书知识库虾调研文档"
+      ]
+    },
+    "activeTasks": [
+      {
+        "id": "xlab-upgrade-001",
+        "label": "任务 1",
+        "title": "X LAB 升级",
+        "source": "project",
+        "status": "进行中",
+        "goal": "把 X LAB 从角色展示页升级成真实项目闭环工作台。",
+        "owner": "虾老大",
+        "agents": [
+          "产品虾",
+          "设计虾",
+          "挑刺虾",
+          "运营虾"
+        ],
+        "done": "已完成最小 Agent 运行时、任务闭环首页、Memory/Feedback 数据结构。",
+        "issue": "还需要把真实任务状态、复核状态和反馈记录做成更稳定的页面模块。",
+        "next": "继续完善任务闭环卡片和 Feedback 记录入口。"
+      },
+      {
+        "id": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
+        "label": "任务 2",
+        "title": "AI 会勒索人类新闻溯源",
+        "source": "feishu",
+        "status": "待复核",
+        "goal": "找到原始新闻来源，并交给运营虾评估选题价值。",
+        "owner": "侦察虾",
+        "agents": [
+          "虾老大",
+          "产品虾",
+          "挑刺虾",
+          "运营虾"
+        ],
+        "done": "已跑通 AI 角色链路、写入 Obsidian、发布飞书 Wiki、回写飞书评论。",
+        "issue": "缺少侦察虾溯源报告，运营虾不能基于假设做最终选题判断。",
+        "next": "侦察虾补原始来源、发布时间、可信度和可引用证据；虾老大再仲裁是否继续。"
+      }
+    ],
+    "memoryCategories": [
+      {
+        "name": "项目事实",
+        "example": "X LAB 是项目作战室，不只是多 Agent 展示页。"
+      },
+      {
+        "name": "决策记录",
+        "example": "有待补资料或冲突时，只回写飞书评论，不自动完成任务。"
+      },
+      {
+        "name": "风格偏好",
+        "example": "页面保留黑底 Nathan Smith 气质，但主信息转向工作闭环。"
+      },
+      {
+        "name": "当前基线",
+        "example": "右侧角色卡继续作为七武士快捷入口。"
+      },
+      {
+        "name": "未完成事项",
+        "example": "补 Feedback 模块、Memory 分类、任务闭环卡片。"
+      },
+      {
+        "name": "踩坑记录",
+        "example": "没有侦察虾溯源报告时，运营虾不能做最终选题判断。"
+      }
+    ],
+    "feedback": [
+      {
+        "question": "这个输出有没有被采用？",
+        "status": "待记录"
+      },
+      {
+        "question": "哪里太 AI、太完整、太不实用？",
+        "status": "待记录"
+      },
+      {
+        "question": "是否值得沉淀成模板？",
+        "status": "待记录"
+      },
+      {
+        "question": "下次能不能自动化？",
+        "status": "待评估"
+      }
+    ]
   },
   "members": [
     {
@@ -171,6 +317,7 @@
     }
   ],
   "daily": [
+    "飞书任务入口：已同步 1 个未完成任务。",
     "检查飞书任务池：确认有没有新任务进入 X_Lab。",
     "处理待补充来源：新闻/选题类任务必须先补齐原始链接和可信度。",
     "查看运营虾产出：优先看飞书知识库「虾调研」里的正式文档。",
@@ -241,12 +388,21 @@
   ],
   "tasks": [
     {
-      "id": "84834c1c-be6d-493d-9a53-996d68bbed96",
-      "source": "feishu",
-      "title": "【选题转交】新闻虾发现“AI 会勒索人类”，请运营虾评估选题价值并产出内容角度",
-      "status": "feishu_completed",
+      "id": "xlab-upgrade-001",
+      "source": "project",
+      "title": "X LAB 升级",
+      "status": "in_progress",
       "due": "",
-      "url": "https://applink.feishu.cn/client/todo/detail?guid=84834c1c-be6d-493d-9a53-996d68bbed96",
+      "url": "",
+      "owner": "me"
+    },
+    {
+      "id": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
+      "source": "feishu",
+      "title": "【新闻虾转运营虾】请找到“AI 会勒索人类”新闻来源，并转给运营虾评估选题",
+      "status": "needs_review",
+      "due": "",
+      "url": "https://applink.feishu.cn/client/todo/detail?guid=e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
       "owner": "me"
     }
   ]

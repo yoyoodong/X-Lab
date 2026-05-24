@@ -159,7 +159,8 @@
       "outputs/ai/critic/2026-05-22-task-84834c1c-critic-review.md",
       "outputs/ai/broadcaster/2026-05-22-task-84834c1c-broadcaster-brief.md",
       "/Users/dongdong/Documents/obsidian/虾团队记忆/02_任务记录/2026-05-22_【选题转交】新闻虾发现“AI-会勒索人类”，请运营虾评估选题价值并产出内容角度_AI虾老大调度汇总.md",
-      "https://my.feishu.cn/docx/TdRCdYN57ofkErxt0Gfc2Iycn8c"
+      "https://my.feishu.cn/docx/TdRCdYN57ofkErxt0Gfc2Iycn8c",
+      "https://my.feishu.cn/docx/MsNbdZTCcoP44ExkETIcQUhXnq6"
     ],
     "aiOutputs": [
       {
@@ -247,13 +248,256 @@
       "wikiSpaceId": "7634432301040159694",
       "wikiSpaceName": "虾调研",
       "objType": "docx",
-      "objToken": "TdRCdYN57ofkErxt0Gfc2Iycn8c",
-      "docUrl": "https://my.feishu.cn/docx/TdRCdYN57ofkErxt0Gfc2Iycn8c",
-      "wikiToken": "XtD3w8OnqiiqtSk1ORxclkoYnSe",
-      "wikiUrl": "https://my.feishu.cn/docx/TdRCdYN57ofkErxt0Gfc2Iycn8c",
-      "publishedAt": "2026-05-22T23:57:28.574Z"
+      "objToken": "MsNbdZTCcoP44ExkETIcQUhXnq6",
+      "docUrl": "https://my.feishu.cn/docx/MsNbdZTCcoP44ExkETIcQUhXnq6",
+      "wikiToken": "QOX7wmPdUiebPnkDbBRct5J8nIe",
+      "wikiUrl": "https://my.feishu.cn/docx/MsNbdZTCcoP44ExkETIcQUhXnq6",
+      "publishedAt": "2026-05-23T02:44:42.610Z"
     },
     "issue": "需要确认原始来源、事实边界和可发布性。",
     "nextAction": "查看飞书知识库正式文档，决定是否继续发布或二次加工。"
+  },
+  {
+    "taskId": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
+    "taskTitle": "【新闻虾转运营虾】请找到“AI 会勒索人类”新闻来源，并转给运营虾评估选题",
+    "source": "feishu",
+    "workflow": [
+      {
+        "role": "The Director",
+        "cn": "虾老大",
+        "responsibility": "虾老大 参与本轮 AI 协作产出。"
+      },
+      {
+        "role": "The Architect",
+        "cn": "产品虾",
+        "responsibility": "产品虾 参与本轮 AI 协作产出。"
+      },
+      {
+        "role": "The Critic",
+        "cn": "挑刺虾",
+        "responsibility": "挑刺虾 参与本轮 AI 协作产出。"
+      },
+      {
+        "role": "The Broadcaster",
+        "cn": "运营虾",
+        "responsibility": "运营虾 参与本轮 AI 协作产出。"
+      }
+    ],
+    "outputs": [
+      "outputs/ai/director/2026-05-24-task-e2dc03f9-director-decision.md",
+      "outputs/ai/architect/2026-05-24-task-e2dc03f9-architect-plan.md",
+      "outputs/ai/critic/2026-05-24-task-e2dc03f9-critic-review.md",
+      "outputs/ai/broadcaster/2026-05-24-task-e2dc03f9-broadcaster-brief.md",
+      "/Users/dongdong/Documents/obsidian/虾团队记忆/02_任务记录/2026-05-24_【新闻虾转运营虾】请找到“AI-会勒索人类”新闻来源，并转给运营虾评估选题_AI虾老大调度汇总.md",
+      "https://my.feishu.cn/docx/YUdqdK1zAoGjVRxPpCrc0wvtnyc"
+    ],
+    "status": "feishu_completed",
+    "intake": {
+      "type": "signal",
+      "title": "【新闻虾转运营虾】请找到“AI 会勒索人类”新闻来源，并转给运营虾评估选题",
+      "source": "feishu",
+      "url": "https://applink.feishu.cn/client/todo/detail?guid=e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
+      "receivedAt": "2026-05-22T08:57:36+08:00"
+    },
+    "handoff": {
+      "from": "新闻虾 / 侦察虾",
+      "to": "运营虾",
+      "reason": "发现信息信号后，交给运营虾评估传播价值并产出内容角度。"
+    },
+    "handoffs": [
+      {
+        "id": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629-director-product-1779623531520",
+        "taskId": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
+        "taskTitle": "【新闻虾转运营虾】请找到“AI 会勒索人类”新闻来源，并转给运营虾评估选题",
+        "from": "director",
+        "fromRole": "虾老大",
+        "to": "product",
+        "toRole": "产品虾",
+        "status": "waiting_input",
+        "artifact": "outputs/ai/director/2026-05-24-task-e2dc03f9-director-decision.md",
+        "summary": "**生成时间：2026-05-24**",
+        "openQuestions": [
+          "当前资料未提供"
+        ],
+        "createdAt": "2026-05-24T11:52:11.520Z"
+      },
+      {
+        "id": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629-product-critic-1779623598253",
+        "taskId": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
+        "taskTitle": "【新闻虾转运营虾】请找到“AI 会勒索人类”新闻来源，并转给运营虾评估选题",
+        "from": "product",
+        "fromRole": "产品虾",
+        "to": "critic",
+        "toRole": "挑刺虾",
+        "status": "waiting_input",
+        "artifact": "outputs/ai/architect/2026-05-24-task-e2dc03f9-architect-plan.md",
+        "summary": "**生成时间：2026-05-24**",
+        "openQuestions": [
+          "的资料",
+          "当前资料未提供"
+        ],
+        "createdAt": "2026-05-24T11:53:18.253Z"
+      },
+      {
+        "id": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629-critic-content-1779623692700",
+        "taskId": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
+        "taskTitle": "【新闻虾转运营虾】请找到“AI 会勒索人类”新闻来源，并转给运营虾评估选题",
+        "from": "critic",
+        "fromRole": "挑刺虾",
+        "to": "content",
+        "toRole": "运营虾",
+        "status": "waiting_input",
+        "artifact": "outputs/ai/critic/2026-05-24-task-e2dc03f9-critic-review.md",
+        "summary": "**生成时间：2026-05-24**",
+        "openQuestions": [
+          "的资料",
+          "当前资料未提供"
+        ],
+        "createdAt": "2026-05-24T11:54:52.700Z"
+      },
+      {
+        "id": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629-content-done-1779623767713",
+        "taskId": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
+        "taskTitle": "【新闻虾转运营虾】请找到“AI 会勒索人类”新闻来源，并转给运营虾评估选题",
+        "from": "content",
+        "fromRole": "运营虾",
+        "to": null,
+        "toRole": null,
+        "status": "waiting_input",
+        "artifact": "outputs/ai/broadcaster/2026-05-24-task-e2dc03f9-broadcaster-brief.md",
+        "summary": "**生成时间：2026-05-24**",
+        "openQuestions": [
+          "的资料"
+        ],
+        "createdAt": "2026-05-24T11:56:07.713Z"
+      }
+    ],
+    "conflict": {
+      "type": "publish_risk_conflict",
+      "summary": "角色产出同时出现推进发布和暂停/事实不足信号，需要虾老大仲裁。",
+      "arbiter": "director"
+    },
+    "openQuestions": [
+      {
+        "role": "虾老大",
+        "question": "当前资料未提供"
+      },
+      {
+        "role": "产品虾",
+        "question": "的资料"
+      },
+      {
+        "role": "产品虾",
+        "question": "当前资料未提供"
+      },
+      {
+        "role": "挑刺虾",
+        "question": "的资料"
+      },
+      {
+        "role": "挑刺虾",
+        "question": "当前资料未提供"
+      },
+      {
+        "role": "运营虾",
+        "question": "的资料"
+      }
+    ],
+    "progress": [
+      {
+        "role": "虾老大",
+        "english": "The Director",
+        "step": 1,
+        "status": "已完成",
+        "output": "outputs/ai/director/2026-05-24-task-e2dc03f9-director-decision.md"
+      },
+      {
+        "role": "产品虾",
+        "english": "The Architect",
+        "step": 2,
+        "status": "已完成",
+        "output": "outputs/ai/architect/2026-05-24-task-e2dc03f9-architect-plan.md"
+      },
+      {
+        "role": "挑刺虾",
+        "english": "The Critic",
+        "step": 3,
+        "status": "已完成",
+        "output": "outputs/ai/critic/2026-05-24-task-e2dc03f9-critic-review.md"
+      },
+      {
+        "role": "运营虾",
+        "english": "The Broadcaster",
+        "step": 4,
+        "status": "已完成",
+        "output": "outputs/ai/broadcaster/2026-05-24-task-e2dc03f9-broadcaster-brief.md"
+      }
+    ],
+    "feishuWiki": {
+      "title": "2026-05-24 【新闻虾转运营虾】请找到“AI 会勒索人类”新闻来源，并转给运营虾评估选题",
+      "wikiSpaceId": "7634432301040159694",
+      "wikiSpaceName": "虾调研",
+      "objType": "docx",
+      "objToken": "YUdqdK1zAoGjVRxPpCrc0wvtnyc",
+      "docUrl": "https://my.feishu.cn/docx/YUdqdK1zAoGjVRxPpCrc0wvtnyc",
+      "wikiToken": "ZoVjwDct6iVpAGkowj2cazY2ntg",
+      "wikiUrl": "https://my.feishu.cn/docx/YUdqdK1zAoGjVRxPpCrc0wvtnyc",
+      "publishedAt": "2026-05-24T11:56:16.820Z"
+    },
+    "feishuWriteback": {
+      "commented": true,
+      "completed": true,
+      "commentResult": {
+        "ok": true,
+        "identity": "user",
+        "data": {
+          "id": "7643425924850912222"
+        },
+        "_notice": {
+          "update": {
+            "current": "1.0.28",
+            "latest": "1.0.39",
+            "message": "lark-cli 1.0.39 available, current 1.0.28, run: lark-cli update"
+          }
+        }
+      },
+      "completeResult": {
+        "ok": true,
+        "identity": "user",
+        "data": {
+          "guid": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
+          "url": "https://applink.feishu.cn/client/todo/detail?guid=e2dc03f9-da3d-41de-b6c3-ee284e5c7629"
+        },
+        "_notice": {
+          "update": {
+            "current": "1.0.28",
+            "latest": "1.0.39",
+            "message": "lark-cli 1.0.39 available, current 1.0.28, run: lark-cli update"
+          }
+        }
+      }
+    },
+    "aiOutputs": [
+      {
+        "role": "虾老大",
+        "english": "The Director",
+        "output": "outputs/ai/director/2026-05-24-task-e2dc03f9-director-decision.md"
+      },
+      {
+        "role": "产品虾",
+        "english": "The Architect",
+        "output": "outputs/ai/architect/2026-05-24-task-e2dc03f9-architect-plan.md"
+      },
+      {
+        "role": "挑刺虾",
+        "english": "The Critic",
+        "output": "outputs/ai/critic/2026-05-24-task-e2dc03f9-critic-review.md"
+      },
+      {
+        "role": "运营虾",
+        "english": "The Broadcaster",
+        "output": "outputs/ai/broadcaster/2026-05-24-task-e2dc03f9-broadcaster-brief.md"
+      }
+    ]
   }
 ]

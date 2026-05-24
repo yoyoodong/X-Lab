@@ -1,0 +1,210 @@
+[
+  {
+    "id": "1779623491563-679fe6",
+    "type": "task_selected",
+    "createdAt": "2026-05-24T11:51:31.563Z",
+    "taskId": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
+    "title": "【新闻虾转运营虾】请找到“AI 会勒索人类”新闻来源，并转给运营虾评估选题",
+    "status": "todo"
+  },
+  {
+    "id": "1779623491640-479334",
+    "type": "agent_started",
+    "createdAt": "2026-05-24T11:51:31.640Z",
+    "taskId": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
+    "agentId": "director",
+    "role": "虾老大"
+  },
+  {
+    "id": "1779623531519-f3785b",
+    "type": "agent_output_created",
+    "createdAt": "2026-05-24T11:52:11.519Z",
+    "taskId": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
+    "agentId": "director",
+    "role": "虾老大",
+    "output": "outputs/ai/director/2026-05-24-task-e2dc03f9-director-decision.md",
+    "openQuestions": [
+      "当前资料未提供"
+    ]
+  },
+  {
+    "id": "1779623531522-39aa21",
+    "type": "agent_started",
+    "createdAt": "2026-05-24T11:52:11.522Z",
+    "taskId": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
+    "agentId": "product",
+    "role": "产品虾"
+  },
+  {
+    "id": "1779623598253-f860e0",
+    "type": "agent_output_created",
+    "createdAt": "2026-05-24T11:53:18.253Z",
+    "taskId": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
+    "agentId": "product",
+    "role": "产品虾",
+    "output": "outputs/ai/architect/2026-05-24-task-e2dc03f9-architect-plan.md",
+    "openQuestions": [
+      "当前资料未提供"
+    ]
+  },
+  {
+    "id": "1779623598258-37213f",
+    "type": "agent_started",
+    "createdAt": "2026-05-24T11:53:18.258Z",
+    "taskId": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
+    "agentId": "critic",
+    "role": "挑刺虾"
+  },
+  {
+    "id": "1779623692700-6c15b7",
+    "type": "agent_output_created",
+    "createdAt": "2026-05-24T11:54:52.700Z",
+    "taskId": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
+    "agentId": "critic",
+    "role": "挑刺虾",
+    "output": "outputs/ai/critic/2026-05-24-task-e2dc03f9-critic-review.md",
+    "openQuestions": [
+      "当前资料未提供"
+    ]
+  },
+  {
+    "id": "1779623692702-6a6a48",
+    "type": "agent_started",
+    "createdAt": "2026-05-24T11:54:52.702Z",
+    "taskId": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
+    "agentId": "content",
+    "role": "运营虾"
+  },
+  {
+    "id": "1779623767712-bb0b97",
+    "type": "agent_output_created",
+    "createdAt": "2026-05-24T11:56:07.712Z",
+    "taskId": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
+    "agentId": "content",
+    "role": "运营虾",
+    "output": "outputs/ai/broadcaster/2026-05-24-task-e2dc03f9-broadcaster-brief.md",
+    "openQuestions": [
+      "侦察虾的溯源报告"
+    ]
+  },
+  {
+    "id": "1779623767714-b5ea22",
+    "type": "conflict_detected",
+    "createdAt": "2026-05-24T11:56:07.714Z",
+    "taskId": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
+    "summary": "角色产出同时出现推进发布和暂停/事实不足信号，需要虾老大仲裁。",
+    "arbiter": "director"
+  },
+  {
+    "id": "1779623785733-07e60d",
+    "type": "runtime_alerts_detected",
+    "createdAt": "2026-05-24T11:56:25.733Z",
+    "alertCount": 1,
+    "alerts": [
+      {
+        "type": "agent_blocked",
+        "severity": "high",
+        "agentId": "director",
+        "role": "虾老大",
+        "taskId": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
+        "reason": "角色产出同时出现推进发布和暂停/事实不足信号，需要虾老大仲裁。",
+        "message": "虾老大 当前阻塞：角色产出同时出现推进发布和暂停/事实不足信号，需要虾老大仲裁。"
+      }
+    ]
+  },
+  {
+    "id": "1779623893091-9781bc",
+    "alertCount": 1,
+    "alerts": [
+      {
+        "type": "agent_blocked",
+        "severity": "high",
+        "agentId": "director",
+        "role": "虾老大",
+        "taskId": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
+        "reason": "角色产出同时出现推进发布和暂停/事实不足信号，需要虾老大仲裁。",
+        "message": "虾老大 当前阻塞：角色产出同时出现推进发布和暂停/事实不足信号，需要虾老大仲裁。"
+      }
+    ],
+    "type": "runtime_alerts_detected",
+    "createdAt": "2026-05-24T11:58:13.091Z"
+  },
+  {
+    "id": "1779623925793-163f89",
+    "alertCount": 2,
+    "alerts": [
+      {
+        "type": "agent_blocked",
+        "severity": "high",
+        "agentId": "director",
+        "role": "虾老大",
+        "taskId": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
+        "reason": "角色产出同时出现推进发布和暂停/事实不足信号，需要虾老大仲裁。",
+        "message": "虾老大 当前阻塞：角色产出同时出现推进发布和暂停/事实不足信号，需要虾老大仲裁。"
+      },
+      {
+        "type": "conflict_detected",
+        "severity": "high",
+        "taskId": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
+        "arbiter": "director",
+        "message": "角色产出同时出现推进发布和暂停/事实不足信号，需要虾老大仲裁。"
+      }
+    ],
+    "type": "runtime_alerts_detected",
+    "createdAt": "2026-05-24T11:58:45.793Z"
+  },
+  {
+    "id": "1779634766783-422286",
+    "alertCount": 5,
+    "alerts": [
+      {
+        "type": "agent_blocked",
+        "severity": "high",
+        "agentId": "director",
+        "role": "虾老大",
+        "taskId": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
+        "reason": "角色产出同时出现推进发布和暂停/事实不足信号，需要虾老大仲裁。",
+        "message": "虾老大 当前阻塞：角色产出同时出现推进发布和暂停/事实不足信号，需要虾老大仲裁。"
+      },
+      {
+        "type": "agent_timeout",
+        "severity": "medium",
+        "agentId": "product",
+        "role": "产品虾",
+        "taskId": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
+        "status": "waiting_input",
+        "deadlineAt": "2026-05-24T12:52:11.522Z",
+        "message": "产品虾 已超过截止时间，需要虾老大追问或改派。"
+      },
+      {
+        "type": "agent_timeout",
+        "severity": "medium",
+        "agentId": "critic",
+        "role": "挑刺虾",
+        "taskId": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
+        "status": "waiting_input",
+        "deadlineAt": "2026-05-24T12:53:18.257Z",
+        "message": "挑刺虾 已超过截止时间，需要虾老大追问或改派。"
+      },
+      {
+        "type": "agent_timeout",
+        "severity": "medium",
+        "agentId": "content",
+        "role": "运营虾",
+        "taskId": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
+        "status": "waiting_input",
+        "deadlineAt": "2026-05-24T12:54:52.702Z",
+        "message": "运营虾 已超过截止时间，需要虾老大追问或改派。"
+      },
+      {
+        "type": "conflict_detected",
+        "severity": "high",
+        "taskId": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
+        "arbiter": "director",
+        "message": "角色产出同时出现推进发布和暂停/事实不足信号，需要虾老大仲裁。"
+      }
+    ],
+    "type": "runtime_alerts_detected",
+    "createdAt": "2026-05-24T14:59:26.783Z"
+  }
+]

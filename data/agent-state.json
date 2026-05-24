@@ -1,0 +1,85 @@
+{
+  "agents": {
+    "director": {
+      "agentId": "director",
+      "role": "虾老大",
+      "english": "The Director",
+      "status": "blocked",
+      "currentTaskId": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
+      "assignedAt": "2026-05-24T11:51:31.639Z",
+      "deadlineAt": "2026-05-24T12:51:31.639Z",
+      "lastSeenAt": "2026-05-24T11:56:07.714Z",
+      "lastOutput": "outputs/ai/director/2026-05-24-task-e2dc03f9-director-decision.md",
+      "waitingFor": [
+        "当前资料未提供"
+      ],
+      "blockedReason": "角色产出同时出现推进发布和暂停/事实不足信号，需要虾老大仲裁。",
+      "capabilities": [
+        "triage",
+        "dispatch",
+        "decision"
+      ]
+    },
+    "product": {
+      "agentId": "product",
+      "role": "产品虾",
+      "english": "The Architect",
+      "status": "waiting_input",
+      "currentTaskId": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
+      "assignedAt": "2026-05-24T11:52:11.522Z",
+      "deadlineAt": "2026-05-24T12:52:11.522Z",
+      "lastSeenAt": "2026-05-24T11:53:18.251Z",
+      "lastOutput": "outputs/ai/architect/2026-05-24-task-e2dc03f9-architect-plan.md",
+      "waitingFor": [
+        "当前资料未提供"
+      ],
+      "blockedReason": null,
+      "capabilities": [
+        "structure",
+        "flow",
+        "requirements"
+      ]
+    },
+    "critic": {
+      "agentId": "critic",
+      "role": "挑刺虾",
+      "english": "The Critic",
+      "status": "waiting_input",
+      "currentTaskId": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
+      "assignedAt": "2026-05-24T11:53:18.257Z",
+      "deadlineAt": "2026-05-24T12:53:18.257Z",
+      "lastSeenAt": "2026-05-24T11:54:52.700Z",
+      "lastOutput": "outputs/ai/critic/2026-05-24-task-e2dc03f9-critic-review.md",
+      "waitingFor": [
+        "当前资料未提供"
+      ],
+      "blockedReason": null,
+      "capabilities": [
+        "review",
+        "risk_check",
+        "inversion"
+      ]
+    },
+    "content": {
+      "agentId": "content",
+      "role": "运营虾",
+      "english": "The Broadcaster",
+      "status": "waiting_input",
+      "currentTaskId": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
+      "assignedAt": "2026-05-24T11:54:52.702Z",
+      "deadlineAt": "2026-05-24T12:54:52.702Z",
+      "lastSeenAt": "2026-05-24T11:56:07.712Z",
+      "lastOutput": "outputs/ai/broadcaster/2026-05-24-task-e2dc03f9-broadcaster-brief.md",
+      "waitingFor": [
+        "侦察虾的溯源报告"
+      ],
+      "blockedReason": null,
+      "capabilities": [
+        "brief",
+        "copywriting",
+        "publishing_summary"
+      ]
+    }
+  },
+  "updatedAt": "2026-05-24T11:56:07.714Z"
+}

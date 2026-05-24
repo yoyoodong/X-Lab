@@ -22,9 +22,12 @@ function limitText(value, maxLength) {
   return value.length > maxLength ? `${value.slice(0, maxLength)}...` : value;
 }
 
-function buildFeishuComment({ task, outputs, obsidianRecord, feishuWiki }) {
+function buildFeishuComment({ task, outputs, obsidianRecord, feishuWiki, reviewBlockers }) {
+  const statusLine = reviewBlockers?.length
+    ? 'X_Lab 虾团队已完成本轮 AI 协作产出，但检测到待确认事项，需要人工复核后再关闭任务。'
+    : 'X_Lab 虾团队已完成本轮 AI 协作产出。';
   const lines = [
-    'X_Lab 虾团队已完成本轮 AI 协作产出。',
+    statusLine,
     '',
     `任务：${task.title}`,
     '',
@@ -42,6 +45,14 @@ function buildFeishuComment({ task, outputs, obsidianRecord, feishuWiki }) {
     lines.push(`飞书知识库文档：${feishuWiki.wikiUrl || feishuWiki.docUrl}`);
   }
 
+  if (reviewBlockers?.length) {
+    lines.push('');
+    lines.push('待确认 / 需仲裁：');
+    for (const blocker of reviewBlockers) {
+      lines.push(`- ${blocker}`);
+    }
+  }
+
   const broadcaster = outputs.find((item) => item.id === 'content') || outputs[outputs.length - 1];
   if (broadcaster?.content) {
     lines.push('');
@@ -50,7 +61,7 @@ function buildFeishuComment({ task, outputs, obsidianRecord, feishuWiki }) {
   }
 
   lines.push('');
-  lines.push('状态：已产出，已回写。');
+  lines.push(reviewBlockers?.length ? '状态：已产出，待人工复核。' : '状态：已产出，已回写。');
 
   return limitText(lines.join('\n'), 3500);
 }
@@ -83,20 +94,20 @@ function completeTask(taskId) {
   ]);
 }
 
-function writeBackFeishuTask({ task, outputs, obsidianRecord, feishuWiki }) {
+function writeBackFeishuTask({ task, outputs, obsidianRecord, feishuWiki, shouldComplete = true, reviewBlockers = [] }) {
   if (!task?.id) {
     throw new Error('Missing Feishu task id.');
   }
 
-  const content = buildFeishuComment({ task, outputs, obsidianRecord, feishuWiki });
+  const content = buildFeishuComment({ task, outputs, obsidianRecord, feishuWiki, reviewBlockers });
   const commentResult = commentOnTask(task.id, content);
 
-  const shouldComplete = process.env.X_LAB_FEISHU_COMPLETE !== 'false';
-  const completeResult = shouldComplete ? completeTask(task.id) : null;
+  const canComplete = shouldComplete && process.env.X_LAB_FEISHU_COMPLETE !== 'false' && !reviewBlockers.length;
+  const completeResult = canComplete ? completeTask(task.id) : null;
 
   return {
     commented: true,
-    completed: shouldComplete,
+    completed: canComplete,
     commentResult,
     completeResult
   };
