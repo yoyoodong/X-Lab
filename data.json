@@ -3,7 +3,7 @@
     "agents": 7,
     "liveTasks": 21,
     "completion": 68,
-    "status": "当前主任务：飞书任务由虾老大判断路线，分配给十二怒汉、七武士或 Skill。",
+    "status": "当前主任务：任务先识别，再进入十二怒汉、七武士或 Skill。",
     "feishuTasks": 1
   },
   "workspace": {
@@ -70,7 +70,7 @@
     },
     "managementLayer": {
       "lead": "虾老大",
-      "mode": "十二怒汉先定方向，七武士再执行",
+      "mode": "先识别，再分流给十二怒汉、七武士或 Skill",
       "decision": "当前先补新闻来源，不进入最终发布。",
       "nextHandoff": "虾老大把任务交给新闻虾 / 侦察虾补齐来源，再回给挑刺虾和运营虾。",
       "advisors": [
@@ -517,7 +517,9 @@
       "owner": "me",
       "route": "director_decide",
       "routeLabel": "虾老大判断",
-      "routeReason": "没有指定路线，先由虾老大判断该走十二怒汉、七武士还是 Skill。"
+      "routeReason": "没有指定路线，先由虾老大判断该走十二怒汉、七武士还是 Skill。",
+      "routeStage": "识别层",
+      "routePlan": "先识别，再由虾老大分流"
     },
     {
       "id": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
@@ -529,7 +531,9 @@
       "owner": "me",
       "route": "director_decide",
       "routeLabel": "虾老大判断",
-      "routeReason": "没有指定路线，先由虾老大判断该走十二怒汉、七武士还是 Skill。"
+      "routeReason": "没有指定路线，先由虾老大判断该走十二怒汉、七武士还是 Skill。",
+      "routeStage": "识别层",
+      "routePlan": "先识别，再由虾老大分流"
     }
   ]
 }

@@ -102,9 +102,18 @@ async function runOnce() {
   const pendingTaskIds = new Set(pendingTasks.map((task) => task.id));
   const firstTask = pendingTasks[0];
   const route = firstTask.route || 'director_decide';
+  let councilDecision = null;
 
   if (route === 'council') {
     runCouncil();
+    const sessions = readJson('data/council-sessions.json', []);
+    councilDecision = sessions.at(-1)?.decision || null;
+    if (councilDecision && !/暂停|停止|不做|终止/.test(councilDecision)) {
+      console.log('[watch] Council approved continuing to the shrimp execution layer.');
+      runDirector();
+    } else {
+      console.log('[watch] Council stopped the task before the shrimp execution layer.');
+    }
   } else if (route === 'skill') {
     runSkillRouter();
   } else {

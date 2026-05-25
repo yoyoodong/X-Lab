@@ -129,6 +129,12 @@ Publish tasks in Feishu with these prefixes:
 
 In plain language: you publish a task in Feishu, 虾老大 decides whether it should be discussed, executed, or handled by a specific skill. X_Lab then shows the route, status, outputs, blockers, and final links.
 
+Every task first passes through an identification layer:
+
+1. Identify the task.
+2. Decide whether it needs 十二怒汉, 七武士, Skill, or direct director judgment.
+3. Only then enter the shrimp execution flow.
+
 ## AI Director
 
 Run the minimum viable AI agent team:

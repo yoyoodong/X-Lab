@@ -9,7 +9,9 @@
     "owner": "me",
     "route": "director_decide",
     "routeLabel": "虾老大判断",
-    "routeReason": "没有指定路线，先由虾老大判断该走十二怒汉、七武士还是 Skill。"
+    "routeReason": "没有指定路线，先由虾老大判断该走十二怒汉、七武士还是 Skill。",
+    "routeStage": "识别层",
+    "routePlan": "先识别，再由虾老大分流"
   },
   {
     "id": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
@@ -27,6 +29,8 @@
     },
     "route": "director_decide",
     "routeLabel": "虾老大判断",
-    "routeReason": "没有指定路线，先由虾老大判断该走十二怒汉、七武士还是 Skill。"
+    "routeReason": "没有指定路线，先由虾老大判断该走十二怒汉、七武士还是 Skill。",
+    "routeStage": "识别层",
+    "routePlan": "先识别，再由虾老大分流"
   }
 ]

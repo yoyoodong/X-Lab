@@ -38,6 +38,7 @@ if (fs.existsSync('data/tasks.json')) {
     if (task.route) {
       assert(['council', 'seven_samurai', 'skill', 'director_decide'].includes(task.route), `task ${task.id} route is invalid`);
       assert(task.routeLabel, `task ${task.id} missing routeLabel`);
+      assert(task.routeStage === '识别层', `task ${task.id} routeStage must be 识别层 when route is present`);
     }
   }
 }

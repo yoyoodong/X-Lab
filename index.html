@@ -247,7 +247,7 @@
     function routeSummary(){
       const tasks=appData.tasks||[];
       if(!tasks.length)return '当前没有飞书任务路线。';
-      return tasks.map(task=>`${task.routeLabel||'虾老大判断'} · ${statusLabel(task.status)}<br>${task.title}<br><span style="color:rgba(255,255,255,.48)">${task.routeReason||'等待虾老大判断路线。'}</span>`).join('<br><br>');
+      return tasks.map(task=>`${task.routeStage||'识别层'} → ${task.routeLabel||'虾老大判断'} · ${statusLabel(task.status)}<br>${task.title}<br><span style="color:rgba(255,255,255,.48)">${task.routePlan||task.routeReason||'等待虾老大判断路线。'}</span>`).join('<br><br>');
     }
     function handoffSummary(item=latestAssignment()){
       if(!item)return '当前还没有转交记录。';
@@ -423,7 +423,7 @@
       ${card('闭环阶段','从想法到输出物',taskLoopStages().map(item=>`${item.stage}：${item.status}<br>${item.detail}`).join('<br><br>'),true)}
       ${card('待处理','问题和下一步',issueSummary())}
       ${card('最近任务','任务池',taskPoolSummary())}
-      ${card('路线判断','虾老大分配路线',routeSummary(),true)}
+      ${card('路线判断','先识别，再分流',routeSummary(),true)}
       ${card('最近产出','最终交付',finalDeliverySummary(),true)}
     `)}
     function renderMembers(){setGrid(members.map((m,i)=>card(m.role,m.cn,`状态：${m.status}<br>正在做：${m.taskDetail}<br><br>协作对象：${m.with}<br>问题：${m.issue}<br>下一步：${m.plan}`,i%2===1,`<div class="actions"><button onclick="openMember(${i})">查看详情</button><button onclick="openPanel('brief')">看简报</button><button onclick="openPanel('memory')">看记忆</button></div>`)).join(''))}
@@ -433,7 +433,7 @@
         ${activeTaskCards()}
         ${card('任务闭环卡片',workspace().taskLoop?.title||'当前任务',taskLoopSummary(),true)}
         ${card('Task Pool','任务池',taskPoolSummary(),true)}
-        ${card('路线判断','十二怒汉 / 七武士 / Skill',routeSummary())}
+        ${card('路线判断','识别层 → 十二怒汉 / 七武士 / Skill',routeSummary())}
         ${card('管理层','方向判断和转交',managementSummary(item))}
         ${card('转交流','谁交给谁',handoffSummary(item))}
         ${card('工作进展','每个角色做到哪一步',progressSummary(item),true)}
