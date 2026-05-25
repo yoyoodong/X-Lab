@@ -18,6 +18,8 @@ const {
 const OBSIDIAN_ROOT = '/Users/dongdong/Documents/obsidian/虾团队记忆';
 const TEAM_TABLE_PATH = path.join(OBSIDIAN_ROOT, '00_团队总则/角色分工总表.md');
 const OBSIDIAN_TASK_DIR = path.join(OBSIDIAN_ROOT, '02_任务记录');
+const OBSIDIAN_FALLBACK_ROOT = path.join('data', 'obsidian-mirror');
+const OBSIDIAN_FALLBACK_TASK_DIR = path.join(OBSIDIAN_FALLBACK_ROOT, '02_任务记录');
 const DATA_PATH = 'data.json';
 const TASKS_PATH = 'data/tasks.json';
 const ASSIGNMENTS_PATH = 'data/assignments.json';
@@ -159,6 +161,10 @@ function today() {
   });
 
   return formatter.format(new Date());
+}
+
+function deadlineFromNow(minutes = 60) {
+  return new Date(Date.now() + minutes * 60 * 1000).toISOString();
 }
 
 function shortId(taskId) {
@@ -426,7 +432,6 @@ async function runRole({ task, role, teamTable, previousOutputs }) {
 }
 
 function writeObsidianSummary(task, outputs) {
-  ensureDir(OBSIDIAN_TASK_DIR);
   const outputList = outputs
     .map((item) => `### ${item.role} / ${item.english}
 
@@ -478,8 +483,23 @@ ${outputList}
 - #feishu-task-intake
 `;
 
-  fs.writeFileSync(filePath, body);
-  return filePath;
+  try {
+    ensureDir(OBSIDIAN_TASK_DIR);
+    fs.writeFileSync(filePath, body);
+    return filePath;
+  } catch (error) {
+    if (error.code !== 'EPERM' && error.code !== 'EACCES') {
+      throw error;
+    }
+
+    ensureDir(OBSIDIAN_FALLBACK_TASK_DIR);
+    const fallbackPath = path.join(
+      OBSIDIAN_FALLBACK_TASK_DIR,
+      `${today()}_${safeName(task.title)}_AI虾老大调度汇总.md`
+    );
+    fs.writeFileSync(fallbackPath, body);
+    return fallbackPath;
+  }
 }
 
 async function main() {
@@ -548,6 +568,7 @@ async function main() {
       english: 'The News Scout',
       status: 'waiting_source',
       currentTaskId: task.id,
+      deadlineAt: deadlineFromNow(60),
       blockedReason: sourceFollowup.reason,
       waitingFor: sourceFollowup.required
     });

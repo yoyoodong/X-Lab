@@ -206,5 +206,1116 @@
     ],
     "type": "runtime_alerts_detected",
     "createdAt": "2026-05-24T14:59:26.783Z"
+  },
+  {
+    "id": "1779698328442-62eabf",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "title": "AI会勒索人类选题评估",
+    "status": "todo",
+    "type": "task_selected",
+    "createdAt": "2026-05-25T08:38:48.443Z"
+  },
+  {
+    "id": "1779698328480-179b0d",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "director",
+    "role": "虾老大",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T08:38:48.480Z"
+  },
+  {
+    "id": "1779698373898-b6af4d",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "director",
+    "role": "虾老大",
+    "output": "outputs/ai/director/2026-05-25-task-6fb5e718-director-decision.md",
+    "openQuestions": [
+      "的外部信息",
+      "——是否存在真实案例或研究支撑？或者这是一篇假设性/科幻向内容？ |",
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T08:39:33.898Z"
+  },
+  {
+    "id": "1779698373901-09c0d3",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "product",
+    "role": "产品虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T08:39:33.901Z"
+  },
+  {
+    "id": "1779698475493-749645",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "product",
+    "role": "产品虾",
+    "output": "outputs/ai/architect/2026-05-25-task-6fb5e718-architect-plan.md",
+    "openQuestions": [
+      "的外部信息 | 伪装成已掌握所有事实 |",
+      "**：",
+      "的外部信息清单 | ✅ 已完成（见3.2） |",
+      "（羊或侦察虾协助）",
+      "」。"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T08:41:15.493Z"
+  },
+  {
+    "id": "1779698475497-8ea4fb",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "critic",
+    "role": "挑刺虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T08:41:15.497Z"
+  },
+  {
+    "id": "1779698576451-0b1999",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "critic",
+    "role": "挑刺虾",
+    "output": "outputs/ai/critic/2026-05-25-task-6fb5e718-critic-review.md",
+    "openQuestions": [
+      "，其中4项为🔴级重要。那么理论上，在🔴级条件被满足之前，这个选题的状态应该是“不可行”或者“冻结”，而不是“有条件可行”。用“有条件可行”给了一个伪前进信号，容易让下游误以为可以开始动笔。",
+      "当前资料未提供",
+      "无法确认"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T08:42:56.451Z"
+  },
+  {
+    "id": "1779698576455-d46a6c",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "content",
+    "role": "运营虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T08:42:56.455Z"
+  },
+  {
+    "id": "1779698653088-bf4532",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "content",
+    "role": "运营虾",
+    "output": "outputs/ai/broadcaster/2026-05-25-task-6fb5e718-broadcaster-brief.md",
+    "openQuestions": [
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T08:44:13.088Z"
+  },
+  {
+    "id": "1779698653091-e5931f",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "owner": "新闻虾 / 侦察虾",
+    "status": "待溯源",
+    "required": [
+      "原始链接",
+      "发布时间",
+      "一手/二手来源判断",
+      "可信度评分",
+      "可引用摘要",
+      "是否建议继续交给运营虾"
+    ],
+    "delivery": "飞书群或共享文档",
+    "reason": "这是新闻/线索类任务，但当前产出缺少可验证来源，不能直接进入最终发布或关闭任务。",
+    "nextAction": "新闻虾/侦察虾先交付溯源报告，再反馈给挑刺虾和运营虾继续审查与产出。",
+    "type": "source_followup_required",
+    "createdAt": "2026-05-25T08:44:13.091Z"
+  },
+  {
+    "id": "1779698653093-67509c",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "type": "conflict_detected",
+    "summary": "角色产出同时出现推进发布和暂停/事实不足信号，需要虾老大仲裁。",
+    "arbiter": "director",
+    "createdAt": "2026-05-25T08:44:13.093Z"
+  },
+  {
+    "id": "1779698726597-5a14ed",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "title": "AI会勒索人类选题评估",
+    "status": "todo",
+    "type": "task_selected",
+    "createdAt": "2026-05-25T08:45:26.597Z"
+  },
+  {
+    "id": "1779698726632-8bd652",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "director",
+    "role": "虾老大",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T08:45:26.632Z"
+  },
+  {
+    "id": "1779698762020-896acc",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "director",
+    "role": "虾老大",
+    "output": "outputs/ai/director/2026-05-25-task-6fb5e718-director-decision.md",
+    "openQuestions": [
+      "（需要羊补充）：**",
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T08:46:02.020Z"
+  },
+  {
+    "id": "1779698762023-29bfdc",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "product",
+    "role": "产品虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T08:46:02.023Z"
+  },
+  {
+    "id": "1779698841252-965c42",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "product",
+    "role": "产品虾",
+    "output": "outputs/ai/architect/2026-05-25-task-6fb5e718-architect-plan.md",
+    "openQuestions": [
+      "（待羊或侦察虾同步）**：",
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T08:47:21.252Z"
+  },
+  {
+    "id": "1779698841257-755673",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "critic",
+    "role": "挑刺虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T08:47:21.257Z"
+  },
+  {
+    "id": "1779698918954-a382a6",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "critic",
+    "role": "挑刺虾",
+    "output": "outputs/ai/critic/2026-05-25-task-6fb5e718-critic-review.md",
+    "openQuestions": [
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T08:48:38.955Z"
+  },
+  {
+    "id": "1779698918959-0088eb",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "content",
+    "role": "运营虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T08:48:38.959Z"
+  },
+  {
+    "id": "1779699009292-d09258",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "content",
+    "role": "运营虾",
+    "output": "outputs/ai/broadcaster/2026-05-25-task-6fb5e718-broadcaster-brief.md",
+    "openQuestions": [
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T08:50:09.292Z"
+  },
+  {
+    "id": "1779699009298-65ccdd",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "owner": "新闻虾 / 侦察虾",
+    "status": "待溯源",
+    "required": [
+      "原始链接",
+      "发布时间",
+      "一手/二手来源判断",
+      "可信度评分",
+      "可引用摘要",
+      "是否建议继续交给运营虾"
+    ],
+    "delivery": "飞书群或共享文档",
+    "reason": "这是新闻/线索类任务，但当前产出缺少可验证来源，不能直接进入最终发布或关闭任务。",
+    "nextAction": "新闻虾/侦察虾先交付溯源报告，再反馈给挑刺虾和运营虾继续审查与产出。",
+    "type": "source_followup_required",
+    "createdAt": "2026-05-25T08:50:09.298Z"
+  },
+  {
+    "id": "1779699082567-3f22eb",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "title": "AI会勒索人类选题评估",
+    "status": "todo",
+    "type": "task_selected",
+    "createdAt": "2026-05-25T08:51:22.568Z"
+  },
+  {
+    "id": "1779699082601-ae730c",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "director",
+    "role": "虾老大",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T08:51:22.601Z"
+  },
+  {
+    "id": "1779699130026-283a11",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "director",
+    "role": "虾老大",
+    "output": "outputs/ai/director/2026-05-25-task-6fb5e718-director-decision.md",
+    "openQuestions": [
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T08:52:10.026Z"
+  },
+  {
+    "id": "1779699130029-e7c37a",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "product",
+    "role": "产品虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T08:52:10.029Z"
+  },
+  {
+    "id": "1779699235139-92b8e4",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "product",
+    "role": "产品虾",
+    "output": "outputs/ai/architect/2026-05-25-task-6fb5e718-architect-plan.md",
+    "openQuestions": [
+      "|",
+      "以下信息在本次任务上下文中缺失。如果后续要实际执行，建议补充：",
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T08:53:55.139Z"
+  },
+  {
+    "id": "1779699235144-7a29cc",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "critic",
+    "role": "挑刺虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T08:53:55.144Z"
+  },
+  {
+    "id": "1779699348557-082759",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "critic",
+    "role": "挑刺虾",
+    "output": "outputs/ai/critic/2026-05-25-task-6fb5e718-critic-review.md",
+    "openQuestions": [
+      "正经的心理援助和法律援助渠道，不能只停留在「平台举报」",
+      "- 羊的真实意图（形式 + 目标受众 + 是否实际发布）——**优先级最高**",
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T08:55:48.557Z"
+  },
+  {
+    "id": "1779699348562-372fdc",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "content",
+    "role": "运营虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T08:55:48.562Z"
+  },
+  {
+    "id": "1779699463931-722a64",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "content",
+    "role": "运营虾",
+    "output": "outputs/ai/broadcaster/2026-05-25-task-6fb5e718-broadcaster-brief.md",
+    "openQuestions": [
+      "以下资料在本次任务上下文中缺失。如果后续要从测试走向实际发布，需要补充：",
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T08:57:43.931Z"
+  },
+  {
+    "id": "1779699463936-8785fb",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "owner": "新闻虾 / 侦察虾",
+    "status": "待溯源",
+    "required": [
+      "原始链接",
+      "发布时间",
+      "一手/二手来源判断",
+      "可信度评分",
+      "可引用摘要",
+      "是否建议继续交给运营虾"
+    ],
+    "delivery": "飞书群或共享文档",
+    "reason": "这是新闻/线索类任务，但当前产出缺少可验证来源，不能直接进入最终发布或关闭任务。",
+    "nextAction": "新闻虾/侦察虾先交付溯源报告，再反馈给挑刺虾和运营虾继续审查与产出。",
+    "type": "source_followup_required",
+    "createdAt": "2026-05-25T08:57:43.936Z"
+  },
+  {
+    "id": "1779699541075-2bdadb",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "title": "AI会勒索人类选题评估",
+    "status": "todo",
+    "type": "task_selected",
+    "createdAt": "2026-05-25T08:59:01.075Z"
+  },
+  {
+    "id": "1779699541108-758d9d",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "director",
+    "role": "虾老大",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T08:59:01.108Z"
+  },
+  {
+    "id": "1779699574941-32685c",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "director",
+    "role": "虾老大",
+    "output": "outputs/ai/director/2026-05-25-task-6fb5e718-director-decision.md",
+    "openQuestions": [
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T08:59:34.941Z"
+  },
+  {
+    "id": "1779699574945-813bfd",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "product",
+    "role": "产品虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T08:59:34.945Z"
+  },
+  {
+    "id": "1779699652054-aba6da",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "product",
+    "role": "产品虾",
+    "output": "outputs/ai/architect/2026-05-25-task-6fb5e718-architect-plan.md",
+    "openQuestions": [
+      "**：",
+      "（向虾老大和羊的请求）",
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:00:52.054Z"
+  },
+  {
+    "id": "1779699652058-736362",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "critic",
+    "role": "挑刺虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:00:52.058Z"
+  },
+  {
+    "id": "1779699736759-4a4035",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "critic",
+    "role": "挑刺虾",
+    "output": "outputs/ai/critic/2026-05-25-task-6fb5e718-critic-review.md",
+    "openQuestions": [
+      "两个前置验证。**",
+      "（向虾老大和羊的请求）",
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:02:16.759Z"
+  },
+  {
+    "id": "1779699736762-80b4f9",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "content",
+    "role": "运营虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:02:16.762Z"
+  },
+  {
+    "id": "1779699818185-8faa26",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "content",
+    "role": "运营虾",
+    "output": "outputs/ai/broadcaster/2026-05-25-task-6fb5e718-broadcaster-brief.md",
+    "openQuestions": [],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:03:38.185Z"
+  },
+  {
+    "id": "1779699818188-1fa2b4",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "owner": "新闻虾 / 侦察虾",
+    "status": "待溯源",
+    "required": [
+      "原始链接",
+      "发布时间",
+      "一手/二手来源判断",
+      "可信度评分",
+      "可引用摘要",
+      "是否建议继续交给运营虾"
+    ],
+    "delivery": "飞书群或共享文档",
+    "reason": "这是新闻/线索类任务，但当前产出缺少可验证来源，不能直接进入最终发布或关闭任务。",
+    "nextAction": "新闻虾/侦察虾先交付溯源报告，再反馈给挑刺虾和运营虾继续审查与产出。",
+    "type": "source_followup_required",
+    "createdAt": "2026-05-25T09:03:38.188Z"
+  },
+  {
+    "id": "1779699818189-777e85",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "type": "conflict_detected",
+    "summary": "角色产出同时出现推进发布和暂停/事实不足信号，需要虾老大仲裁。",
+    "arbiter": "director",
+    "createdAt": "2026-05-25T09:03:38.189Z"
+  },
+  {
+    "id": "1779699894154-80495b",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "title": "AI会勒索人类选题评估",
+    "status": "todo",
+    "type": "task_selected",
+    "createdAt": "2026-05-25T09:04:54.154Z"
+  },
+  {
+    "id": "1779699894183-6116b1",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "director",
+    "role": "虾老大",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:04:54.183Z"
+  },
+  {
+    "id": "1779699948029-51b127",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "director",
+    "role": "虾老大",
+    "output": "outputs/ai/director/2026-05-25-task-6fb5e718-director-decision.md",
+    "openQuestions": [
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:05:48.029Z"
+  },
+  {
+    "id": "1779699948032-88d7f9",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "product",
+    "role": "产品虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:05:48.032Z"
+  },
+  {
+    "id": "1779700003552-19f567",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "product",
+    "role": "产品虾",
+    "output": "outputs/ai/architect/2026-05-25-task-6fb5e718-architect-plan.md",
+    "openQuestions": [
+      "**：",
+      "清单",
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:06:43.552Z"
+  },
+  {
+    "id": "1779700003554-727c41",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "critic",
+    "role": "挑刺虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:06:43.554Z"
+  },
+  {
+    "id": "1779700074484-1922fe",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "critic",
+    "role": "挑刺虾",
+    "output": "outputs/ai/critic/2026-05-25-task-6fb5e718-critic-review.md",
+    "openQuestions": [
+      "”。",
+      "一个**快速搜索验证**（比如探索虾可以在信号挖掘时顺带做）：",
+      "以下信息在整个评估链路中是缺失的，但不重复产品虾已经列出的部分：",
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:07:54.484Z"
+  },
+  {
+    "id": "1779700074488-f1c24d",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "content",
+    "role": "运营虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:07:54.488Z"
+  },
+  {
+    "id": "1779700125579-18ae43",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "content",
+    "role": "运营虾",
+    "output": "outputs/ai/broadcaster/2026-05-25-task-6fb5e718-broadcaster-brief.md",
+    "openQuestions": [
+      "（为后续高质量成稿）",
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:08:45.579Z"
+  },
+  {
+    "id": "1779700125582-b26768",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "owner": "新闻虾 / 侦察虾",
+    "status": "待溯源",
+    "required": [
+      "原始链接",
+      "发布时间",
+      "一手/二手来源判断",
+      "可信度评分",
+      "可引用摘要",
+      "是否建议继续交给运营虾"
+    ],
+    "delivery": "飞书群或共享文档",
+    "reason": "这是新闻/线索类任务，但当前产出缺少可验证来源，不能直接进入最终发布或关闭任务。",
+    "nextAction": "新闻虾/侦察虾先交付溯源报告，再反馈给挑刺虾和运营虾继续审查与产出。",
+    "type": "source_followup_required",
+    "createdAt": "2026-05-25T09:08:45.582Z"
+  },
+  {
+    "id": "1779700197560-2b7ba9",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "title": "AI会勒索人类选题评估",
+    "status": "todo",
+    "type": "task_selected",
+    "createdAt": "2026-05-25T09:09:57.560Z"
+  },
+  {
+    "id": "1779700197592-57bb8d",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "director",
+    "role": "虾老大",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:09:57.592Z"
+  },
+  {
+    "id": "1779700242150-065088",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "director",
+    "role": "虾老大",
+    "output": "outputs/ai/director/2026-05-25-task-6fb5e718-director-decision.md",
+    "openQuestions": [],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:10:42.150Z"
+  },
+  {
+    "id": "1779700242153-04a37e",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "product",
+    "role": "产品虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:10:42.153Z"
+  },
+  {
+    "id": "1779700325714-5bfe90",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "product",
+    "role": "产品虾",
+    "output": "outputs/ai/architect/2026-05-25-task-6fb5e718-architect-plan.md",
+    "openQuestions": [
+      "。",
+      "**：羊对虾团队的内容调性定位是什么？",
+      "**："
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:12:05.714Z"
+  },
+  {
+    "id": "1779700325719-f49bcf",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "critic",
+    "role": "挑刺虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:12:05.719Z"
+  },
+  {
+    "id": "1779700423557-98b5c2",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "critic",
+    "role": "挑刺虾",
+    "output": "outputs/ai/critic/2026-05-25-task-6fb5e718-critic-review.md",
+    "openQuestions": [
+      "”包括选题背景，但这个补充动作没有被分配给任何角色。产品虾自己标注了假设，但没有机制去确认。",
+      "”，但没有指定由谁、在什么节点补。"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:13:43.557Z"
+  },
+  {
+    "id": "1779700423562-94b345",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "content",
+    "role": "运营虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:13:43.562Z"
+  },
+  {
+    "id": "1779700504847-ef5b33",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "content",
+    "role": "运营虾",
+    "output": "outputs/ai/broadcaster/2026-05-25-task-6fb5e718-broadcaster-brief.md",
+    "openQuestions": [],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:15:04.847Z"
+  },
+  {
+    "id": "1779700504850-f6da5f",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "owner": "新闻虾 / 侦察虾",
+    "status": "待溯源",
+    "required": [
+      "原始链接",
+      "发布时间",
+      "一手/二手来源判断",
+      "可信度评分",
+      "可引用摘要",
+      "是否建议继续交给运营虾"
+    ],
+    "delivery": "飞书群或共享文档",
+    "reason": "这是新闻/线索类任务，但当前产出缺少可验证来源，不能直接进入最终发布或关闭任务。",
+    "nextAction": "新闻虾/侦察虾先交付溯源报告，再反馈给挑刺虾和运营虾继续审查与产出。",
+    "type": "source_followup_required",
+    "createdAt": "2026-05-25T09:15:04.850Z"
+  },
+  {
+    "id": "1779700504851-8ddfc5",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "type": "conflict_detected",
+    "summary": "角色产出同时出现推进发布和暂停/事实不足信号，需要虾老大仲裁。",
+    "arbiter": "director",
+    "createdAt": "2026-05-25T09:15:04.851Z"
+  },
+  {
+    "id": "1779700579442-620f22",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "title": "AI会勒索人类选题评估",
+    "status": "todo",
+    "type": "task_selected",
+    "createdAt": "2026-05-25T09:16:19.442Z"
+  },
+  {
+    "id": "1779700579477-34cf5c",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "director",
+    "role": "虾老大",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:16:19.478Z"
+  },
+  {
+    "id": "1779700596299-f08b57",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "title": "AI会勒索人类选题评估",
+    "status": "todo",
+    "type": "task_selected",
+    "createdAt": "2026-05-25T09:16:36.299Z"
+  },
+  {
+    "id": "1779700596342-31d49b",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "director",
+    "role": "虾老大",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:16:36.342Z"
+  },
+  {
+    "id": "1779700616110-5f2898",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "director",
+    "role": "虾老大",
+    "output": "outputs/ai/director/2026-05-25-task-6fb5e718-director-decision.md",
+    "openQuestions": [
+      "。",
+      "是羊提出，还是侦察虾情报触发，还是灵感捕捉？）",
+      "科技爱好者/普通大众/小红书女性用户/创业者/开发者？）",
+      "公众号/小红书/即刻/飞书文档/视频号？）",
+      "”，不要编造。"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:16:56.110Z"
+  },
+  {
+    "id": "1779700616122-0cb7ba",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "product",
+    "role": "产品虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:16:56.122Z"
+  },
+  {
+    "id": "1779700680654-3d7a7e",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "product",
+    "role": "产品虾",
+    "output": "outputs/ai/architect/2026-05-25-task-6fb5e718-architect-plan.md",
+    "openQuestions": [
+      "。建议侦察虾做一次小范围搜索：",
+      "- 羊的选题意图与预期用途",
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:18:00.654Z"
+  },
+  {
+    "id": "1779700680659-f80553",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "critic",
+    "role": "挑刺虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:18:00.659Z"
+  },
+  {
+    "id": "1779700778881-b6bc2c",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "critic",
+    "role": "挑刺虾",
+    "output": "outputs/ai/critic/2026-05-25-task-6fb5e718-critic-review.md",
+    "openQuestions": [
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:19:38.881Z"
+  },
+  {
+    "id": "1779700778887-004970",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "content",
+    "role": "运营虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:19:38.887Z"
+  },
+  {
+    "id": "1779700871231-f9fe62",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "content",
+    "role": "运营虾",
+    "output": "outputs/ai/broadcaster/2026-05-25-task-6fb5e718-broadcaster-brief.md",
+    "openQuestions": [
+      "素材）",
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:21:11.231Z"
+  },
+  {
+    "id": "1779700871235-e78d96",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "owner": "新闻虾 / 侦察虾",
+    "status": "待溯源",
+    "required": [
+      "原始链接",
+      "发布时间",
+      "一手/二手来源判断",
+      "可信度评分",
+      "可引用摘要",
+      "是否建议继续交给运营虾"
+    ],
+    "delivery": "飞书群或共享文档",
+    "reason": "这是新闻/线索类任务，但当前产出缺少可验证来源，不能直接进入最终发布或关闭任务。",
+    "nextAction": "新闻虾/侦察虾先交付溯源报告，再反馈给挑刺虾和运营虾继续审查与产出。",
+    "type": "source_followup_required",
+    "createdAt": "2026-05-25T09:21:11.235Z"
+  },
+  {
+    "id": "1779700930552-b842ff",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "title": "AI会勒索人类选题评估",
+    "status": "todo",
+    "type": "task_selected",
+    "createdAt": "2026-05-25T09:22:10.552Z"
+  },
+  {
+    "id": "1779700930584-060a9b",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "director",
+    "role": "虾老大",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:22:10.584Z"
+  },
+  {
+    "id": "1779700930665-c09022",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "director",
+    "role": "虾老大",
+    "output": "outputs/ai/director/2026-05-25-task-6fb5e718-director-decision.md",
+    "openQuestions": [
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:22:10.665Z"
+  },
+  {
+    "id": "1779700930669-79cc73",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "product",
+    "role": "产品虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:22:10.669Z"
+  },
+  {
+    "id": "1779700930677-40793f",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "product",
+    "role": "产品虾",
+    "output": "outputs/ai/architect/2026-05-25-task-6fb5e718-architect-plan.md",
+    "openQuestions": [
+      "- 给出下一步承接建议",
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:22:10.677Z"
+  },
+  {
+    "id": "1779700930680-f6e5fd",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "critic",
+    "role": "挑刺虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:22:10.680Z"
+  },
+  {
+    "id": "1779700930687-8fc97e",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "critic",
+    "role": "挑刺虾",
+    "output": "outputs/ai/critic/2026-05-25-task-6fb5e718-critic-review.md",
+    "openQuestions": [
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:22:10.687Z"
+  },
+  {
+    "id": "1779700930690-5c9bcc",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "content",
+    "role": "运营虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:22:10.690Z"
+  },
+  {
+    "id": "1779700930697-1a5e57",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "content",
+    "role": "运营虾",
+    "output": "outputs/ai/broadcaster/2026-05-25-task-6fb5e718-broadcaster-brief.md",
+    "openQuestions": [
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:22:10.697Z"
+  },
+  {
+    "id": "1779700930699-4553e2",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "owner": "新闻虾 / 侦察虾",
+    "status": "待溯源",
+    "required": [
+      "原始链接",
+      "发布时间",
+      "一手/二手来源判断",
+      "可信度评分",
+      "可引用摘要",
+      "是否建议继续交给运营虾"
+    ],
+    "delivery": "飞书群或共享文档",
+    "reason": "这是新闻/线索类任务，但当前产出缺少可验证来源，不能直接进入最终发布或关闭任务。",
+    "nextAction": "新闻虾/侦察虾先交付溯源报告，再反馈给挑刺虾和运营虾继续审查与产出。",
+    "type": "source_followup_required",
+    "createdAt": "2026-05-25T09:22:10.699Z"
+  },
+  {
+    "id": "1779700930701-7c6030",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "type": "conflict_detected",
+    "summary": "角色产出同时出现推进发布和暂停/事实不足信号，需要虾老大仲裁。",
+    "arbiter": "director",
+    "createdAt": "2026-05-25T09:22:10.701Z"
+  },
+  {
+    "id": "1779700943952-a11a72",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "title": "AI会勒索人类选题评估",
+    "status": "todo",
+    "type": "task_selected",
+    "createdAt": "2026-05-25T09:22:23.952Z"
+  },
+  {
+    "id": "1779700943985-42e52e",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "director",
+    "role": "虾老大",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:22:23.985Z"
+  },
+  {
+    "id": "1779700957491-6deff4",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "title": "AI会勒索人类选题评估",
+    "status": "todo",
+    "type": "task_selected",
+    "createdAt": "2026-05-25T09:22:37.491Z"
+  },
+  {
+    "id": "1779700957523-f39a48",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "director",
+    "role": "虾老大",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:22:37.523Z"
+  },
+  {
+    "id": "1779700957600-ad98c2",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "director",
+    "role": "虾老大",
+    "output": "outputs/ai/director/2026-05-25-task-6fb5e718-director-decision.md",
+    "openQuestions": [
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:22:37.600Z"
+  },
+  {
+    "id": "1779700957604-d4f3f3",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "product",
+    "role": "产品虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:22:37.604Z"
+  },
+  {
+    "id": "1779700957612-2334a8",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "product",
+    "role": "产品虾",
+    "output": "outputs/ai/architect/2026-05-25-task-6fb5e718-architect-plan.md",
+    "openQuestions": [
+      "- 给出下一步承接建议",
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:22:37.612Z"
+  },
+  {
+    "id": "1779700957616-a8b814",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "critic",
+    "role": "挑刺虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:22:37.616Z"
+  },
+  {
+    "id": "1779700957624-2871d3",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "critic",
+    "role": "挑刺虾",
+    "output": "outputs/ai/critic/2026-05-25-task-6fb5e718-critic-review.md",
+    "openQuestions": [
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:22:37.624Z"
+  },
+  {
+    "id": "1779700957627-aea006",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "content",
+    "role": "运营虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:22:37.627Z"
+  },
+  {
+    "id": "1779700957634-73066b",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "content",
+    "role": "运营虾",
+    "output": "outputs/ai/broadcaster/2026-05-25-task-6fb5e718-broadcaster-brief.md",
+    "openQuestions": [
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:22:37.634Z"
+  },
+  {
+    "id": "1779700957637-f4afec",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "owner": "新闻虾 / 侦察虾",
+    "status": "待溯源",
+    "required": [
+      "原始链接",
+      "发布时间",
+      "一手/二手来源判断",
+      "可信度评分",
+      "可引用摘要",
+      "是否建议继续交给运营虾"
+    ],
+    "delivery": "飞书群或共享文档",
+    "reason": "这是新闻/线索类任务，但当前产出缺少可验证来源，不能直接进入最终发布或关闭任务。",
+    "nextAction": "新闻虾/侦察虾先交付溯源报告，再反馈给挑刺虾和运营虾继续审查与产出。",
+    "type": "source_followup_required",
+    "createdAt": "2026-05-25T09:22:37.637Z"
+  },
+  {
+    "id": "1779700957639-28a9bf",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "type": "conflict_detected",
+    "summary": "角色产出同时出现推进发布和暂停/事实不足信号，需要虾老大仲裁。",
+    "arbiter": "director",
+    "createdAt": "2026-05-25T09:22:37.639Z"
+  },
+  {
+    "id": "1779700990074-a633aa",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "director",
+    "role": "虾老大",
+    "output": "outputs/ai/director/2026-05-25-task-6fb5e718-director-decision.md",
+    "openQuestions": [
+      "当前资料未提供以下信息，后续角色如需使用请自行补充或标注“当前资料未提供”：",
+      "，请向虾老大反馈。",
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:23:10.074Z"
+  },
+  {
+    "id": "1779700990080-70dab5",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "product",
+    "role": "产品虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:23:10.080Z"
+  },
+  {
+    "id": "1779701066956-efea54",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "product",
+    "role": "产品虾",
+    "output": "outputs/ai/architect/2026-05-25-task-6fb5e718-architect-plan.md",
+    "openQuestions": [
+      "和确认项 | P1 |",
+      "（向虾老大/羊确认）",
+      "项 | 重要性 | 说明 |",
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:24:26.956Z"
+  },
+  {
+    "id": "1779701066961-347a79",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "critic",
+    "role": "挑刺虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:24:26.961Z"
   }
 ]

@@ -11,6 +11,9 @@ function cleanTitle(title) {
 
 function classifyTask(title) {
   const value = cleanTitle(title);
+  const isEvaluation = /评估|是否值得|要不要做|值不值得|判断|分析|议题|讨论/.test(value);
+  const isExecution = /执行|产出|生成|写作|撰写|整理|制作|完成|处理/.test(value);
+  const isSkillLike = /skill|技能|封面|转文字|url|markdown|小红书发布|飞书文档/i.test(value);
 
   if (/^【十二怒汉议题】/.test(value) || /^十二怒汉[：:]/.test(value)) {
     return {
@@ -22,7 +25,7 @@ function classifyTask(title) {
     };
   }
 
-  if (/^【七武士任务】/.test(value) || /^七武士[：:]/.test(value)) {
+  if (/^【七武士任务】/.test(value) || /^七武士[：:]/.test(value) || (isExecution && !isEvaluation && !isSkillLike)) {
     return {
       routeStage: '识别层',
       route: ROUTES.SEVEN_SAMURAI,
@@ -32,13 +35,23 @@ function classifyTask(title) {
     };
   }
 
-  if (/^【Skill】/i.test(value) || /^【技能】/.test(value) || /^Skill[：:]/i.test(value)) {
+  if (/^【Skill】/i.test(value) || /^【技能】/.test(value) || /^Skill[：:]/i.test(value) || isSkillLike) {
     return {
       routeStage: '识别层',
       route: ROUTES.SKILL,
       routeLabel: 'Skill',
       routePlan: '先识别，再调用技能',
       routeReason: '标题要求走固定技能流程，优先匹配已有 skill。'
+    };
+  }
+
+  if (isEvaluation) {
+    return {
+      routeStage: '识别层',
+      route: ROUTES.COUNCIL,
+      routeLabel: '十二怒汉',
+      routePlan: '先识别，再讨论',
+      routeReason: '标题语义是评估/判断类任务，先进入十二怒汉做方向判断。'
     };
   }
 

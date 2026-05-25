@@ -3,7 +3,7 @@
     "agents": 7,
     "liveTasks": 21,
     "completion": 68,
-    "status": "当前主任务：任务先识别，再进入十二怒汉、七武士或 Skill。",
+    "status": "虾团队已完成 AI 产出，但飞书回写失败，请查看 data/assignments.json。",
     "feishuTasks": 1
   },
   "workspace": {
@@ -508,32 +508,18 @@
   ],
   "tasks": [
     {
-      "id": "xlab-upgrade-001",
-      "source": "project",
-      "title": "X LAB 升级",
-      "status": "in_progress",
-      "due": "",
-      "url": "",
-      "owner": "me",
-      "route": "director_decide",
-      "routeLabel": "虾老大判断",
-      "routeReason": "没有指定路线，先由虾老大判断该走十二怒汉、七武士还是 Skill。",
-      "routeStage": "识别层",
-      "routePlan": "先识别，再由虾老大分流"
-    },
-    {
-      "id": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
+      "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
       "source": "feishu",
-      "title": "【新闻虾转运营虾】请找到“AI 会勒索人类”新闻来源，并转给运营虾评估选题",
+      "title": "AI会勒索人类选题评估",
       "status": "needs_source",
-      "due": "",
-      "url": "https://applink.feishu.cn/client/todo/detail?guid=e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
-      "owner": "me",
-      "route": "director_decide",
-      "routeLabel": "虾老大判断",
-      "routeReason": "没有指定路线，先由虾老大判断该走十二怒汉、七武士还是 Skill。",
       "routeStage": "识别层",
-      "routePlan": "先识别，再由虾老大分流"
+      "route": "council",
+      "routeLabel": "十二怒汉",
+      "routePlan": "先识别，再讨论",
+      "routeReason": "标题语义是评估/判断类任务，先进入十二怒汉做方向判断。",
+      "due": "",
+      "url": "https://applink.feishu.cn/client/todo/detail?guid=6fb5e718-7487-46ef-b0db-eb08b5f49771",
+      "owner": "me"
     }
   ]
 }

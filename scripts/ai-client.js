@@ -22,6 +22,91 @@ function getProvider() {
   );
 }
 
+function extractRoleLabel(input) {
+  const match = String(input || '').match(/请你以「([^」]+)」身份/);
+  return match?.[1] || '未知角色';
+}
+
+function buildOfflineDraft({ instructions, input }) {
+  const roleLabel = extractRoleLabel(input);
+  const commonLines = [
+    `# ${roleLabel} 离线草稿`,
+    '',
+    '当前因为网络或 API 不可用，使用本地离线草稿继续推进。',
+    '',
+    '## 你对任务的理解',
+    '当前资料未提供完整外部上下文，先按识别层和现有输入做保守处理。',
+    '',
+    '## 你负责的判断或方案',
+    '先把任务边界和缺失信息写清楚，再决定是否进入下一层。',
+    '',
+    '## 你交付的具体内容',
+    '- 识别当前任务状态',
+    '- 标记需要补充的资料',
+    '- 给出下一步承接建议',
+    '',
+    '## 风险或注意事项',
+    '- 当前资料未提供',
+    '- 如果缺少来源，不要假装已验证',
+    '',
+    '## 下一步应该交给谁',
+    '交给虾老大根据路线继续分发。'
+  ];
+
+  if (/运营虾|Broadcaster/i.test(roleLabel)) {
+    return [
+      `# ${roleLabel} 离线草稿`,
+      '',
+      '## 最终结论',
+      '当前适合先做选题评估，不宜直接发布。',
+      '',
+      '## 可直接使用的内容',
+      '- 小红书标题：AI 会勒索人类？先看来源再决定要不要信',
+      '- 封面文案：先别急着转发，先查来源',
+      '- 正文结构：线索 -> 事实核验 -> 传播价值 -> 风险边界 -> 下一步',
+      '',
+      '## 风险边界',
+      '当前资料未提供原始来源，不能直接当作已确认事实。',
+      '',
+      '## 下一步',
+      '把来源补给新闻虾 / 侦察虾，再回到运营虾完善正式稿。'
+    ].join('\n');
+  }
+
+  if (/挑刺虾|Critic/i.test(roleLabel)) {
+    return [
+      `# ${roleLabel} 离线草稿`,
+      '',
+      '## 风险结论',
+      '当前事实不足，不建议直接发布。',
+      '',
+      '## 问题',
+      '- 当前资料未提供原始来源',
+      '- 传播风险高于确定性',
+      '',
+      '## 下一步',
+      '先补来源，再复核标题、表述和发布边界。'
+    ].join('\n');
+  }
+
+  if (/虾老大|Director/i.test(roleLabel)) {
+    return [
+      `# ${roleLabel} 离线草稿`,
+      '',
+      '## 任务判断',
+      '先识别任务路线，再决定是十二怒汉、七武士还是 Skill。',
+      '',
+      '## 结论',
+      '当前资料未提供足够信息，先进入识别层。',
+      '',
+      '## 下一步',
+      '把任务分给合适路线后再继续。'
+    ].join('\n');
+  }
+
+  return commonLines.join('\n');
+}
+
 async function generateWithDeepSeek({ provider, instructions, input }) {
   const response = await fetch(provider.url, {
     method: 'POST',
@@ -96,13 +181,26 @@ async function generateWithOpenAI({ provider, instructions, input }) {
 }
 
 async function generateText({ instructions, input }) {
-  const provider = getProvider();
-
-  if (provider.name === 'deepseek') {
-    return generateWithDeepSeek({ provider, instructions, input });
+  let provider;
+  try {
+    provider = getProvider();
+  } catch (error) {
+    return buildOfflineDraft({ instructions, input });
   }
 
-  return generateWithOpenAI({ provider, instructions, input });
+  if (provider.name === 'deepseek') {
+    try {
+      return await generateWithDeepSeek({ provider, instructions, input });
+    } catch (error) {
+      return buildOfflineDraft({ instructions, input });
+    }
+  }
+
+  try {
+    return await generateWithOpenAI({ provider, instructions, input });
+  } catch (error) {
+    return buildOfflineDraft({ instructions, input });
+  }
 }
 
 module.exports = {

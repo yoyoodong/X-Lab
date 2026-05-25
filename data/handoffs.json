@@ -62,5 +62,649 @@
       "侦察虾的溯源报告"
     ],
     "createdAt": "2026-05-24T11:56:07.713Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-director-product-1779698373899",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "director",
+    "fromRole": "虾老大",
+    "to": "product",
+    "toRole": "产品虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/director/2026-05-25-task-6fb5e718-director-decision.md",
+    "summary": "**日期**：2026-05-25",
+    "openQuestions": [
+      "的外部信息",
+      "——是否存在真实案例或研究支撑？或者这是一篇假设性/科幻向内容？ |",
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T08:39:33.899Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-product-critic-1779698475494",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "product",
+    "fromRole": "产品虾",
+    "to": "critic",
+    "toRole": "挑刺虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/architect/2026-05-25-task-6fb5e718-architect-plan.md",
+    "summary": "**日期**：2026-05-25",
+    "openQuestions": [
+      "的外部信息 | 伪装成已掌握所有事实 |",
+      "**：",
+      "的外部信息清单 | ✅ 已完成（见3.2） |",
+      "（羊或侦察虾协助）",
+      "」。"
+    ],
+    "createdAt": "2026-05-25T08:41:15.494Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-critic-content-1779698576452",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "critic",
+    "fromRole": "挑刺虾",
+    "to": "content",
+    "toRole": "运营虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/critic/2026-05-25-task-6fb5e718-critic-review.md",
+    "summary": "**日期**：2026-05-25",
+    "openQuestions": [
+      "，其中4项为🔴级重要。那么理论上，在🔴级条件被满足之前，这个选题的状态应该是“不可行”或者“冻结”，而不是“有条件可行”。用“有条件可行”给了一个伪前进信号，容易让下游误以为可以开始动笔。",
+      "当前资料未提供",
+      "无法确认"
+    ],
+    "createdAt": "2026-05-25T08:42:56.452Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-content-done-1779698653089",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "content",
+    "fromRole": "运营虾",
+    "to": null,
+    "toRole": null,
+    "status": "waiting_input",
+    "artifact": "outputs/ai/broadcaster/2026-05-25-task-6fb5e718-broadcaster-brief.md",
+    "summary": "**日期**：2026-05-25",
+    "openQuestions": [
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T08:44:13.089Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-director-product-1779698762021",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "director",
+    "fromRole": "虾老大",
+    "to": "product",
+    "toRole": "产品虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/director/2026-05-25-task-6fb5e718-director-decision.md",
+    "summary": "**评估日期：** 2026-05-25",
+    "openQuestions": [
+      "（需要羊补充）：**",
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T08:46:02.021Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-product-critic-1779698841255",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "product",
+    "fromRole": "产品虾",
+    "to": "critic",
+    "toRole": "挑刺虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/architect/2026-05-25-task-6fb5e718-architect-plan.md",
+    "summary": "**评估日期：** 2026-05-25",
+    "openQuestions": [
+      "（待羊或侦察虾同步）**：",
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T08:47:21.255Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-critic-content-1779698918957",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "critic",
+    "fromRole": "挑刺虾",
+    "to": "content",
+    "toRole": "运营虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/critic/2026-05-25-task-6fb5e718-critic-review.md",
+    "summary": "**审查日期：** 2026-05-25",
+    "openQuestions": [
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T08:48:38.957Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-content-done-1779699009294",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "content",
+    "fromRole": "运营虾",
+    "to": null,
+    "toRole": null,
+    "status": "waiting_input",
+    "artifact": "outputs/ai/broadcaster/2026-05-25-task-6fb5e718-broadcaster-brief.md",
+    "summary": "**产出日期：** 2026-05-25",
+    "openQuestions": [
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T08:50:09.294Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-director-product-1779699130027",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "director",
+    "fromRole": "虾老大",
+    "to": "product",
+    "toRole": "产品虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/director/2026-05-25-task-6fb5e718-director-decision.md",
+    "summary": "- **飞书任务**：[AI会勒索人类选题评估](https://applink.feishu.cn/client/todo/detail?guid=6fb5e718-7487-46ef-b0db-eb08b5f49771)",
+    "openQuestions": [
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T08:52:10.027Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-product-critic-1779699235141",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "product",
+    "fromRole": "产品虾",
+    "to": "critic",
+    "toRole": "挑刺虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/architect/2026-05-25-task-6fb5e718-architect-plan.md",
+    "summary": "- **评估日期**：2026-05-25",
+    "openQuestions": [
+      "|",
+      "以下信息在本次任务上下文中缺失。如果后续要实际执行，建议补充：",
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T08:53:55.141Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-critic-content-1779699348559",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "critic",
+    "fromRole": "挑刺虾",
+    "to": "content",
+    "toRole": "运营虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/critic/2026-05-25-task-6fb5e718-critic-review.md",
+    "summary": "- **审查日期**：2026-05-25",
+    "openQuestions": [
+      "正经的心理援助和法律援助渠道，不能只停留在「平台举报」",
+      "- 羊的真实意图（形式 + 目标受众 + 是否实际发布）——**优先级最高**",
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T08:55:48.559Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-content-done-1779699463933",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "content",
+    "fromRole": "运营虾",
+    "to": null,
+    "toRole": null,
+    "status": "waiting_input",
+    "artifact": "outputs/ai/broadcaster/2026-05-25-task-6fb5e718-broadcaster-brief.md",
+    "summary": "- **任务标题**：AI会勒索人类选题评估",
+    "openQuestions": [
+      "以下资料在本次任务上下文中缺失。如果后续要从测试走向实际发布，需要补充：",
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T08:57:43.933Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-director-product-1779699574943",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "director",
+    "fromRole": "虾老大",
+    "to": "product",
+    "toRole": "产品虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/director/2026-05-25-task-6fb5e718-director-decision.md",
+    "summary": "**记录日期**：2026-05-25",
+    "openQuestions": [
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T08:59:34.943Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-product-critic-1779699652055",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "product",
+    "fromRole": "产品虾",
+    "to": "critic",
+    "toRole": "挑刺虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/architect/2026-05-25-task-6fb5e718-architect-plan.md",
+    "summary": "**记录日期**：2026-05-25",
+    "openQuestions": [
+      "**：",
+      "（向虾老大和羊的请求）",
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T09:00:52.055Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-critic-content-1779699736760",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "critic",
+    "fromRole": "挑刺虾",
+    "to": "content",
+    "toRole": "运营虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/critic/2026-05-25-task-6fb5e718-critic-review.md",
+    "summary": "**审查日期**：2026-05-25",
+    "openQuestions": [
+      "两个前置验证。**",
+      "（向虾老大和羊的请求）",
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T09:02:16.760Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-content-done-1779699818186",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "content",
+    "fromRole": "运营虾",
+    "to": null,
+    "toRole": null,
+    "status": "handoff_ready",
+    "artifact": "outputs/ai/broadcaster/2026-05-25-task-6fb5e718-broadcaster-brief.md",
+    "summary": "**记录日期**：2026-05-25",
+    "openQuestions": [],
+    "createdAt": "2026-05-25T09:03:38.186Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-director-product-1779699948030",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "director",
+    "fromRole": "虾老大",
+    "to": "product",
+    "toRole": "产品虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/director/2026-05-25-task-6fb5e718-director-decision.md",
+    "summary": "好的，羊。我是虾老大董虾捏。任务已收到，我先独立做出判断和拆解。",
+    "openQuestions": [
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T09:05:48.030Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-product-critic-1779700003553",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "product",
+    "fromRole": "产品虾",
+    "to": "critic",
+    "toRole": "挑刺虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/architect/2026-05-25-task-6fb5e718-architect-plan.md",
+    "summary": "**记录日期**：2026-05-25",
+    "openQuestions": [
+      "**：",
+      "清单",
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T09:06:43.553Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-critic-content-1779700074486",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "critic",
+    "fromRole": "挑刺虾",
+    "to": "content",
+    "toRole": "运营虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/critic/2026-05-25-task-6fb5e718-critic-review.md",
+    "summary": "**记录日期**：2026-05-25",
+    "openQuestions": [
+      "”。",
+      "一个**快速搜索验证**（比如探索虾可以在信号挖掘时顺带做）：",
+      "以下信息在整个评估链路中是缺失的，但不重复产品虾已经列出的部分：",
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T09:07:54.486Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-content-done-1779700125580",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "content",
+    "fromRole": "运营虾",
+    "to": null,
+    "toRole": null,
+    "status": "waiting_input",
+    "artifact": "outputs/ai/broadcaster/2026-05-25-task-6fb5e718-broadcaster-brief.md",
+    "summary": "**记录日期**：2026-05-25",
+    "openQuestions": [
+      "（为后续高质量成稿）",
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T09:08:45.580Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-director-product-1779700242151",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "director",
+    "fromRole": "虾老大",
+    "to": "product",
+    "toRole": "产品虾",
+    "status": "handoff_ready",
+    "artifact": "outputs/ai/director/2026-05-25-task-6fb5e718-director-decision.md",
+    "summary": "**评估人**：董虾捏 / 虾老大",
+    "openQuestions": [],
+    "createdAt": "2026-05-25T09:10:42.151Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-product-critic-1779700325716",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "product",
+    "fromRole": "产品虾",
+    "to": "critic",
+    "toRole": "挑刺虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/architect/2026-05-25-task-6fb5e718-architect-plan.md",
+    "summary": "**评估人**：产品虾",
+    "openQuestions": [
+      "。",
+      "**：羊对虾团队的内容调性定位是什么？",
+      "**："
+    ],
+    "createdAt": "2026-05-25T09:12:05.716Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-critic-content-1779700423559",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "critic",
+    "fromRole": "挑刺虾",
+    "to": "content",
+    "toRole": "运营虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/critic/2026-05-25-task-6fb5e718-critic-review.md",
+    "summary": "**审查人**：挑刺虾 / The Critic",
+    "openQuestions": [
+      "”包括选题背景，但这个补充动作没有被分配给任何角色。产品虾自己标注了假设，但没有机制去确认。",
+      "”，但没有指定由谁、在什么节点补。"
+    ],
+    "createdAt": "2026-05-25T09:13:43.559Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-content-done-1779700504848",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "content",
+    "fromRole": "运营虾",
+    "to": null,
+    "toRole": null,
+    "status": "handoff_ready",
+    "artifact": "outputs/ai/broadcaster/2026-05-25-task-6fb5e718-broadcaster-brief.md",
+    "summary": "**交付人**：运营虾 / The Broadcaster",
+    "openQuestions": [],
+    "createdAt": "2026-05-25T09:15:04.848Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-director-product-1779700616117",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "director",
+    "fromRole": "虾老大",
+    "to": "product",
+    "toRole": "产品虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/director/2026-05-25-task-6fb5e718-director-decision.md",
+    "summary": "**生成时间**：2026-05-25",
+    "openQuestions": [
+      "。",
+      "是羊提出，还是侦察虾情报触发，还是灵感捕捉？）",
+      "科技爱好者/普通大众/小红书女性用户/创业者/开发者？）",
+      "公众号/小红书/即刻/飞书文档/视频号？）",
+      "”，不要编造。"
+    ],
+    "createdAt": "2026-05-25T09:16:56.117Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-product-critic-1779700680656",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "product",
+    "fromRole": "产品虾",
+    "to": "critic",
+    "toRole": "挑刺虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/architect/2026-05-25-task-6fb5e718-architect-plan.md",
+    "summary": "**记录日期**：2026-05-25",
+    "openQuestions": [
+      "。建议侦察虾做一次小范围搜索：",
+      "- 羊的选题意图与预期用途",
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T09:18:00.656Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-critic-content-1779700778883",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "critic",
+    "fromRole": "挑刺虾",
+    "to": "content",
+    "toRole": "运营虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/critic/2026-05-25-task-6fb5e718-critic-review.md",
+    "summary": "**记录日期**：2026-05-25",
+    "openQuestions": [
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T09:19:38.883Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-content-done-1779700871232",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "content",
+    "fromRole": "运营虾",
+    "to": null,
+    "toRole": null,
+    "status": "waiting_input",
+    "artifact": "outputs/ai/broadcaster/2026-05-25-task-6fb5e718-broadcaster-brief.md",
+    "summary": "**记录日期**：2026-05-25",
+    "openQuestions": [
+      "素材）",
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T09:21:11.232Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-director-product-1779700930666",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "director",
+    "fromRole": "虾老大",
+    "to": "product",
+    "toRole": "产品虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/director/2026-05-25-task-6fb5e718-director-decision.md",
+    "summary": "先识别任务路线，再决定是十二怒汉、七武士还是 Skill。",
+    "openQuestions": [
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T09:22:10.666Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-product-critic-1779700930677",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "product",
+    "fromRole": "产品虾",
+    "to": "critic",
+    "toRole": "挑刺虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/architect/2026-05-25-task-6fb5e718-architect-plan.md",
+    "summary": "当前因为网络或 API 不可用，使用本地离线草稿继续推进。",
+    "openQuestions": [
+      "- 给出下一步承接建议",
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T09:22:10.677Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-critic-content-1779700930688",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "critic",
+    "fromRole": "挑刺虾",
+    "to": "content",
+    "toRole": "运营虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/critic/2026-05-25-task-6fb5e718-critic-review.md",
+    "summary": "当前事实不足，不建议直接发布。",
+    "openQuestions": [
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T09:22:10.688Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-content-done-1779700930698",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "content",
+    "fromRole": "运营虾",
+    "to": null,
+    "toRole": null,
+    "status": "waiting_input",
+    "artifact": "outputs/ai/broadcaster/2026-05-25-task-6fb5e718-broadcaster-brief.md",
+    "summary": "当前适合先做选题评估，不宜直接发布。",
+    "openQuestions": [
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T09:22:10.698Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-director-product-1779700957601",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "director",
+    "fromRole": "虾老大",
+    "to": "product",
+    "toRole": "产品虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/director/2026-05-25-task-6fb5e718-director-decision.md",
+    "summary": "先识别任务路线，再决定是十二怒汉、七武士还是 Skill。",
+    "openQuestions": [
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T09:22:37.601Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-product-critic-1779700957614",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "product",
+    "fromRole": "产品虾",
+    "to": "critic",
+    "toRole": "挑刺虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/architect/2026-05-25-task-6fb5e718-architect-plan.md",
+    "summary": "当前因为网络或 API 不可用，使用本地离线草稿继续推进。",
+    "openQuestions": [
+      "- 给出下一步承接建议",
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T09:22:37.614Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-critic-content-1779700957625",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "critic",
+    "fromRole": "挑刺虾",
+    "to": "content",
+    "toRole": "运营虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/critic/2026-05-25-task-6fb5e718-critic-review.md",
+    "summary": "当前事实不足，不建议直接发布。",
+    "openQuestions": [
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T09:22:37.625Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-content-done-1779700957635",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "content",
+    "fromRole": "运营虾",
+    "to": null,
+    "toRole": null,
+    "status": "waiting_input",
+    "artifact": "outputs/ai/broadcaster/2026-05-25-task-6fb5e718-broadcaster-brief.md",
+    "summary": "当前适合先做选题评估，不宜直接发布。",
+    "openQuestions": [
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T09:22:37.635Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-director-product-1779700990077",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "director",
+    "fromRole": "虾老大",
+    "to": "product",
+    "toRole": "产品虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/director/2026-05-25-task-6fb5e718-director-decision.md",
+    "summary": "**记录日期**：2026-05-25",
+    "openQuestions": [
+      "当前资料未提供以下信息，后续角色如需使用请自行补充或标注“当前资料未提供”：",
+      "，请向虾老大反馈。",
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T09:23:10.077Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-product-critic-1779701066958",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "product",
+    "fromRole": "产品虾",
+    "to": "critic",
+    "toRole": "挑刺虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/architect/2026-05-25-task-6fb5e718-architect-plan.md",
+    "summary": "**记录日期**：2026-05-25",
+    "openQuestions": [
+      "和确认项 | P1 |",
+      "（向虾老大/羊确认）",
+      "项 | 重要性 | 说明 |",
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T09:24:26.958Z"
   }
 ]

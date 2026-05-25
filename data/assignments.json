@@ -609,5 +609,330 @@
         "output": "outputs/ai/broadcaster/2026-05-24-task-e2dc03f9-broadcaster-brief.md"
       }
     ]
+  },
+  {
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "source": "feishu",
+    "workflow": [
+      {
+        "role": "The Director",
+        "cn": "虾老大",
+        "responsibility": "虾老大 参与本轮 AI 协作产出。"
+      },
+      {
+        "role": "The Architect",
+        "cn": "产品虾",
+        "responsibility": "产品虾 参与本轮 AI 协作产出。"
+      },
+      {
+        "role": "The Critic",
+        "cn": "挑刺虾",
+        "responsibility": "挑刺虾 参与本轮 AI 协作产出。"
+      },
+      {
+        "role": "The Broadcaster",
+        "cn": "运营虾",
+        "responsibility": "运营虾 参与本轮 AI 协作产出。"
+      }
+    ],
+    "outputs": [
+      "outputs/ai/director/2026-05-25-task-6fb5e718-director-decision.md",
+      "outputs/ai/architect/2026-05-25-task-6fb5e718-architect-plan.md",
+      "outputs/ai/critic/2026-05-25-task-6fb5e718-critic-review.md",
+      "outputs/ai/broadcaster/2026-05-25-task-6fb5e718-broadcaster-brief.md",
+      "/Users/dongdong/Documents/obsidian/虾团队记忆/02_任务记录/2026-05-25_AI会勒索人类选题评估_AI虾老大调度汇总.md",
+      "https://my.feishu.cn/docx/FAX5dYNCyoNruaxNA6Ccu02cncc",
+      "https://my.feishu.cn/docx/UnbNdk6iMoM7CkxBOmHcupZenOd",
+      "https://my.feishu.cn/docx/CT4Pdo5DdoS6EGxdOaBcTfQZnQc",
+      "https://my.feishu.cn/docx/IDX0dpLrXokF3qxRFLscXEFpnMn",
+      "https://my.feishu.cn/docx/I3HDdjUIToXguIxMKMQchiajnEc",
+      "https://my.feishu.cn/docx/FqsNdPBDIowUR9x4hc8cmjFDnmf",
+      "https://my.feishu.cn/docx/Y8DVdHPNtoFBEdxeMmncJHcWn2d",
+      "data/obsidian-mirror/02_任务记录/2026-05-25_AI会勒索人类选题评估_AI虾老大调度汇总.md"
+    ],
+    "status": "needs_source",
+    "intake": {
+      "type": "signal",
+      "title": "AI会勒索人类选题评估",
+      "source": "feishu",
+      "url": "https://applink.feishu.cn/client/todo/detail?guid=6fb5e718-7487-46ef-b0db-eb08b5f49771",
+      "receivedAt": "2026-05-25T16:33:56+08:00"
+    },
+    "handoff": {
+      "from": "新闻虾 / 侦察虾",
+      "to": "运营虾",
+      "reason": "发现信息信号后，交给运营虾评估传播价值并产出内容角度。"
+    },
+    "handoffs": [
+      {
+        "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-director-product-1779700957601",
+        "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+        "taskTitle": "AI会勒索人类选题评估",
+        "from": "director",
+        "fromRole": "虾老大",
+        "to": "product",
+        "toRole": "产品虾",
+        "status": "waiting_input",
+        "artifact": "outputs/ai/director/2026-05-25-task-6fb5e718-director-decision.md",
+        "summary": "先识别任务路线，再决定是十二怒汉、七武士还是 Skill。",
+        "openQuestions": [
+          "当前资料未提供"
+        ],
+        "createdAt": "2026-05-25T09:22:37.601Z"
+      },
+      {
+        "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-product-critic-1779700957614",
+        "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+        "taskTitle": "AI会勒索人类选题评估",
+        "from": "product",
+        "fromRole": "产品虾",
+        "to": "critic",
+        "toRole": "挑刺虾",
+        "status": "waiting_input",
+        "artifact": "outputs/ai/architect/2026-05-25-task-6fb5e718-architect-plan.md",
+        "summary": "当前因为网络或 API 不可用，使用本地离线草稿继续推进。",
+        "openQuestions": [
+          "- 给出下一步承接建议",
+          "当前资料未提供"
+        ],
+        "createdAt": "2026-05-25T09:22:37.614Z"
+      },
+      {
+        "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-critic-content-1779700957625",
+        "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+        "taskTitle": "AI会勒索人类选题评估",
+        "from": "critic",
+        "fromRole": "挑刺虾",
+        "to": "content",
+        "toRole": "运营虾",
+        "status": "waiting_input",
+        "artifact": "outputs/ai/critic/2026-05-25-task-6fb5e718-critic-review.md",
+        "summary": "当前事实不足，不建议直接发布。",
+        "openQuestions": [
+          "当前资料未提供"
+        ],
+        "createdAt": "2026-05-25T09:22:37.625Z"
+      },
+      {
+        "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-content-done-1779700957635",
+        "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+        "taskTitle": "AI会勒索人类选题评估",
+        "from": "content",
+        "fromRole": "运营虾",
+        "to": null,
+        "toRole": null,
+        "status": "waiting_input",
+        "artifact": "outputs/ai/broadcaster/2026-05-25-task-6fb5e718-broadcaster-brief.md",
+        "summary": "当前适合先做选题评估，不宜直接发布。",
+        "openQuestions": [
+          "当前资料未提供"
+        ],
+        "createdAt": "2026-05-25T09:22:37.635Z"
+      }
+    ],
+    "conflict": {
+      "type": "publish_risk_conflict",
+      "summary": "角色产出同时出现推进发布和暂停/事实不足信号，需要虾老大仲裁。",
+      "arbiter": "director"
+    },
+    "needsReview": true,
+    "needsSource": true,
+    "sourceFollowup": {
+      "owner": "新闻虾 / 侦察虾",
+      "status": "待溯源",
+      "required": [
+        "原始链接",
+        "发布时间",
+        "一手/二手来源判断",
+        "可信度评分",
+        "可引用摘要",
+        "是否建议继续交给运营虾"
+      ],
+      "delivery": "飞书群或共享文档",
+      "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+      "reason": "这是新闻/线索类任务，但当前产出缺少可验证来源，不能直接进入最终发布或关闭任务。",
+      "nextAction": "新闻虾/侦察虾先交付溯源报告，再反馈给挑刺虾和运营虾继续审查与产出。"
+    },
+    "managementLayer": {
+      "lead": "虾老大",
+      "mode": "management_direction_review",
+      "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+      "taskTitle": "AI会勒索人类选题评估",
+      "decision": "先溯源，暂停最终发布。",
+      "nextHandoff": "虾老大把任务交给新闻虾 / 侦察虾补齐来源，再回给挑刺虾和运营虾。",
+      "advisors": [
+        {
+          "id": "steve-jobs-perspective",
+          "name": "Steve Jobs",
+          "role": "产品体验、取舍与端到端完成度",
+          "question": "这个方向是否足够简单、清晰，能不能让用户第一眼就理解价值？"
+        },
+        {
+          "id": "paul-graham-perspective",
+          "name": "Paul Graham",
+          "role": "用户问题与最小可用版本",
+          "question": "谁会真的需要这个结果，最小但有用的版本是什么？"
+        },
+        {
+          "id": "zhang-yiming-perspective",
+          "name": "张一鸣",
+          "role": "长期主义、组织效率与信息分发",
+          "question": "这个任务是否有清晰目标、有效反馈和可持续迭代机制？"
+        },
+        {
+          "id": "andrej-karpathy-perspective",
+          "name": "Andrej Karpathy",
+          "role": "AI 工程现实与能力边界",
+          "question": "这套自动化是否可靠、可调试，哪里可能被模型能力边界卡住？"
+        },
+        {
+          "id": "ilya-sutskever-perspective",
+          "name": "Ilya Sutskever",
+          "role": "AI 方向、安全与研究判断",
+          "question": "这个 AI 系统的关键假设是什么，安全边界和能力边界在哪里？"
+        },
+        {
+          "id": "elon-musk-perspective",
+          "name": "Elon Musk",
+          "role": "第一性原理与执行压缩",
+          "question": "这件事能不能更直接、更便宜、更快地验证？"
+        },
+        {
+          "id": "munger-perspective",
+          "name": "Charlie Munger",
+          "role": "反向思考、激励与认知偏误",
+          "question": "如果这个任务失败，最可能是哪个低级错误造成的？"
+        },
+        {
+          "id": "feynman-perspective",
+          "name": "Richard Feynman",
+          "role": "反自欺与真正理解",
+          "question": "我们是真的理解了，还是只是在复述好听的概念？"
+        },
+        {
+          "id": "naval-perspective",
+          "name": "Naval Ravikant",
+          "role": "杠杆、复利与可复用资产",
+          "question": "这次产出能否沉淀成可复用资产或自动化流程？"
+        },
+        {
+          "id": "taleb-perspective",
+          "name": "Nassim Nicholas Taleb",
+          "role": "尾部风险与反脆弱",
+          "question": "这里有没有低概率高损失风险，怎样让系统更抗冲击？"
+        }
+      ],
+      "gates": [
+        "方向是否值得做",
+        "事实是否足够可靠",
+        "风险是否可控",
+        "产出是否能复用",
+        "是否可以交给七武士执行"
+      ],
+      "blocker": "角色产出同时出现推进发布和暂停/事实不足信号，需要虾老大仲裁。"
+    },
+    "reviewBlockers": [
+      "缺少新闻虾/侦察虾溯源报告：需要原始链接、发布时间、一手/二手来源判断、可信度评分、可引用摘要、是否建议继续交给运营虾。",
+      "虾老大: 当前资料未提供",
+      "产品虾: - 给出下一步承接建议",
+      "产品虾: 当前资料未提供",
+      "挑刺虾: 当前资料未提供",
+      "运营虾: 当前资料未提供",
+      "角色产出同时出现推进发布和暂停/事实不足信号，需要虾老大仲裁。"
+    ],
+    "openQuestions": [
+      {
+        "role": "虾老大",
+        "question": "当前资料未提供"
+      },
+      {
+        "role": "产品虾",
+        "question": "- 给出下一步承接建议"
+      },
+      {
+        "role": "产品虾",
+        "question": "当前资料未提供"
+      },
+      {
+        "role": "挑刺虾",
+        "question": "当前资料未提供"
+      },
+      {
+        "role": "运营虾",
+        "question": "当前资料未提供"
+      }
+    ],
+    "progress": [
+      {
+        "role": "新闻虾 / 侦察虾",
+        "english": "The News Scout",
+        "step": 0,
+        "status": "待溯源",
+        "output": "待补原始来源、发布时间、可信度和可引用证据"
+      },
+      {
+        "role": "虾老大",
+        "english": "The Director",
+        "step": 1,
+        "status": "已产出",
+        "output": "outputs/ai/director/2026-05-25-task-6fb5e718-director-decision.md"
+      },
+      {
+        "role": "产品虾",
+        "english": "The Architect",
+        "step": 2,
+        "status": "已产出",
+        "output": "outputs/ai/architect/2026-05-25-task-6fb5e718-architect-plan.md"
+      },
+      {
+        "role": "挑刺虾",
+        "english": "The Critic",
+        "step": 3,
+        "status": "已产出",
+        "output": "outputs/ai/critic/2026-05-25-task-6fb5e718-critic-review.md"
+      },
+      {
+        "role": "运营虾",
+        "english": "The Broadcaster",
+        "step": 4,
+        "status": "已产出",
+        "output": "outputs/ai/broadcaster/2026-05-25-task-6fb5e718-broadcaster-brief.md"
+      }
+    ],
+    "feishuWiki": {
+      "error": "Command failed: lark-cli docs +create --as user --api-version v2 --doc-format markdown --content # 2026-05-25 AI会勒索人类选题评估\n\n## 最终产出\n\n# 运营虾 / The Broadcaster 离线草稿\n\n## 最终结论\n当前适合先做选题评估，不宜直接发布。\n\n## 可直接使用的内容\n- 小红书标题：AI 会勒索人类？先看来源再决定要不要信\n- 封面文案：先别急着转发，先查来源\n- 正文结构：线索 -> 事实核验 -> 传播价值 -> 风险边界 -> 下一步\n\n## 风险边界\n当前资料未提供原始来源，不能直接当作已确认事实。\n\n## 下一步\n把来源补给新闻虾 / 侦察虾，再回到运营虾完善正式稿。\n\n---\n\n## 任务信息\n\n- 来源：feishu\n- 飞书任务：https://applink.feishu.cn/client/todo/detail?guid=6fb5e718-7487-46ef-b0db-eb08b5f49771\n- Obsidian 记录：data/obsidian-mirror/02_任务记录/2026-05-25_AI会勒索人类选题评估_AI虾老大调度汇总.md\n\n## 过程记录（附录）\n\n以下内容用于复盘，不是正文交付物。\n\n### 虾老大 / The Director\n\n产出文件：\n\n```text\noutputs/ai/director/2026-05-25-task-6fb5e718-director-decision.md\n```\n\n# 虾老大 / The Director 离线草稿\n\n## 任务判断\n先识别任务路线，再决定是十二怒汉、七武士还是 Skill。\n\n## 结论\n当前资料未提供足够信息，先进入识别层。\n\n## 下一步\n把任务分给合适路线后再继续。\n\n\n---\n\n### 产品虾 / The Architect\n\n产出文件：\n\n```text\noutputs/ai/architect/2026-05-25-task-6fb5e718-architect-plan.md\n```\n\n# 产品虾 / The Architect 离线草稿\n\n当前因为网络或 API 不可用，使用本地离线草稿继续推进。\n\n## 你对任务的理解\n当前资料未提供完整外部上下文，先按识别层和现有输入做保守处理。\n\n## 你负责的判断或方案\n先把任务边界和缺失信息写清楚，再决定是否进入下一层。\n\n## 你交付的具体内容\n- 识别当前任务状态\n- 标记需要补充的资料\n- 给出下一步承接建议\n\n## 风险或注意事项\n- 当前资料未提供\n- 如果缺少来源，不要假装已验证\n\n## 下一步应该交给谁\n交给虾老大根据路线继续分发。\n\n\n---\n\n### 挑刺虾 / The Critic\n\n产出文件：\n\n```text\noutputs/ai/critic/2026-05-25-task-6fb5e718-critic-review.md\n```\n\n# 挑刺虾 / The Critic 离线草稿\n\n## 风险结论\n当前事实不足，不建议直接发布。\n\n## 问题\n- 当前资料未提供原始来源\n- 传播风险高于确定性\n\n## 下一步\n先补来源，再复核标题、表述和发布边界。\n\n\n{\n  \"ok\": false,\n  \"identity\": \"user\",\n  \"error\": {\n    \"type\": \"config\",\n    \"message\": \"keychain Get failed: keychain not initialized\",\n    \"hint\": \"The keychain master key may have been cleaned up or deleted. If running inside a sandbox or CI environment, please ensure the process has the necessary permissions to access the keychain, you can try running this outside the sandbox. Otherwise, please reconfigure the CLI by running lark-cli config init.\"\n  },\n  \"_notice\": {\n    \"update\": {\n      \"current\": \"1.0.28\",\n      \"latest\": \"1.0.39\",\n      \"message\": \"lark-cli 1.0.39 available, current 1.0.28, run: lark-cli update\"\n    }\n  }\n}\n",
+      "failedAt": "2026-05-25T09:22:37.815Z"
+    },
+    "feishuWriteback": {
+      "commented": false,
+      "completed": false,
+      "error": "Command failed: lark-cli task +comment --as user --task-id 6fb5e718-7487-46ef-b0db-eb08b5f49771 --content X_Lab 虾团队已完成本轮 AI 协作产出，但缺少可验证新闻来源。本任务不会自动关闭，先进入「待溯源」。\n\n任务：AI会勒索人类选题评估\n\n产出文件：\n- 虾老大 / The Director: outputs/ai/director/2026-05-25-task-6fb5e718-director-decision.md\n- 产品虾 / The Architect: outputs/ai/architect/2026-05-25-task-6fb5e718-architect-plan.md\n- 挑刺虾 / The Critic: outputs/ai/critic/2026-05-25-task-6fb5e718-critic-review.md\n- 运营虾 / The Broadcaster: outputs/ai/broadcaster/2026-05-25-task-6fb5e718-broadcaster-brief.md\n\nObsidian 汇总：data/obsidian-mirror/02_任务记录/2026-05-25_AI会勒索人类选题评估_AI虾老大调度汇总.md\n\n下一步：新闻虾 / 侦察虾继续溯源\n- 交付位置：飞书群或共享文档\n- 需要补齐：原始链接、发布时间、一手/二手来源判断、可信度评分、可引用摘要、是否建议继续交给运营虾\n- 处理规则：新闻虾/侦察虾先交付溯源报告，再反馈给挑刺虾和运营虾继续审查与产出。\n\n待确认 / 需仲裁：\n- 缺少新闻虾/侦察虾溯源报告：需要原始链接、发布时间、一手/二手来源判断、可信度评分、可引用摘要、是否建议继续交给运营虾。\n- 虾老大: 当前资料未提供\n- 产品虾: - 给出下一步承接建议\n- 产品虾: 当前资料未提供\n- 挑刺虾: 当前资料未提供\n- 运营虾: 当前资料未提供\n- 角色产出同时出现推进发布和暂停/事实不足信号，需要虾老大仲裁。\n\n运营虾简报摘要：\n# 运营虾 / The Broadcaster 离线草稿\n\n## 最终结论\n当前适合先做选题评估，不宜直接发布。\n\n## 可直接使用的内容\n- 小红书标题：AI 会勒索人类？先看来源再决定要不要信\n- 封面文案：先别急着转发，先查来源\n- 正文结构：线索 -> 事实核验 -> 传播价值 -> 风险边界 -> 下一步\n\n## 风险边界\n当前资料未提供原始来源，不能直接当作已确认事实。\n\n## 下一步\n把来源补给新闻虾 / 侦察虾，再回到运营虾完善正式稿。\n\n状态：待溯源。 --format json\n{\n  \"ok\": false,\n  \"identity\": \"user\",\n  \"error\": {\n    \"type\": \"config\",\n    \"message\": \"keychain Get failed: keychain not initialized\",\n    \"hint\": \"The keychain master key may have been cleaned up or deleted. If running inside a sandbox or CI environment, please ensure the process has the necessary permissions to access the keychain, you can try running this outside the sandbox. Otherwise, please reconfigure the CLI by running lark-cli config init.\"\n  },\n  \"_notice\": {\n    \"update\": {\n      \"current\": \"1.0.28\",\n      \"latest\": \"1.0.39\",\n      \"message\": \"lark-cli 1.0.39 available, current 1.0.28, run: lark-cli update\"\n    }\n  }\n}\n",
+      "failedAt": "2026-05-25T09:22:37.979Z"
+    },
+    "issue": "缺少新闻虾/侦察虾溯源报告，不能确认事实边界和发布风险。",
+    "nextAction": "新闻虾/侦察虾先交付溯源报告，再反馈给挑刺虾和运营虾继续审查与产出。",
+    "aiOutputs": [
+      {
+        "role": "虾老大",
+        "english": "The Director",
+        "output": "outputs/ai/director/2026-05-25-task-6fb5e718-director-decision.md"
+      },
+      {
+        "role": "产品虾",
+        "english": "The Architect",
+        "output": "outputs/ai/architect/2026-05-25-task-6fb5e718-architect-plan.md"
+      },
+      {
+        "role": "挑刺虾",
+        "english": "The Critic",
+        "output": "outputs/ai/critic/2026-05-25-task-6fb5e718-critic-review.md"
+      },
+      {
+        "role": "运营虾",
+        "english": "The Broadcaster",
+        "output": "outputs/ai/broadcaster/2026-05-25-task-6fb5e718-broadcaster-brief.md"
+      }
+    ]
   }
 ]

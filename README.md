@@ -161,6 +161,8 @@ To write the latest AI output back to the related Feishu task without re-running
 npm run writeback:feishu
 ```
 
+If Feishu comment or wiki writeback fails with a keychain/auth error, the local AI run is still valid. In that case, X_Lab will keep the task outputs, Obsidian mirror, and assignment records locally, but you need to run `lark-cli config init` before Feishu comments and wiki publishing can work again.
+
 To keep watching Feishu tasks and run the AI team automatically:
 
 ```bash

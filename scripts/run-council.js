@@ -49,7 +49,12 @@ function assignmentFromTask(task) {
     taskTitle: task.title,
     status: task.status,
     issue: task.routeReason || '这是十二怒汉议题，先判断方向再决定是否执行。',
-    needsSource: /新闻|来源|溯源|线索/.test(task.title || '')
+    needsSource: /新闻|来源|溯源|线索/.test(task.title || ''),
+    route: task.route,
+    routeLabel: task.routeLabel,
+    routeStage: task.routeStage,
+    routePlan: task.routePlan,
+    routeReason: task.routeReason
   };
 }
 
@@ -75,13 +80,16 @@ function buildCouncilSession({ data, assignment }) {
   }));
 
   const needsSource = assignment.status === 'needs_source' || assignment.needsSource;
-  const decision = needsSource ? '先溯源，暂停最终发布。' : (layer.decision || '可以进入七武士执行层。');
+  const isCouncilRoute = assignment.route === 'council' || /评估|是否值得|要不要做|值不值得|判断|分析|议题|讨论/.test(assignment.taskTitle || '');
+  const decision = needsSource
+    ? '先溯源，暂停最终发布。'
+    : (isCouncilRoute ? '先讨论，确认是否值得继续。' : (layer.decision || '可以进入七武士执行层。'));
   const handoffTo = needsSource ? '新闻虾 / 侦察虾' : '七武士执行层';
 
   return {
     id: `council-${new Date().toISOString().slice(0, 10)}-${shortId(assignment.taskId)}`,
     createdAt: nowShanghai(),
-    status: needsSource ? '待溯源' : '可执行',
+    status: needsSource ? '待溯源' : (isCouncilRoute ? '待决策' : '可执行'),
     topic: assignment.taskTitle || data.workspace?.currentGoal || 'X_Lab 十二怒汉讨论',
     sourceTaskId: assignment.taskId || '',
     sourceTaskTitle: assignment.taskTitle || '',
@@ -91,14 +99,18 @@ function buildCouncilSession({ data, assignment }) {
     advisors,
     directorSummary: needsSource
       ? '十二怒汉判断：当前证据不足。虾老大决定先让新闻虾/侦察虾补来源，再交给挑刺虾和运营虾。'
-      : '十二怒汉判断：当前可以进入执行层。虾老大需要把方向拆成明确任务和交付物。',
+      : (isCouncilRoute
+        ? '十二怒汉判断：这是一个需要先评估的议题。虾老大先收口问题，再决定是否进入七武士执行层。'
+        : '十二怒汉判断：当前可以进入执行层。虾老大需要把方向拆成明确任务和交付物。'),
     decision,
     handoff: {
       from: '虾老大',
       to: handoffTo,
       instruction: needsSource
-        ? '提交来源卡：原始链接、发布时间、一手/二手判断、可信度评分、可引用摘要、是否建议继续给运营虾。'
-        : '根据十二怒汉判断拆解任务，生成角色分工、交付物和完成标准。'
+      ? '提交来源卡：原始链接、发布时间、一手/二手判断、可信度评分、可引用摘要、是否建议继续给运营虾。'
+        : (isCouncilRoute
+          ? '先把评估结论写清楚，再决定是否进入七武士执行层。'
+          : '根据十二怒汉判断拆解任务，生成角色分工、交付物和完成标准。')
     },
     executionGate: needsSource
       ? [

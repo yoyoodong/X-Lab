@@ -4,16 +4,18 @@
       "agentId": "director",
       "role": "虾老大",
       "english": "The Director",
-      "status": "blocked",
-      "currentTaskId": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
-      "assignedAt": "2026-05-24T11:51:31.639Z",
-      "deadlineAt": "2026-05-24T12:51:31.639Z",
-      "lastSeenAt": "2026-05-24T11:56:07.714Z",
-      "lastOutput": "outputs/ai/director/2026-05-24-task-e2dc03f9-director-decision.md",
+      "status": "waiting_input",
+      "currentTaskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+      "assignedAt": "2026-05-25T09:22:37.522Z",
+      "deadlineAt": "2026-05-25T10:22:37.523Z",
+      "lastSeenAt": "2026-05-25T09:23:10.074Z",
+      "lastOutput": "outputs/ai/director/2026-05-25-task-6fb5e718-director-decision.md",
       "waitingFor": [
+        "当前资料未提供以下信息，后续角色如需使用请自行补充或标注“当前资料未提供”：",
+        "，请向虾老大反馈。",
         "当前资料未提供"
       ],
-      "blockedReason": "角色产出同时出现推进发布和暂停/事实不足信号，需要虾老大仲裁。",
+      "blockedReason": null,
       "capabilities": [
         "triage",
         "dispatch",
@@ -25,12 +27,15 @@
       "role": "产品虾",
       "english": "The Architect",
       "status": "waiting_input",
-      "currentTaskId": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
-      "assignedAt": "2026-05-24T11:52:11.522Z",
-      "deadlineAt": "2026-05-24T12:52:11.522Z",
-      "lastSeenAt": "2026-05-24T11:53:18.251Z",
-      "lastOutput": "outputs/ai/architect/2026-05-24-task-e2dc03f9-architect-plan.md",
+      "currentTaskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+      "assignedAt": "2026-05-25T09:23:10.079Z",
+      "deadlineAt": "2026-05-25T10:23:10.079Z",
+      "lastSeenAt": "2026-05-25T09:24:26.955Z",
+      "lastOutput": "outputs/ai/architect/2026-05-25-task-6fb5e718-architect-plan.md",
       "waitingFor": [
+        "和确认项 | P1 |",
+        "（向虾老大/羊确认）",
+        "项 | 重要性 | 说明 |",
         "当前资料未提供"
       ],
       "blockedReason": null,
@@ -44,15 +49,13 @@
       "agentId": "critic",
       "role": "挑刺虾",
       "english": "The Critic",
-      "status": "waiting_input",
-      "currentTaskId": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
-      "assignedAt": "2026-05-24T11:53:18.257Z",
-      "deadlineAt": "2026-05-24T12:53:18.257Z",
-      "lastSeenAt": "2026-05-24T11:54:52.700Z",
-      "lastOutput": "outputs/ai/critic/2026-05-24-task-e2dc03f9-critic-review.md",
-      "waitingFor": [
-        "当前资料未提供"
-      ],
+      "status": "working",
+      "currentTaskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+      "assignedAt": "2026-05-25T09:24:26.961Z",
+      "deadlineAt": "2026-05-25T10:24:26.961Z",
+      "lastSeenAt": "2026-05-25T09:24:26.961Z",
+      "lastOutput": "outputs/ai/critic/2026-05-25-task-6fb5e718-critic-review.md",
+      "waitingFor": null,
       "blockedReason": null,
       "capabilities": [
         "review",
@@ -65,13 +68,13 @@
       "role": "运营虾",
       "english": "The Broadcaster",
       "status": "waiting_input",
-      "currentTaskId": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
-      "assignedAt": "2026-05-24T11:54:52.702Z",
-      "deadlineAt": "2026-05-24T12:54:52.702Z",
-      "lastSeenAt": "2026-05-24T11:56:07.712Z",
-      "lastOutput": "outputs/ai/broadcaster/2026-05-24-task-e2dc03f9-broadcaster-brief.md",
+      "currentTaskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+      "assignedAt": "2026-05-25T09:22:37.626Z",
+      "deadlineAt": "2026-05-25T10:22:37.626Z",
+      "lastSeenAt": "2026-05-25T09:22:37.634Z",
+      "lastOutput": "outputs/ai/broadcaster/2026-05-25-task-6fb5e718-broadcaster-brief.md",
       "waitingFor": [
-        "侦察虾的溯源报告"
+        "当前资料未提供"
       ],
       "blockedReason": null,
       "capabilities": [
@@ -79,7 +82,25 @@
         "copywriting",
         "publishing_summary"
       ]
+    },
+    "scout": {
+      "agentId": "scout",
+      "role": "新闻虾 / 侦察虾",
+      "english": "The News Scout",
+      "status": "waiting_source",
+      "currentTaskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+      "blockedReason": "这是新闻/线索类任务，但当前产出缺少可验证来源，不能直接进入最终发布或关闭任务。",
+      "waitingFor": [
+        "原始链接",
+        "发布时间",
+        "一手/二手来源判断",
+        "可信度评分",
+        "可引用摘要",
+        "是否建议继续交给运营虾"
+      ],
+      "lastSeenAt": "2026-05-25T09:22:37.638Z",
+      "deadlineAt": "2026-05-25T10:22:37.638Z"
     }
   },
-  "updatedAt": "2026-05-24T11:56:07.714Z"
+  "updatedAt": "2026-05-25T09:24:26.961Z"
 }
