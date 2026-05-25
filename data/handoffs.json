@@ -706,5 +706,247 @@
       "当前资料未提供"
     ],
     "createdAt": "2026-05-25T09:24:26.958Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-critic-content-1779701174925",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "critic",
+    "fromRole": "挑刺虾",
+    "to": "content",
+    "toRole": "运营虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/critic/2026-05-25-task-6fb5e718-critic-review.md",
+    "summary": "**记录日期**：2026-05-25",
+    "openQuestions": [
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T09:26:14.925Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-content-done-1779701280518",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "content",
+    "fromRole": "运营虾",
+    "to": null,
+    "toRole": null,
+    "status": "waiting_input",
+    "artifact": "outputs/ai/broadcaster/2026-05-25-task-6fb5e718-broadcaster-brief.md",
+    "summary": "**记录日期**：2026-05-25",
+    "openQuestions": [
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T09:28:00.518Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-director-product-1779701405422",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "director",
+    "fromRole": "虾老大",
+    "to": "product",
+    "toRole": "产品虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/director/2026-05-25-task-6fb5e718-director-decision.md",
+    "summary": "**日期**：2026-05-25",
+    "openQuestions": [
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T09:30:05.422Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-product-critic-1779701483236",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "product",
+    "fromRole": "产品虾",
+    "to": "critic",
+    "toRole": "挑刺虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/architect/2026-05-25-task-6fb5e718-architect-plan.md",
+    "summary": "**评估日期**：2026-05-25",
+    "openQuestions": [
+      "**已知**：根据团队分工总表，X_Lab 虾团队有侦察虾（外部情报）、探索虾（前沿发现）、产品虾（产品方案）、运营虾（内容传播）等角色，可推断团队至少覆盖AI/科技领域的内容产出。",
+      "**：由羊或虾老大提供团队定位、品牌调性等信息后，我再做补充评估",
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T09:31:23.236Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-critic-content-1779701543340",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "critic",
+    "fromRole": "挑刺虾",
+    "to": "content",
+    "toRole": "运营虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/critic/2026-05-25-task-6fb5e718-critic-review.md",
+    "summary": "**审查日期**：2026-05-25",
+    "openQuestions": [
+      "外部信息**：先调度**侦察虾**确认近期是否有AI安全/勒索相关热点事件，有无可借势的由头。这个信息的优先级最高，直接影响选题是否成立。",
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T09:32:23.340Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-content-done-1779701616741",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "content",
+    "fromRole": "运营虾",
+    "to": null,
+    "toRole": null,
+    "status": "waiting_input",
+    "artifact": "outputs/ai/broadcaster/2026-05-25-task-6fb5e718-broadcaster-brief.md",
+    "summary": "**日期**：2026-05-25",
+    "openQuestions": [
+      "无法确认"
+    ],
+    "createdAt": "2026-05-25T09:33:36.741Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-director-product-1779701742345",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "director",
+    "fromRole": "虾老大",
+    "to": "product",
+    "toRole": "产品虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/director/2026-05-25-task-6fb5e718-director-decision.md",
+    "summary": "**评估人**：虾老大（董虾捏）",
+    "openQuestions": [
+      "**：如有相关背景文档或过往类似选题的发布记录，请在下一阶段提供给产品虾。如无，将基于通用框架做判断。",
+      "。当前资料未提供X_Lab的内容调性和过往选题偏好 |",
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T09:35:42.345Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-director-product-1779701813683",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "director",
+    "fromRole": "虾老大",
+    "to": "product",
+    "toRole": "产品虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/director/2026-05-25-task-6fb5e718-director-decision.md",
+    "summary": "**调度者**：董虾捏 / 虾老大",
+    "openQuestions": [
+      "\"",
+      "**：羊对这个选题的具体意图、目标平台、预期受众、时间要求",
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T09:36:53.683Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-product-critic-1779701822629",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "product",
+    "fromRole": "产品虾",
+    "to": "critic",
+    "toRole": "挑刺虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/architect/2026-05-25-task-6fb5e718-architect-plan.md",
+    "summary": "**策划人**：🦐🧠 产品虾",
+    "openQuestions": [
+      "**：以上信息需虾老大或运营虾提供。**在本策划书中，我将基于最保守假设（大众向科普、无外部事件绑定）进行方案设计**。如实际情况不同，可在后续修订。",
+      "清单（见本文档 5.1）",
+      "）"
+    ],
+    "createdAt": "2026-05-25T09:37:02.629Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-product-critic-1779701886817",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "product",
+    "fromRole": "产品虾",
+    "to": "critic",
+    "toRole": "挑刺虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/architect/2026-05-25-task-6fb5e718-architect-plan.md",
+    "summary": "**评估人**：🦐🧠 产品虾 / The Architect",
+    "openQuestions": [
+      "在进入下一步之前，**必须确认以下信息**（请虾老大或羊补充）：",
+      "？**（或暂时以测试任务方式推进，不做外部发布）",
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T09:38:06.817Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-critic-content-1779701922055",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "critic",
+    "fromRole": "挑刺虾",
+    "to": "content",
+    "toRole": "运营虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/critic/2026-05-25-task-6fb5e718-critic-review.md",
+    "summary": "**审查人**：🦐😈 挑刺虾",
+    "openQuestions": [
+      "以下信息产品虾已在策划书中标注为缺失，我在此确认——这些信息的缺失**确实影响我的审查深度**：",
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T09:38:42.055Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-critic-content-1779701982164",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "critic",
+    "fromRole": "挑刺虾",
+    "to": "content",
+    "toRole": "运营虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/critic/2026-05-25-task-6fb5e718-critic-review.md",
+    "summary": "**审查人**：🦐😈 挑刺虾 / The Critic",
+    "openQuestions": [
+      "（意图、平台、受众、时间、品牌调性），这些信息不明确的情况下，任何角度选择都是**在黑暗中射击**。比如，如果羊的意图是“制造话题引爆”，那产品虾的三个角度都太保守；如果意图是“理性科普”，那“AI恐惧批评”角度又有反噬风险。",
+      "后重启” | 无风险 | 验证了“可终止”的调度能力，积累了选题评估模板 |",
+      "，这些信息在决策前能否拿到？如果不能，凭什么判断选哪个角度？",
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T09:39:42.164Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-content-done-1779702010937",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "content",
+    "fromRole": "运营虾",
+    "to": null,
+    "toRole": null,
+    "status": "waiting_input",
+    "artifact": "outputs/ai/broadcaster/2026-05-25-task-6fb5e718-broadcaster-brief.md",
+    "summary": "**创作者**：🦐📣 运营虾",
+    "openQuestions": [
+      "确认后进入初稿创作",
+      "**：以上信息请虾老大在确认标题和大纲时一并提供。如果无法全部提供，我将在可用的信息范围内创作，并标注“未经数据验证”的部分。",
+      "清单** | 5项关键信息缺失 | ✅ 已整理（见1.4） |"
+    ],
+    "createdAt": "2026-05-25T09:40:10.937Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-content-done-1779702057225",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "content",
+    "fromRole": "运营虾",
+    "to": null,
+    "toRole": null,
+    "status": "waiting_input",
+    "artifact": "outputs/ai/broadcaster/2026-05-25-task-6fb5e718-broadcaster-brief.md",
+    "summary": "**评估人**：🦐📣 运营虾 / The Broadcaster",
+    "openQuestions": [
+      "（待虾老大或羊明确）：**",
+      "”。拿到后，我立刻把草稿精细化。"
+    ],
+    "createdAt": "2026-05-25T09:40:57.225Z"
   }
 ]

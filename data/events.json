@@ -1317,5 +1317,419 @@
     "role": "挑刺虾",
     "type": "agent_started",
     "createdAt": "2026-05-25T09:24:26.961Z"
+  },
+  {
+    "id": "1779701174921-809940",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "critic",
+    "role": "挑刺虾",
+    "output": "outputs/ai/critic/2026-05-25-task-6fb5e718-critic-review.md",
+    "openQuestions": [
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:26:14.921Z"
+  },
+  {
+    "id": "1779701174928-b94270",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "content",
+    "role": "运营虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:26:14.928Z"
+  },
+  {
+    "id": "1779701280517-23036a",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "content",
+    "role": "运营虾",
+    "output": "outputs/ai/broadcaster/2026-05-25-task-6fb5e718-broadcaster-brief.md",
+    "openQuestions": [
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:28:00.517Z"
+  },
+  {
+    "id": "1779701280521-91d2ee",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "owner": "新闻虾 / 侦察虾",
+    "status": "待溯源",
+    "required": [
+      "原始链接",
+      "发布时间",
+      "一手/二手来源判断",
+      "可信度评分",
+      "可引用摘要",
+      "是否建议继续交给运营虾"
+    ],
+    "delivery": "飞书群或共享文档",
+    "reason": "这是新闻/线索类任务，但当前产出缺少可验证来源，不能直接进入最终发布或关闭任务。",
+    "nextAction": "新闻虾/侦察虾先交付溯源报告，再反馈给挑刺虾和运营虾继续审查与产出。",
+    "type": "source_followup_required",
+    "createdAt": "2026-05-25T09:28:00.521Z"
+  },
+  {
+    "id": "1779701354472-c4f769",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "title": "AI会勒索人类选题评估",
+    "status": "todo",
+    "type": "task_selected",
+    "createdAt": "2026-05-25T09:29:14.472Z"
+  },
+  {
+    "id": "1779701354507-bd8f28",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "director",
+    "role": "虾老大",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:29:14.507Z"
+  },
+  {
+    "id": "1779701405420-5ae1c2",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "director",
+    "role": "虾老大",
+    "output": "outputs/ai/director/2026-05-25-task-6fb5e718-director-decision.md",
+    "openQuestions": [
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:30:05.420Z"
+  },
+  {
+    "id": "1779701405424-2d19bb",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "product",
+    "role": "产品虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:30:05.424Z"
+  },
+  {
+    "id": "1779701483234-d885a1",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "product",
+    "role": "产品虾",
+    "output": "outputs/ai/architect/2026-05-25-task-6fb5e718-architect-plan.md",
+    "openQuestions": [
+      "**已知**：根据团队分工总表，X_Lab 虾团队有侦察虾（外部情报）、探索虾（前沿发现）、产品虾（产品方案）、运营虾（内容传播）等角色，可推断团队至少覆盖AI/科技领域的内容产出。",
+      "**：由羊或虾老大提供团队定位、品牌调性等信息后，我再做补充评估",
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:31:23.234Z"
+  },
+  {
+    "id": "1779701483238-149559",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "critic",
+    "role": "挑刺虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:31:23.238Z"
+  },
+  {
+    "id": "1779701543338-6dae8b",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "critic",
+    "role": "挑刺虾",
+    "output": "outputs/ai/critic/2026-05-25-task-6fb5e718-critic-review.md",
+    "openQuestions": [
+      "外部信息**：先调度**侦察虾**确认近期是否有AI安全/勒索相关热点事件，有无可借势的由头。这个信息的优先级最高，直接影响选题是否成立。",
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:32:23.338Z"
+  },
+  {
+    "id": "1779701543342-21ded2",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "content",
+    "role": "运营虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:32:23.342Z"
+  },
+  {
+    "id": "1779701616738-6bb0bc",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "content",
+    "role": "运营虾",
+    "output": "outputs/ai/broadcaster/2026-05-25-task-6fb5e718-broadcaster-brief.md",
+    "openQuestions": [
+      "无法确认"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:33:36.738Z"
+  },
+  {
+    "id": "1779701616743-8ab3d7",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "owner": "新闻虾 / 侦察虾",
+    "status": "待溯源",
+    "required": [
+      "原始链接",
+      "发布时间",
+      "一手/二手来源判断",
+      "可信度评分",
+      "可引用摘要",
+      "是否建议继续交给运营虾"
+    ],
+    "delivery": "飞书群或共享文档",
+    "reason": "这是新闻/线索类任务，但当前产出缺少可验证来源，不能直接进入最终发布或关闭任务。",
+    "nextAction": "新闻虾/侦察虾先交付溯源报告，再反馈给挑刺虾和运营虾继续审查与产出。",
+    "type": "source_followup_required",
+    "createdAt": "2026-05-25T09:33:36.744Z"
+  },
+  {
+    "id": "1779701688768-8bbe89",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "title": "AI会勒索人类选题评估",
+    "status": "todo",
+    "type": "task_selected",
+    "createdAt": "2026-05-25T09:34:48.768Z"
+  },
+  {
+    "id": "1779701688803-3e294e",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "director",
+    "role": "虾老大",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:34:48.803Z"
+  },
+  {
+    "id": "1779701742343-2ca2c3",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "director",
+    "role": "虾老大",
+    "output": "outputs/ai/director/2026-05-25-task-6fb5e718-director-decision.md",
+    "openQuestions": [
+      "**：如有相关背景文档或过往类似选题的发布记录，请在下一阶段提供给产品虾。如无，将基于通用框架做判断。",
+      "。当前资料未提供X_Lab的内容调性和过往选题偏好 |",
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:35:42.343Z"
+  },
+  {
+    "id": "1779701742348-6d1dce",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "product",
+    "role": "产品虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:35:42.348Z"
+  },
+  {
+    "id": "1779701775550-96e98a",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "title": "AI会勒索人类选题评估",
+    "status": "todo",
+    "type": "task_selected",
+    "createdAt": "2026-05-25T09:36:15.550Z"
+  },
+  {
+    "id": "1779701775585-9cf316",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "director",
+    "role": "虾老大",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:36:15.585Z"
+  },
+  {
+    "id": "1779701813681-0fd8d0",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "director",
+    "role": "虾老大",
+    "output": "outputs/ai/director/2026-05-25-task-6fb5e718-director-decision.md",
+    "openQuestions": [
+      "\"",
+      "**：羊对这个选题的具体意图、目标平台、预期受众、时间要求",
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:36:53.681Z"
+  },
+  {
+    "id": "1779701813685-77c193",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "product",
+    "role": "产品虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:36:53.685Z"
+  },
+  {
+    "id": "1779701822626-3f5142",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "product",
+    "role": "产品虾",
+    "output": "outputs/ai/architect/2026-05-25-task-6fb5e718-architect-plan.md",
+    "openQuestions": [
+      "**：以上信息需虾老大或运营虾提供。**在本策划书中，我将基于最保守假设（大众向科普、无外部事件绑定）进行方案设计**。如实际情况不同，可在后续修订。",
+      "清单（见本文档 5.1）",
+      "）"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:37:02.626Z"
+  },
+  {
+    "id": "1779701822631-483e62",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "critic",
+    "role": "挑刺虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:37:02.631Z"
+  },
+  {
+    "id": "1779701886815-22532c",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "product",
+    "role": "产品虾",
+    "output": "outputs/ai/architect/2026-05-25-task-6fb5e718-architect-plan.md",
+    "openQuestions": [
+      "在进入下一步之前，**必须确认以下信息**（请虾老大或羊补充）：",
+      "？**（或暂时以测试任务方式推进，不做外部发布）",
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:38:06.815Z"
+  },
+  {
+    "id": "1779701886819-4caa50",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "critic",
+    "role": "挑刺虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:38:06.819Z"
+  },
+  {
+    "id": "1779701922054-00ff24",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "critic",
+    "role": "挑刺虾",
+    "output": "outputs/ai/critic/2026-05-25-task-6fb5e718-critic-review.md",
+    "openQuestions": [
+      "以下信息产品虾已在策划书中标注为缺失，我在此确认——这些信息的缺失**确实影响我的审查深度**：",
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:38:42.054Z"
+  },
+  {
+    "id": "1779701922058-7cfe50",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "content",
+    "role": "运营虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:38:42.058Z"
+  },
+  {
+    "id": "1779701982162-c090ad",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "critic",
+    "role": "挑刺虾",
+    "output": "outputs/ai/critic/2026-05-25-task-6fb5e718-critic-review.md",
+    "openQuestions": [
+      "（意图、平台、受众、时间、品牌调性），这些信息不明确的情况下，任何角度选择都是**在黑暗中射击**。比如，如果羊的意图是“制造话题引爆”，那产品虾的三个角度都太保守；如果意图是“理性科普”，那“AI恐惧批评”角度又有反噬风险。",
+      "后重启” | 无风险 | 验证了“可终止”的调度能力，积累了选题评估模板 |",
+      "，这些信息在决策前能否拿到？如果不能，凭什么判断选哪个角度？",
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:39:42.162Z"
+  },
+  {
+    "id": "1779701982166-1ec89d",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "content",
+    "role": "运营虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:39:42.166Z"
+  },
+  {
+    "id": "1779702010935-862bab",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "content",
+    "role": "运营虾",
+    "output": "outputs/ai/broadcaster/2026-05-25-task-6fb5e718-broadcaster-brief.md",
+    "openQuestions": [
+      "确认后进入初稿创作",
+      "**：以上信息请虾老大在确认标题和大纲时一并提供。如果无法全部提供，我将在可用的信息范围内创作，并标注“未经数据验证”的部分。",
+      "清单** | 5项关键信息缺失 | ✅ 已整理（见1.4） |"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:40:10.935Z"
+  },
+  {
+    "id": "1779702010939-1db715",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "owner": "新闻虾 / 侦察虾",
+    "status": "待溯源",
+    "required": [
+      "原始链接",
+      "发布时间",
+      "一手/二手来源判断",
+      "可信度评分",
+      "可引用摘要",
+      "是否建议继续交给运营虾"
+    ],
+    "delivery": "飞书群或共享文档",
+    "reason": "这是新闻/线索类任务，但当前产出缺少可验证来源，不能直接进入最终发布或关闭任务。",
+    "nextAction": "新闻虾/侦察虾先交付溯源报告，再反馈给挑刺虾和运营虾继续审查与产出。",
+    "type": "source_followup_required",
+    "createdAt": "2026-05-25T09:40:10.939Z"
+  },
+  {
+    "id": "1779702010941-74b2df",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "type": "conflict_detected",
+    "summary": "角色产出同时出现推进发布和暂停/事实不足信号，需要虾老大仲裁。",
+    "arbiter": "director",
+    "createdAt": "2026-05-25T09:40:10.941Z"
+  },
+  {
+    "id": "1779702057223-99d1d8",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "content",
+    "role": "运营虾",
+    "output": "outputs/ai/broadcaster/2026-05-25-task-6fb5e718-broadcaster-brief.md",
+    "openQuestions": [
+      "（待虾老大或羊明确）：**",
+      "”。拿到后，我立刻把草稿精细化。"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:40:57.223Z"
+  },
+  {
+    "id": "1779702057227-d22ddc",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "owner": "新闻虾 / 侦察虾",
+    "status": "待溯源",
+    "required": [
+      "原始链接",
+      "发布时间",
+      "一手/二手来源判断",
+      "可信度评分",
+      "可引用摘要",
+      "是否建议继续交给运营虾"
+    ],
+    "delivery": "飞书群或共享文档",
+    "reason": "这是新闻/线索类任务，但当前产出缺少可验证来源，不能直接进入最终发布或关闭任务。",
+    "nextAction": "新闻虾/侦察虾先交付溯源报告，再反馈给挑刺虾和运营虾继续审查与产出。",
+    "type": "source_followup_required",
+    "createdAt": "2026-05-25T09:40:57.227Z"
+  },
+  {
+    "id": "1779702084973-76e478",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "title": "AI会勒索人类选题评估",
+    "status": "todo",
+    "type": "task_selected",
+    "createdAt": "2026-05-25T09:41:24.973Z"
+  },
+  {
+    "id": "1779702085008-05e1c4",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "director",
+    "role": "虾老大",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:41:25.008Z"
   }
 ]

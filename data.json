@@ -3,7 +3,7 @@
     "agents": 7,
     "liveTasks": 21,
     "completion": 68,
-    "status": "虾团队已完成 AI 产出，但飞书回写失败，请查看 data/assignments.json。",
+    "status": "已从飞书同步 1 个未完成任务，等待虾团队分配处理。",
     "feishuTasks": 1
   },
   "workspace": {
@@ -511,7 +511,7 @@
       "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
       "source": "feishu",
       "title": "AI会勒索人类选题评估",
-      "status": "needs_source",
+      "status": "todo",
       "routeStage": "识别层",
       "route": "council",
       "routeLabel": "十二怒汉",
