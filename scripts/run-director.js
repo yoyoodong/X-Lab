@@ -73,6 +73,12 @@ const SOURCE_FOLLOWUP_TEMPLATE = {
 
 const MANAGEMENT_ADVISORS = [
   {
+    id: 'steve-jobs-perspective',
+    name: 'Steve Jobs',
+    role: '产品体验、取舍与端到端完成度',
+    question: '这个方向是否足够简单、清晰，能不能让用户第一眼就理解价值？'
+  },
+  {
     id: 'paul-graham-perspective',
     name: 'Paul Graham',
     role: '用户问题与最小可用版本',

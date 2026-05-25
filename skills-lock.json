@@ -43,6 +43,12 @@
       "skillPath": "SKILL.md",
       "computedHash": "2bf378625610e20f18ced13e7a9e3ce429e79755b0a6bd0f43ab2b0702dab978"
     },
+    "steve-jobs-perspective": {
+      "source": "alchaincyf/steve-jobs-skill",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "7f1b0c042048569cec03f0da1bf23a443f30a81f75f104f4b2ee939561ddcc66"
+    },
     "taleb-perspective": {
       "source": "alchaincyf/taleb-skill",
       "sourceType": "github",

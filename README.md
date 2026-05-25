@@ -25,6 +25,7 @@ X_Lab/
 │       ├── munger-perspective/
 │       ├── naval-perspective/
 │       ├── paul-graham-perspective/
+│       ├── steve-jobs-perspective/
 │       ├── taleb-perspective/
 │       └── zhang-yiming-perspective/
 ├── docs/
@@ -154,6 +155,7 @@ X_Lab now uses a two-layer operating model:
 Installed advisor skills:
 
 - Paul Graham
+- Steve Jobs
 - 张一鸣
 - Andrej Karpathy
 - Ilya Sutskever
