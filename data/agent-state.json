@@ -4,14 +4,16 @@
       "agentId": "director",
       "role": "虾老大",
       "english": "The Director",
-      "status": "working",
+      "status": "blocked",
       "currentTaskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
       "assignedAt": "2026-05-25T09:41:25.008Z",
       "deadlineAt": "2026-05-25T10:41:25.008Z",
-      "lastSeenAt": "2026-05-25T09:41:25.008Z",
+      "lastSeenAt": "2026-05-25T09:47:14.102Z",
       "lastOutput": "outputs/ai/director/2026-05-25-task-6fb5e718-director-decision.md",
-      "waitingFor": null,
-      "blockedReason": null,
+      "waitingFor": [
+        "当前资料未提供"
+      ],
+      "blockedReason": "角色产出同时出现推进发布和暂停/事实不足信号，需要虾老大仲裁。",
       "capabilities": [
         "triage",
         "dispatch",
@@ -24,14 +26,16 @@
       "english": "The Architect",
       "status": "waiting_input",
       "currentTaskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
-      "assignedAt": "2026-05-25T09:36:53.685Z",
-      "deadlineAt": "2026-05-25T10:36:53.685Z",
-      "lastSeenAt": "2026-05-25T09:38:06.815Z",
+      "assignedAt": "2026-05-25T09:42:09.425Z",
+      "deadlineAt": "2026-05-25T10:42:09.425Z",
+      "lastSeenAt": "2026-05-25T09:43:38.865Z",
       "lastOutput": "outputs/ai/architect/2026-05-25-task-6fb5e718-architect-plan.md",
       "waitingFor": [
-        "在进入下一步之前，**必须确认以下信息**（请虾老大或羊补充）：",
-        "？**（或暂时以测试任务方式推进，不做外部发布）",
-        "当前资料未提供"
+        "在给出选题方案之前，我必须明确标注信息缺口。以下信息**必须由侦察虾补充**，否则结论无法落地。",
+        "| 为什么需要 | 负责角色 |",
+        "| 我们的优势：更通俗、更对「被追问的从业者」友好 | 待验证 |",
+        "| 我们的优势：不走情绪，走技术澄清 | 待验证 |",
+        "| 我们的优势：传播力更强，能破圈 | 待验证 |"
       ],
       "blockedReason": null,
       "capabilities": [
@@ -46,14 +50,12 @@
       "english": "The Critic",
       "status": "waiting_input",
       "currentTaskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
-      "assignedAt": "2026-05-25T09:38:06.819Z",
-      "deadlineAt": "2026-05-25T10:38:06.819Z",
-      "lastSeenAt": "2026-05-25T09:39:42.162Z",
+      "assignedAt": "2026-05-25T09:43:38.877Z",
+      "deadlineAt": "2026-05-25T10:43:38.877Z",
+      "lastSeenAt": "2026-05-25T09:45:38.513Z",
       "lastOutput": "outputs/ai/critic/2026-05-25-task-6fb5e718-critic-review.md",
       "waitingFor": [
-        "（意图、平台、受众、时间、品牌调性），这些信息不明确的情况下，任何角度选择都是**在黑暗中射击**。比如，如果羊的意图是“制造话题引爆”，那产品虾的三个角度都太保守；如果意图是“理性科普”，那“AI恐惧批评”角度又有反噬风险。",
-        "后重启” | 无风险 | 验证了“可终止”的调度能力，积累了选题评估模板 |",
-        "，这些信息在决策前能否拿到？如果不能，凭什么判断选哪个角度？",
+        "。",
         "当前资料未提供"
       ],
       "blockedReason": null,
@@ -69,13 +71,12 @@
       "english": "The Broadcaster",
       "status": "waiting_input",
       "currentTaskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
-      "assignedAt": "2026-05-25T09:39:42.166Z",
-      "deadlineAt": "2026-05-25T10:39:42.166Z",
-      "lastSeenAt": "2026-05-25T09:40:57.222Z",
+      "assignedAt": "2026-05-25T09:45:38.521Z",
+      "deadlineAt": "2026-05-25T10:45:38.521Z",
+      "lastSeenAt": "2026-05-25T09:47:14.093Z",
       "lastOutput": "outputs/ai/broadcaster/2026-05-25-task-6fb5e718-broadcaster-brief.md",
       "waitingFor": [
-        "（待虾老大或羊明确）：**",
-        "”。拿到后，我立刻把草稿精细化。"
+        "当前资料未提供"
       ],
       "blockedReason": null,
       "capabilities": [
@@ -99,9 +100,9 @@
         "可引用摘要",
         "是否建议继续交给运营虾"
       ],
-      "lastSeenAt": "2026-05-25T09:40:57.229Z",
-      "deadlineAt": "2026-05-25T10:40:57.229Z"
+      "lastSeenAt": "2026-05-25T09:47:14.100Z",
+      "deadlineAt": "2026-05-25T10:47:14.100Z"
     }
   },
-  "updatedAt": "2026-05-25T09:41:25.008Z"
+  "updatedAt": "2026-05-25T09:47:14.102Z"
 }

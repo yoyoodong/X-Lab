@@ -19,6 +19,41 @@ function pick(...values) {
   return values.find((value) => value !== undefined && value !== null && value !== '');
 }
 
+function readExistingTasks() {
+  if (!fs.existsSync(TASKS_PATH)) {
+    return [];
+  }
+
+  return readJson(TASKS_PATH);
+}
+
+function mergeTaskState(existingTask, normalizedTask) {
+  if (!existingTask) {
+    return normalizedTask;
+  }
+
+  const preservedFields = {
+    status: existingTask.status,
+    routeStage: existingTask.routeStage,
+    route: existingTask.route,
+    routeLabel: existingTask.routeLabel,
+    routePlan: existingTask.routePlan,
+    routeReason: existingTask.routeReason
+  };
+
+  return {
+    ...normalizedTask,
+    ...preservedFields,
+    id: normalizedTask.id,
+    source: normalizedTask.source,
+    title: normalizedTask.title,
+    due: normalizedTask.due,
+    url: normalizedTask.url,
+    owner: normalizedTask.owner,
+    raw: normalizedTask.raw
+  };
+}
+
 function normalizeTask(raw) {
   const id = pick(raw.guid, raw.id, raw.task_guid, raw.task_id, raw.entity_id, raw.url) || `feishu-${Date.now()}`;
   const title = pick(raw.summary, raw.title, raw.name, raw.subject, 'Untitled Feishu task');
@@ -60,7 +95,11 @@ function fetchFeishuTasks() {
 function main() {
   const data = readJson(DATA_PATH);
   const rawTasks = fetchFeishuTasks();
-  const tasks = rawTasks.map(normalizeTask);
+  const existingTasks = new Map(readExistingTasks().map((task) => [task.id, task]));
+  const tasks = rawTasks.map((raw) => {
+    const normalized = normalizeTask(raw);
+    return mergeTaskState(existingTasks.get(normalized.id), normalized);
+  });
 
   fs.mkdirSync(TASKS_DIR, { recursive: true });
   writeJson(TASKS_PATH, tasks);

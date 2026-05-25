@@ -1731,5 +1731,109 @@
     "role": "虾老大",
     "type": "agent_started",
     "createdAt": "2026-05-25T09:41:25.008Z"
+  },
+  {
+    "id": "1779702129421-ea944b",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "director",
+    "role": "虾老大",
+    "output": "outputs/ai/director/2026-05-25-task-6fb5e718-director-decision.md",
+    "openQuestions": [
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:42:09.421Z"
+  },
+  {
+    "id": "1779702129425-621b17",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "product",
+    "role": "产品虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:42:09.425Z"
+  },
+  {
+    "id": "1779702218866-fa3086",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "product",
+    "role": "产品虾",
+    "output": "outputs/ai/architect/2026-05-25-task-6fb5e718-architect-plan.md",
+    "openQuestions": [
+      "在给出选题方案之前，我必须明确标注信息缺口。以下信息**必须由侦察虾补充**，否则结论无法落地。",
+      "| 为什么需要 | 负责角色 |",
+      "| 我们的优势：更通俗、更对「被追问的从业者」友好 | 待验证 |",
+      "| 我们的优势：不走情绪，走技术澄清 | 待验证 |",
+      "| 我们的优势：传播力更强，能破圈 | 待验证 |"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:43:38.866Z"
+  },
+  {
+    "id": "1779702218879-542dc9",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "critic",
+    "role": "挑刺虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:43:38.879Z"
+  },
+  {
+    "id": "1779702338514-b5ceb2",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "critic",
+    "role": "挑刺虾",
+    "output": "outputs/ai/critic/2026-05-25-task-6fb5e718-critic-review.md",
+    "openQuestions": [
+      "。",
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:45:38.514Z"
+  },
+  {
+    "id": "1779702338522-1e557f",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "content",
+    "role": "运营虾",
+    "type": "agent_started",
+    "createdAt": "2026-05-25T09:45:38.522Z"
+  },
+  {
+    "id": "1779702434093-69c929",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "agentId": "content",
+    "role": "运营虾",
+    "output": "outputs/ai/broadcaster/2026-05-25-task-6fb5e718-broadcaster-brief.md",
+    "openQuestions": [
+      "当前资料未提供"
+    ],
+    "type": "agent_output_created",
+    "createdAt": "2026-05-25T09:47:14.093Z"
+  },
+  {
+    "id": "1779702434098-4cb166",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "owner": "新闻虾 / 侦察虾",
+    "status": "待溯源",
+    "required": [
+      "原始链接",
+      "发布时间",
+      "一手/二手来源判断",
+      "可信度评分",
+      "可引用摘要",
+      "是否建议继续交给运营虾"
+    ],
+    "delivery": "飞书群或共享文档",
+    "reason": "这是新闻/线索类任务，但当前产出缺少可验证来源，不能直接进入最终发布或关闭任务。",
+    "nextAction": "新闻虾/侦察虾先交付溯源报告，再反馈给挑刺虾和运营虾继续审查与产出。",
+    "type": "source_followup_required",
+    "createdAt": "2026-05-25T09:47:14.098Z"
+  },
+  {
+    "id": "1779702434100-7ca31c",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "type": "conflict_detected",
+    "summary": "角色产出同时出现推进发布和暂停/事实不足信号，需要虾老大仲裁。",
+    "arbiter": "director",
+    "createdAt": "2026-05-25T09:47:14.100Z"
   }
 ]

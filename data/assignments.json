@@ -651,7 +651,8 @@
       "https://my.feishu.cn/docx/Y8DVdHPNtoFBEdxeMmncJHcWn2d",
       "https://my.feishu.cn/docx/V9UEdWSYpoobBkxUuXUciin2nXb",
       "https://my.feishu.cn/docx/LIkHdNPfyoq4ZWx8DeOchKzinzd",
-      "https://my.feishu.cn/docx/ZfiVdk2H4opV8oxEE06cu1G9nNf"
+      "https://my.feishu.cn/docx/ZfiVdk2H4opV8oxEE06cu1G9nNf",
+      "https://my.feishu.cn/docx/Dvvtd1454oXyx4xI2nGcO415n1b"
     ],
     "status": "needs_source",
     "intake": {
@@ -662,13 +663,13 @@
       "receivedAt": "2026-05-25T16:33:56+08:00"
     },
     "handoff": {
-      "from": "虾老大",
-      "to": "设计虾",
-      "reason": "任务需要视觉呈现或界面表达。"
+      "from": "新闻虾 / 侦察虾",
+      "to": "运营虾",
+      "reason": "发现信息信号后，交给运营虾评估传播价值并产出内容角度。"
     },
     "handoffs": [
       {
-        "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-director-product-1779701813683",
+        "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-director-product-1779702129423",
         "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
         "taskTitle": "AI会勒索人类选题评估",
         "from": "director",
@@ -677,16 +678,14 @@
         "toRole": "产品虾",
         "status": "waiting_input",
         "artifact": "outputs/ai/director/2026-05-25-task-6fb5e718-director-decision.md",
-        "summary": "**调度者**：董虾捏 / 虾老大",
+        "summary": "**生成时间**：2026-05-25",
         "openQuestions": [
-          "\"",
-          "**：羊对这个选题的具体意图、目标平台、预期受众、时间要求",
           "当前资料未提供"
         ],
-        "createdAt": "2026-05-25T09:36:53.683Z"
+        "createdAt": "2026-05-25T09:42:09.423Z"
       },
       {
-        "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-product-critic-1779701886817",
+        "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-product-critic-1779702218871",
         "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
         "taskTitle": "AI会勒索人类选题评估",
         "from": "product",
@@ -695,16 +694,18 @@
         "toRole": "挑刺虾",
         "status": "waiting_input",
         "artifact": "outputs/ai/architect/2026-05-25-task-6fb5e718-architect-plan.md",
-        "summary": "**评估人**：🦐🧠 产品虾 / The Architect",
+        "summary": "**生成时间**：2026-05-25",
         "openQuestions": [
-          "在进入下一步之前，**必须确认以下信息**（请虾老大或羊补充）：",
-          "？**（或暂时以测试任务方式推进，不做外部发布）",
-          "当前资料未提供"
+          "在给出选题方案之前，我必须明确标注信息缺口。以下信息**必须由侦察虾补充**，否则结论无法落地。",
+          "| 为什么需要 | 负责角色 |",
+          "| 我们的优势：更通俗、更对「被追问的从业者」友好 | 待验证 |",
+          "| 我们的优势：不走情绪，走技术澄清 | 待验证 |",
+          "| 我们的优势：传播力更强，能破圈 | 待验证 |"
         ],
-        "createdAt": "2026-05-25T09:38:06.817Z"
+        "createdAt": "2026-05-25T09:43:38.871Z"
       },
       {
-        "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-critic-content-1779701982164",
+        "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-critic-content-1779702338518",
         "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
         "taskTitle": "AI会勒索人类选题评估",
         "from": "critic",
@@ -713,17 +714,15 @@
         "toRole": "运营虾",
         "status": "waiting_input",
         "artifact": "outputs/ai/critic/2026-05-25-task-6fb5e718-critic-review.md",
-        "summary": "**审查人**：🦐😈 挑刺虾 / The Critic",
+        "summary": "**生成时间**：2026-05-25",
         "openQuestions": [
-          "（意图、平台、受众、时间、品牌调性），这些信息不明确的情况下，任何角度选择都是**在黑暗中射击**。比如，如果羊的意图是“制造话题引爆”，那产品虾的三个角度都太保守；如果意图是“理性科普”，那“AI恐惧批评”角度又有反噬风险。",
-          "后重启” | 无风险 | 验证了“可终止”的调度能力，积累了选题评估模板 |",
-          "，这些信息在决策前能否拿到？如果不能，凭什么判断选哪个角度？",
+          "。",
           "当前资料未提供"
         ],
-        "createdAt": "2026-05-25T09:39:42.164Z"
+        "createdAt": "2026-05-25T09:45:38.518Z"
       },
       {
-        "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-content-done-1779702057225",
+        "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-content-done-1779702434095",
         "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
         "taskTitle": "AI会勒索人类选题评估",
         "from": "content",
@@ -732,15 +731,18 @@
         "toRole": null,
         "status": "waiting_input",
         "artifact": "outputs/ai/broadcaster/2026-05-25-task-6fb5e718-broadcaster-brief.md",
-        "summary": "**评估人**：🦐📣 运营虾 / The Broadcaster",
+        "summary": "**生成时间**：2026-05-25",
         "openQuestions": [
-          "（待虾老大或羊明确）：**",
-          "”。拿到后，我立刻把草稿精细化。"
+          "当前资料未提供"
         ],
-        "createdAt": "2026-05-25T09:40:57.225Z"
+        "createdAt": "2026-05-25T09:47:14.095Z"
       }
     ],
-    "conflict": null,
+    "conflict": {
+      "type": "publish_risk_conflict",
+      "summary": "角色产出同时出现推进发布和暂停/事实不足信号，需要虾老大仲裁。",
+      "arbiter": "director"
+    },
     "needsReview": true,
     "needsSource": true,
     "sourceFollowup": {
@@ -835,59 +837,49 @@
         "产出是否能复用",
         "是否可以交给七武士执行"
       ],
-      "blocker": "缺少可验证新闻来源。"
+      "blocker": "角色产出同时出现推进发布和暂停/事实不足信号，需要虾老大仲裁。"
     },
     "reviewBlockers": [
       "缺少新闻虾/侦察虾溯源报告：需要原始链接、发布时间、一手/二手来源判断、可信度评分、可引用摘要、是否建议继续交给运营虾。",
-      "虾老大: \"",
-      "虾老大: **：羊对这个选题的具体意图、目标平台、预期受众、时间要求",
       "虾老大: 当前资料未提供",
-      "产品虾: 在进入下一步之前，**必须确认以下信息**（请虾老大或羊补充）：",
-      "产品虾: ？**（或暂时以测试任务方式推进，不做外部发布）",
-      "产品虾: 当前资料未提供",
-      "挑刺虾: （意图、平台、受众、时间、品牌调性），这些信息不明确的情况下，任何角度选择都是**在黑暗中射击**。比如，如果羊的意图是“制造话题引爆”，那产品虾的三个角度都太保守；如果意图是“理性科普”，那“AI恐惧批评”角度又有反噬风险。",
-      "挑刺虾: 后重启” | 无风险 | 验证了“可终止”的调度能力，积累了选题评估模板 |",
-      "挑刺虾: ，这些信息在决策前能否拿到？如果不能，凭什么判断选哪个角度？",
+      "产品虾: 在给出选题方案之前，我必须明确标注信息缺口。以下信息**必须由侦察虾补充**，否则结论无法落地。",
+      "产品虾: | 为什么需要 | 负责角色 |",
+      "产品虾: | 我们的优势：更通俗、更对「被追问的从业者」友好 | 待验证 |",
+      "产品虾: | 我们的优势：不走情绪，走技术澄清 | 待验证 |",
+      "产品虾: | 我们的优势：传播力更强，能破圈 | 待验证 |",
+      "挑刺虾: 。",
       "挑刺虾: 当前资料未提供",
-      "运营虾: （待虾老大或羊明确）：**",
-      "运营虾: ”。拿到后，我立刻把草稿精细化。"
+      "运营虾: 当前资料未提供",
+      "角色产出同时出现推进发布和暂停/事实不足信号，需要虾老大仲裁。"
     ],
     "openQuestions": [
       {
         "role": "虾老大",
-        "question": "\""
-      },
-      {
-        "role": "虾老大",
-        "question": "**：羊对这个选题的具体意图、目标平台、预期受众、时间要求"
-      },
-      {
-        "role": "虾老大",
         "question": "当前资料未提供"
       },
       {
         "role": "产品虾",
-        "question": "在进入下一步之前，**必须确认以下信息**（请虾老大或羊补充）："
+        "question": "在给出选题方案之前，我必须明确标注信息缺口。以下信息**必须由侦察虾补充**，否则结论无法落地。"
       },
       {
         "role": "产品虾",
-        "question": "？**（或暂时以测试任务方式推进，不做外部发布）"
+        "question": "| 为什么需要 | 负责角色 |"
       },
       {
         "role": "产品虾",
-        "question": "当前资料未提供"
+        "question": "| 我们的优势：更通俗、更对「被追问的从业者」友好 | 待验证 |"
+      },
+      {
+        "role": "产品虾",
+        "question": "| 我们的优势：不走情绪，走技术澄清 | 待验证 |"
+      },
+      {
+        "role": "产品虾",
+        "question": "| 我们的优势：传播力更强，能破圈 | 待验证 |"
       },
       {
         "role": "挑刺虾",
-        "question": "（意图、平台、受众、时间、品牌调性），这些信息不明确的情况下，任何角度选择都是**在黑暗中射击**。比如，如果羊的意图是“制造话题引爆”，那产品虾的三个角度都太保守；如果意图是“理性科普”，那“AI恐惧批评”角度又有反噬风险。"
-      },
-      {
-        "role": "挑刺虾",
-        "question": "后重启” | 无风险 | 验证了“可终止”的调度能力，积累了选题评估模板 |"
-      },
-      {
-        "role": "挑刺虾",
-        "question": "，这些信息在决策前能否拿到？如果不能，凭什么判断选哪个角度？"
+        "question": "。"
       },
       {
         "role": "挑刺虾",
@@ -895,11 +887,7 @@
       },
       {
         "role": "运营虾",
-        "question": "（待虾老大或羊明确）：**"
-      },
-      {
-        "role": "运营虾",
-        "question": "”。拿到后，我立刻把草稿精细化。"
+        "question": "当前资料未提供"
       }
     ],
     "progress": [
@@ -944,11 +932,11 @@
       "wikiSpaceId": "7634432301040159694",
       "wikiSpaceName": "虾调研",
       "objType": "docx",
-      "objToken": "ZfiVdk2H4opV8oxEE06cu1G9nNf",
-      "docUrl": "https://my.feishu.cn/docx/ZfiVdk2H4opV8oxEE06cu1G9nNf",
-      "wikiToken": "A2rcw2ZKNibrz4kQErEcFGMrnyd",
-      "wikiUrl": "https://my.feishu.cn/docx/ZfiVdk2H4opV8oxEE06cu1G9nNf",
-      "publishedAt": "2026-05-25T09:41:06.841Z"
+      "objToken": "Dvvtd1454oXyx4xI2nGcO415n1b",
+      "docUrl": "https://my.feishu.cn/docx/Dvvtd1454oXyx4xI2nGcO415n1b",
+      "wikiToken": "Uz9qwGHd5iRzVmkwhkkc4Ym8njd",
+      "wikiUrl": "https://my.feishu.cn/docx/Dvvtd1454oXyx4xI2nGcO415n1b",
+      "publishedAt": "2026-05-25T09:47:24.990Z"
     },
     "feishuWriteback": {
       "commented": true,
@@ -957,7 +945,7 @@
         "ok": true,
         "identity": "user",
         "data": {
-          "id": "7643762178423638993"
+          "id": "7643763802374212560"
         },
         "_notice": {
           "update": {

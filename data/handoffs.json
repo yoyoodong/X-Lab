@@ -948,5 +948,74 @@
       "”。拿到后，我立刻把草稿精细化。"
     ],
     "createdAt": "2026-05-25T09:40:57.225Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-director-product-1779702129423",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "director",
+    "fromRole": "虾老大",
+    "to": "product",
+    "toRole": "产品虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/director/2026-05-25-task-6fb5e718-director-decision.md",
+    "summary": "**生成时间**：2026-05-25",
+    "openQuestions": [
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T09:42:09.423Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-product-critic-1779702218871",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "product",
+    "fromRole": "产品虾",
+    "to": "critic",
+    "toRole": "挑刺虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/architect/2026-05-25-task-6fb5e718-architect-plan.md",
+    "summary": "**生成时间**：2026-05-25",
+    "openQuestions": [
+      "在给出选题方案之前，我必须明确标注信息缺口。以下信息**必须由侦察虾补充**，否则结论无法落地。",
+      "| 为什么需要 | 负责角色 |",
+      "| 我们的优势：更通俗、更对「被追问的从业者」友好 | 待验证 |",
+      "| 我们的优势：不走情绪，走技术澄清 | 待验证 |",
+      "| 我们的优势：传播力更强，能破圈 | 待验证 |"
+    ],
+    "createdAt": "2026-05-25T09:43:38.871Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-critic-content-1779702338518",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "critic",
+    "fromRole": "挑刺虾",
+    "to": "content",
+    "toRole": "运营虾",
+    "status": "waiting_input",
+    "artifact": "outputs/ai/critic/2026-05-25-task-6fb5e718-critic-review.md",
+    "summary": "**生成时间**：2026-05-25",
+    "openQuestions": [
+      "。",
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T09:45:38.518Z"
+  },
+  {
+    "id": "6fb5e718-7487-46ef-b0db-eb08b5f49771-content-done-1779702434095",
+    "taskId": "6fb5e718-7487-46ef-b0db-eb08b5f49771",
+    "taskTitle": "AI会勒索人类选题评估",
+    "from": "content",
+    "fromRole": "运营虾",
+    "to": null,
+    "toRole": null,
+    "status": "waiting_input",
+    "artifact": "outputs/ai/broadcaster/2026-05-25-task-6fb5e718-broadcaster-brief.md",
+    "summary": "**生成时间**：2026-05-25",
+    "openQuestions": [
+      "当前资料未提供"
+    ],
+    "createdAt": "2026-05-25T09:47:14.095Z"
   }
 ]
