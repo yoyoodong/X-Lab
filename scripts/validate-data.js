@@ -72,4 +72,16 @@ if (fs.existsSync('data/events.json')) {
   }
 }
 
+if (fs.existsSync('data/council-sessions.json')) {
+  const sessions = readJson('data/council-sessions.json');
+  assert(Array.isArray(sessions), 'data/council-sessions.json must be an array');
+  for (const session of sessions) {
+    assert(session.id, 'council session missing id');
+    assert(session.topic, `council session ${session.id} missing topic`);
+    assert(session.decision, `council session ${session.id} missing decision`);
+    assert(Array.isArray(session.advisors), `council session ${session.id} missing advisors[]`);
+    assert(session.handoff && session.handoff.to, `council session ${session.id} missing handoff.to`);
+  }
+}
+
 console.log('X_Lab data validation passed.');

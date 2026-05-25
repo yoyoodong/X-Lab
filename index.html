@@ -164,6 +164,7 @@
       <nav class="nav-pills">
         <button class="pill active" data-panel="overview">Overview</button>
         <button class="pill" data-panel="tasks">Tasks</button>
+        <button class="pill" data-panel="council">Council</button>
         <button class="pill" data-panel="members">Members</button>
         <button class="pill" data-panel="projects">Projects</button>
         <button class="pill" data-panel="memory">Memory</button>
@@ -174,8 +175,8 @@
     <section class="hero">
       <div class="hero-center">
         <div class="line motion" id="line1">X_LAB</div>
-        <div class="line motion" id="line2">AI 项目作战室</div>
-        <div class="line motion" id="line3">想法 · 角色 · 任务 · 记忆 · 反馈 · 输出物</div>
+        <div class="line motion" id="line2">十二怒汉和七武士</div>
+        <div class="line motion" id="line3"></div>
         <div class="workbench">
           <section class="loop-board">
             <div class="loop-head">
@@ -207,6 +208,7 @@
     let daily=[];
     let future=[];
     let assignments=[];
+    let councilSessions=[];
 
     function avatar(i){
       if(members[i]?.image)return `<img class="avatar-img" src="${members[i].image}" alt="${members[i].cn} ${members[i].name}" loading="lazy">`;
@@ -221,12 +223,13 @@
     document.getElementById('closeMembers').onclick=()=>{overlay.classList.remove('open');document.body.classList.remove('members-open')};
     overlay.onclick=e=>{if(e.target===overlay){overlay.classList.remove('open');document.body.classList.remove('members-open')}};
 
-    const panelNames={overview:'总览',members:'成员',tasks:'任务',projects:'项目',memory:'记忆',brief:'简报'};
+    const panelNames={overview:'总览',members:'成员',tasks:'任务',council:'十二怒汉',projects:'项目',memory:'记忆',brief:'简报'};
     const modal=document.getElementById('modal'),modalTitle=document.getElementById('modalTitle'),modalContent=document.getElementById('modalContent');
     function card(k,h,p,light=false,extra=''){return `<article class="modal-card ${light?'light':''}"><div><div class="mk">${k}</div><h3>${h}</h3><p>${p}</p>${extra}</div></article>`}
     function setGrid(html){modalContent.innerHTML=`<div class="modal-grid" id="modalGrid">${html}</div>`}
-    function openPanel(key){modalTitle.textContent=panelNames[key]||key; if(key==='overview') renderOverview(); if(key==='members') renderMembers(); if(key==='tasks') renderTasks(); if(key==='projects') renderProjects(); if(key==='memory') renderMemory(); if(key==='brief') renderBrief(); modal.classList.add('open')}
+    function openPanel(key){modalTitle.textContent=panelNames[key]||key; if(key==='overview') renderOverview(); if(key==='members') renderMembers(); if(key==='tasks') renderTasks(); if(key==='council') renderCouncil(); if(key==='projects') renderProjects(); if(key==='memory') renderMemory(); if(key==='brief') renderBrief(); modal.classList.add('open')}
     function latestAssignment(){return assignments[assignments.length-1]}
+    function latestCouncilSession(){return councilSessions[councilSessions.length-1]}
     function humanType(type){
       return {signal:'线索/选题',task:'通用任务',design:'设计任务',research:'研究任务',content:'内容任务'}[type]||'通用任务';
     }
@@ -257,6 +260,18 @@
       const advisors=(layer.advisors||[]).map(advisor=>`${advisor.name}：${advisor.role}`).join('<br>');
       const gates=(layer.gates||[]).join(' / ');
       return `负责人：${layer.lead||'虾老大'}<br>判断：${layer.decision||'待判断'}<br>转交：${layer.nextHandoff||'待转交'}<br><br>${advisors}<br><br>检查门：${gates}`;
+    }
+    function councilSummary(session=latestCouncilSession()){
+      if(!session)return '当前还没有十二怒汉讨论记录。';
+      return `议题：${session.topic}<br>状态：${session.status}<br>主持：${session.facilitator}<br><br>决策：${session.decision}<br>转交：${session.handoff?.from||'虾老大'} → ${session.handoff?.to||'待定'}<br>${session.handoff?.instruction||''}`;
+    }
+    function advisorCards(session=latestCouncilSession()){
+      if(!session)return '';
+      return (session.advisors||[]).map((advisor,i)=>card(advisor.name,advisor.role,advisor.view,i%3===0)).join('');
+    }
+    function councilGates(session=latestCouncilSession()){
+      if(!session)return '当前还没有执行门。';
+      return (session.executionGate||[]).map((item,index)=>`${index+1}. ${item}`).join('<br>')||'当前还没有执行门。';
     }
     function assignmentSummary(){
       const item=latestAssignment();
@@ -300,7 +315,7 @@
     }
     function currentActiveTask(){
       const active=workspace().activeTasks||[];
-      return active.find(item=>item.source==='feishu'&&['进行中','待补来源','待复核'].includes(item.status))
+      return active.find(item=>item.source==='feishu'&&['进行中','待补来源','待溯源','待复核'].includes(item.status))
         || active.find(item=>item.status==='进行中')
         || active[0]
         || null;
@@ -395,10 +410,11 @@
       document.getElementById('homeFeedback').innerHTML=feedbackSummary();
     }
     function renderOverview(){setGrid(`
-      ${card('产品定位','AI 项目作战室',workspace().positioning||appData.summary.status,true)}
+      ${card('产品定位','十二怒汉和七武士',workspace().positioning||appData.summary.status,true)}
       ${card('当前项目',workspace().currentProject||'X LAB',`当前目标：${workspace().currentGoal||'暂无'}<br><br>${taskLoopSummary()}`)}
       <article class="modal-card wide"><div><div class="mk">成员状态</div>${members.map(m=>`<div class="status-row"><b>${m.cn}</b><span>${m.status}</span><div class="progress" style="--p:${m.progress}%;--accent:${m.color}"><span></span></div><span>${m.done}</span></div>`).join('')}</div></article>
-      ${card('管理层','顾问团先定方向',managementSummary(),true)}
+      ${card('管理层','十二怒汉先定方向',managementSummary(),true)}
+      ${card('虚拟讨论室','最近十二怒汉讨论',councilSummary())}
       ${card('闭环阶段','从想法到输出物',taskLoopStages().map(item=>`${item.stage}：${item.status}<br>${item.detail}`).join('<br><br>'),true)}
       ${card('待处理','问题和下一步',issueSummary())}
       ${card('最近任务','任务池',taskPoolSummary())}
@@ -421,8 +437,17 @@
       `)
     }
     function renderProjects(){setGrid(projects.map((p,i)=>card(p.stage,p.name,`负责人：${p.owner}<br>进度：${p.progress}%<br>任务：${p.tasks}<br>问题：${p.issue}<br>下一步：${p.next}`,i%2===1,`<div class="actions"><button onclick="openPanel('members')">看成员</button><button onclick="openPanel('memory')">看记忆</button></div>`)).join(''))}
+    function renderCouncil(){
+      const session=latestCouncilSession();
+      setGrid(`
+        ${card('虚拟讨论室',session?.room||'X_Lab Council Room',councilSummary(session),true)}
+        ${card('虾老大总结','最终判断',session?.directorSummary||'当前还没有总结。')}
+        ${card('执行门','交给七武士前必须满足',councilGates(session),true)}
+        ${advisorCards(session)}
+      `)
+    }
     function renderMemory(){setGrid(`${(workspace().memoryCategories||[]).map((x,i)=>card(x.name,'记忆分类',x.example,i%2===0)).join('')}${appData.memory.map((x,i)=>card(x[0],x[1],x[2],i%2===1)).join('')}`)}
-    function renderBrief(){setGrid(`${card('当前项目',workspace().currentProject||'X LAB',workspace().currentGoal||'',true)}${card('管理层','顾问团判断',managementSummary())}${card('任务闭环','从想法到输出物',taskLoopSummary())}${card('最近协作','任务链路',assignmentSummary(),true)}${card('最近产出','最终交付',finalDeliverySummary())}${card('反馈','采用和改进',feedbackSummary(),true)}${card('后续计划','下一阶段',future.join('<br>'))}`)}
+    function renderBrief(){setGrid(`${card('当前项目',workspace().currentProject||'X LAB',workspace().currentGoal||'',true)}${card('管理层','十二怒汉判断',managementSummary())}${card('虚拟讨论室','最近讨论',councilSummary(),true)}${card('任务闭环','从想法到输出物',taskLoopSummary())}${card('最近协作','任务链路',assignmentSummary(),true)}${card('最近产出','最终交付',finalDeliverySummary())}${card('反馈','采用和改进',feedbackSummary(),true)}${card('后续计划','下一阶段',future.join('<br>'))}`)}
     function openMember(i){
       const m=members[i];
       const ctx=roleTaskContext(m);
@@ -473,6 +498,8 @@
         appData=await res.json();
         const assignmentRes=await fetch('data/assignments.json',{cache:'no-store'});
         assignments=assignmentRes.ok?await assignmentRes.json():[];
+        const councilRes=await fetch('data/council-sessions.json',{cache:'no-store'});
+        councilSessions=councilRes.ok?await councilRes.json():[];
         members=appData.members;
         projects=appData.projects;
         daily=appData.daily;

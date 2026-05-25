@@ -14,6 +14,13 @@ It is not yet a fully automated multi-process agent team system. The current das
 X_Lab/
 ├── index.html
 ├── data.json
+├── data/
+│   ├── assignments.json
+│   ├── council-sessions.json
+│   ├── tasks.json
+│   ├── agent-state.json
+│   ├── handoffs.json
+│   └── events.json
 ├── README.md
 ├── .gitignore
 ├── .agents/
@@ -70,6 +77,7 @@ http://127.0.0.1:8765/
 - Memory section
 - Daily brief section
 - Management-layer advisor panel before execution
+- 十二怒汉 virtual discussion room
 - Seven role images loaded from local assets
 - Structured dashboard state loaded from `data.json`
 - GitHub Pages setup instructions in `docs/github-pages.md`
@@ -79,6 +87,7 @@ http://127.0.0.1:8765/
 - Feishu task intake guide in `docs/feishu-task-intake.md`
 - AI director guide in `docs/ai-director.md`
 - Local advisor skills in `.agents/skills`
+- Council sessions in `data/council-sessions.json`
 - Minimum runtime files: `data/agent-state.json`, `data/handoffs.json`, `data/events.json`
 
 ## Manual
@@ -144,6 +153,27 @@ npm run watch:feishu
 Use the `Tasks` panel in `index.html` to review the generic task pool, handoff, role progress, outputs, and final status.
 
 AI team outputs are also published to the Feishu Wiki space `虾调研`.
+
+## 十二怒汉
+
+The `Council` panel is the virtual discussion room for 十二怒汉, the management-layer advisor team.
+
+It shows:
+
+- Current discussion topic
+- Each 十二怒汉 advisor's view
+- 虾老大 summary
+- Final decision
+- Handoff target for the seven-agent execution layer
+
+Create or refresh the latest council discussion from the latest assignment:
+
+```bash
+npm run council
+npm run validate:data
+```
+
+Current MVP boundary: `npm run council` generates a deterministic 十二怒汉 record from existing task and management-layer data. The next version can call the actual advisor skills and write the discussion to Feishu Wiki / Obsidian.
 
 ## Management Layer
 
