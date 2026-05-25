@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "skills": {
+    "andrej-karpathy-perspective": {
+      "source": "alchaincyf/karpathy-skill",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "7300ace111524ea3ffc567fd0bb018a97d4d3ca4395bcfeefa95df5bd74dde2a"
+    },
+    "elon-musk-perspective": {
+      "source": "alchaincyf/elon-musk-skill",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "637d8c880ebabc0e0b17aae251bdfb3d052ba2496a648b2e8466fcadb89f606b"
+    },
+    "feynman-perspective": {
+      "source": "alchaincyf/feynman-skill",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "2760b6040859c61757f78c84f61a260ff42ad8a60446fa8bef07c8b1cc588fd4"
+    },
+    "ilya-sutskever-perspective": {
+      "source": "alchaincyf/ilya-sutskever-skill",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "e3b6ce32736041ee1bd0842515da11617dac717d21a86d0b831e7e8ca7e3fecf"
+    },
+    "munger-perspective": {
+      "source": "alchaincyf/munger-skill",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "a8618ddfa5b3ac1e4a39c48166a4d523ee0da42d86625ff1cdf697bd59df4b86"
+    },
+    "naval-perspective": {
+      "source": "alchaincyf/naval-skill",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "9438ade3bc50b8a3393ff6bcd6e90d15ac22b70e83e9f79ecd508ebadfce7cbb"
+    },
+    "paul-graham-perspective": {
+      "source": "alchaincyf/paul-graham-skill",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "2bf378625610e20f18ced13e7a9e3ce429e79755b0a6bd0f43ab2b0702dab978"
+    },
+    "taleb-perspective": {
+      "source": "alchaincyf/taleb-skill",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "6a835654ead6d59b2dfd0cdc41a16dbc3076468f8707d5ecc35cd47ec86d19dd"
+    },
+    "zhang-yiming-perspective": {
+      "source": "alchaincyf/zhang-yiming-skill",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "9e0f57954ff2507e1e2de59f251a512c4cc071854b8ac3547069f63a8a5c7953"
+    }
+  }
+}

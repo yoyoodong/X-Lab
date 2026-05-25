@@ -68,6 +68,75 @@
         "Obsidian 任务记录"
       ]
     },
+    "managementLayer": {
+      "lead": "虾老大",
+      "mode": "管理层先定方向，七武士再执行",
+      "decision": "当前先补新闻来源，不进入最终发布。",
+      "nextHandoff": "虾老大把任务交给新闻虾 / 侦察虾补齐来源，再回给挑刺虾和运营虾。",
+      "advisors": [
+        {
+          "id": "paul-graham-perspective",
+          "name": "Paul Graham",
+          "role": "用户问题与最小可用版本",
+          "question": "谁会真的需要这个结果，最小但有用的版本是什么？"
+        },
+        {
+          "id": "zhang-yiming-perspective",
+          "name": "张一鸣",
+          "role": "长期主义、组织效率与信息分发",
+          "question": "这个任务是否有清晰目标、有效反馈和可持续迭代机制？"
+        },
+        {
+          "id": "andrej-karpathy-perspective",
+          "name": "Andrej Karpathy",
+          "role": "AI 工程现实与能力边界",
+          "question": "这套自动化是否可靠、可调试，哪里可能被模型能力边界卡住？"
+        },
+        {
+          "id": "ilya-sutskever-perspective",
+          "name": "Ilya Sutskever",
+          "role": "AI 方向、安全与研究判断",
+          "question": "这个 AI 系统的关键假设是什么，安全边界和能力边界在哪里？"
+        },
+        {
+          "id": "elon-musk-perspective",
+          "name": "Elon Musk",
+          "role": "第一性原理与执行压缩",
+          "question": "这件事能不能更直接、更便宜、更快地验证？"
+        },
+        {
+          "id": "munger-perspective",
+          "name": "Charlie Munger",
+          "role": "反向思考、激励与认知偏误",
+          "question": "如果这个任务失败，最可能是哪个低级错误造成的？"
+        },
+        {
+          "id": "feynman-perspective",
+          "name": "Richard Feynman",
+          "role": "反自欺与真正理解",
+          "question": "我们是真的理解了，还是只是在复述好听的概念？"
+        },
+        {
+          "id": "naval-perspective",
+          "name": "Naval Ravikant",
+          "role": "杠杆、复利与可复用资产",
+          "question": "这次产出能否沉淀成可复用资产或自动化流程？"
+        },
+        {
+          "id": "taleb-perspective",
+          "name": "Nassim Nicholas Taleb",
+          "role": "尾部风险与反脆弱",
+          "question": "这里有没有低概率高损失风险，怎样让系统更抗冲击？"
+        }
+      ],
+      "gates": [
+        "方向是否值得做",
+        "事实是否足够可靠",
+        "风险是否可控",
+        "产出是否能复用",
+        "是否可以交给七武士执行"
+      ]
+    },
     "activeTasks": [
       {
         "id": "xlab-upgrade-001",
@@ -92,7 +161,7 @@
         "label": "任务 2",
         "title": "AI 会勒索人类新闻溯源",
         "source": "feishu",
-        "status": "进行中",
+        "status": "待溯源",
         "goal": "找到原始新闻来源，判断是否适合跟进，并输出小红书图文笔记。",
         "owner": "侦察虾",
         "agents": [
@@ -464,7 +533,7 @@
       "id": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
       "source": "feishu",
       "title": "【新闻虾转运营虾】请找到“AI 会勒索人类”新闻来源，并转给运营虾评估选题",
-      "status": "in_progress",
+      "status": "needs_source",
       "due": "",
       "url": "https://applink.feishu.cn/client/todo/detail?guid=e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
       "owner": "me"

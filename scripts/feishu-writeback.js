@@ -22,8 +22,10 @@ function limitText(value, maxLength) {
   return value.length > maxLength ? `${value.slice(0, maxLength)}...` : value;
 }
 
-function buildFeishuComment({ task, outputs, obsidianRecord, feishuWiki, reviewBlockers }) {
-  const statusLine = reviewBlockers?.length
+function buildFeishuComment({ task, outputs, obsidianRecord, feishuWiki, reviewBlockers, sourceFollowup }) {
+  const statusLine = sourceFollowup
+    ? 'X_Lab 虾团队已完成本轮 AI 协作产出，但缺少可验证新闻来源。本任务不会自动关闭，先进入「待溯源」。'
+    : reviewBlockers?.length
     ? 'X_Lab 虾团队已完成本轮 AI 协作产出，但检测到待确认事项，需要人工复核后再关闭任务。'
     : 'X_Lab 虾团队已完成本轮 AI 协作产出。';
   const lines = [
@@ -45,6 +47,14 @@ function buildFeishuComment({ task, outputs, obsidianRecord, feishuWiki, reviewB
     lines.push(`飞书知识库文档：${feishuWiki.wikiUrl || feishuWiki.docUrl}`);
   }
 
+  if (sourceFollowup) {
+    lines.push('');
+    lines.push('下一步：新闻虾 / 侦察虾继续溯源');
+    lines.push(`- 交付位置：${sourceFollowup.delivery}`);
+    lines.push(`- 需要补齐：${sourceFollowup.required.join('、')}`);
+    lines.push(`- 处理规则：${sourceFollowup.nextAction}`);
+  }
+
   if (reviewBlockers?.length) {
     lines.push('');
     lines.push('待确认 / 需仲裁：');
@@ -61,7 +71,7 @@ function buildFeishuComment({ task, outputs, obsidianRecord, feishuWiki, reviewB
   }
 
   lines.push('');
-  lines.push(reviewBlockers?.length ? '状态：已产出，待人工复核。' : '状态：已产出，已回写。');
+  lines.push(sourceFollowup ? '状态：待溯源。' : (reviewBlockers?.length ? '状态：已产出，待人工复核。' : '状态：已产出，已回写。'));
 
   return limitText(lines.join('\n'), 3500);
 }
@@ -94,15 +104,15 @@ function completeTask(taskId) {
   ]);
 }
 
-function writeBackFeishuTask({ task, outputs, obsidianRecord, feishuWiki, shouldComplete = true, reviewBlockers = [] }) {
+function writeBackFeishuTask({ task, outputs, obsidianRecord, feishuWiki, shouldComplete = true, reviewBlockers = [], sourceFollowup = null }) {
   if (!task?.id) {
     throw new Error('Missing Feishu task id.');
   }
 
-  const content = buildFeishuComment({ task, outputs, obsidianRecord, feishuWiki, reviewBlockers });
+  const content = buildFeishuComment({ task, outputs, obsidianRecord, feishuWiki, reviewBlockers, sourceFollowup });
   const commentResult = commentOnTask(task.id, content);
 
-  const canComplete = shouldComplete && process.env.X_LAB_FEISHU_COMPLETE !== 'false' && !reviewBlockers.length;
+  const canComplete = shouldComplete && process.env.X_LAB_FEISHU_COMPLETE !== 'false' && !reviewBlockers.length && !sourceFollowup;
   const completeResult = canComplete ? completeTask(task.id) : null;
 
   return {

@@ -130,7 +130,8 @@
     "taskId": "84834c1c-be6d-493d-9a53-996d68bbed96",
     "taskTitle": "【选题转交】新闻虾发现“AI 会勒索人类”，请运营虾评估选题价值并产出内容角度",
     "source": "feishu",
-    "status": "feishu_completed",
+    "status": "needs_source",
+    "statusOverrideReason": "历史回写曾完成飞书任务，但本地工作台按事实不足规则改为待溯源。",
     "workflow": [
       {
         "role": "The Director",
@@ -263,6 +264,11 @@
     "source": "feishu",
     "workflow": [
       {
+        "role": "The News Scout",
+        "cn": "新闻虾 / 侦察虾",
+        "responsibility": "补齐新闻线索的原始来源、发布时间、可信度和可引用证据。"
+      },
+      {
         "role": "The Director",
         "cn": "虾老大",
         "responsibility": "虾老大 参与本轮 AI 协作产出。"
@@ -291,7 +297,8 @@
       "/Users/dongdong/Documents/obsidian/虾团队记忆/02_任务记录/2026-05-24_【新闻虾转运营虾】请找到“AI-会勒索人类”新闻来源，并转给运营虾评估选题_AI虾老大调度汇总.md",
       "https://my.feishu.cn/docx/YUdqdK1zAoGjVRxPpCrc0wvtnyc"
     ],
-    "status": "feishu_completed",
+    "status": "needs_source",
+    "statusOverrideReason": "历史回写曾完成飞书任务，但本地工作台按事实不足规则改为待溯源。",
     "intake": {
       "type": "signal",
       "title": "【新闻虾转运营虾】请找到“AI 会勒索人类”新闻来源，并转给运营虾评估选题",
@@ -377,6 +384,94 @@
       "summary": "角色产出同时出现推进发布和暂停/事实不足信号，需要虾老大仲裁。",
       "arbiter": "director"
     },
+    "needsSource": true,
+    "sourceFollowup": {
+      "owner": "新闻虾 / 侦察虾",
+      "status": "待溯源",
+      "required": [
+        "原始链接",
+        "发布时间",
+        "一手/二手来源判断",
+        "可信度评分",
+        "可引用摘要",
+        "是否建议继续交给运营虾"
+      ],
+      "delivery": "飞书群或共享文档",
+      "reason": "这是新闻/线索类任务，但当前产出缺少可验证来源，不能直接进入最终发布或关闭任务。",
+      "nextAction": "新闻虾/侦察虾先交付溯源报告，再反馈给挑刺虾和运营虾继续审查与产出。"
+    },
+    "managementLayer": {
+      "lead": "虾老大",
+      "mode": "management_direction_review",
+      "taskId": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
+      "taskTitle": "【新闻虾转运营虾】请找到“AI 会勒索人类”新闻来源，并转给运营虾评估选题",
+      "decision": "先溯源，暂停最终发布。",
+      "nextHandoff": "虾老大把任务交给新闻虾 / 侦察虾补齐来源，再回给挑刺虾和运营虾。",
+      "advisors": [
+        {
+          "id": "paul-graham-perspective",
+          "name": "Paul Graham",
+          "role": "用户问题与最小可用版本",
+          "question": "谁会真的需要这个结果，最小但有用的版本是什么？"
+        },
+        {
+          "id": "zhang-yiming-perspective",
+          "name": "张一鸣",
+          "role": "长期主义、组织效率与信息分发",
+          "question": "这个任务是否有清晰目标、有效反馈和可持续迭代机制？"
+        },
+        {
+          "id": "andrej-karpathy-perspective",
+          "name": "Andrej Karpathy",
+          "role": "AI 工程现实与能力边界",
+          "question": "这套自动化是否可靠、可调试，哪里可能被模型能力边界卡住？"
+        },
+        {
+          "id": "ilya-sutskever-perspective",
+          "name": "Ilya Sutskever",
+          "role": "AI 方向、安全与研究判断",
+          "question": "这个 AI 系统的关键假设是什么，安全边界和能力边界在哪里？"
+        },
+        {
+          "id": "elon-musk-perspective",
+          "name": "Elon Musk",
+          "role": "第一性原理与执行压缩",
+          "question": "这件事能不能更直接、更便宜、更快地验证？"
+        },
+        {
+          "id": "munger-perspective",
+          "name": "Charlie Munger",
+          "role": "反向思考、激励与认知偏误",
+          "question": "如果这个任务失败，最可能是哪个低级错误造成的？"
+        },
+        {
+          "id": "feynman-perspective",
+          "name": "Richard Feynman",
+          "role": "反自欺与真正理解",
+          "question": "我们是真的理解了，还是只是在复述好听的概念？"
+        },
+        {
+          "id": "naval-perspective",
+          "name": "Naval Ravikant",
+          "role": "杠杆、复利与可复用资产",
+          "question": "这次产出能否沉淀成可复用资产或自动化流程？"
+        },
+        {
+          "id": "taleb-perspective",
+          "name": "Nassim Nicholas Taleb",
+          "role": "尾部风险与反脆弱",
+          "question": "这里有没有低概率高损失风险，怎样让系统更抗冲击？"
+        }
+      ],
+      "gates": [
+        "方向是否值得做",
+        "事实是否足够可靠",
+        "风险是否可控",
+        "产出是否能复用",
+        "是否可以交给七武士执行"
+      ],
+      "blocker": "角色产出同时出现推进发布和暂停/事实不足信号，需要虾老大仲裁。"
+    },
     "openQuestions": [
       {
         "role": "虾老大",
@@ -405,31 +500,38 @@
     ],
     "progress": [
       {
+        "role": "新闻虾 / 侦察虾",
+        "english": "The News Scout",
+        "step": 0,
+        "status": "待溯源",
+        "output": "待补原始来源、发布时间、可信度和可引用证据"
+      },
+      {
         "role": "虾老大",
         "english": "The Director",
         "step": 1,
-        "status": "已完成",
+        "status": "已产出",
         "output": "outputs/ai/director/2026-05-24-task-e2dc03f9-director-decision.md"
       },
       {
         "role": "产品虾",
         "english": "The Architect",
         "step": 2,
-        "status": "已完成",
+        "status": "已产出",
         "output": "outputs/ai/architect/2026-05-24-task-e2dc03f9-architect-plan.md"
       },
       {
         "role": "挑刺虾",
         "english": "The Critic",
         "step": 3,
-        "status": "已完成",
+        "status": "已产出",
         "output": "outputs/ai/critic/2026-05-24-task-e2dc03f9-critic-review.md"
       },
       {
         "role": "运营虾",
         "english": "The Broadcaster",
         "step": 4,
-        "status": "已完成",
+        "status": "等待来源",
         "output": "outputs/ai/broadcaster/2026-05-24-task-e2dc03f9-broadcaster-brief.md"
       }
     ],
@@ -477,6 +579,8 @@
         }
       }
     },
+    "issue": "缺少新闻虾/侦察虾溯源报告，不能确认事实边界和发布风险。",
+    "nextAction": "新闻虾/侦察虾先在飞书群或共享文档交付溯源报告，再交给挑刺虾和运营虾继续审查与产出。",
     "aiOutputs": [
       {
         "role": "虾老大",

@@ -57,6 +57,77 @@ const ROLE_SEQUENCE = [
   }
 ];
 
+const SOURCE_FOLLOWUP_TEMPLATE = {
+  owner: '新闻虾 / 侦察虾',
+  status: '待溯源',
+  required: [
+    '原始链接',
+    '发布时间',
+    '一手/二手来源判断',
+    '可信度评分',
+    '可引用摘要',
+    '是否建议继续交给运营虾'
+  ],
+  delivery: '飞书群或共享文档'
+};
+
+const MANAGEMENT_ADVISORS = [
+  {
+    id: 'paul-graham-perspective',
+    name: 'Paul Graham',
+    role: '用户问题与最小可用版本',
+    question: '谁会真的需要这个结果，最小但有用的版本是什么？'
+  },
+  {
+    id: 'zhang-yiming-perspective',
+    name: '张一鸣',
+    role: '长期主义、组织效率与信息分发',
+    question: '这个任务是否有清晰目标、有效反馈和可持续迭代机制？'
+  },
+  {
+    id: 'andrej-karpathy-perspective',
+    name: 'Andrej Karpathy',
+    role: 'AI 工程现实与能力边界',
+    question: '这套自动化是否可靠、可调试，哪里可能被模型能力边界卡住？'
+  },
+  {
+    id: 'ilya-sutskever-perspective',
+    name: 'Ilya Sutskever',
+    role: 'AI 方向、安全与研究判断',
+    question: '这个 AI 系统的关键假设是什么，安全边界和能力边界在哪里？'
+  },
+  {
+    id: 'elon-musk-perspective',
+    name: 'Elon Musk',
+    role: '第一性原理与执行压缩',
+    question: '这件事能不能更直接、更便宜、更快地验证？'
+  },
+  {
+    id: 'munger-perspective',
+    name: 'Charlie Munger',
+    role: '反向思考、激励与认知偏误',
+    question: '如果这个任务失败，最可能是哪个低级错误造成的？'
+  },
+  {
+    id: 'feynman-perspective',
+    name: 'Richard Feynman',
+    role: '反自欺与真正理解',
+    question: '我们是真的理解了，还是只是在复述好听的概念？'
+  },
+  {
+    id: 'naval-perspective',
+    name: 'Naval Ravikant',
+    role: '杠杆、复利与可复用资产',
+    question: '这次产出能否沉淀成可复用资产或自动化流程？'
+  },
+  {
+    id: 'taleb-perspective',
+    name: 'Nassim Nicholas Taleb',
+    role: '尾部风险与反脆弱',
+    question: '这里有没有低概率高损失风险，怎样让系统更抗冲击？'
+  }
+];
+
 function readText(filePath) {
   return fs.readFileSync(filePath, 'utf8');
 }
@@ -151,13 +222,25 @@ function inferHandoff(task, outputs) {
 }
 
 function buildProgress(outputs, finalStatus) {
-  return outputs.map((item, index) => ({
+  const progress = outputs.map((item, index) => ({
     role: item.role,
     english: item.english,
     step: index + 1,
     status: finalStatus === 'feishu_completed' ? '已完成' : '已产出',
     output: item.output
   }));
+
+  if (finalStatus === 'needs_source') {
+    progress.unshift({
+      role: '新闻虾 / 侦察虾',
+      english: 'The News Scout',
+      step: 0,
+      status: '待溯源',
+      output: '待补原始来源、发布时间、可信度和可引用证据'
+    });
+  }
+
+  return progress;
 }
 
 function summarizeOutput(content) {
@@ -168,6 +251,62 @@ function summarizeOutput(content) {
     .find((line) => !line.startsWith('#') && !line.startsWith('|'));
 
   return normalized ? normalized.slice(0, 160) : '已生成角色产出。';
+}
+
+function hasSourceRequirement(task) {
+  const title = task.title || '';
+  return /新闻|线索|选题|热点|趋势|来源|溯源|原始链接|可信度/.test(title);
+}
+
+function detectsMissingSource({ task, outputs }) {
+  if (!hasSourceRequirement(task)) {
+    return false;
+  }
+
+  const text = [
+    task.title || '',
+    task.description || '',
+    ...outputs.map((item) => item.content || ''),
+    ...outputs.flatMap((item) => item.openQuestions || [])
+  ].join('\n');
+
+  return /当前资料未提供|原始来源.*未提供|来源.*未提供|缺少.*来源|缺少.*溯源|无法确认.*来源|无法判断.*可信度|待补.*来源|需要补充.*来源|需要补充.*原始|没有.*溯源报告/.test(text);
+}
+
+function buildSourceFollowup(task) {
+  return {
+    ...SOURCE_FOLLOWUP_TEMPLATE,
+    taskId: task.id,
+    reason: '这是新闻/线索类任务，但当前产出缺少可验证来源，不能直接进入最终发布或关闭任务。',
+    nextAction: '新闻虾/侦察虾先交付溯源报告，再反馈给挑刺虾和运营虾继续审查与产出。'
+  };
+}
+
+function buildManagementLayer({ task, needsSource, needsReview, conflict }) {
+  const decision = needsSource
+    ? '先溯源，暂停最终发布。'
+    : (needsReview ? '先复核，再决定是否进入最终交付。' : '可以进入七武士执行层继续推进。');
+  const nextHandoff = needsSource
+    ? '虾老大把任务交给新闻虾 / 侦察虾补齐来源，再回给挑刺虾和运营虾。'
+    : (needsReview ? '虾老大先处理待确认事项，再安排执行角色继续。' : '虾老大把方向转成明确任务，交给七武士执行。');
+
+  return {
+    lead: '虾老大',
+    mode: 'management_direction_review',
+    taskId: task.id,
+    taskTitle: task.title,
+    decision,
+    nextHandoff,
+    advisors: MANAGEMENT_ADVISORS,
+    gates: [
+      '方向是否值得做',
+      '事实是否足够可靠',
+      '风险是否可控',
+      '产出是否能复用',
+      '是否可以交给七武士执行'
+    ],
+    blocker: conflict?.summary || (needsSource ? '缺少可验证新闻来源。' : '')
+  };
 }
 
 function buildRoleInput({ task, role, teamTable, roleCard, previousOutputs }) {
@@ -378,13 +517,35 @@ async function main() {
   }
 
   const conflict = detectConflict(outputs);
+  const needsSource = detectsMissingSource({ task, outputs });
+  const sourceFollowup = needsSource ? buildSourceFollowup(task) : null;
+  const sourceBlockers = sourceFollowup
+    ? [`缺少新闻虾/侦察虾溯源报告：需要${sourceFollowup.required.join('、')}。`]
+    : [];
   const reviewBlockers = [
+    ...sourceBlockers,
     ...outputs.flatMap((item) => {
       return (item.openQuestions || []).map((question) => `${item.role}: ${question}`);
     }),
     ...(conflict ? [conflict.summary] : [])
   ];
   const needsReview = hasReviewBlockers({ conflict, outputs });
+  const shouldHoldTask = needsSource || needsReview;
+
+  if (sourceFollowup) {
+    recordEvent('source_followup_required', {
+      taskId: task.id,
+      ...sourceFollowup
+    });
+    updateAgent('scout', {
+      role: '新闻虾 / 侦察虾',
+      english: 'The News Scout',
+      status: 'waiting_source',
+      currentTaskId: task.id,
+      blockedReason: sourceFollowup.reason,
+      waitingFor: sourceFollowup.required
+    });
+  }
 
   if (conflict) {
     recordEvent('conflict_detected', {
@@ -421,10 +582,11 @@ async function main() {
       outputs,
       obsidianRecord,
       feishuWiki,
-      shouldComplete: !needsReview,
-      reviewBlockers
+      shouldComplete: !shouldHoldTask,
+      reviewBlockers,
+      sourceFollowup
     });
-    finalStatus = feishuWriteback.completed ? 'feishu_completed' : (needsReview ? 'needs_review' : 'feishu_commented');
+    finalStatus = feishuWriteback.completed ? 'feishu_completed' : (needsSource ? 'needs_source' : (needsReview ? 'needs_review' : 'feishu_commented'));
   } catch (error) {
     feishuWriteback = {
       commented: false,
@@ -433,7 +595,7 @@ async function main() {
       failedAt: new Date().toISOString()
     };
     console.error(`Feishu writeback failed: ${error.message}`);
-    finalStatus = needsReview ? 'needs_review' : finalStatus;
+    finalStatus = needsSource ? 'needs_source' : (needsReview ? 'needs_review' : finalStatus);
   }
 
   for (const item of tasks) {
@@ -481,6 +643,9 @@ async function main() {
   assignment.handoffs = handoffs;
   assignment.conflict = conflict;
   assignment.needsReview = needsReview;
+  assignment.needsSource = needsSource;
+  assignment.sourceFollowup = sourceFollowup;
+  assignment.managementLayer = buildManagementLayer({ task, needsSource, needsReview, conflict });
   assignment.reviewBlockers = reviewBlockers;
   assignment.openQuestions = outputs.flatMap((item) => {
     return (item.openQuestions || []).map((question) => ({
@@ -491,6 +656,12 @@ async function main() {
   assignment.progress = buildProgress(outputs, finalStatus);
   assignment.feishuWiki = feishuWiki;
   assignment.feishuWriteback = feishuWriteback;
+  assignment.issue = needsSource
+    ? '缺少新闻虾/侦察虾溯源报告，不能确认事实边界和发布风险。'
+    : (needsReview ? '存在待确认事项，需要人工复核后再关闭任务。' : '暂无阻塞。');
+  assignment.nextAction = needsSource
+    ? sourceFollowup.nextAction
+    : (needsReview ? '先处理待确认事项，再决定是否发布或完成任务。' : '查看飞书知识库正式文档，决定是否继续发布或二次加工。');
   assignment.aiOutputs = outputs.map((item) => ({
     role: item.role,
     english: item.english,

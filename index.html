@@ -231,7 +231,7 @@
       return {signal:'线索/选题',task:'通用任务',design:'设计任务',research:'研究任务',content:'内容任务'}[type]||'通用任务';
     }
     function statusLabel(status){
-      return {todo:'待处理',assigned:'已分配',produced:'已产出',ai_produced:'AI 已产出',feishu_commented:'已回写评论',feishu_completed:'已完成',needs_review:'待复核'}[status]||status;
+      return {todo:'待处理',assigned:'已分配',produced:'已产出',ai_produced:'AI 已产出',feishu_commented:'已回写评论',feishu_completed:'已完成',needs_review:'待复核',needs_source:'待溯源',in_progress:'进行中'}[status]||status;
     }
     function taskPoolSummary(){
       const active=workspace().activeTasks||[];
@@ -251,6 +251,13 @@
       const progress=item.progress||[];
       return progress.map(step=>`${step.step}. ${step.role}：${step.status}`).join('<br>')||'当前还没有角色进展。';
     }
+    function managementSummary(item=latestAssignment()){
+      const layer=item?.managementLayer||workspace().managementLayer;
+      if(!layer)return '当前还没有管理层决策记录。';
+      const advisors=(layer.advisors||[]).map(advisor=>`${advisor.name}：${advisor.role}`).join('<br>');
+      const gates=(layer.gates||[]).join(' / ');
+      return `负责人：${layer.lead||'虾老大'}<br>判断：${layer.decision||'待判断'}<br>转交：${layer.nextHandoff||'待转交'}<br><br>${advisors}<br><br>检查门：${gates}`;
+    }
     function assignmentSummary(){
       const item=latestAssignment();
       if(!item)return '当前还没有虾团队协作记录。';
@@ -260,15 +267,28 @@
     function outputSummary(){
       const item=latestAssignment();
       if(!item)return '当前还没有产出文件。';
+      return finalDeliverySummary(item);
+    }
+    function finalDeliverySummary(item=latestAssignment()){
+      if(!item)return '当前还没有正式交付物。';
+      const wikiUrl=item.feishuWiki?.wikiUrl||item.feishuWiki?.docUrl;
+      const title=item.feishuWiki?.title||`${item.taskTitle||'当前任务'} 正式交付`;
+      if(wikiUrl){
+        return `${title}<br><a href="${wikiUrl}" target="_blank" rel="noopener">打开飞书知识库正式文档</a>`;
+      }
+      const contentOutput=(item.aiOutputs||[]).find(output=>output.role==='运营虾')||(item.aiOutputs||[]).slice(-1)[0];
+      if(contentOutput?.url){
+        return `${contentOutput.title||`${contentOutput.role}产出`}<br><a href="${contentOutput.url}" target="_blank" rel="noopener">打开飞书文档</a>`;
+      }
+      return item.status==='needs_source'?'正式交付物等待溯源完成后生成。':'当前还没有正式交付物。';
+    }
+    function processRecordSummary(item=latestAssignment()){
+      if(!item)return '当前还没有过程记录。';
       const aiOutputs=(item.aiOutputs||[]).map(output=>{
         const title=output.title||`${output.role}产出`;
-        const url=item.feishuWiki?.wikiUrl||item.feishuWiki?.docUrl||output.url;
-        return url?`${title}：<a href="${url}" target="_blank" rel="noopener">打开飞书文档</a>`:`${title}：${output.output}`;
+        return `${title}：${output.output||'已记录'}`;
       });
-      if(item.feishuWiki?.wikiUrl||item.feishuWiki?.docUrl){
-        aiOutputs.push(`正式文档：<a href="${item.feishuWiki.wikiUrl||item.feishuWiki.docUrl}" target="_blank" rel="noopener">${item.feishuWiki.title||'打开虾调研文档'}</a>`);
-      }
-      return aiOutputs.join('<br>')||'当前还没有 AI 角色产出。';
+      return aiOutputs.join('<br>')||'当前还没有过程记录。';
     }
     function issueSummary(){
       const item=latestAssignment();
@@ -378,10 +398,11 @@
       ${card('产品定位','AI 项目作战室',workspace().positioning||appData.summary.status,true)}
       ${card('当前项目',workspace().currentProject||'X LAB',`当前目标：${workspace().currentGoal||'暂无'}<br><br>${taskLoopSummary()}`)}
       <article class="modal-card wide"><div><div class="mk">成员状态</div>${members.map(m=>`<div class="status-row"><b>${m.cn}</b><span>${m.status}</span><div class="progress" style="--p:${m.progress}%;--accent:${m.color}"><span></span></div><span>${m.done}</span></div>`).join('')}</div></article>
+      ${card('管理层','顾问团先定方向',managementSummary(),true)}
       ${card('闭环阶段','从想法到输出物',taskLoopStages().map(item=>`${item.stage}：${item.status}<br>${item.detail}`).join('<br><br>'),true)}
       ${card('待处理','问题和下一步',issueSummary())}
       ${card('最近任务','任务池',taskPoolSummary())}
-      ${card('最近产出','飞书文档',outputSummary(),true)}
+      ${card('最近产出','最终交付',finalDeliverySummary(),true)}
     `)}
     function renderMembers(){setGrid(members.map((m,i)=>card(m.role,m.cn,`状态：${m.status}<br>正在做：${m.taskDetail}<br><br>协作对象：${m.with}<br>问题：${m.issue}<br>下一步：${m.plan}`,i%2===1,`<div class="actions"><button onclick="openMember(${i})">查看详情</button><button onclick="openPanel('brief')">看简报</button><button onclick="openPanel('memory')">看记忆</button></div>`)).join(''))}
     function renderTasks(){
@@ -390,16 +411,18 @@
         ${activeTaskCards()}
         ${card('任务闭环卡片',workspace().taskLoop?.title||'当前任务',taskLoopSummary(),true)}
         ${card('Task Pool','任务池',taskPoolSummary(),true)}
+        ${card('管理层','方向判断和转交',managementSummary(item))}
         ${card('转交流','谁交给谁',handoffSummary(item))}
         ${card('工作进展','每个角色做到哪一步',progressSummary(item),true)}
-        ${card('产出文件','标题和飞书链接',outputSummary())}
+        ${card('最终交付','飞书知识库正式文档',finalDeliverySummary(item))}
+        ${card('过程记录','本地 Markdown 工作记录',processRecordSummary(item),true)}
         ${card('反馈检查','输出是否真的有用',feedbackSummary())}
         ${card('状态','当前任务状态',item?`当前任务：${item.taskTitle}<br>状态：${statusLabel(item.status)}<br>来源：${item.source}<br><br>待处理：${item.issue||'暂无'}`:'当前没有任务。',true)}
       `)
     }
     function renderProjects(){setGrid(projects.map((p,i)=>card(p.stage,p.name,`负责人：${p.owner}<br>进度：${p.progress}%<br>任务：${p.tasks}<br>问题：${p.issue}<br>下一步：${p.next}`,i%2===1,`<div class="actions"><button onclick="openPanel('members')">看成员</button><button onclick="openPanel('memory')">看记忆</button></div>`)).join(''))}
     function renderMemory(){setGrid(`${(workspace().memoryCategories||[]).map((x,i)=>card(x.name,'记忆分类',x.example,i%2===0)).join('')}${appData.memory.map((x,i)=>card(x[0],x[1],x[2],i%2===1)).join('')}`)}
-    function renderBrief(){setGrid(`${card('当前项目',workspace().currentProject||'X LAB',workspace().currentGoal||'',true)}${card('任务闭环','从想法到输出物',taskLoopSummary())}${card('最近协作','任务链路',assignmentSummary(),true)}${card('最近产出','飞书链接',outputSummary())}${card('反馈','采用和改进',feedbackSummary(),true)}${card('后续计划','下一阶段',future.join('<br>'))}`)}
+    function renderBrief(){setGrid(`${card('当前项目',workspace().currentProject||'X LAB',workspace().currentGoal||'',true)}${card('管理层','顾问团判断',managementSummary())}${card('任务闭环','从想法到输出物',taskLoopSummary())}${card('最近协作','任务链路',assignmentSummary(),true)}${card('最近产出','最终交付',finalDeliverySummary())}${card('反馈','采用和改进',feedbackSummary(),true)}${card('后续计划','下一阶段',future.join('<br>'))}`)}
     function openMember(i){
       const m=members[i];
       const ctx=roleTaskContext(m);
