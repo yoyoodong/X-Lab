@@ -35,6 +35,10 @@ if (fs.existsSync('data/tasks.json')) {
     assert(task.id, 'task missing id');
     assert(task.title, `task ${task.id} missing title`);
     assert(['feishu', 'project'].includes(task.source), `task ${task.id} source must be feishu or project`);
+    if (task.route) {
+      assert(['council', 'seven_samurai', 'skill', 'director_decide'].includes(task.route), `task ${task.id} route is invalid`);
+      assert(task.routeLabel, `task ${task.id} missing routeLabel`);
+    }
   }
 }
 
@@ -81,6 +85,17 @@ if (fs.existsSync('data/council-sessions.json')) {
     assert(session.decision, `council session ${session.id} missing decision`);
     assert(Array.isArray(session.advisors), `council session ${session.id} missing advisors[]`);
     assert(session.handoff && session.handoff.to, `council session ${session.id} missing handoff.to`);
+  }
+}
+
+if (fs.existsSync('data/skill-runs.json')) {
+  const runs = readJson('data/skill-runs.json');
+  assert(Array.isArray(runs), 'data/skill-runs.json must be an array');
+  for (const run of runs) {
+    assert(run.id, 'skill run missing id');
+    assert(run.taskId, `skill run ${run.id} missing taskId`);
+    assert(run.requestedSkill, `skill run ${run.id} missing requestedSkill`);
+    assert(run.status, `skill run ${run.id} missing status`);
   }
 }
 

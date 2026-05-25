@@ -79,6 +79,16 @@ function runDirector() {
   runCommand('npm', ['run', 'director']);
 }
 
+function runCouncil() {
+  console.log('\n[watch] Running Twelve Angry Men council...');
+  runCommand('npm', ['run', 'council']);
+}
+
+function runSkillRouter() {
+  console.log('\n[watch] Routing fixed skill task...');
+  runCommand('npm', ['run', 'skill']);
+}
+
 async function runOnce() {
   syncFeishuTasks();
 
@@ -90,7 +100,16 @@ async function runOnce() {
 
   console.log(`[watch] Found ${pendingTasks.length} new task(s).`);
   const pendingTaskIds = new Set(pendingTasks.map((task) => task.id));
-  runDirector();
+  const firstTask = pendingTasks[0];
+  const route = firstTask.route || 'director_decide';
+
+  if (route === 'council') {
+    runCouncil();
+  } else if (route === 'skill') {
+    runSkillRouter();
+  } else {
+    runDirector();
+  }
 
   const processedTaskIds = loadProcessedTaskIds();
   const tasksAfterRun = readJson(TASKS_PATH, []);

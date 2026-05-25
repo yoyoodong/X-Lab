@@ -1,6 +1,7 @@
 const fs = require('node:fs');
 
 const DATA_PATH = 'data.json';
+const TASKS_PATH = 'data/tasks.json';
 const ASSIGNMENTS_PATH = 'data/assignments.json';
 const COUNCIL_PATH = 'data/council-sessions.json';
 
@@ -40,6 +41,28 @@ function buildAdvisorView(advisor, assignment) {
   const question = advisor.question || '请判断这个任务是否值得继续。';
 
   return `${question} 当前判断：${issue} 所以先给出方向建议，再交给虾老大决定是否进入执行层。`;
+}
+
+function assignmentFromTask(task) {
+  return {
+    taskId: task.id,
+    taskTitle: task.title,
+    status: task.status,
+    issue: task.routeReason || '这是十二怒汉议题，先判断方向再决定是否执行。',
+    needsSource: /新闻|来源|溯源|线索/.test(task.title || '')
+  };
+}
+
+function selectCouncilInput({ tasks, assignments }) {
+  const routedTask = tasks.find((task) => {
+    return task.route === 'council' && ['todo', 'assigned', 'produced', 'ai_produced', 'feishu_commented', 'needs_review', 'needs_source'].includes(task.status);
+  });
+
+  if (routedTask) {
+    return assignmentFromTask(routedTask);
+  }
+
+  return assignments[assignments.length - 1] || null;
 }
 
 function buildCouncilSession({ data, assignment }) {
@@ -105,9 +128,10 @@ function buildCouncilSession({ data, assignment }) {
 
 function main() {
   const data = readJson(DATA_PATH, {});
+  const tasks = readJson(TASKS_PATH, []);
   const assignments = readJson(ASSIGNMENTS_PATH, []);
   const sessions = readJson(COUNCIL_PATH, []);
-  const assignment = assignments[assignments.length - 1];
+  const assignment = selectCouncilInput({ tasks, assignments });
 
   if (!assignment) {
     throw new Error('No assignment found. Run Feishu sync or director first.');

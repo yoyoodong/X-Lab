@@ -118,6 +118,17 @@ See:
 docs/feishu-task-intake.md
 ```
 
+## Feishu Routing Rules
+
+Publish tasks in Feishu with these prefixes:
+
+- `【十二怒汉议题】` -> route to 十二怒汉 first
+- `【七武士任务】` -> route directly to the seven-agent execution layer
+- `【Skill】` or `【技能】` -> route to a fixed skill workflow
+- no prefix -> 虾老大 decides the route
+
+In plain language: you publish a task in Feishu, 虾老大 decides whether it should be discussed, executed, or handled by a specific skill. X_Lab then shows the route, status, outputs, blockers, and final links.
+
 ## AI Director
 
 Run the minimum viable AI agent team:

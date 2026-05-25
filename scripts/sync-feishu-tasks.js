@@ -1,6 +1,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { execFileSync } = require('node:child_process');
+const { classifyTask } = require('./task-router');
 
 const DATA_PATH = 'data.json';
 const TASKS_DIR = 'data';
@@ -24,12 +25,16 @@ function normalizeTask(raw) {
   const due = pick(raw.due, raw.due_time, raw.due_at, raw.deadline);
   const url = pick(raw.url, raw.applink, raw.app_link);
   const completed = Boolean(pick(raw.completed, raw.complete, raw.is_completed, false));
+  const route = classifyTask(title);
 
   return {
     id: String(id),
     source: 'feishu',
     title: String(title),
     status: completed ? 'done' : 'todo',
+    route: route.route,
+    routeLabel: route.routeLabel,
+    routeReason: route.routeReason,
     due: due ? String(due) : '',
     url: url ? String(url) : '',
     owner: 'me',

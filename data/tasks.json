@@ -6,7 +6,10 @@
     "status": "in_progress",
     "due": "",
     "url": "",
-    "owner": "me"
+    "owner": "me",
+    "route": "director_decide",
+    "routeLabel": "虾老大判断",
+    "routeReason": "没有指定路线，先由虾老大判断该走十二怒汉、七武士还是 Skill。"
   },
   {
     "id": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
@@ -21,6 +24,9 @@
       "guid": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
       "summary": "【新闻虾转运营虾】请找到“AI 会勒索人类”新闻来源，并转给运营虾评估选题",
       "url": "https://applink.feishu.cn/client/todo/detail?guid=e2dc03f9-da3d-41de-b6c3-ee284e5c7629"
-    }
+    },
+    "route": "director_decide",
+    "routeLabel": "虾老大判断",
+    "routeReason": "没有指定路线，先由虾老大判断该走十二怒汉、七武士还是 Skill。"
   }
 ]

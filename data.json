@@ -3,7 +3,7 @@
     "agents": 7,
     "liveTasks": 21,
     "completion": 68,
-    "status": "当前主任务：十二怒汉先判断方向，七武士再执行落地。",
+    "status": "当前主任务：飞书任务由虾老大判断路线，分配给十二怒汉、七武士或 Skill。",
     "feishuTasks": 1
   },
   "workspace": {
@@ -514,7 +514,10 @@
       "status": "in_progress",
       "due": "",
       "url": "",
-      "owner": "me"
+      "owner": "me",
+      "route": "director_decide",
+      "routeLabel": "虾老大判断",
+      "routeReason": "没有指定路线，先由虾老大判断该走十二怒汉、七武士还是 Skill。"
     },
     {
       "id": "e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
@@ -523,7 +526,10 @@
       "status": "needs_source",
       "due": "",
       "url": "https://applink.feishu.cn/client/todo/detail?guid=e2dc03f9-da3d-41de-b6c3-ee284e5c7629",
-      "owner": "me"
+      "owner": "me",
+      "route": "director_decide",
+      "routeLabel": "虾老大判断",
+      "routeReason": "没有指定路线，先由虾老大判断该走十二怒汉、七武士还是 Skill。"
     }
   ]
 }
